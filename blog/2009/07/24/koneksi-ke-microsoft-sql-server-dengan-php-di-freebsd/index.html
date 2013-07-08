@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Koneksi ke Microsoft SQL Server dengan PHP di FreeBSD - blog.rudylee.com</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Beberapa hari yang lalu gwa melakukan perpindahan server Binus Access ke server baru yang menggunakan FreeBSD ( sebelumnya menggunaka Ubuntu Server 8 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rudylee.github.io/blog/2009/07/24/koneksi-ke-microsoft-sql-server-dengan-php-di-freebsd/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="blog.rudylee.com" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mob</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">blog.rudylee.com</a></h1>
+  
+    <h2>keep it humble</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:rudylee.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Koneksi Ke Microsoft SQL Server Dengan PHP Di FreeBSD</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-24T01:06:55+10:00" pubdate data-updated="true">Jul 24<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Beberapa hari yang lalu gwa melakukan perpindahan server Binus Access ke server baru yang menggunakan FreeBSD ( sebelumnya menggunaka Ubuntu Server 8.04 ). Setelah melakukan konfigurasi-konfigurasi dan beberapa persiapan yaitu :</p>
+
+<ul>
+<li><p>Backup database dan file website Binus Access</p></li>
+<li><p>Konfigurasi Nginx ( web servernya ganti Nginx ) agar bisa membaca mod_rewrite</p></li>
+<li><p>Setting NFS dari server asterix ke server Binus Access</p></li>
+<li><p>Setting IP</p></li>
+<li><p>Beberapa settingan kecil lainnya</p></li>
+</ul>
+
+
+<p>Jadi setelah dirasa semua persiapan sudah kelar, akhirnya perpindahan server dilakukan yaitu mencabut kabel LAN di server lama dan mencoloknya di server baru ( yap pindahin server cuma begitu saja ). Nah setelah gwa melakukan perpindahan server gwa pun mencoba semua fitur-fitur yang ada di binus-access satu persatu apakah ada yang ga jalan. Ternyata eh ternyata pas gwa tes registrasi untuk user baru terjadilah error dimana yang kalau gwa telusuri dikarenakan server tersebut tidak dapat mengakses server binusmaya ( menggunakan mssql ).</p>
+
+<p>Jadi gwa pun mulai mencek dengan menggunakan phpinfo(); apakah extension mssql sudah terinstall di server FreeBSD tersebut atau blum ( karena seingat gwa pas nginstall php-fpm extension mssql sudah gwa aktifkan ), pas gwa cek ternyata extension mssql sudah terinstall dengan benarnya ( berarti tidak ada kesalahan dengan extension mssql.</p>
+
+<p>Setelah itu gwa pun mulai searching di google dan akhirnya ketemu sebuah artikel yang menyebutkan tentang FreeTDS, gwa sih kurang ngerti juga tentang FreeTDS tapi kalau artikel itu bilang kalau mau connect mssql menggunakan FreeBSD harus menggunakan FreeTDS ini. Oleh karena itu tanpa banyak cing cong langsung saja gwa install FreeTDS lewat ports FreeBSD, neh syntaxnya :</p>
+
+<pre><code>cd /usr/ports/databases/freetds
+make install clean
+</code></pre>
+
+<p>Setelah menginstall FreeTDS langsung saja config freetds.confnya yang terletak di <strong>/usr/local/etc/freetds.conf </strong> ini isinya config freetds gwa :</p>
+
+<pre><code>#
+#
+#   $Id: freetds.conf,v 1.11 2005/12/05 21:34:12 freddy77 Exp $
+#
+# The freetds.conf file is a replacement for the original interfaces
+# file developed by Sybase.  You may use either this or the interfaces
+# file, but not both.
+#
+# FreeTDS will search for a conf file in the following order:
+#
+#     1) check if a file was set programatically via dbsetifile() and
+#        is in .conf format, if so use that,
+#
+#     2) otherwise, if env variable FREETDSCONF specifies a properly 
+#        formatted config file, use it,
+#
+#     3) otherwise, look in ~/.freetds.conf,
+#
+#     4) otherwise, look in @sysconfdir@/freetds.conf
+#
+# If FreeTDS has found no suitable conf file it will then search for
+# an interfaces file in the following order:
+#
+#     1) check if a file was set programatically via dbsetifile() and 
+#        is in interfaces format, if so use that,
+#
+#     2) look in ~/.interfaces
+#
+#     3) look in $SYBASE/interfaces (where $SYBASE is an environment
+#        variable)
+#
+# Only hostname, port number, and protocol version can be specified
+# using the interfaces format.
+#
+# The conf file format follows a modified Samba style layout.  There
+# is a [global] section which will affect all database servers and
+# basic program behaviour, and a section headed with the database
+# server's name which will have settings which override the global
+# ones.
+#
+# Note that environment variables TDSVER, TDSDUMP, TDSPORT, TDSQUERY, 
+# and TDSHOST will override values set by a .conf or .interfaces file.
+#
+# To review the processing of the above, set env variable TDSDUMPCONFIG
+# to a file name to log configuration processing.
+#
+# Global settings, any value here may be overridden by a database
+# server specific section
+[global]
+        # TDS protocol version
+    tds version = 4.2
+
+;   initial block size = 512
+
+    # uses some fixes required for some bugged MSSQL 7.0 server that
+    # return invalid data to big endian clients
+    # NOTE TDS version 7.0 or 8.0 should be used instead
+;   swap broken dates = no
+;   swap broken money = no
+
+    # Whether to write a TDSDUMP file for diagnostic purposes
+    # (setting this to /tmp is insecure on a multi-user system)
+;   dump file = /tmp/freetds.log
+;   debug flags = 0xffff
+
+    # Command and connection timeouts
+;   timeout = 10
+;   connect timeout = 10
+
+    # If you get out of memory errors, it may mean that your client
+    # is trying to allocate a huge buffer for a TEXT field.  
+    # (Microsoft servers sometimes pretend TEXT columns are
+    # 4 GB wide!)   If you have this problem, try setting 
+    # 'text size' to a more reasonable limit 
+    text size = 64512
+
+# This is a Sybase hosted database server, if you are directly on the
+# net you can use it to test.
+[JDBC]
+    host = 192.138.151.39
+    port = 4444
+    tds version = 5.0
+
+# The same server, using TDS 4.2.  Used in configuration examples for the
+# pool server, since the pool server supports only TDS 4.2.
+[JDBC_42]
+    host = 192.138.151.39
+    port = 4444
+    tds version = 4.2
+
+# The client connecting to the pool server will use this to find its
+# listening socket.  This entry assumes that the client is on the same
+# system as the pool server.
+[mypool]
+    host = 127.0.0.1
+    port = 5000
+    tds version = 4.2
+
+# A typical Microsoft SQL Server 7.0 configuration  
+;[MyServer70]
+;   host = ntmachine.domain.com
+;   port = 1433
+;   tds version = 7.0
+
+# A typical Microsoft SQL Server 2000 configuration
+[stored]
+    host = 10.21.50.16
+    port = 1433
+    tds version = 8.0
+
+# A typical Microsoft SQL Server 6.x configuration  
+;[MyServer65]
+;   host = ntmachine.domain.com
+;   port = 1433
+;   tds version = 4.2
+
+
+
+
+jadi buat settingan mssql buat server binusmaya itu gwa letakin di bagian ini :
+
+
+
+# A typical Microsoft SQL Server 2000 configuration
+[stored]
+    host = xx.xx.xx.xx
+    port = 1433
+    tds version = 8.0
+</code></pre>
+
+<p>ganti tulisan xx.xx.xx.xx dengan ip server SQL Server nya. Nah sekarang saatnya mencoba melakukan koneksi ( ada sedikit perbedaan cara melakukan koneksi ) begini contoh codingnya dalam PHP :</p>
+
+<pre><code>$host = "stored";
+$user = "yourusername";
+$pass = "yourpassword";
+$db = mssql_connect($host,$user,$pass) or die ("Unable to connect to mssql databases");
+</code></pre>
+
+<p>Jadi perbedaannya adalah $host yang harus diisi dengan nama yang ada set di freetds.conf tadi, jadi jika pada freetds.conf ada menset namanya menjadi &ldquo;mssql&rdquo; maka pada host anda ubah menjadi &ldquo;mssql&rdquo;. Kira-kira begitulah caranya yang cukup membuat gwa pusing selama 2 jam mencari-cari caranya. Lanjut ngejunk lagi ah :P</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">admin</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-24T01:06:55+10:00" pubdate data-updated="true">Jul 24<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/unix-and-linux/'>Unix and Linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rudylee.github.io/blog/2009/07/24/koneksi-ke-microsoft-sql-server-dengan-php-di-freebsd/" data-via="" data-counturl="http://rudylee.github.io/blog/2009/07/24/koneksi-ke-microsoft-sql-server-dengan-php-di-freebsd/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2009/07/19/setting-mod_rewrite-atau-sef-joomla-di-nginx/" title="Previous Post: Setting mod_rewrite atau SEF Joomla di Nginx">&laquo; Setting mod_rewrite atau SEF Joomla di Nginx</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/blog/2009/08/16/my-blog-top-search-terms-cakephp/" title="Next Post: My blog top search terms - CakePHP">My blog top search terms - CakePHP &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/27/playing-with-google-map-api/">Playing with Google Map API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/16/override-module-config-in-zend-framework-2/">Override module config in Zend Framework 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object/">Zend Framework 2 : The proper way to set application path in Javascript Object</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/30/my-review-after-two-months-using-vim/">My review after two months using VIM</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl/">Zend Framework 2 : get server URL in controller without using serverUrl()</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://rudylee.github.io/blog/2009/07/24/koneksi-ke-microsoft-sql-server-dengan-php-di-freebsd/';
+        var disqus_url = 'http://rudylee.github.io/blog/2009/07/24/koneksi-ke-microsoft-sql-server-dengan-php-di-freebsd/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

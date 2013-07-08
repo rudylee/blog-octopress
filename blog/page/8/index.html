@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>blog.rudylee.com</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Setelah sekian lama ga update blog, akhirnya update blog lagi deh&hellip; Untuk kali ini ga bakalan cerita-cerita yang aneh-aneh ataupun yang lucu- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rudylee.github.io/blog/page/8/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="blog.rudylee.com" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mob</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">blog.rudylee.com</a></h1>
+  
+    <h2>keep it humble</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:rudylee.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/04/18/review-cakephp/">Review CakePHP</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-18T23:37:28+10:00" pubdate data-updated="true">Apr 18<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setelah sekian lama ga update blog, akhirnya update blog lagi deh&hellip; Untuk kali ini ga bakalan cerita-cerita yang aneh-aneh ataupun yang lucu-lucu&hellip; soalnya emang lagi ga ada kejadian yang benar-benar &ldquo;klik&rdquo; yang bisa diceritakan ( beberapa hari ini semua terasa semu hix ).</p>
+
+<p>Jadi kali ini gwa akan melakukan review terhadap framework PHP yang sudah gwa pelajari kurang lebih 5 bulan lamanya yaitu CakePHP. Selama 5 bulan ini gwa lewati dengan mempelajari CakePHP, dari baca ebook, nonton video tutorial sampai tanya-tanya sama orang-orang di channel #cakephp di irc.freenode.net.</p>
+
+<p>Dalam waktu 5 bulan ini sudah banyak yang gwa pelajari dari CakePHP, tapi tetep masih lebih banyak lagi yang harus dipelajari dari CakePHP&hellip; Jadi intinya gwa bakal sharing apa yang sudah gwa dapatkan setelah lebih kurang 5 bulan mempelajari CakePHP ( FYI, gwa belom pernah pakai framework lain selain CakePHP ).</p>
+
+<p>Salah satu hal yang gwa dapatkan dari mempelajari CakePHP adalah mengerti arsitektur MVC ( Model View Controller ). Untuk yang pengen tahu lebih banyak tentang MVC dapat dibaca di <a href="http://en.wikipedia.org/wiki/Model-view-controller">http://en.wikipedia.org/wiki/Model-view-controller</a>.</p>
+
+<p>Tapi gwa coba rangkum beberapa hal yang gwa mengerti tentang MVC, dalam pemprograman MVC seluruh program dibagi menjadi 3 bagian utama yaitu Model ( berhubungan dengan database ), Controller ( berhubungan dengan logic ), View ( berhubungan dengan tampilan program).  Jadi jika pada pemprograman procedural atau pemprograman barbar kita bagi dalam function-function, maka pada MVC kita harus membaginya menjadi 3 bagian besar.</p>
+
+<p>Jika kita ingin melakukan query,validasi, edit data kita masukkan ke dalam Model. Kalau kita ingin mengatur aliran data maka kita memasukkannya ke dalam Controller, dan yang terakhir kali jika kita ingin mengatur tampilan dari program kita ( designnya ) maka kita atur di View. 3 hal tersebut saling berhubungan dan mempunyai peran masing-masing.</p>
+
+<p>Selain MVC tentu saja gwa banyak mempelajari penggunaan dari CakePHP itu sendiri. Penggunaan Helper-helper seperti AJAX, Session, Javascript, dan HTML. Jadi CakePHP secara default sudah menyediakan beberapa helper. Helper itu sendiri adalah sebuah class yang dapat digunakan untuk membantu kita dalam membuat aplikasi sesuai dengan helper yang kita gunakan. Jadi jika kita ingin membuat sebuah website yang menggunakan AJAX, kita dapat menggunakan AJAX helper yang dapat meringankan tugas kita dalam membuat aplikasi AJAX itu. Sama halnya jika kita ingin membuat session maka kita dapat menggunakan session helper untuk membantu kita mengatur session di CakePHP.</p>
+
+<p>Selain helper dikenal juga istilah element di dalam CakePHP. Element disini bukan berarti elemen air, elemen api, elemen tanah. Element di dalam CakePHP itu lebih dapat diartikan sebagai view yang reuseable. Jadi misalnya kita mempunyai sebuah form dan kita ingin membuat form tersebut di 2 view yang berbeda maka kita dapat menggunakan element. Jadi kita tidak perlu membuat ulang kembali form tersebut di 2 view yang berbeda, cukup buat sebuah element dan panggil element tersebut di 2 view itu.</p>
+
+<p>[caption id=&ldquo;&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;550&rdquo; caption=&ldquo;Paging dengan element&rdquo;]<img src="http://blog.rudylee.com/content/paging.jpg" alt="Paging dengan element" />[/caption]</p>
+
+<p>Dan satu hal lagi yang harus diperhatikan dalam merancang sebuah aplikasi dengan menggunakan konsep MVC adalah Model sebaiknya lebih memiliki banyak method dibandingkan controller. Hal itu dikarenakan konsep dari OOP itu sendiri yaitu &lsquo;reuseable&rsquo;.</p>
+
+<p>Jadi gwa bisa menyimpulkan selama 5 bulan apa saja keuntungan yang didapatkan dari mempelajari CakePHP</p>
+
+<ul>
+<li><p>Mengerti konsep MVC.</p></li>
+<li><p>Waktu untuk mendevelop program menjadi lebih cepat.</p></li>
+<li><p>Source code menjadi lebih terstruktur.</p></li>
+<li><p>Kemampuan berbahasa inggris meningkat ( banyak baca cookbook + tanya2 pakai bahasa inggris wakaka.</p></li>
+</ul>
+
+
+<p>Walaupun gwa tidak menampik adanya kerugian-kerugian yang didapatkan dari mempelajari CakePHP, ini beberapa kerugian tersebut :</p>
+
+<ul>
+<li><p>Harus belajar kembali karena dengan menggunakan framework tentu saja kita harus mempelajari API yang sudah tersedia.</p></li>
+<li><p>Aplikasi jadi lebih lemot.</p></li>
+<li><p>Jadi makin malas karena sudah dimanjakan dengan fitur-fitur walaupun tidak semalas  karena menggunakan CMS</p></li>
+<li><p>Makin lupa syntax2 PHP yang dasar karena keseringan menggunakan syntax CakePHP</p></li>
+</ul>
+
+
+<p>Tapi walaupun begitu semua kekurangan itu tertutupi oleh kelebihan-kelebihan yang didapatkan dari mempelajari CakePHP tersebut. Yah jelas, kalau banyak ruginya napaen gwa capek-capek belajar framework. Mungkin ada yang beranggapan kalau menggunakan framework itu sendiri dapat memperbodoh diri sendiri, dan gwa pun tidak menampik hal tersebut.</p>
+
+<p>Tapi gwa menganalogikan mempelajari framework ini seperti sedang memasak mie goreng. Bedanya jika kita menggunakan framework maka kita menggunakan mie yang sudah dijual di pasaran tanpa kita tahu cara membuat mie tersebut. Sementara orang yang tidak menggunakan framework adalah orang yang membuat mienya sendiri.</p>
+
+<p>Pertanyaannya adalah apakah mie goreng yang dibuat dengan mie jualan di pasar pasti lebih enak daripada mie yang dibuat sendiri ? bagaimana sebaliknya ? tentu saja jawabnya tergantung dari banyak faktor ( bisa kualitas mie, bisa kemampuan orang yang memasak ).</p>
+
+<p>Sama halnya dalam menggunakan framework, seberapa bagusnya aplikasi kita bukan saja ditentukan dari framework apa yang kita gunakan, bukan juga ditentukan dari apakah kita menggunakan framework atau tidak. Tetapi juga ditentukan dari kemampuan orang tersebut, karena di mata client tetap saja yang dilihat itu adalah hasil jadinya, bukan codingannya ( kebanyakan client kan ga ngerti2 banget :P ). Jadi client mana mo tau itu mie hasil buat sendiri ato hasil beli di pasar, yang mereka tahu cuma &ldquo;mie ini enak&rdquo;, &ldquo;mie ini ga enak&rdquo;. Udah itu aja, simple sekali kan ?</p>
+
+<p>Yah sebenarnya kalau mau didebatkan lagi sebenarnya banyak yang bisa didebatkan tapi intinya sekarang gwa malas nulis panjang-panjang dan juga tentu saja gwa mendukung semua orang untuk mempelajari framework. Kenapa ? karena sekarang persaingan sudah semakin ketat, kita sekarang membuat aplikasi semakin mudah dan semakin cepat. Ibarat kata pepatah &ldquo;Siapa cepat dia dapat&rdquo;. Sekarang itu ada di tangan anda, apakah anda ingin memakai mie yang dijual atau buat mie sendiri :P hohoho yang penting untuk sekarang 5 star buat CakePHP deh :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/03/31/ibu-ibu-bapak-tua-mungkin-gay-dan-phobia/">Ibu-ibu Dan Yang Lainnya</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-31T04:33:55+11:00" pubdate data-updated="true">Mar 31<span>st</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hari ini untuk kesekian kalinya jalan-jalan ke kalideres&hellip; sebenarnya ga jalan-jalan juga sih&hellip; yah lebih tepatnya pergi melapor ke kalideres&hellip;</p>
+
+<p>Dan seperti yang terjadi pada setiap kalinya gwa pergi kesana&hellip; Dalam perjalanan pasti gwa mengalami hal-hal yang menarik.</p>
+
+<p>Seperti contohnya beberapa minggu yang lalu ketika gwa sedang dalam perjalanan ke kalideres&hellip; pas sampai di terminal grogol, nah gwa lagi pengen naik tangga neh ke busway grogol&hellip; Pada saat gwa lagi naik tangga gwa ngelihat seorang ibu lagi kesusahan menaiki tangga jembatan penyebrangan ( FYI jembatan penyebrangan grogol memang terkenal dengan curamnya )&hellip; Nah jadi dengan inisiatif yang tinggi gwa pun menawarkan bantuan kepada ibu tersebut ( bukan gendong ya, enak aja )&hellip; yah jadi gwa menawarkan kepada ibu tersebut untuk membawakan tasnya ( soalnya kelihatan berat banget bawa tasnya, padahal pas gwa angkat ringan )&hellip; Yah mungkin karena ibu tersebut melihat wajah gwa yang alim dan baik, maka dengan senang hati dia memberikan tas tersebut kepada gwa&hellip; Dan akhirnya gwa sukses membawakan tas ibu itu sampai ke atas jembatan penyebrangan&hellip; Tapi sayang sekali kami harus berpisah di depan tangga menuju busway ( karena gwa mo naik busway, sementara sang ibu pengen ke seberang )&hellip;</p>
+
+<p>Sementara hari ini untuk kesekian kalinya gwa ketemu ibu-ibu lagi ( gila jodoh amat dah ama ibu-ibu ).. tapi bukan di terminal grogol&hellip; tapi di terminal kalideres&hellip; Jadi ceritanya gwa lagi jalan mo ke pasar semanan dari terminal kalideres&hellip; pas sampai depan terminal kalideres tiba2 ada ibu-ibu yang teriak &ldquo;Tunggu bareng seberangnya&rdquo;&hellip; Posisi ibu-ibu itu pas di samping gwa&hellip; gwa kirain dia lagi manggil anaknya ternyata pas didengar baik-baik dia lagi mau dibantuin nyebrang&hellip;</p>
+
+<p>Dan untuk kesekian kalinya terketuklah pintu hatiku untuk membantu sang ibu&hellip; Dengan sigap aku menawarkan tanganku untuk digandeng oleh sang ibu&hellip; Sang ibu pun dengan sigap menggandeng tanganku&hellip; Jadilah kami berdua menyeberang jalan bersama seperti peragawan dan peragawati di atas catwalk&hellip; ( lebai wakakaka )&hellip;</p>
+
+<p>Yah intinya gwa membantu sang ibu untuk menyeberang jalan&hellip; tapi ada satu hal yang menarik&hellip; biasanya kalau lampu merah sudah hijau biasanya kan para motor dan mobil tidak memperhatikan para penyebrang yang menyeberang&hellip; ( main hajar-hajar aja )&hellip; tapi tadi itu sangat berbeda&hellip; entah kenapa begitu melihat gwa mengandeng sang ibu sambil bilang &ldquo;Stop&hellip; Stop&hellip;&rdquo;, dengan sangat ajaibnya semua motor dan mobil itu pun mengikuti perintah gwa buat stop&hellip; entah karena kasihan melihat ibu itu atau ikut prihatin dengan gwa yang membantu sang ibu&hellip; tapi satu pelajaran yang bisa dipetik, kalau mau nyebrang jalan pas lampunya hijau kita gandeng ibu-ibu aja ( sudah terbukti )&hellip;</p>
+
+<p>Jadi kalau ditotal itu kedua kalinya gwa ketemu ibu-ibu dan membantu ibu-ibu&hellip; dan ternyata hal itu bukanlah jadi yang terakhir&hellip; Pada saat gwa lagi pulang naik busway di kalideres&hellip; gwa ketemu lagi ibu-ibu&hellip; tapi ini ga sampai lebai-lebai amat kek yang dua sebelumnya&hellip; yah intinya gwa cuma kasih duduk buat ibu-ibu yang ga dapat tempat duduk di busway ( hal yang sudah biasa gwa lakukan )&hellip;</p>
+
+<p>Tapi ternyata ga semua orang punya kesadaran untuk memberikan tempat duduk di busway kepada orang yang lebih membutuhkan&hellip; Hal itu terbukti ketika ada seorang bapak-bapak yang cukup tua sih menurut gwa ( kira-kira umur 60-70 ) masuk ke dalam busway&hellip; Yang amat disayangkan seakan-akan semua orang cuek dan seperti tidak melihat si bapak&hellip; bahkan ada seorang cewe ( yah masih muda la kira2 umur 20an ) cuek-cuek aja melihat si bapak berdiri di depannya ( padahal si cewe terlihat orangnya religius )&hellip; Yah intinya gwa juga ga bisa memaksa orang sih dan menjudge orang secara gwa juga penuh dosa dan lubang-lubang ( maksudnya tidak sempurna ).</p>
+
+<p>Selain itu juga ada hal menarik yang terjadi di busway yang sama&hellip; jadi ketik busway berhenti di sebuah terminal ( keknya terminal dispenda ato jembatan gantung )&hellip; nah ada 3 orang cowo masuk&hellip; sebenarnya pada awalnya gwa ga gitu ngeh&hellip; tapi pas salah seorang dari 3 orang cowo tersebut berjalan dengan gemulainya memasuki busway gwa pun mulai berteriak dalam hati &ldquo;GAWAT ada gay ini keknya&rdquo;&hellip; beh jujur gwa serem banget pas liat 3 cowo itu ( gwa menduga bertiga itu gay ) gwa udah was-was aja apalagi mereka berdiri di belakang gwa ( beh salah-salah bisa-bisa gwa dibelai ). Tapi untunglah sampai di terminal grogol gwa tidak dibelai-belai ataupun digerayangi&hellip; Amin&hellip;</p>
+
+<p>Setelah itu gwa melanjutkan perjalanan untuk balik ke binus dengan menggunakan m91&hellip; dan sialnya lagi pas gwa naik itu bus penuh banget&hellip; dan cuma tersisa tempat duduk&hellip; adanya di depan ( samping cewek ) trus dibelakang ( samping cewek juga )&hellip; tapi karena gwa ga mau susah-susah akhirnya gwa memilih untuk duduk di depan aja&hellip;</p>
+
+<p>Namun ada hal yang aneh terjadi&hellip; tanpa sadar tiba-tiba tubuh gwa berkeringat dengan hebatnya&hellip; ( mungkin ini namanya kalo phobia duduk di depan + disamping cewek )&hellip; Jadi selama setengah perjalan dari halte grogol sampai tanjung duren gwa pun terus berkeringat ( sudah pakai jaket + berkeringat + ga bisa keluarin sapu tangan soalnya sempit banget kursinya ) jadi sesekali gwa mulai deh mengusap muka gwa yang penuh keringat ( anjrit bener-bener salting banget di samping cewek )&hellip; trus penderitaan bukan sampai disitu aja&hellip; ceweknya pakai acara gerak-gerak lagi kek ga mau dekat-dekat gwa ( bueh apa gwa kurang ganteng ya mbak )&hellip;</p>
+
+<p>Tapi untunglah malaikat penyelamat menghampiri&hellip; kami disuruh pindah bus !!!! akhirnya dengan sigap gwa keluar dari bus dan ngambil tempat duduk paling belakang ( tiba-tiba angin berubah sejuk dan keringat gwa hilang seketika )&hellip;</p>
+
+<p>Jadi intinya hari ini gwa mendapat beberapa pelajaran :</p>
+
+<ul>
+<li><p>Bantulah ibu-ibu menyeberang jalan karena itu membantu anda juga menyeberang</p></li>
+<li><p>Gwa lagi jodoh banget sama ibu-ibu akhir2 ini</p></li>
+<li><p>Sepertinya gwa phobia tempat ramai, duduk di barisan depan, dan disamping cewek</p></li>
+<li><p>Berilah tempat duduk kepada orang yang lebih membutuhkan</p></li>
+<li><p>Waspada terhadap gay-gay yang naik busway&hellip;</p></li>
+</ul>
+
+
+<p>Yah intinya ternyata hari ini ada pengalaman menarik lah&hellip; udah ah mo telpon &ldquo;seseorang&rdquo; dulu ( soalnya tadi dia nelpon pas nulis blog sih&hellip; jadinya ga konsen trus jadinya dicuekin deh&hellip; )</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/03/22/the-bokap-dan-kopi-susu/">The &#8216;Bokap&#8217; Dan Kopi Susu</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-22T20:13:18+11:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Hari ini untuk kesekian kali nya gwa dapat seminar gratis / ceramah gratis / arahan gratis / masukan gratis / nasehat gratis atau entah apalah namanya.</p>
+
+<p>Hari ini juga, untuk kesekian kalinya gwa datang ke rumah the &lsquo;Bokap&rsquo; ( panggilan sayang buat seseorang wakakaka ). Yah bagi yang ga tau berarti itu deritamu, soalnya gwa juga ga mau bahasa siapa the &lsquo;Bokap&rsquo; tapi lebih ke ceramah gratis yang diberikan oleh beliau ( jiah pake2 beliau ).</p>
+
+<p>Hari ini juga, untuk kedua kalinya gwa mencoba mendokumentasikan perkataan the &lsquo;Bokap&rsquo; dalam bentuk tulisan. Jika pertama kalinya gwa mendokumentasikan tulisan the &lsquo;Bokap&rsquo; gara2 beliau berhasil mengguncang dunia alias shake the world, maka kedua kalinya ini alasannya berbeda dengan yang pertama.</p>
+
+<p>the &lsquo;Bokap&rsquo; mempunyai satu ciri khas dalam memberikan ceramah / nasehat / masukan / apalah itu namanya. Ciri khas tersebut terletak di &lsquo;ambiguitas&rsquo; dari perkataan beliau. Mungkin letak kesalahannya terletak pada diri gwa sendiri, pada satu titik gwa ngerasa mengerti dan mengetahui arti perkataannya. Namun di sisi lain, jika dipikir-pikir lagi maka artinya dapat berbeda.</p>
+
+<p>Oleh karena hal-hal tersebut gwa memutuskan untuk mendokumentasikan hasil temu keakraban dengan the &lsquo;Bokap&rsquo;. Karena ke-ambiguitasnya, jadi siapa tahu ntar ketika gwa baca-baca lagi gwa dapat menemukan inti dari maksud perkataan the &lsquo;Bokap&rsquo; tersebut.</p>
+
+<p>Jadi topik yang benar-benar gwa ingat dari perkataan beliau hari ini adalah mengenai kopi susu. Pasti pada bingung ? ada apa dengan kopi susu ? kenapa kopi susu ? apa itu kopi susu ? bagaimana bisa kopi susu ? kapan kopi susu ? Jujur gwa juga ga tau makanya gwa tulis ini tulisan.</p>
+
+<p>Ya sudah, kita flashback dulu aja ke awal pagi hari ini. Seperti biasa bangun jam 7, mandi, trus jalan ke rumah the &lsquo;Bokap&rsquo;. Di rumah beliau sampai itu kira2 jam 8 kurang 15 menit. Trus nunggu kira-kira 15 menit &ndash; 20 menit sambil baca-baca buku hasil comot dari tetangga.</p>
+
+<p>Nah setelah tunggu kira-kira 20 menit akhirnya beliau turun dari singgasananya untuk bertemu dengan hambanya ini. Jadi dimulai deh perbincangan seperti yang kami lakukan setiap minggunya. Tapi ada 1 hal yang berbeda, kali ini gwa sendirian, tidak ada teman yang menemani. Jadi kami hanya one on one saja.</p>
+
+<p>Seperti biasa perbincangan tersebut dimulai dengan pertanyaan beliau &ldquo;Bagaimana ?&rdquo;. Gwa yang sudah mempersiapkan hal-hal yang ingin diomongin dan mulai nyerocos. Pertama-tama gwa ngerocos soal buku yang dipinjamkan oleh beliau. Bergaya bak tukang jual buku mulai gwa memberi tahu kelebihan buku-buku itu dibanding buku-buku yang lain, dan akhirnya diakhiri dengan statement beliau &ldquo;Oh&hellip;.&rdquo;</p>
+
+<p>Setelah membahas tentang buku tersebut, akhirnya kami masuk ke bahasan yang sebenarnya yaitu tentang kelanjutan toko buku online yang ingin dibuat. Beliau mulai bertanya tentang Business Plan yang notabene gwa blum buat sama sekali dan tidak berniat untuk membuat hal-hal seperti itu.</p>
+
+<p>Kemudian kami melanjutkan pembahasan lagi, nah ini dia satu hal yang menarik dan &lsquo;berbeda&rsquo; dari minggu-minggu sebelumnya. Jika pada minggu-minggu sebelumnya gwa akan sering mendengar kata filosofi yang bisa diulang hingga belasan kali maka kali ini berbeda. Kali ini gwa mendapatkan sebuah analogi tentang &lsquo;Kopi Susu&rsquo;.</p>
+
+<p>Cikal bakal awalnya adalah gara-gara gwa mempertanyakan alasan kenapa beliau bersikeras untuk tetap menghubungi pengarang buku dibandingkan dengan penerbit bukunya. Alasan beliau yang dapat gwa tangkap sih lebih ke nilai plus. Jadi misalnya kita mau jual buku, maka dengan bekerja sama dengan pengarang kita dapat nilai plus ( ex : tanda tangan beliau ).</p>
+
+<p>Tapi tetep aja gwa tidak menangkap inti dari sebuah &lsquo;tanda tangan&rsquo;. Mungkin karena melihat raut wajah yang bingung mulai deh beliau menciptakan analogi yang unik. Kira-kira begini perbincangannya :
+the &lsquo;Bokap&rsquo; : Rudy, kamu pernah minum susu ?
+Rudy         : Pernah pak.
+the &lsquo;Bokap&rsquo; : Misalkan saya tuangkan kopi ke susu tersebut, jika saya mau rasakan benar-benar kopinya kan saya harus buang dulu semuanya. Baru saya tuang kopi lagi.
+Rudy         : Errr&hellip; iya pak ( mulai bingung )
+the &lsquo;Bokap&rsquo; : Sekarang ibaratkan kepala kamu ini sudah dipenuhi oleh hal-hal teknis ( dalam hal ini susu ). Sekarang saya ingin tuangkan ke kamu ilmu-ilmu marketing ( dalam hal ini kopi ).
+Rudy         : Mmmm&hellip; iya pak ( sangat bingung )
+the &lsquo;Bokap&rsquo; : Kamu ini bukan orang marketing, kamu ini orang teknis. Jadi saya pengen hard disk di kepala kamu, kamu partisi setengah dan diisi ilmu-ilmu marketing.
+Rudy         : Oh begitu ( mulai mengerti, kebiasaan beliau adalah ngomong mutar-mutar dengan analogi yang menarik )</p>
+
+<p>Pada akhirnya gwa juga tidak begitu menangkap apalah arti di balik analogi &lsquo;Kopi Susu&rsquo; tersebut. Namun gwa bisa mengambil beberapa analisa :</p>
+
+<ul>
+<li><p>Intinya kita harus bisa menangkap perbedaan antara hal-hal teknis yang berbau logika dengan hal-hal marketing</p></li>
+<li><p>Gwa musti partisi otak</p></li>
+<li><p>Udah ikuti aja perintah the &lsquo;Bokap&rsquo; ( ini versi negative thinking )</p></li>
+</ul>
+
+
+<p>Sebenarnya masih banyak hal-hal menarik yang diperbincangkan dengan beliau ( tentang bruce lee, tentang bob, tapi gwa lupa bob siapa ). Tapi yang benar-benar membuat gwa ingat hari ini cuma &lsquo;kopi susu&rsquo; itu. Analogi yang aneh dan membingungkan tapi cukup menarik jika didengarkan secara langsung.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/03/21/gwa-menyerah-udah-cukup-ga-tahan-lagi/">Gwa Menyerah&#8230; Udah Cukup&#8230; Ga Tahan Lagi&#8230;</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-21T03:40:04+11:00" pubdate data-updated="true">Mar 21<span>st</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>gwa menyerah&hellip;
+sudah cukup selama ini gwa dipermainkan&hellip;
+dibohongi&hellip;
+dianggap remeh&hellip;</p>
+
+<p>emang apa salah gwa ?
+apa salah gwa ?
+apa ?</p>
+
+<p>udah gwa ikutin semua perintah loe&hellip;
+tapi tetep aja&hellip;
+gwa tetep aja salah&hellip;
+kenapa ?</p>
+
+<p>kenapa ?</p>
+
+<p>ya sudah la ga penting gwa salah apa&hellip;</p>
+
+<p>ya penting sekarang gwa udah ketemu solusinya&hellip;</p>
+
+<p>yap akhirnya gwa menyerah pakai cool captcha buat shoutbox gwa&hellip; lebih baik gwa pakai validasi angka yang dirandom dengan function php&hellip; daripada gwa keburu botak&hellip; gara2 dibohongi dan dipermainkan&hellip;</p>
+
+<p>Sudah 2 hari gwa dipermainkan oleh joomla, dibohongi oleh joomla, dianggap remeh ama joomla. Padahal sudah baca dokumentasi dengan benar, tapi tetep aja&hellip; ga jalan&hellip;</p>
+
+<p>Arghh&hellip; tapi gpp dah&hellip; tar liat dolo&hellip; apakah bot2 tukang spam itu bisa tembusin validasi cupu gwa&hellip; wakakakaka&hellip; kalo masih tembus juga&hellip; mau tak mau harus dianggap remeh lagi dah ama joomla&hellip;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/03/11/jangan-ngambek-berkepanjangan-terhadap-org-yg-kamu-kasihi/">Jangan &#8220;Ngambek&#8221; Berkepanjangan Terhadap Org Yg Kamu Kasihi</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-11T05:23:40+11:00" pubdate data-updated="true">Mar 11<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Bagi yg sudah pernah baca,luangkan waktu untuk baca sekali lagi
+Ini adalah cerita sebenarnya ( diceritakan oleh Lu Di dan di edit oleh Lian Shu Xiang )</p>
+
+<p>Sebuah salah pengertian yg mengakibatkan kehancuran sebuah rumah tangga.Tatkala nilai akhir sebuah kehidupan sudah terbuka,tetapi segalanya sudah terlambat. Membawa nenek utk tinggal bersama menghabiskan masa tuanya bersama kami,malah telah menghianati ikrar cinta yg telah kami buat selama ini,setelah 2 tahun menikah,saya dan suami setuju menjemput nenek di kampung utk tinggal bersama</p>
+
+<p>Sejak kecil suami saya telah kehilangan ayahnya,dia adalah satu-satunya harapan nenek,nenek pula yg membesarkannya dan menyekolahkan dia hingga tamat kuliah.</p>
+
+<p>Saya terus mengangguk tanda setuju,kami segera menyiapkan sebuah kamar yg menghadap taman untuk nenek,agar dia dapat berjemur,menanam bunga dan sebagainya.Suami berdiri didepan kamar yg sangat kaya dgn sinar matahari,tidak sepatah katapun yg terucap tiba-tiba saja dia mengangkat saya dan memutar-mutar saya seperti adegan dalam film India dan berkata :&ldquo;Mari,kita jemput nenek di kampung&rdquo;.</p>
+
+<p>Suami berbadan tinggi besar,aku suka sekali menyandarkan kepalaku ke dadanya yg bidang,ada suatu perasaan nyaman dan aman disana.Aku seperti sebuah boneka kecil yg kapan saja bisa diangkat dan dimasukan kedalam kantongnya.Kalau terjadi selisih paham diantara kami,dia suka tiba-tiba mengangkatku tinggi-tinggi diatas kepalanya dan diputar-putar sampai aku berteriak ketakutan baru diturunkan.Aku sungguh menikmati saat-saat seperti itu.</p>
+
+<p>Kebiasaan nenek di kampung tidak berubah.Aku suka sekali menghias rumah dengan bunga segar,sampai akhirnya nenek tidak tahan lagi dan berkata kepada suami:&ldquo;Istri kamu hidup foya-foya ,buat apa beli bunga?Kan bunga tidak bisa dimakan?&rdquo; Aku menjelaskannya kepada nenek:&ldquo;Ibu,rumah dengan bunga segar membuat rumah terasa lebih nyaman dan suasana hati lebih gembira.&#8221;Nenek berlalu sambil mendumel,suamiku berkata sambil tertawa:&#8221;Ibu,ini kebiasaan orang kota,lambat laun ibu akan terbiasa juga.&rdquo;</p>
+
+<p>Nenek tidak protes lagi,tetapi setiap kali melihatku pulang sambil membawa bunga,dia tidak bisa menahan diri untuk bertanya berapa harga bunga itu,setiap mendengar jawabanku dia selalu mencibir sambil menggeleng-gelengkan kepala.Setiap membawa pulang barang belanjaan,dia selalu tanya itu berapa harganya ,ini berapa.Setiap aku jawab,dia selalu berdecak dengan suara keras.Suamiku memencet hidungku sambil berkata:&ldquo;Putriku,kan kamu bisa berbohong.Jangan katakan harga yang sebenarnya.&rdquo; Lambat laun,keharmonisan dalam rumah tanggaku mulai terusik.
+Nenek sangat tidak bisa menerima melihat suamiku bangun pagi menyiapkan sarapan pagi untuk dia sendiri,di mata nenek seorang anak laki-laki masuk ke dapur adalah hal yang sangat memalukan.Di meja makan,wajah nenek selalu cemberut dan aku sengaja seperti tidak mengetahuinya.Nenek selalu membuat bunyi-bunyian dengan alat makan seperti sumpit dan sendok,itulah cara dia protes.
+Aku adalah instrukstur tari,seharian terus menari membuat badanku sangat letih,aku tidak ingin membuang waktu istirahatku dengan bangun pagi apalagi disaat musim dingin.Nenek kadang juga suka membantuku di dapur,tetapi makin dibantu aku menjadi semakin repot,misalnya;dia suka menyimpan semua kantong-kantong bekas belanjaan,dikumpulkan bisa untuk dijual katanya.Jadilah rumahku seperti tempat pemulungan kantong plastik,dimana-mana terlihat kantong plastik besar tempat semua kumpulan kantong plastik.</p>
+
+<p>Kebiasaan nenek mencuci piring bekas makan tidak menggunakan cairan pencuci,agar supaya dia tidak tersinggung,aku selalu mencucinya sekali lagi pada saat dia sudah tidur.Suatu hari,nenek mendapati aku sedang mencuci piring malam harinya,dia segera masukke kamar sambil membanting pintu dan menangis.Suamiku jadi serba salah,malam itu kami tidur seperti orang bisu,aku coba bermanja-manja dengan dia,tetapi dia tidak perduli.Aku menjadi kecewa dan marah.&ldquo;Apa salahku?&rdquo; Dia melotot sambil berkata:&ldquo;Kenapa tidak kamu biarkan saja? Apakah memakan dengan pring itu bisa membuatmu mati?&rdquo;</p>
+
+<p>Aku dan nenek tidak bertegur sapa untuk waktu yg culup lama,suasana mejadi kaku.Suamiku menjadi sangat kikuk,tidak tahu harus berpihak pada siapa?Nenek tidak lagi membiarkan suamiku masuk ke dapur,setiap pagi dia selalu bangun lebih pagi dan menyiapkan sarapan untuknya,suatu kebahagiaan terpancar di wajahnya jika melihat suamiku makan dengan lahap,dengan sinar mata yang seakan mencemohku sewaktu melihat padaku,seakan berkata dimana tanggung jawabmu sebagai seorang istri?</p>
+
+<p>Demi menjaga suasana pagi hari tidak terganggu,aku selalu membeli makanan diluar pada saat berangkat kerja.Saat tidur,suami berkata:&ldquo;Lu di,apakah kamu merasa masakan ibu tidak enak dan tidak bersih sehingga kamu tidak pernah makan di rumah?&rdquo; sambil memunggungiku dia berkata tanpa menghiraukan air mata yg mengalir di kedua belah pipiku.Dan dia akhirnya berkata:&ldquo;Anggaplah ini sebuah permintaanku,makanlah bersama kami setiap pagi.&#8221;Aku mengiyakannya dan kembali ke meja makan yg serba canggung itu.</p>
+
+<p>Pagi itu nenek memasak bubur,kami sedang makan dan tiba-tiba ada suatu perasaan yg sangat mual menimpaku,seakan-akan isi perut mau keluar semua.Aku menahannya sambil berlari ke kamar mandi,sampai disana aku segera mengeluarkan semua isi perut.Setelah agak reda,aku melihat suamiku berdiri didepan pintu kamar mandi dan memandangku dengan sinar mata yg tajam,diluar sana terdengar suara tangisan nenek dan berkata-kata dengan bahasa daerahnya.Aku terdiam dan terbengong tanpa bisa berkata-kata.Sungguh bukan sengaja aku berbuat demikian!.</p>
+
+<p>Pertama kali dalam perkawinanku,aku bertengkar hebat dengan suamiku,nenek melihat kami dengan mata merah dan berjalan menjauh……suamiku segera mengejarnya keluar rumah.</p>
+
+<p>Menyambut anggota baru tetapi dibayar dengan nyawa nenek.</p>
+
+<p>Selama 3 hari suamiku tidak pulang ke rumah dan tidak juga meneleponku.Aku sangat kecewa,semenjak kedatangan nenek di rumah ini,aku sudah banyak mengalah,mau bagaimana lagi?Entah kenapa aku selalu merasa mual dan kehilangan nafsu makan ditambah lagi dengan keadaan rumahku yang kacau,sungguh sangat menyebalkan.Akhirnya teman sekerjaku berkata:&ldquo;Lu Di,sebaiknya kamu periksa ke dokter.&#8221;Hasil pemeriksaan menyatakan aku sedang hamil.Aku baru sadar mengapa aku mual-mual pagi itu.Sebuah berita gembira yg terselip juga kesedihan.Mengapa suami dan nenek sebagai orang yg berpengalaman tidak berpikir sampai sejauh itu?</p>
+
+<p>Di pintu masuk rumah sakit aku melihat suamiku,3 hari tidak bertemu dia berubah drastis,muka kusut kurang tidur,aku ingin segera berlalu tetapi rasa iba membuatku tertegun dan memanggilnya.Dia melihat ke arahku tetapi seakan akan tidak mengenaliku lagi,pandangan matanya penuh dengan kebencian dan itu melukaiku.Aku berkata pada diriku sendiri,jangan lagi melihatnya dan segera memanggil taksi.Padahal aku ingin memberitahunya bahwa kami akan segera memiliki seorang anak.Dan berharap aku akan diangkatnya tinggi-tinggi dan diputar-putar sampai aku minta ampun tetapi&hellip;.. mimpiku tidak menjadi kenyataan.Didalam taksi air mataku mengalir dengan deras.Mengapa kesalah pahaman ini berakibat sangat buruk?</p>
+
+<p>Sampai di rumah aku berbaring di ranjang memikirkan peristiwa tadi,memikirkan sinar matanya yg penuh dengan kebencian,aku menangis dengan sedihnya.Tengah malam,aku mendengar suara orang membuka laci,aku menyalakan lampu dan melihat dia dgn wajah berlinang air mata sedang mengambil uang dan buku tabungannya.Aku nenatapnya dengan dingin tanpa berkata-kata.Dia seperti tidak melihatku saja dan segera berlalu.Sepertinya dia sudah memutuskan utk meninggalkan aku.Sungguh lelaki yg sangat picik,dalam saat begini dia masih bisa membedakan antara cinta dengan uang.Aku tersenyum sambil menitikan air mata.</p>
+
+<p>Aku tidak masuk kerja keesokan harinya,aku ingin secepatnya membereskan masalah ini,aku akan membicarakan semua masalah ini dan pergi mencarinya di kantornya.Di kantornya aku bertemu dengan seketarisnya yg melihatku dengan wajah bingung.&ldquo;Ibunya pak direktur baru saja mengalami kecelakaan lalu lintas dan sedang berada di rumah sakit.Mulutku terbuka lebar.Aku segera menuju rumah sakit dan saat menemukannya,nenek sudah meninggal.Suamiku tidak pernah menatapku,wajahnya kaku.Aku memandang jasad nenek yg terbujur kaku.Sambil menangis aku menjerit dalam hati:&#8221;Tuhan,mengapa ini bisa terjadi?&rdquo;</p>
+
+<p>Sampai selesai upacara pemakaman,suamiku tidak pernah bertegur sapa denganku,jika memandangku selalu dengan pandangan penuh dengan kebencian.Peristiwa kecelakaan itu aku juga tahu dari orang lain,pagi itu nenek berjalan ke arah terminal,rupanya dia mau kembali ke kampung.Suamiku mengejar sambil berlari,nenek juga berlari makin cepat sampai tidak melihat sebuah bus yg datang ke arahnya dengan kencang.Aku baru mengerti mengapa pandangan suamiku penuh dengan kebencian.Jika aku tidak muntah pagi itu,jika kami tidak bertengkar, jika&hellip;&hellip;&hellip;&hellip;dimatanya,</p>
+
+<p>akulah penyebab kematian nenek.</p>
+
+<p>Suamiku pindah ke kamar nenek,setiap malam pulang kerja dengan badan penuh dengan bau asap rokok dan alkohol.Aku merasa bersalah tetapi juga merasa harga diriku terinjak-injak.Aku ingin menjelaskan bahwa semua ini bukan salahku dan juga memberitahunya bahwa kami akan segera mempunyai anak.Tetapi melihat sinar matanya,aku tidak pernah menjelaskan masalah ini.Aku rela dipukul atau dimaki-maki olehnya walaupun ini bukan salahku.Waktu berlalu dengan sangat lambat.Kami hidup serumah tetapi seperti tidak mengenal satu sama lain.Dia pulang makin larut malam.Suasana tegang didalam rumah.</p>
+
+<p>Suatu hari,aku berjalan melewati sebuah café,melalui keremangan lampu dan kisi-kisi jendela, aku melihat suamiku dengan seorang wanita didalam.Dia sedang menyibak rambut sang gadis dengan mesra.Aku tertegun dan mengerti apa yg telah terjadi.Aku masuk kedalam dan berdiri di depan mereka sambil menatap tajam kearahnya.Aku tidak menangis juga tidak berkata apapun karena aku juga tidak tahu harus berkata apa.Sang gadis melihatku dan ke arah suamiku dan segera hendak berlalu.Tetapi dicegah oleh suamiku dan menatap kembali ke arahku dengan sinar mata yg tidak kalah tajam dariku.Suara detak jangtungku terasa sangat keras,setiap detak suara seperti suara menuju kematian.Akhirnya aku mengalah dan berlalu dari hadapan mereka,jika tidak.. mungkin aku akan jatuh bersama bayiku dihadapan mereka.</p>
+
+<p>Malam itu dia tidak pulang ke rumah.Seakan menjelaskan padaku apa yang telah terjadi.Sepeninggal nenek,rajutan cinta kasih kami juga sepertinya telah berakhir.Dia tidak kembali lagi ke rumah,kadang sewaktu pulang ke rumah,aku mendapati lemari seperti bekas dibongkar.Aku tahu dia kembali mengambil barang-barang keperluannya.Aku tidak ingin menelepon dia walaupun kadang terbersit suatu keinginan untuk menjelaskan semua ini.Tetapi itu tidak terjadi&hellip;&hellip;&hellip;,semua berlalu begitu saja.</p>
+
+<p>Aku mulai hidup seorang diri,pergi check kandungan seorang diri.Setiap kali melihat sepasang suami istri sedang check kandungan bersama,hati ini serasa hancur.Teman-teman menyarankan agar aku membuang saja bayi ini,tetapi aku seperti orang yg sedang histeris mempertahankan miliknya.Hitung-hitung sebagai pembuktian kepada nenek bahwa aku tidak bersalah.</p>
+
+<p>Suatu hari pulang kerja,aku melihat dia duduk didepan ruang tamu.Ruangan penuh dengan asap rokok dan ada selembar kertas diatas meja,tidak perlu tanya aku juga tahu surat apa itu.2 bulan hidup sendiri,aku sudah bisa mengontrol emosi.Sambil membuka mantel dan topi aku berkata kepadanya:&ldquo;Tunggu sebentar,aku akan segera menanda tanganinya&rdquo;.Dia melihatku dengan pandangan awut-awutan demikian juga aku.Aku berkata pada diri sendiri,jangan menangis,jangan menangis.Mata ini terasa sakit sekali tetapi aku terus bertahan agar air mata ini tidak keluar.Selesai membuka mantel,aku berjalan ke arahnya dan ternyata dia memperhatikan perutku yg agak membuncit.Sambil duduk di kursi,aku menanda tangani surat itu dan menyodorkan kepadanya.&ldquo;Lu di,kamu hamil?&rdquo; Semenjak nenek meninggal,itulah pertama kali dia berbicara kepadaku.Aku tidak bisa lagi membendung air mataku yg menglir keluar dengan derasnya.Aku menjawab:&ldquo;Iya,tetapi tidak apa-apa.Kamu sudah boleh pergi&rdquo;.Dia tidak
+pergi,dalam keremangan ruangan kami saling berpandangan.Perlahan-lahan dia membungkukan badanya ke tanganku,air matanya terasa menembus lengan bajuku.Tetapi di lubuk hatiku,semua sudah berlalu, banyak hal yg sudah
+pergi dan tidak bisa diambil kembali.</p>
+
+<p>Entah sudah berapa kali aku mendengar dia mengucapkan kata:&ldquo;Maafkan aku,maafkan aku&rdquo;.Aku pernah berpikir untuk memaafkannya tetapi tidak bisa.Tatapan matanya di cafe itu tidak akan pernah aku lupakan.Cinta diantara kami telah ada sebuah luka yg menganga.Semua ini adalah sebuah akibat kesengajaan darinya.</p>
+
+<p>Berharap dinding es itu akan mencair,tetapi yang telah berlalu tidak akan pernah kembali.Hanya sewaktu memikirkan bayiku,aku bisa bertahan untuk terus hidup.Terhadapnya,hatiku dingin bagaikan es,tidak pernah menyentuh semua makanan pembelian dia,tidak menerima semua hadiah pemberiannya tidak juga berbicara lagi dengannya.Sejak menanda tangani surat itu,semua cintaku padanya sudah berlalu,harapanku telah lenyap tidak berbekas</p>
+
+<p>Kadang dia mencoba masuk ke kamar untuk tidur bersamaku,aku segera berlalu ke ruang tamu,dia terpaksa kembali ke kamar nenek.Malam hari,terdengar suara orang mengerang dari kamar nenek tetapi aku tidak perduli.Itu adalah permainan dia dari dulu.Jika aku tidak perduli padanya,dia akan berpura-pura sakit sampai aku menghampirinya dan bertanya apa yang sakit.Dia lalu akan memelukku sambil tertawa terbahak-bahak.Dia lupa&hellip;&hellip;..,itu adalah dulu,saat cintaku masih membara,sekarang apa lagi yg aku miliki?</p>
+
+<p>Begitu seterusnya,setiap malam aku mendengar suara orang mengerang sampai anakku lahir.Hampir setiap hari dia selalu membeli barang-barang perlengkapan bayi,perlengkapan anak-anak dan buku-buku bacaan untuk anak-anak.Setumpuk demi setumpuk sampai kamarnya penuh sesak dengan barang-barang.Aku tahu dia mencoba menarik simpatiku tetapi aku tidak bergeming.Terpaksa dia mengurung diri dalam kamar,malam hari dari kamarnya selalu terdengar suara pencetan keyboard komputer.Mungkin dia lagi tergila-gila chatting dan berpacaran di dunia maya pikirku.Bagiku itu bukan lagi suatu masalah.</p>
+
+<p>Suatu malam di musim semi,perutku tiba-tiba terasa sangat sakit dan aku berteriak dengan suara yg keras.Dia segera berlari masuk ke kamar,sepertinya dia tidak pernah tidur.Saat inilah yg ditunggu-tunggu olehnya.Aku digendongnya dan berlari mencari taksi ke rumah sakit.Sepanjang jalan,dia mengenggam dengan erat tanganku,menghapus keringat dingin yg mengalir di dahiku.Sampai di rumah sakit,aku segera digendongnya menuju ruang bersalin.Di punggungnya yg kurus kering,aku terbaring dengan hangat dalam dekapannya.Sepanjang hidupku,siapa lagi yg mencintaiku sedemikian rupa jika bukan dia?</p>
+
+<p>Sampai dipintu ruang bersalin,dia memandangku dengan tatapan penuh kasih sayang saat aku didorong menuju persalinan,sambil menahan sakit aku masih sempat tersenyum padanya.Keluar dari ruang bersalin,dia memandang aku dan anakku dengan wajah penuh dengan air mata sambil tersenyum bahagia.Aku memegang tanganya,dia membalas memandangku dengan bahagia,tersenyum dan menangis lalu terjerambab ke lantai.Aku berteriak histeris memanggil namanya.</p>
+
+<p>Setelah sadar,dia tersenyum tetapi tidak bisa membuka matanya………aku pernah berpikir tidak akan lagi meneteskan sebutir air matapun untuknya,tetapi kenyataannya tidak demikian,aku tidak pernah merasakan sesakit saat ini.Kata dokter,kanker hatinya sudah sampai pada stadium mematikan,bisa bertahan sampai hari ini sudah merupakan sebuah mukjijat.Aku tanya kapankah kanker itu terdeteksi? 5 bulan yg lalu kata dokter,bersiap-siaplah menghadapi kemungkinan terburuk.Aku tidak lagi perduli dengan nasehat perawat,aku segera pulang ke rumah dan ke kamar nenek lalu menyalakan komputer.
+Ternyata selama ini suara orang mengerang adalah benar apa adanya,aku masih berpikir dia sedang bersandiwara…………Sebuah surat yg sangat panjang ada di dalam komputer yg ditujukan kepada anak kami.&ldquo;Anakku,demi dirimu aku terus bertahan,sampai aku bisa melihatmu.Itu adalah harapanku.Aku tahu dalam hidup ini,kita akan menghadapi semua bentuk kebahagiaan dan kekecewaan,sungguh bahagia jika aku bisa melaluinya bersamamu tetapi ayah tidak mempunyai kesempatan untuk itu.Didalam komputer ini,ayah mencoba memberikan saran dan nasehat terhadap segala kemungkinan hidup yg akan kamu hadapi.Kamu boleh mempertimbangkan saran ayah.</p>
+
+<p>&ldquo;Anakku,selesai menulis surat ini,ayah merasa telah menemanimu hidup selama bertahun -tahun.Ayah sungguh bahagia.Cintailah ibumu,dia sungguh menderita,dia adalah orang yg paling mencintaimu dan adalah orang yg paling ayah cintai&rdquo;.
+Mulai dari kejadian yg mungkin akan terjadi sejak TK,SD,SMP,SMA sampai kuliah,semua tertulis dengan lengkap didalamnya.Dia juga menulis sebuah surat untukku.&ldquo;Kasihku,dapat menikahimu adalah hal yg paling bahagia aku rasakan dalam hidup ini.Maafkan salahku,maafkan aku tidak pernah memberitahumu tentang penyakitku.Aku tidak mau kesehatan bayi kita terganggu oleh karenanya.Kasihku,jika engkau menangis sewaktu membaca surat ini,berarti kau telah memaafkan aku.Terima kasih atas cintamu padaku selama ini.Hadiah-hadiah ini aku tidak punya kesempatan untuk memberikannyapada anak kita.Pada bungkusan hadiah tertulis semua tahun pemberian padanya&rdquo;.</p>
+
+<p>Kembali ke rumah sakit,suamiku masih terbaring lemah.Aku menggendong anak kami dan membaringkannya diatas dadanya sambil berkata:&ldquo;Sayang,bukalah matamu sebentar saja,lihatlah anak kita.Aku mau dia merasakan kasih sayang dan hangatnya pelukan ayahnya&rdquo;.Dengan susah payah dia membuka matanya,tersenyum&hellip;&hellip;&hellip;&hellip;..anak itu tetap dalam dekapannya,dengan tanganya yg mungil memegangi tangan ayahnya yg kurus dan lemah.Tidak tahu aku sudah menjepret berapa kali momen itu dengan kamera di tangan sambil berurai air mata&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
+
+<p>Teman2 terkasih,aku sharing cerita ini kepada kalian,agar kita semua bisa menyimak pesan dari cerita ini.Mungkin saat ini air mata kalian sedang jatuh mengalir atau mata masih sembab sehabis menangis,ingatlah pesan dari cerita ini :&ldquo;Jika ada sesuatu yg mengganjal di hati diantara kalian yg saling mengasihi,sebaiknya utarakanlah jangan simpan didalam hati.Siapa tau apa yg akan terjadi besok? Ada sebuah pertanyaan:Jika kita tahu besok adalah hari kiamat,apakah kita akan menyesali semua hal yg telah kita perbuat? atau apa yg telah kita ucapkan? Sebelum segalanya menjadi terlambat,pikirlah matang2 semua yg akan kita lakukan sebelum kita menyesalinya seumur hidup.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/03/09/cowok-menang-milihcewek-menang-nolak/">Cowok Menang Milih,cewek Menang Nolak</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-09T20:37:10+11:00" pubdate data-updated="true">Mar 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Wah ini ketemu artikel pas lagi iseng-iseng baca blog orang&hellip; Ternyata tuhan memang baik, selalu memberikan jawabannya ketika aku membutuhkannya :D daripada susah-susah bookmark jadi copy paste aja deh disini&hellip;</p>
+
+<p>PERSEMBAHANKU UNTUK WANITA</p>
+
+<p>Pagi ini aku menerima sms dari seorang teman baikku.
+Seorang wanita. SMS tersebut menyebutkan bahwa dia menyukai seorang pria yang wajahnya cukup di kenal di televisi belakangan ini. Kebetulan aku cukup kenal kenal dengan presenter muda berbakat itu dan kami sesekali SMS-an saling menanyakan kabar masing-masing.</p>
+
+<p>Kepada temanku itu aku berkata, “Sangat manusiawi hehehe … Tetapi dia sudah punya kekasih. Kalaupun belum kamu mesti bersaing dengan ratusan wanita yang mungkin memiliki rasa yang sama. Coba aja..”</p>
+
+<p>Sejujurnya, aku sudah sering mendengar teman-teman wanitaku sharing dia menyukai pria ini, pria itu dan entah siapa lagi selanjutnya. Bahkan aku pernah membaca blog seorang wanita yang aku kenal baik, di dalamnya ia menulis bagaimana ia suka dengan seorang pria dan sangat berharap dapat menjadi kekasihnya. Ia merindukan sang arjuna yang belum tentu tahu apa yang ia rasakan. Bagai pungguk merindukan bulan. Kasihan ….</p>
+
+<p>Di usiaku yang sudah menginjak 28 tahun, tentunya aku memiliki banyak teman pria dan wanita yang sebaya denganku. Kalaupun di bawah atau diatas, usianya tidak jauh-jauh dari angka tersebut.</p>
+
+<p>Aku coba untuk merenung, kenapa beberapa bahkan mungkin banyak teman wanitaku atau lebih tepatnya para wanita belum menemukan seorang pria yang bakal menjadi pasangan hidupnya. Padahal setahuku, bagaimanapun minus-nya seorang wanita (kalau ia menganggap dirinya demikian), paling tidak pernah satu kali “ditembak” pria, dengan kalimat ini, “Aku menyukaimu” atau “Bersediakah engkau menjalani hubungan yang lebih serius denganku?”.</p>
+
+<p>Kenapa aku bisa begitu yakin? Mari aku ceritakan:
+Selama 5 tahun lebih aku bekerja di sebuah rumah produksi yang menayangkan acara Solusi di salah satu stasiun televisi swasta itu, banyak kisah nyata mirip Cinderella yang aku temukan. Ini benar-benar nyata! So rea! Bukan sinetron, bukan film.Sebut saja Maria Beatrix, gadis yang pernah dijuluki “si buruk rupa” dengan bentuk tangan dan kaki yang sama sekali tidak sempurna, menggunakan kursi roda, namun menemukan “pangeran” yang baik hati berdarah Inggris. Pria ini begitu setia mendampinginya bahkan berhasil mengajarinya berenang. Hari ini mungkin mereka sudah menikah.</p>
+
+<p>Ada juga Indrawati, manusia terpendek Indonesia yang pernah masuk MURI karena bisa melahirkan dengan normal. Kalau melihat bentuk fisiknya, sangat tidak sempurna, namun menemukan seorang suami dari kalangan terhormat dan sangat mencintainya dengan sepenuh hati.</p>
+
+<p>Di Bandung, kami juga memiliki narasumber si pelukis Patricia Saerang,seorang yang melukis dengan kakinya atau mulutnya karena tidak memiliki tangan. Namun menemukan pria berdarah Eropa yang sangat mencintainya. Hari ini mereka sudah menikah dan hidup bahagia.</p>
+
+<p>Jadi, kalau mau banding-bandingan dengan wanita-wanita yang aku sebutkan diatas, bagaimana mungkin kalau teman-teman wanita ku itu belum bisa menemukan “sang pangeran cinta” ? Busyett! Kalau mau banding-bandingan, teman-teman wanitaku itu tergolong wanita yang cantik, dengan fisik yang nyaris sempurna dan memiliki pekerjaan yang bagus. Setelah aku analisa, inilah inti permasalahannya:
+Ternyata banyak wanita tidak tahu kuncinya. Untuk membuka baut ukuran12, kita harus menggunakan kunci ring atau kunci pas dengan ukuran yang sama, 12. Sebut saja hal apa lagi yang lain sebagai perumpamaan. Dari zaman Adam dan Hawa sampai sekarang, wanita memang didesain untuk tidak memulai terlebih dahulu dalam hal cinta.
+Ekstrimnya, wanita dilarang jatuh cinta terlebih dahulu dan mengejar-ngejar pria. Karena wanita memang tidak di desain untuk itu.
+Perihal ada budaya di daerah tertentu dimana pria di lamar oleh wanita,aku sangat tidak berminat membahasnya. Dan sampai hari aku masih menganggapnya sebuah keanehan. Aneh! Namun aku menghormatinya.</p>
+
+<p>Aku suka kata-kata ini: Cowok menang milih, cewek menang nolak!
+Kedengarannya win-win solution. Ya &ndash; bisa begitu. Cowok memang bisa memilih wanita mana saja yang dia suka. Cowok bisa saja jatuh cinta dengan wanita mana saja yang hatinya memang “jatuh”. Toh, sampai hari ini jumlah cewek di dunia ini jauh lebih banyak dari cowok.</p>
+
+<p>Di Batam, para wanita bahkan sering bertengkar memperebutkan pria,karena komposisi antara wanita dan pria di kota ini memang sangat tidak seimbang. Jumlah wanitanya jauhh lebih banyak dari pria.
+Cowok kalau nembak cewek ditolak, respon selanjutnya ada dua, pertama:mencoba lagi untuk kedua, ketiga, keempat, atau kesekian kalinya atau kedua, tidak melanjutkan dan berkelana mencari yang lain lagi. Toh,jumlah wanita jauh lebih banyak dari pria. Dan harga diri seorang pria tidak akan turun dan tercabik-cabik hanya karena cintanya ditolak.</p>
+
+<p>Karena pria seorang pejuang sejati, dia pasti akan mencoba dan mencoba lagi. Sampai dapat! “Emang cewek elo doang?” . Pikiran seperti itu ada kadang di sana ..</p>
+
+<p>Tetapi kalau wanita begitu agresif terhadap pria, lalu kemudian ditolak hehhee $B!!(B.. Jawab sendiri kata yang tepat untuk itu. Pria dan wanita sama-sama didesain untuk menjadi pemenang. Menang! Cowok menang milih, cewek menang nolak. Masalahnya sekarang banyak wanita yang mencoba untuk merubahnya menjadi: Cewek menang milih. Jadi kalau cewek menang milih maka berarti cowok menang nolak!</p>
+
+<p>Bagi para cowok, kalau ditolak adalah hal yang biasa. Memang sedih untuk sesaat. Tapi tidak untuk meratapinya. Lagipula cowok didesain lebih banyak “bermain” pikiran, daripada perasaan. Masalahnya, apakah para cewek siap kalau ditolak cowok setelah “menang” milih cowok yang mana aja?</p>
+
+<p>Untuk menjawab pertanyaan ini, aku mau membagikan hal ini kepada para wanita, khususnya.
+Paling tidak ada dua wanita yang paling dekat denganku, yang aku ketahui sangat bahagia. Pertama adalah ibuku sendiri. Ya, mama. Ibuku melepaskan masa gadisnya ketika usianya 23 tahun, dilamar ayahku, seorang pria tampan berumur 32 tahun dengan tubuh proposional.</p>
+
+<p>Ketika pertama kali bertemu ibuku, ayahku benar-benar jatuh cinta kepadanya. Padahal saat itu, seorang wanita sedang tergila-gila kepadanya dan menjadi begitu agresif. Ia ingin memiliki ayahku. Tetapi sebenarnya pria tidak bisa berdusta, dan jarang berpura-pura. Ayahku tidak mencintainya. Namun wanita itu memaksanya. Ayahku pria sejati yang harus selalu memulai dan tidak bisa didahului seperti itu. Kepada ibukulah, ayahku jatuh cinta. Mereka menikah pada tahun 1978. Ayahku berkali-kali jatuh cinta dengan wanita yang sama, yaitu ibuku.</p>
+
+<p>Usia pernikahan mereka sudah 29 tahun dan perkawinan mereka bertambah kuat dari hari ke hari. Aku pikir, ibuku adalah wanita yang paling bahagia di bumi ini karena dia tahu kuncinya. Dia dicintai dan diperlakukan bak ratu.</p>
+
+<p>Kemudian yang kedua, saudaraku satu-satunya. Adik perempuanku yang manis itu. Di usianya yang 26 tahun seorang pria yang sangat mencintainya dan telah setia menunggunya selama 6 tahun, menyatakan keinginannya untuk menghabiskan waktunya nanti bersamanya. Meskipun enam tahun yang lalu, adikku tidak meresponinya, namun akhirnya ia luluh juga. Kali ini adikku tahu kuncinya: bahwa wanita didesain untuk DICINTAI dan bukan memulai untuk mencintai.</p>
+
+<p>Sebelumnya, aku tahu adikku berharap dapat menjalani hubungan dengan seorang pria gagah dari angkatan laut. Namun pria itu ternyata tidak sepenuh hati mencintainya. Ia sadar, bahwa ia harus melupakan pria itu dan memberi kesempatan untuk yang lain. Hari ini adikku, diperlakukan bak ratu oleh kekasihnya. Begitu dicintai, dilindungi, diperhatikan dan hubungan mereka semakin menunjukkan kualitas yang semakin baik, hari ke hari.</p>
+
+<p>Aku pikir, adikku wanita yang paling bahagia saat ini. Karena seorang pria datang kepadanya dan mencintainya dengan sepenuh hati dan sepenuh jiwa.</p>
+
+<p>Sebaliknya, aku menemukan ada wanita yang memulai terlebih dahulu, begitu agresif dan sangat mencintai seorang pria dan akhirnya memang mendapatkannya dan bahkan menikah dengannya. Namun sayang, sesungguhnya dia tidak pernah mendapatkan cinta dari suaminya. Karena suaminya punya cinta yang lain. Dan wanita itu harus membayar harganya. Sangat mahal. Ia harus berkorban selama perkawinannya berlangsung. Ia harus berkorban materi yang terus-menerus dan yang paling menyedihkan selalu korban perasaan.</p>
+
+<p>Padahal bukankah seharusnya suaminya yang memenuhi kebutuhan materinya?Muka mereka menjadi begitu kusut dan tubuh mereka menjadi begitu kering.
+Karena tidak ‘disirami’ cinta suaminya. Karena sekali lagi, suaminya punya cinta yang lain.</p>
+
+<p>Para wanita, daripada engkau mencintai pria yang tidak mencintaimu,atau hanya sekedar berpura-pura mencintaimu, mengapa engkau tidak belajar mencintai pria yang sangat mencintaimu dan memperlakukanmu dengan begitu berharga? Mungkin awalnya engkau tidak begitu menyukainya.
+Namun jika mengingat bahwa ia begitu mencintaimu, mengapa wanita tidak mencoba untuk BELAJAR mencintainya dan memberinya kesempatan.
+Percayalah bahwa dalam kamus pria tidak ada istilah BELAJAR mencintai.
+Mau wanita yang ditujunya seperti apa, mau gemuk, mau pendek, mau rada tulalit atau sebut saja kekurangan lainnya, percayalah bahwa pria adalah makhluk yang jatuh cinta, bukan belajar untuk mencintai. Tetapi, wanita bisa BELAJAR mencintai.</p>
+
+<p>Tatkala melihat kegigihan seorang pria yang tidak pernah berhenti
+menaklukkan hatinya, tatkala melihat pengorbanan, perhatian dan kasih sayang yang diberikan, aku mendengar banyak kesaksian akhirnya wanita menyerah.
+Berdasarkan apa yang aku lihat, bahkan aku mengadakan riset untuk hal ini, wanita yang bijak adalah wanita yang jatuh cinta dengan pria yang terlebih dahulu jatuh cinta kepadanya. Bukan jatuh cinta dengan pria yang pura-pura jatuh cintanya kepadanya.</p>
+
+<p>Bagi pria, Anda dilarang untuk berpura-pura jatuh cinta. Karena setelah engkau menjalaninya, lama-lama pura-pura itu akan hilang dan engkau pasti akan berkelana mencari cinta yang lain. Bukan yang pura-pura.</p>
+
+<p>Karena bagaimanapun engkau tidak bisa membohongi dirimu sendiri.
+Kalau aku mencoba untuk pura-pura mencintai wanita yang pernah sangat mencintaiku, mungkin hari ini aku sudah memiliki anak dengannya dan sudah menjadi orang kaya secara materi. Tetapi aku pasti membuatnya menderita karena kepura-puraan itu. Aku akan berkelana mencari cinta yang lain. Dan itu sangat menyakitkan. Karena hubungan itu sudah sampai kepada pernikahan, mau tidak mau kita harus tetap meneruskannya, kalau tidak mau anak-anak yang menjadi korban perceraian. Namun harganya terlalu mahal untuk dibayar.</p>
+
+<p>Para pria tidak dibenarkan untuk menjadi begitu brengsek dan memanfaatkan wanita yang jatuh cinta kepadanya, sementara itu sendiri punya cinta yang lain. Para pria tidak dibenarkan menjadi begitu bejat untuk memanfaatkan uang, fasilitas dan materi yang diberikan oleh wanita yang mencintainya, dengan harapan bisa mendapatkan cinta sang pria. Itu pria yang licik dan pengecut.</p>
+
+<p>Untuk para wanita, mungkin kalian gelisah di usia yang hampir menginjak kepala tiga belum menemukan pasangan sejati. Mungkin ia sudah datang, tetapi Anda datang, tetapi Anda menolaknya. Karena memang anda didesain untuk “menang nolak”.</p>
+
+<p>Tetapi mungkin saja anda lupa kuncinya. Kuncinya adalah anda sebaiknya jangan memulai terlebih dahulu dan kalau sulit menjangkaunya, anda menjadi begitu agresif. Anda harus tahu kuncinya bahwa anda didesain untuk dicintai dan diperlakukan bak ratu. Bukan menjadi seorang yang mengejar-ngejar pria.</p>
+
+<p>Berulang kali kukatakan kepada teman-teman wanitaku. “Kalau ada seorang pria yang datang kepada kalian dan menyatakan cintanya, berpikirlah dua kali untuk menolaknya.” Jangan sampai anda menyesal di kemudian hari.</p>
+
+<p>Aku tidak menyarankan kalian untuk terburu-buru menjawab, “Ya”. Aku hanya mengatakan, “Berpikir dua kali terlebih dahulu untuk menolaknya.”Siapa tahu, ini cinta sejatimu?
+Wanita, anda begitu berharga. Ciptaan terindah. Anda ditentukan untuk begitu dicintai, dikagumi, dilindungi, dikasihi, diperhatikan, diayomi dan aku tidak tahu harus menyebutnya apa lagi .. ; Kalian ditentukan untuk diperlakukan bak ratu setiap hari.</p>
+
+<p>Karena manusia ditentukan untuk hidup berpasang-pasangan, hai para wanita, bersiap-siaplah seorang pangeran cinta datang kepadamu, menyatakan betapa ia ingin menghabiskan waktunya bersamamu, dan memberikan seluruh cintanya kepadamu. Namun, ketika pangeran cinta itu datang, apakah engkau akan langsung menolaknya? Atau “berpikirlah dua kali untuk berkata ‘tidak’”, karena siapa tahu ini orang yang akan memperlakukanmu bak ratu. Tidak peduli bentuk fisikmu, tidak peduli tingkat pendidikanmu bahkan tidak peduli masa lalumu. Ia akan datang dengan kata-kata ini, “Aku mencintaimu walaupun &ndash; ..”</p>
+
+<p>Tulisan ini aku dedikasikan untuk para wanita &ndash; Ciptaan Terindah</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/03/06/turun-dari-bus-itu-kaki-kiri-duluan/">Turun Dari Bus Itu Kaki Kiri Duluan !</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-06T02:46:31+11:00" pubdate data-updated="true">Mar 6<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ah akhirnya setelah melewati hari-hari melelahkan bisa nulis-nulis di blog lagi deh. Akhirnya juga bisa posting sesuatu yang tidak berbau teknis dan lebih &lsquo;personal&rsquo; ( soalnya sudah ada yang menunggu-nunggu gwa posting yang beginian, katanya pengen tau apa sih yang gwa pikirin di kepala gwa&hellip; ya ga ri ? wakakaka ).</p>
+
+<p>Sebenarnya gwa paling males nulis-nulis sesuatu yang &lsquo;personal&rsquo; atau kejadian sehari-hari. Soalnya kalau nulis sesuatu yang personal itu butuh pengaturan bahasa yang lebih berat daripada tulis sesuatu yang teknis ( maklum saya orangnya kurang bisa mengungkapkan isi hati ). Jadi biasanya kalau mau nulis-nulis yang &lsquo;personal&rsquo; harus dapat &lsquo;feel&rsquo; nya dulu, entah abis kena &lsquo;marah&rsquo;, entah abis ketemu orang yang &lsquo;ngeselin&rsquo; atau abis ketiban sial, dll dah.</p>
+
+<p>Sebenarnya bisa aja sih update blog tiap hari tapi mungkin isinya singkat-singkat aja seperti status di facebook ( aduh lagi pusing !, aduh lagi sibuk ga sempat makan, aduh pacar lagi ngambek, atau saudara2 si &lsquo;aduh&rsquo; lainnya ) tapi untungnya gwa bukan seorang yang seperti itu&hellip; ( yah mirip junker di forum yang suka posting-posting yang ga jelas, maaf kalo yang ngerasa ).</p>
+
+<p>Tapi menjadi seorang junker seharusnya kita dapat berbangga hati. Soalnya kalau tidak ada orang jahat tidak mungkin ada orang baik di dunia ini. percaya ga ? kalau gwa sih percaya-percaya aja. Soalnya kalau dipikir secara logika jika orang jahat ga ada, maka yang menjadi ukuran seorang dikatakan baik itu sendiri apa ?</p>
+
+<p>Ya udah deh daripada ga ada bahan tulisan bagus cerita-cerita pengalaman kemarin. Iya jadi kemarin itu dan kemarin-kemarin lagi merupakan hari-hari yang melelahkan. Dipenuhi dengan deadline yang berderet-deret. Ada yang deadline hari senin, ada yang deadline hari kamis, benar-benar neraka dunia.</p>
+
+<p>Namun di tengah-tengah &lsquo;neraka&rsquo; dunia yang tidak seberapa itu ternyata gwa mendapat beberapa pengalaman yang menarik. Sebenarnya sudah lupa beberapa sih tapi coba tulis aja beberapa yang ingat. Salah satunya adalah gwa mendapat ilmu baru jika pengen turun dari bus.</p>
+
+<p>Jadi hal itu bermula ketika gwa lagi naik metro mini 91 dari CL ke binus. Jadi pas naik bus ini sambil bingung mo ngapa2in maka gwa pun mulai mencari kesibuk2an dengan memandangi dirigen bensin, merhatiin bangku2 bus, merhatiin kaca2 bus, lihat2 ce cakep ( ups! ), dan yang terpenting merhatiin kenet busnya.</p>
+
+<p>Ada satu hal gwa lihat menjadi kebiasaan dari kenet bus yang gwa naikin tersebut. Jadi ketika seorang penumpang pengen turun dari bus yang dia naikin tersebut, sang kenet biasakan akan bilang &ldquo;kaki kiri dulu&rdquo;&hellip; sekali dan dua kali gwa sebenarnya ga begitu memperhatikan dan menangkap kenapa sang &ldquo;kenet&rdquo; berkata seperti itu&hellip; Yah tapi daripada ga yang dipikirin mulai deh otak ini berpikir kenapa sang &ldquo;kenet&rdquo; sering bilang &ldquo;kaki kiri dulu&rdquo;&hellip;</p>
+
+<p>Nah emang sudah terlahir jenius akhirnya gwa menemukan jawabannya ( walaupun tidak ada pembuktian apakah benar atau tidak, baru spekulasi ). Jadi alasan kenapa harus kaki kiri dulu yang harus turun karena bus tersebut pasti maju ke arah depan ( dan pintu bus itu ada di sebelah kiri ). Jadi kalau bus lagi melaju dengan kecepatan rendah dan orang yang turun dengan kaki kanan maka kemungkinan orang tersebut untuk terjatuh semakin besar.</p>
+
+<p>Kenapa seperti itu ? karena ada daya dorong yang ditimbulkan ketika kita turun dari bus, jadi kalau misalnya bus sedang melaju trus tiba-tiba kita lompat dari bus ( dengan pintu di sebelah kiri ) ketika kita sampai di aspal pasti kita akan terdorong ke arah depan ( ke arah kanan )&hellip;</p>
+
+<p>Jadi kalau kita turun dengan kaki kanan secara otomatis berat badan kita akan tertumpu di sebelah kanan, maka jika dipadu dengan daya dorong yang ditimbulkan maka kita bisa saja jatuh dan saat itu juga menjadi almarhum&hellip; Beda halnya kalau kita mengikuti pesan si kenet dengan menggunakan kaki kiri. Jika menggunakan kaki kiri tentu saja berat badan kita akan tertumpu di kiri dan dengan daya dorong kanan maka daya dorong itu akan netral&hellip;</p>
+
+<p>Jadi kesimpulan yang bisa didapatkan adalah :</p>
+
+<ul>
+<li><p>Ternyata teknik untuk naik dan turun bus itu ada.</p></li>
+<li><p>Kenet bus itu ternyata terpelajar juga.</p></li>
+<li><p>Belajar ilmu baru itu bisa dari siapa aja dan bisa kapan saja.</p></li>
+<li><p>Seringlah memperhatikan hal-hal yang tidak penting.</p></li>
+</ul>
+
+
+<p>Hohoho yah kira-kira itu lah sharing pengalaman yang ga penting sih&hellip; tapi lumayan berguna buat yang blom pernah naik bus, jadi biar ga malu-malu in kalo jatuh dari bus :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/02/22/dracoola-multimedia/">Dracoola Multimedia</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-22T23:07:21+11:00" pubdate data-updated="true">Feb 22<span>nd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yah selagi ga ada bahan buat direview terpaksa review tentang tempat hosting dolo&hellip; Bagi yang blom tao jadi website gwa ini dihosting di <a href="http://www.dracoola.com/">Dracoola Multimedia</a></p>
+
+<p>Jad setelah beberapa hari berusaha mencari tempat hosting yang harganya murah + terjamin kualitasnya akhirnya ketemu juga. Sebelumnya pengen hosting di <a href="http://www.imediabiz.com">imediabiz</a> tapi terbentur karena harganya mahal ( gila masih pengangguran gini masa keluarin duit 500 ribu ) tapi memang sih kualitas imediabiz sudah terjamin.</p>
+
+<p>Terus coba-coba deh liat2 tempat lain mulai dari <a href="http://www.datacenture.com/">data centure</a>, <a href="http://www.jagoanhosting.com/">jagoan hosting</a>, <a href="http://www.masterweb.net/">masterweb</a>, tempat hosting lainnya. Ternyata harganya juga ga jauh beda ( 300 ribu la buat 1 tahun + domain ). Nah pada saat lagi desperate-desperatenya teringat deh satu tempat hosting ( yah dracoola ini ).</p>
+
+<p>Sebenarnya sih udah tau dari lama kalau ada dracoola ini, cuma yah karena ada sesuatu hal jadi ragu buat pakai dracoola. Nah ibarat orang lagi terjebak macet di jakarta, dikasih celah sedikit langsung dah nyempil maka dengan langkah pasti coba cek-cek harga deh di dracoola.</p>
+
+<p>Trus abis liat harganya sempat shock juga ( gila 100 ribu 1 tahun + domain cuma 95 ribu tapi yang disayangkan ga ada server yang IIXnya ). Tapi emang darisananya sudah ngebet pengen punya website jadi pantang menyerah, mulai deh tanya-tanya CSO nya&hellip; Nah ketemu dah sama bos dracoola nya langsung&hellip;</p>
+
+<p>Abis itu mulai deh curhat, nyanyi, tanya-tanya, dan ternyata kata bos dracoola server IIX itu adanya besok&hellip; berikut cuplikan pembicaraan dengan bos dracoola</p>
+
+<pre><code>ZhouYu (2/1/2009 4:34:07 PM): selamat sore
+drac0ola (2/1/2009 4:34:16 PM): selamat sore pula
+drac0ola (2/1/2009 4:34:17 PM): ada yambisa dibantu?
+ZhouYu (2/1/2009 4:34:21 PM): iya saya pengen tanya
+ZhouYu (2/1/2009 4:34:28 PM): ini hosting di dracoola itu iix ato internasional ya ?
+ZhouYu (2/1/2009 4:34:32 PM): ato dua2nya ?
+drac0ola (2/1/2009 4:34:43 PM): untuk hari ini international alias usa
+drac0ola (2/1/2009 4:34:50 PM): server iix akan launching besok bro
+ZhouYu (2/1/2009 4:34:57 PM): besok ? senin ?
+drac0ola (2/1/2009 4:35:03 PM): www.dracoola.com/hosting &lt;--- masih server usa
+drac0ola (2/1/2009 4:35:07 PM): besok saptu kek nya
+ZhouYu (2/1/2009 4:35:19 PM): zzz kirain besok
+ZhouYu (2/1/2009 4:35:22 PM): oh gitu ya
+drac0ola (2/1/2009 4:35:27 PM): besok ya senin bro
+drac0ola (2/1/2009 4:35:34 PM): DraCoola©: untuk hari ini international alias usa DraCoola©: server iix akan launching besok bro
+drac0ola (2/1/2009 4:35:39 PM): besok = besok
+ZhouYu (2/1/2009 4:35:54 PM): iya kirain besok-besok
+ZhouYu (2/1/2009 4:36:07 PM): untuk harga domainnya 95k neh ?
+drac0ola (2/1/2009 4:36:10 PM): besok tisak sama dengan besok-besok
+drac0ola (2/1/2009 4:36:20 PM): besok-besok &lt;--- besoknya ada dua biji
+drac0ola (2/1/2009 4:36:26 PM): besok &lt;--- satu biji
+ZhouYu (2/1/2009 4:36:34 PM): iya ampun dah bro
+ZhouYu (2/1/2009 4:36:36 PM): sujud2
+ZhouYu (2/1/2009 4:36:55 PM): oh jadi kalau mau server IIX pesannya besok aja ya ?
+drac0ola (2/1/2009 4:37:09 PM): he em bro
+drac0ola (2/1/2009 4:37:30 PM): harganya 50% lebih tinggi dari yg usa
+ZhouYu (2/1/2009 4:37:36 PM): wew
+ZhouYu (2/1/2009 4:37:40 PM): 150k setaon
+ZhouYu (2/1/2009 4:37:41 PM): hmm
+drac0ola (2/1/2009 4:37:47 PM): yoah bro
+ZhouYu (2/1/2009 4:37:54 PM): ini total database mysqlnya berapa ya ?
+drac0ola (2/1/2009 4:38:08 PM): unlimited
+ZhouYu (2/1/2009 4:38:18 PM): oh sep2
+ZhouYu (2/1/2009 4:38:22 PM): ya sudah2
+ZhouYu (2/1/2009 4:38:27 PM): tar besok aja saya pesan
+drac0ola (2/1/2009 4:39:02 PM): he em silahken bro
+drac0ola (2/1/2009 4:39:09 PM): makasi sblunnya yak
+ZhouYu (2/1/2009 4:39:13 PM): sep2
+</code></pre>
+
+<p>yah begitulah sepenggal cerita dengan bos dracoola&hellip; setelah pembicaraan itu besoknya langsung deh gwa pesan itu hosting + domain ( dimulai dari transfer dan konfirmasi ). yah total prosesnya ga lama lah&hellip; kira-kira 20 menit saja dah kelar semuanya.</p>
+
+<p>Beberapa kesan setelah kurang lebih hampir 1 bulan hosting disini :</p>
+
+<ol>
+<li><p> Harganya murah dibanding yang lain.</p></li>
+<li><p> CSO nya ramah, low profile juga, rada jayuz wakakaka.</p></li>
+<li><p> Server jarang bermasalah ( baru 1 bulan sih ).</p></li>
+<li><p> Kalau ada apa-apa dikasih tau deh ( lewat email ).</p></li>
+<li><p> Koneksi IIX nya cepet, ga tau dah bandwidth luarnya ( ntar deh kalau dah pindah ke luar negeri coba akses ).</p></li>
+</ol>
+
+
+<p>Yah overall sih dibanding tempat hosting lain hampir mirip-mirip la tapi memang yang menjadi unique point adalah HARGA ( wah gila harganya mahasiswa banget ). Jadi ibarat iklan obat nyamuk &ldquo;Ma, emang ga ada yang lebih bagus dari **** ?&rdquo; trus si Mama ngomong deh &ldquo;Lebih mahal banyak !&rdquo; nah cocok banget buat dikaitkan dengan hal ini.</p>
+
+<p>Satu hal yang menarik lagi, jadi pas itu gwa pesan harga hostingnya masih 150 ribu&hellip; tiba2 turun jadi 125 ribu besoknya, dan tiba2 aja di sms ama dracoola buat refund ( wogh 25 ribu aja kaga ditilap, lumayan buat makan 2 hari ) mantap dah&hellip;</p>
+
+<p>Overall rating sih :</p>
+
+<p>Pelayanan : 5</p>
+
+<p>Harga : 5</p>
+
+<p>Stabilitas Server : 5</p>
+
+<p>Overall : 5</p>
+
+<p>Akhir kata sukses dah buat bos dracoola, tingkatin trus dah pelayanan dan performa servernya trus harganya dimurahin aja lagi wakakaka ( hosting 5 tahun cuma 50 ribu gitu ). Recommended dah buat para kantong tipiers&hellip;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/02/15/cakephp-mengakses-sebuah-model-pada-controller-yang-tidak-seharusnya/">CakePHP : Mengakses Sebuah Model Pada Controller Yang Berbeda</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-15T22:47:21+11:00" pubdate data-updated="true">Feb 15<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Dalam CakePHP biasanya sebuah model &ndash; view &ndash; controller pasti saling berhubungan dan mempunyai nama yang mirip.</p>
+
+<p>Contohnya sebuah tabel users mempunyai model yang bernama <em>user</em>, controller bernama <em>users_controller</em>, dan folder view yang bernama<em> user</em>.</p>
+
+<p>Tapi permasalahannya adalah terkadang kita harus mengakses model lain tetapi controller tersebut tidak mempunyai relasi sama sekali dengan model / tabel ini.</p>
+
+<p>Sebagai contoh lagi misalnya kita ingin pada<em> users_controller</em> dapat melakukan query pada tabel <em>items</em>, padahal tabel users sama sekali tidak punya relasi dengan tabel items.</p>
+
+<p>Ada beberapa cara yang dapat dilakukan untuk mensolusikan hal tersebut :</p>
+
+<ol>
+<li><p> Pada <em>users_controller</em> kita dapat menambahkan variable baru yaitu <em>$uses = array(&lsquo;User&rsquo;,&lsquo;Item&rsquo;); </em>dengan melakukan hal itu maka kita dapat melakukan query seperti biasa ( <em>$this->Item->find(&lsquo;all&rsquo;); )</em></p></li>
+<li><p> Satu cara lagi lebih praktis dilakukan dan bisa lebih fleksibel dilakukan yaitu dengan menggunakan <em>ClassRegistry. </em>Jadi tanpa harus menambahkan variable kita cukup melakukan pencarian ( contoh : <em>$items = ClassRegistry::init(&lsquo;Item&rsquo;)&ndash;>find(&lsquo;all&rsquo;); )</em>.</p></li>
+</ol>
+
+
+<p>Itulah 2 cara yang dapat dilakukan jika anda ingin melakukan akses model yang sama sekali tidak ada relasi, tetapi jika anda terpaksa melakukan hal ini mungkin ada yang salah terjadi pada rancangan database anda karena rancangan database yang baik tidak seharusnya dapat melakukan query untuk database yang tidak saling berkaitan.</p>
+
+<p>Tapi lebih baik berjaga-jaga siapa tahu anda mendapatkan project dimana anda harus menggunakan rancangan database yang sudah ada ( dan ternyata rancangan database tersebut kacau ). Ibarat kata pepatah sedia payung sebelum hujan.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2009/02/12/cakephp-tidak-ada-kata-telat-untuk-belajar/">CakePHP, Tidak Ada Kata Terlambat Untuk Belajar&#8230;</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-02-12T05:04:24+11:00" pubdate data-updated="true">Feb 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tidak terasa sudah lebih dari 1 tahun saya mempelajari bahasa pemprograman PHP. Dimulai dari setahun yang lalu, dimulai dengan melihat orang lain, membaca-baca ebook, Tanya-tanya ke orang, cari-cari info di internet, dan banyak cara lainnya. Sampai saat ini masih banyak yang harus dipelajari tentang bahasa pemprograman PHP, tetapi saat ini saya ingin mengambil sebuah langkah untuk maju ke depan yang mungkin bagi sebagian orang masih menjadi sebuah pertentangan dalam diri mereka.</p>
+
+<p>Beberapa bulan ini saya sibuk mencoba-coba sebuah framework PHP yaitu CakePHP. CakePHP itu sendiri sudah saya kenal lama sekali sebelum saya bisa PHP sekalipun, dikarenakan senior-senior saya di fave sudah lihai dan piawai sekali menggunakannya, namun karena saya saat itu termasuk junior yang “cacat” maka saya baru sempat untuk mulai serius mempelajari dan mendalaminya sekarang.</p>
+
+<p>Ada beberapa pertimbangan yang membuat saya akhirnya memutuskan untuk mempelajari framework. Alasan utamanya adalah kemudahan yang ditawarkan oleh framework itu sendiri. Dengan menggunakan framework itu saya tidak perlu bersusah payah lagi membuat logika CRUD ( Create, Read,Update,Delete ), paging, data validation, dan relasi-relasi database. Mungkin jika menggunakan cara klasik dengan mengandalkan logika dan kemampuan coding saya, hal tersebut akan memakan waktu berjam-jam. Tetapi dengan mengandalkan framework, hal tersebut dapat diselesaikan dalam hitungan menit.</p>
+
+<p>Namun dibalik kemudahan-kemudahan yang diberikan sebenarnya ada beberapa hal efek buruk yang dapat ditimbulkan nantinya ketika saya memutuskan untuk menggunakan framework, hal itu antara lain :</p>
+
+<ol>
+<li><p> Aplikasi      yang nanti dijalankan akan lebih berat.</p></li>
+<li><p> Kemampuan      logika akan semakin tidak terasah karena sudah terbiasa tinggal pakai.</p></li>
+<li><p> dan lain sebagainya&hellip;</p></li>
+</ol>
+
+
+<p>Tapi memang untuk mendapatkan kemudahan tersebut harus ada harga yang harus dibayar. Jadi alangkah baiknya selain menggunakan framework kita juga ahli untuk coding sendiri ( tidak tergantung sama framework ). Tapi kalau zaman sekarang tidak bisa menggunakan framework bakal sulit bersaing dengan yang lainnya ( menggunakan framework itu sendiri sebuah unique point ).  Zaman sudah berubah bung&hellip; cara coding pun harus berubah&hellip;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/7/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/27/playing-with-google-map-api/">Playing with Google Map API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/16/override-module-config-in-zend-framework-2/">Override module config in Zend Framework 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object/">Zend Framework 2 : The proper way to set application path in Javascript Object</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/30/my-review-after-two-months-using-vim/">My review after two months using VIM</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl/">Zend Framework 2 : get server URL in controller without using serverUrl()</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

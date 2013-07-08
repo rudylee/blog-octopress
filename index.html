@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>blog.rudylee.com</title>
+  <meta name="author" content="Rudy Lee">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="The main purpose of this post is only to write about Google Map API for future reference. Here are the code snippets : Get the latitude and longitude &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,14 +18,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rudylee.github.io">
+  <link rel="canonical" href="http://rudylee.github.io/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="blog.rudylee.com" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -36,10 +36,17 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mob</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">blog.rudylee.com</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>keep it humble</h2>
   
+  <div class="clear"></div>
 </hgroup>
 
 </header>
@@ -66,7 +73,776 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/05/27/playing-with-google-map-api/">Playing With Google Map API</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-27T11:16:02+10:00" pubdate data-updated="true">May 27<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The main purpose of this post is only to write about Google Map API for future reference. Here are the code snippets :</p>
+
+<p>Get the latitude and longitude based on address : <a href="http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&amp;sensor=true">http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&amp;sensor=true</a></p>
+
+<p>The code below set up the Google Map, put the marker and also make it grayscale</p>
+
+<pre><code>                function initialize() {
+                    var map;
+                    var location = new google.maps.LatLng(-33.87190930, 151.20480740);
+                    var styles = [
+                        {
+                            featureType: "all",
+                            elementType: "all",
+                            stylers: [
+                                { saturation: -100 }
+                            ]
+                        }
+                    ];
+
+                    var mapOptions = {
+                        center: location,
+                        zoom: 17,
+                        mapTypeControlOptions: {
+                            mapTypeId: [google.maps.MapTypeId.ROADMAP, 'theGray']
+                        }
+                    };
+
+                    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                    var mapType = new google.maps.StyledMapType(styles, { name:"GrayScale" });    
+                    map.mapTypes.set('theGray', mapType);
+                    map.setMapTypeId('theGray');
+
+                    marker = new google.maps.Marker({
+                        position: location,
+                        map: map
+                    });
+                }
+                google.maps.event.addDomListener(window, 'load', initialize);
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/05/16/override-module-config-in-zend-framework-2/">Override Module Config in Zend Framework 2</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-16T11:12:19+10:00" pubdate data-updated="true">May 16<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There is a time when you want to override module config in your Zend Framework 2 application. In my case, I have different configuration for SMS gateway in staging and live server. You can do this by overwriting the module.config.php file inside the module config&rsquo;s folder. However, there are heaps of configuration inside module.config.php file. This approach will lead to maintenance nightmare when you need to change one or more configuration inside the file.</p>
+
+<p>The cleanest approach is to override specific configuration key by creating module-name.local.php file inside config/autoload folder. For example, you have &ldquo;Admin&rdquo; module and here is the sample module.config.php file :</p>
+
+<pre><code>return array(
+    'sms' =&gt; array(
+        'username' =&gt; 'rudy', //API access username
+        'password' =&gt; 'rudy', //API access password
+        'sender' =&gt; 'Rudy', // max of 11 alphanumeric or max of 15 numerical characters
+    ),
+);
+</code></pre>
+
+<p>You can override only the username by creating admin.local.php file inside config/autoload folder and put this code inside it :</p>
+
+<pre><code>return array(
+    'sms' =&gt; array(
+        'username' =&gt; 'override', //API access username
+    ),
+);
+</code></pre>
+
+<p>Zend Framework 2 will read this file and overwrite the username key inside module.config.php. Now you can create script during your deployment process to create this file automatically.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object/">Zend Framework 2 : The Proper Way to Set Application Path in Javascript Object</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-06T14:44:36+10:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Storing application path inside Javascript object is a way to avoid &ldquo;hard coded&rdquo; URL inside your Javascript file.  It is pretty common to have like this in your Javascript file :</p>
+
+<pre><code>$.ajax({
+    type: POST,
+    url: 'http://localhost/my-website/register',
+    data: dataJSON
+})
+</code></pre>
+
+<p>That approach is completely fine. However, when you need to deploy your application, you need to manually change all the URL to match with your server. The solution that I have been using for quite a long time is setting up Javascript object that contains path to my application.</p>
+
+<p>In CakePHP, this can be easily done by using URL method inside Router Class. Here is the sample :</p>
+
+<pre><code>$cbunny = array(
+    'APP_PATH' =&gt; Router::url('/',true)
+);
+echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&gt;object($cbunny) . ';');
+</code></pre>
+
+<p>In Zend Framework 2, you have to rely on serverUrl and basePath to achieve the same thing. Here is the proper way to do it in Zend Framework 2 :</p>
+
+<pre><code>        &lt;script type="text/javascript"&gt;
+            //&lt;![CDATA[
+                var CMSObj = {
+                    "APP_PATH":"&lt;?php echo $this-&gt;serverUrl() . $this-&gt;basePath() ?&gt;/"
+                };
+            //]]&gt;
+        &lt;/script&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/03/30/my-review-after-two-months-using-vim/">My Review After Two Months Using VIM</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-30T23:35:41+11:00" pubdate data-updated="true">Mar 30<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>On January ( Two months ago ) , I decided to learn Vim after watching screencast from <a href="http://www.destroyallsoftware.com">Destroy All Software</a>. In one of the screencast, the guy shows how fast you can program when using Vim and use plugin to make it even better.</p>
+
+<p>I have known Vim for 4 years now but never actually keen to learn all the shortcuts. I remember I been to one of the PHP meetup in my city and one guy was presenting some of his code using Vim. One of the audience commented &ldquo;Why you need to use Vim if you have IDE and all of the GUI ?&rdquo;. At that time, I couldn&rsquo;t agree more with that guy.</p>
+
+<p>I had always thought Vim&rsquo;s user are just trying to show off that they are different and superior. Using Vim basically separate them from GUI&rsquo;s group and put them one level above. At least, that&rsquo;s what I was thinking and apparently I am wrong.</p>
+
+<p>After started using Vim, I can feel that I am more productive and less stressful when programming. All the shortcuts definitively help you to avoid redundancy and remove your reliance on mouse. You can navigate through the source code by only using keyboard.</p>
+
+<p><a href="http://www.amazon.com/Practical-Vim-Thought-Pragmatic-Programmers/dp/1934356980/ref=sr_1_1?ie=UTF8&amp;qid=1364646960&amp;sr=8-1&amp;keywords=vim"><img src="http://blog.rudylee.com/wp-content/uploads/2013/03/41LK8SwU4WL._SX225_-150x150.jpg" alt="Practical Vim" /></a></p>
+
+<p>The book that I am using to learn VIM is<a href="http://www.amazon.com/Practical-Vim-Thought-Pragmatic-Programmers/dp/1934356980/ref=sr_1_1?ie=UTF8&amp;qid=1364646960&amp;sr=8-1&amp;keywords=vim"> &ldquo;Practical Vim : Edit Text at the Speed of Thought&rdquo; by Drew Neil</a>. If you are new with Vim, I&rsquo;ll strongly recommend to start with this book. This book has collection of tips on how to use Vim in real situation and you going to feel you learn Vim faster.</p>
+
+<p>However, before deciding to learn Vim, you need to know that Vim is not for everyone. You know that you are not suitable for Vim when you :</p>
+
+<ul>
+<li><p>Still looking at your keyboard when typing.</p></li>
+<li><p>Have problem or hate remembering shortcuts.</p></li>
+<li><p>Don&rsquo;t have any curiosity to find another way to achieve something.</p></li>
+</ul>
+
+
+<p>If you are an IDE fan such as Eclipse, Netbeans or Visual Studio. There are some plugins that you can download to unleash the Vim power in your IDE. At the moment, I am using <a href="http://visualstudiogallery.msdn.microsoft.com/59ca71b3-a4a3-46ca-8fe1-0e90e3f79329">VsVim</a> to use all the Vim shortcuts when programming in C#. If you want to become better programmer, I&rsquo;ll say start using Vim and you won&rsquo;t regret it.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl/">Zend Framework 2 : Get Server URL in Controller Without Using serverUrl()</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-15T16:22:35+11:00" pubdate data-updated="true">Feb 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sometimes you need to be able to get current server URL inside controller in your Zend Framework 2 application. As you might know, you won&rsquo;t be able to use $this->serverUrl() method in the controller as it&rsquo;s a part of helper.</p>
+
+<p>So, here is the code that I am using to get server URL in controller :</p>
+
+<pre><code>$server_url = $this-&gt;getRequest()-&gt;getUri()-&gt;getScheme() . '://' . $this-&gt;getRequest()-&gt;getUri()-&gt;getHost();
+</code></pre>
+
+<p>Probably it&rsquo;s not the best solution but it works for now :)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/02/02/bootstrap-typeahead-cakephp-2-0/">Bootstrap Typeahead CakePHP 2.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-02T20:13:35+11:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2></h2>
+
+<p>Demo : <a href="http://cbunny2.rudylee.com/users/typeahead">http://cbunny2.rudylee.com/users/typeahead</a>
+Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee/cbunny</a></p>
+
+<p>In this post, I&rsquo;ll explain how to integrate Twitter Bootstrap Typeahead with your CakePHP 2.0 application. We will avoid using helpers or plugins and stick with plain Javascript + jQuery. Make sure you have include jQuery, Bootstrap CSS and Bootstrap Javascript files in your CakePHP application. You can simply do it inside your default.ctp file ( the files are bootstrap.min.js and bootstrap.min.css ).</p>
+
+<p>After that we will create controller, action and view to put our input box. In this tutorial I&rsquo;ll use my Cbunny application and Users controller. I&rsquo;ll start by creating typeahead action, here is the code :</p>
+
+<pre><code>    public function typeahead() {
+        $this-&gt;User-&gt;recursive = 0;
+        $this-&gt;set('users', $this-&gt;paginate());       
+    }
+</code></pre>
+
+<p>Nothing special happening rather than get current users from the table and paginate them. And here is the view :</p>
+
+<pre><code>&lt;div class="row"&gt;
+    &lt;div class="span12"&gt;
+
+    &lt;!-- Typeahead Auto Complete --&gt;
+    &lt;div class="pull-right"&gt;
+        &lt;input type="text" data-provide="typeahead" id="user-typeahead"&gt;
+    &lt;/div&gt;
+
+    &lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
+    &lt;table class="table"cellpadding="0" cellspacing="0"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
+                &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;?php foreach ($users as $user): ?&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
+                &lt;td class="actions"&gt;
+                    &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;?php endforeach; ?&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>On line 5-7, I am defining input text with typeahead attribute and ID that we will use in Javascript code. The next step is to create Javascript object in your layout file. So add this code snippet in your default.ctp file :</p>
+
+<pre><code>        $cbunny = array(
+            'APP_PATH' =&gt; Router::url('/',true)
+        );
+        echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&gt;object($cbunny) . ';');
+</code></pre>
+
+<p>You can change the $cbunny and CBunnyObj variable name to resemble your app name. However, the rest of the code has to be same as above. This snippet of code will create Javascript object which contains the root URL path of CakePHP.</p>
+
+<p>After we have the Javascript object variable, let&rsquo;s continue by creating the Javascript code. Inside your application Javascript file add these code :</p>
+
+<pre><code>  $('#user-typeahead').typeahead({
+    source: function (query, process) {
+      return $.ajax({
+        url: CbunnyObj.APP_PATH + 'users/typeahead_search',
+        type: 'get',
+        data: {q: query},
+        dataType: 'json',
+        success: function (json) {
+          return process(json);
+        }
+      });
+    }
+  });
+</code></pre>
+
+<p>In this code, we initialize the typeahead library and create AJAX request to the typeahead_search action. In the next step, we will create typeahead_search action that will handle AJAX request and return JSON result. Back to our users controller, create the typeahead action which will contain this code :</p>
+
+<pre><code>    public function typeahead_search() {
+        $this-&gt;autoRender = false;
+        $this-&gt;RequestHandler-&gt;respondAs('json');
+
+        // get the search term from URL
+        $term = $this-&gt;request-&gt;query['q'];
+        $users = $this-&gt;User-&gt;find('all',array(
+            'conditions' =&gt; array(
+                'User.username LIKE' =&gt; '%'.$term.'%'
+            )
+        ));
+
+        // Format the result for select2
+        $result = array();
+        foreach($users as $key =&gt; $user) {
+            array_push($result, $user['User']['username']);
+        }
+        $users = $result;
+
+        echo json_encode($users);
+    }
+</code></pre>
+
+<p>This action will receive the request, search the database for relevant result and return it on JSON format.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/02/02/select2-ajax-auto-complete-with-cakephp-2-0/">Select2 AJAX Auto Complete With CakePHP 2.0</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-02T19:09:26+11:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Demo : <a href="http://cbunny2.rudylee.com/users/select2">http://cbunny2.rudylee.com/users/select2</a></h2>
+
+<p>Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee/cbunny</a></p>
+
+<p>In this post, I&rsquo;ll explain how to use <a href="http://ivaynberg.github.com/select2/">Select2</a> inside CakePHP. We will avoid using any helpers and rely on jQuery + Javascript. Before we start, I presume you have downloaded Select2 and included the Javascript and CSS files inside your layout. Thus, I won&rsquo;t explain how to import Select2 library into your CakePHP app ( you can download my cbunny app from Github if you are lost ).</p>
+
+<p>So the first step is to create controller that will contain our Select2 search box. In this tutorial, I&rsquo;ll create users controller and one action to put the select2 search box. Here is the snippet of my code :</p>
+
+<pre><code>    public function select2() {
+        $this-&gt;User-&gt;recursive = 0;
+        $this-&gt;set('users', $this-&gt;paginate());
+    }
+</code></pre>
+
+<p>After this you can create the view ( View/Users/select2.ctp ). Here is my view code :</p>
+
+<pre><code>&lt;div class="row"&gt;
+    &lt;div class="span12"&gt;
+
+    &lt;!-- Select2 Auto Complete --&gt;
+    &lt;div class="pull-right"&gt;
+        &lt;input type="text" id="user-select2"&gt;
+    &lt;/div&gt;
+
+    &lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
+    &lt;table class="table"cellpadding="0" cellspacing="0"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
+                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
+                &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;?php foreach ($users as $user): ?&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
+                &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
+                &lt;td class="actions"&gt;
+                    &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;?php endforeach; ?&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>If you look at 5-7 you&rsquo;ll notice that I have input element with id element user-select2. We will use the ID inside our jQuery to initiate the Select2. The next step after this is to create a Javascript object to store the dynamic app path. Add this snippet of code into your layout file ( default.ctp ).</p>
+
+<pre><code>        $cbunny = array(
+            'APP_PATH' =&gt; Router::url('/',true)
+        );
+        echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&gt;object($cbunny) . ';');
+</code></pre>
+
+<p>You can change the $cbunny and CBunnyObj variable name to resemble your app name. However, the rest of the code has to be same as above. This snippet of code will create Javascript object which contains the root URL path of CakePHP.</p>
+
+<p>After we have the Javascript object, we will create jQuery code to create Select2 search box, process AJAX request and handle the respond. I&rsquo;ll start with creating cbunny.js file inside my webroot folder and add the file in my layout file. Here is the code :</p>
+
+<pre><code>/*global $, document, CbunnyObj */
+$(document).ready(function () {
+
+  $('#user-select2').select2({
+    placeholder: "Search user auto complete",
+    minimumInputLength: 1,
+    ajax: {
+      url: CbunnyObj.APP_PATH + 'users/search',
+      dataType: 'json',
+      data: function (term, page) {
+        return {
+          q: term
+        };
+      },
+      results: function (data, page) {
+        return { results: data };
+      }
+    }
+  });
+
+});
+</code></pre>
+
+<p>I&rsquo;ll explain the Javascript code a little bit. Line 4-19 contain the definition of Select2 library. You can see we have ajax definition on line 7 which will perform AJAX request to  CbunnyObj.APP_PATH + &lsquo;users/search&rsquo;. CbunnyObj is javascript object variable that we have defined before and will translate into your CakePHP App path ( ex: <a href="http://cbunny.rudylee.com">http://cbunny.rudylee.com</a> ). I believe you understand the rest of the code as I just copied it from Select2 website.</p>
+
+<p>After this, our last step is to create action + view to handle the AJAX request. So we are going back to Users controller and add new action called &lsquo;search&rsquo;. Here is my &lsquo;search&rsquo; action code :</p>
+
+<pre><code>    public function search() {
+        $this-&gt;autoRender = false;
+
+        // get the search term from URL
+        $term = $this-&gt;request-&gt;query['q'];
+        $users = $this-&gt;User-&gt;find('all',array(
+            'conditions' =&gt; array(
+                'User.username LIKE' =&gt; '%'.$term.'%'
+            )
+        ));
+
+        // Format the result for select2
+        $result = array();
+        foreach($users as $key =&gt; $user) {
+            $result[$key]['id'] = (int) $user['User']['id'];
+            $result[$key]['text'] = $user['User']['username'];
+        }
+        $users = $result;
+
+        echo json_encode($users);
+    }
+</code></pre>
+
+<p>On line 5, we grab the search query term from the URL and store into $term variable. After that, we will perform normal query to the table. When we get the result, we won&rsquo;t be able to use it straight away. We will have to reformat it so it can be readable by Select2. On line 12-17 we basically iterate through the $users variable and create new associative array which has id and text as their key.</p>
+
+<p>That&rsquo;s it for the tutorial. If you are confuse, feel free to write comment below and I&rsquo;ll be happy to answer them.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/01/15/science-of-productivity/">Science of Productivity</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T22:58:18+11:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Continuing from my <a href="http://blog.rudylee.com/2013/01/14/my-journey-to-productivity/">previous post about productivity</a>, I just found a video that you guys might wanna check out. It covers some of the techniques from my previous post such as make your todo list doable and set up the morning dash.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/01/14/my-journey-to-productivity/">My Journey to Productivity</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T15:03:15+11:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today marks two weeks of my journey trying new method to boost my productivity. For several years, I am an avid fan of procrastination which I am still now. This has bring me a lot of troubles such as projects are off-schedule, self development postponed, and working on assignments at the last minute. I have tried several productivity techniques and sadly say, none of them show significant effect. One of the popular technique that I used is <a href="http://www.pomodorotechnique.com/">Pomodoro</a> technique. For you guys that never heard about Pomodoro, I suggest to click the link provided. For you guys that are too lazy to click the link, here is the deinition of Pomodoro that I grabbed from the website :</p>
+
+<blockquote><p>It is a time management method created by Francesco Cirillo in the 1980s that helps you accomplish what you want to do by transforming time into a valuable ally. Why is it so popular? Because it is easy to use, and most of all, because it works!</p></blockquote>
+
+<p>Basically the Pomodoro technique tells you to pick a task, working on it under certain time limit ( usually 25 minutes ), take a break for 5 minutes and repeat the same process again. Each cycle is what called Pomodoro, after you have finished 4 Pomodoro, you are allowed to take longer break ( 30 minutes ).</p>
+
+<p>From my personal experience, it is a good technique but you need huge amount of self discipline. People with lack of self discipline tend to lose their focus in the middle of Pomodoro. Most of the time I am only able to do 2 perfect Pomodoro without any distractions, sometimes even less. After that usually I am end up watching Youtube, checking Facebook or even playing games.</p>
+
+<h3>Lifehacker</h3>
+
+<p>I am a type of person that definitely lack of self discipline. I can force and motivate myself to finish a work if there is someone watching my back, for example working in an office environment where you have colleagues monitoring what you are doing. However, one month ago I was trying find a new way to solve this problem because I am on Uni holiday and close to Christmas holiday.</p>
+
+<p>My first choice to find solution is <a href="http://www.lifehacker.com.au/">Lifehacker</a> website. It is one of the popular websites that provides information to boost your productivity in simple ways ( sometimes ). However, because it has lot of articles, most of the time you find it hard to find article that suit your problem.</p>
+
+<p>After trying various keywords to help me find article that match my problem, I decided to give up and looking for books instead. Luckily it&rsquo;s not that difficult because as soon as I typed &lsquo;lifehacker&rsquo; in Amazon, it comes up with this <a href="http://www.amazon.com/Lifehacker-Working-Smarter-Faster-ebook/dp/B0055AUGG8/ref=sr_1_2?ie=UTF8&amp;qid=1357975024&amp;sr=8-2&amp;keywords=lifehacker">book</a> ( Lifehacker: The Guide to Working Smarter, Faster, and Better ). The book basically contains the same articles from the website but the good part is all the articles has been grouped into relevant chapter for easier search and read.</p>
+
+<p>I&rsquo;ll suggest you skip most of the chapters in the book and only focus on the chapters that can solve your problem. In my case, I am only focus on these topics :</p>
+
+<ol>
+<li><p> Make your To-Do List Doable. Based on <a href="http://lifehacker.com/270404/how-to-make-your-to+do-list-doable">this article</a>.</p></li>
+<li><p> Set Up a Morning Dash.</p></li>
+<li><p> Dash through tasks with a timer.</p></li>
+<li><p> Limit visits to Time-Wasting websites.</p></li>
+</ol>
+
+
+<p>Out of those 4 topics, my favourite is number one. To-do list is a must have thing in my daily life. Not only it is useful to remind you what to do, but it also useful as a planning tool. Unfortunately, for the past few years I have done a simple mistake and made most of my to-do items in my list untouched. The mistake is simply on the way I write the todo items.</p>
+
+<p>Before I read this article, I tend to put things such as &ldquo;Redesign personal website&rdquo;, &ldquo;Working on project A&rdquo;, and &ldquo;Working on project B&rdquo; in my todo list. According to the article, these type of tasks cannot be called tasks but projects. Tasks are more descriptive and can be done in short time. So if we pick redesign personal website project, some examples of the tasks are create the sitemap or create the home screen wire frame based on sitemap.</p>
+
+<p>The first time I tried this approach, I am little bit sceptical. But believe it or not, I am find it easier to focus on my tasks when I write clearer task. The problem with unclear task are you will spend time to figure what to do and the chances that it will affect your motivation is higher.</p>
+
+<p>I think that&rsquo;s all for this article, I&rsquo;ll try share my experience in the next article.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2012/11/28/no-prefix-support-for-mapresources-in-cakephp-2-x/">No Prefix Support for mapResources in CakePHP 2.x</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-28T13:45:18+11:00" pubdate data-updated="true">Nov 28<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>REST API is relatively easy to implement if you are using web framework to build your application. In Rails, you just need to add single &lsquo;resources&rsquo;  entry in your routing file. In CakePHP, it has similar solution as you can read in the <a href="http://book.cakephp.org/2.0/en/development/rest.html">Cookbook</a>. However, currently there is no prefix support in CakePHP 2.x and this is confirmed in these links :</p>
+
+<ul>
+<li><p><a href="http://cakephp.lighthouseapp.com/projects/42648/tickets/968-rest-routes-with-prefix">http://cakephp.lighthouseapp.com/projects/42648/tickets/968-rest-routes-with-prefix</a></p></li>
+<li><p><a href="https://github.com/cakephp/cakephp/pull/763">https://github.com/cakephp/cakephp/pull/763</a></p></li>
+</ul>
+
+
+<p>This is a drawback because you are most likely will use prefix to build REST API. In my case, I have products controller in my application which has default CRUD actions and another set of actions with prefix ( api_index, api_view, etc ). Those actions with prefix in front of it will act as our RESTful API.</p>
+
+<p>You can try another approach by creating separate controller only to handle API request. For example, you will have to create controller called products_api to handle all restful API for specific controller. I am not a fan of this approach because you might end up having a lot of files and it&rsquo;s difficult to maintain.</p>
+
+<p>So, if you are on the same boat as me, you can follow this solution that I found. This solution only requires you to add one line of code to Router.php file in CakePHP lib folder ( <a href="https://github.com/DiegoMax/cakephp/commit/f203202ff78da930b472ecce817fdc6f19d6dfda">https://github.com/DiegoMax/cakephp/commit/f203202ff78da930b472ecce817fdc6f19d6dfda</a> ).</p>
+
+<p>Not a best solution but I don&rsquo;t want to wait until CakePHP 3.x released to finish my first CakePHP + Backbone.JS app. That&rsquo;s all, have a nice day.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -77,6 +853,26 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/27/playing-with-google-map-api/">Playing with Google Map API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/16/override-module-config-in-zend-framework-2/">Override module config in Zend Framework 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object/">Zend Framework 2 : The proper way to set application path in Javascript Object</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/30/my-review-after-two-months-using-vim/">My review after two months using VIM</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl/">Zend Framework 2 : get server URL in controller without using serverUrl()</a>
+      </li>
     
   </ul>
 </section>
@@ -91,12 +887,25 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Your Name -
+  Copyright &copy; 2013 - Rudy Lee -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
@@ -109,7 +918,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
