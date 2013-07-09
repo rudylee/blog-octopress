@@ -4,7 +4,7 @@
   <title><![CDATA[blog.rudylee.com]]></title>
   <link href="http://rudylee.github.io/atom.xml" rel="self"/>
   <link href="http://rudylee.github.io/"/>
-  <updated>2013-07-08T23:08:52+10:00</updated>
+  <updated>2013-07-09T22:22:22+10:00</updated>
   <id>http://rudylee.github.io/</id>
   <author>
     <name><![CDATA[Rudy Lee]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Playing with Google Map API]]></title>
-    <link href="http://rudylee.github.io/blog/2013/05/27/playing-with-google-map-api/"/>
+    <link href="http://rudylee.github.io/2013/05/27/playing-with-google-map-api/"/>
     <updated>2013-05-27T11:16:02+10:00</updated>
-    <id>http://rudylee.github.io/blog/2013/05/27/playing-with-google-map-api</id>
+    <id>http://rudylee.github.io/2013/05/27/playing-with-google-map-api</id>
     <content type="html"><![CDATA[<p>The main purpose of this post is only to write about Google Map API for future reference. Here are the code snippets :</p>
 
 <p>Get the latitude and longitude based on address : <a href="http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&amp;sensor=true">http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&amp;sensor=true</a></p>
@@ -62,9 +62,9 @@
   
   <entry>
     <title type="html"><![CDATA[Override module config in Zend Framework 2]]></title>
-    <link href="http://rudylee.github.io/blog/2013/05/16/override-module-config-in-zend-framework-2/"/>
+    <link href="http://rudylee.github.io/2013/05/16/override-module-config-in-zend-framework-2/"/>
     <updated>2013-05-16T11:12:19+10:00</updated>
-    <id>http://rudylee.github.io/blog/2013/05/16/override-module-config-in-zend-framework-2</id>
+    <id>http://rudylee.github.io/2013/05/16/override-module-config-in-zend-framework-2</id>
     <content type="html"><![CDATA[<p>There is a time when you want to override module config in your Zend Framework 2 application. In my case, I have different configuration for SMS gateway in staging and live server. You can do this by overwriting the module.config.php file inside the module config&rsquo;s folder. However, there are heaps of configuration inside module.config.php file. This approach will lead to maintenance nightmare when you need to change one or more configuration inside the file.</p>
 
 <p>The cleanest approach is to override specific configuration key by creating module-name.local.php file inside config/autoload folder. For example, you have &ldquo;Admin&rdquo; module and here is the sample module.config.php file :</p>
@@ -93,9 +93,9 @@
   
   <entry>
     <title type="html"><![CDATA[Zend Framework 2 : The proper way to set application path in Javascript Object]]></title>
-    <link href="http://rudylee.github.io/blog/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object/"/>
+    <link href="http://rudylee.github.io/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object/"/>
     <updated>2013-05-06T14:44:36+10:00</updated>
-    <id>http://rudylee.github.io/blog/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object</id>
+    <id>http://rudylee.github.io/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object</id>
     <content type="html"><![CDATA[<p>Storing application path inside Javascript object is a way to avoid &ldquo;hard coded&rdquo; URL inside your Javascript file.  It is pretty common to have like this in your Javascript file :</p>
 
 <pre><code>$.ajax({
@@ -130,9 +130,9 @@ echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&g
   
   <entry>
     <title type="html"><![CDATA[My review after two months using VIM]]></title>
-    <link href="http://rudylee.github.io/blog/2013/03/30/my-review-after-two-months-using-vim/"/>
+    <link href="http://rudylee.github.io/2013/03/30/my-review-after-two-months-using-vim/"/>
     <updated>2013-03-30T23:35:41+11:00</updated>
-    <id>http://rudylee.github.io/blog/2013/03/30/my-review-after-two-months-using-vim</id>
+    <id>http://rudylee.github.io/2013/03/30/my-review-after-two-months-using-vim</id>
     <content type="html"><![CDATA[<p>On January ( Two months ago ) , I decided to learn Vim after watching screencast from <a href="http://www.destroyallsoftware.com">Destroy All Software</a>. In one of the screencast, the guy shows how fast you can program when using Vim and use plugin to make it even better.</p>
 
 <p>I have known Vim for 4 years now but never actually keen to learn all the shortcuts. I remember I been to one of the PHP meetup in my city and one guy was presenting some of his code using Vim. One of the audience commented &ldquo;Why you need to use Vim if you have IDE and all of the GUI ?&rdquo;. At that time, I couldn&rsquo;t agree more with that guy.</p>
@@ -160,9 +160,9 @@ echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&g
   
   <entry>
     <title type="html"><![CDATA[Zend Framework 2 : get server URL in controller without using serverUrl()]]></title>
-    <link href="http://rudylee.github.io/blog/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl/"/>
+    <link href="http://rudylee.github.io/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl/"/>
     <updated>2013-02-15T16:22:35+11:00</updated>
-    <id>http://rudylee.github.io/blog/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl</id>
+    <id>http://rudylee.github.io/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl</id>
     <content type="html"><![CDATA[<p>Sometimes you need to be able to get current server URL inside controller in your Zend Framework 2 application. As you might know, you won&rsquo;t be able to use $this->serverUrl() method in the controller as it&rsquo;s a part of helper.</p>
 
 <p>So, here is the code that I am using to get server URL in controller :</p>
@@ -176,9 +176,9 @@ echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&g
   
   <entry>
     <title type="html"><![CDATA[Bootstrap Typeahead CakePHP 2.0]]></title>
-    <link href="http://rudylee.github.io/blog/2013/02/02/bootstrap-typeahead-cakephp-2-0/"/>
+    <link href="http://rudylee.github.io/2013/02/02/bootstrap-typeahead-cakephp-2-0/"/>
     <updated>2013-02-02T20:13:35+11:00</updated>
-    <id>http://rudylee.github.io/blog/2013/02/02/bootstrap-typeahead-cakephp-2-0</id>
+    <id>http://rudylee.github.io/2013/02/02/bootstrap-typeahead-cakephp-2-0</id>
     <content type="html"><![CDATA[<h2></h2>
 
 <p>Demo : <a href="http://cbunny2.rudylee.com/users/typeahead">http://cbunny2.rudylee.com/users/typeahead</a>
@@ -292,9 +292,9 @@ Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee
   
   <entry>
     <title type="html"><![CDATA[Select2 AJAX Auto Complete with CakePHP 2.0]]></title>
-    <link href="http://rudylee.github.io/blog/2013/02/02/select2-ajax-auto-complete-with-cakephp-2-0/"/>
+    <link href="http://rudylee.github.io/2013/02/02/select2-ajax-auto-complete-with-cakephp-2-0/"/>
     <updated>2013-02-02T19:09:26+11:00</updated>
-    <id>http://rudylee.github.io/blog/2013/02/02/select2-ajax-auto-complete-with-cakephp-2-0</id>
+    <id>http://rudylee.github.io/2013/02/02/select2-ajax-auto-complete-with-cakephp-2-0</id>
     <content type="html"><![CDATA[<h2>Demo : <a href="http://cbunny2.rudylee.com/users/select2">http://cbunny2.rudylee.com/users/select2</a></h2>
 
 <p>Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee/cbunny</a></p>
@@ -419,18 +419,18 @@ $(document).ready(function () {
   
   <entry>
     <title type="html"><![CDATA[Science of Productivity]]></title>
-    <link href="http://rudylee.github.io/blog/2013/01/15/science-of-productivity/"/>
+    <link href="http://rudylee.github.io/2013/01/15/science-of-productivity/"/>
     <updated>2013-01-15T22:58:18+11:00</updated>
-    <id>http://rudylee.github.io/blog/2013/01/15/science-of-productivity</id>
+    <id>http://rudylee.github.io/2013/01/15/science-of-productivity</id>
     <content type="html"><![CDATA[<p>Continuing from my <a href="http://blog.rudylee.com/2013/01/14/my-journey-to-productivity/">previous post about productivity</a>, I just found a video that you guys might wanna check out. It covers some of the techniques from my previous post such as make your todo list doable and set up the morning dash.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[My journey to productivity]]></title>
-    <link href="http://rudylee.github.io/blog/2013/01/14/my-journey-to-productivity/"/>
+    <link href="http://rudylee.github.io/2013/01/14/my-journey-to-productivity/"/>
     <updated>2013-01-14T15:03:15+11:00</updated>
-    <id>http://rudylee.github.io/blog/2013/01/14/my-journey-to-productivity</id>
+    <id>http://rudylee.github.io/2013/01/14/my-journey-to-productivity</id>
     <content type="html"><![CDATA[<p>Today marks two weeks of my journey trying new method to boost my productivity. For several years, I am an avid fan of procrastination which I am still now. This has bring me a lot of troubles such as projects are off-schedule, self development postponed, and working on assignments at the last minute. I have tried several productivity techniques and sadly say, none of them show significant effect. One of the popular technique that I used is <a href="http://www.pomodorotechnique.com/">Pomodoro</a> technique. For you guys that never heard about Pomodoro, I suggest to click the link provided. For you guys that are too lazy to click the link, here is the deinition of Pomodoro that I grabbed from the website :</p>
 
 <blockquote><p>It is a time management method created by Francesco Cirillo in the 1980s that helps you accomplish what you want to do by transforming time into a valuable ally. Why is it so popular? Because it is easy to use, and most of all, because it works!</p></blockquote>
@@ -469,9 +469,9 @@ $(document).ready(function () {
   
   <entry>
     <title type="html"><![CDATA[No prefix support for mapResources in CakePHP 2.x]]></title>
-    <link href="http://rudylee.github.io/blog/2012/11/28/no-prefix-support-for-mapresources-in-cakephp-2-x/"/>
+    <link href="http://rudylee.github.io/2012/11/28/no-prefix-support-for-mapresources-in-cakephp-2-x/"/>
     <updated>2012-11-28T13:45:18+11:00</updated>
-    <id>http://rudylee.github.io/blog/2012/11/28/no-prefix-support-for-mapresources-in-cakephp-2-x</id>
+    <id>http://rudylee.github.io/2012/11/28/no-prefix-support-for-mapresources-in-cakephp-2-x</id>
     <content type="html"><![CDATA[<p>REST API is relatively easy to implement if you are using web framework to build your application. In Rails, you just need to add single &lsquo;resources&rsquo;  entry in your routing file. In CakePHP, it has similar solution as you can read in the <a href="http://book.cakephp.org/2.0/en/development/rest.html">Cookbook</a>. However, currently there is no prefix support in CakePHP 2.x and this is confirmed in these links :</p>
 
 <ul>
@@ -492,9 +492,9 @@ $(document).ready(function () {
   
   <entry>
     <title type="html"><![CDATA[Precise Pangolin]]></title>
-    <link href="http://rudylee.github.io/blog/2012/07/31/precise-pangolin/"/>
+    <link href="http://rudylee.github.io/2012/07/31/precise-pangolin/"/>
     <updated>2012-07-31T17:33:37+10:00</updated>
-    <id>http://rudylee.github.io/blog/2012/07/31/precise-pangolin</id>
+    <id>http://rudylee.github.io/2012/07/31/precise-pangolin</id>
     <content type="html"><![CDATA[<p>After spending whole day moving all my data from Ubuntu partition, I am officially running Ubuntu 12.04 64 bit. Prior to this, I was using Ubuntu 12.04 32 bit which I continuously upgrade from Ubuntu 10.04 ( it&rsquo;s been 2 years since I decided to use Ubuntu as my main operating system, time flew so fast ). It was running really slow as I have a lot of applications installed ( Rails, Django, Android SDK, Eclipse, Netbeans, etc ).</p>
 
 <p>Basically I am happy with my new &ldquo;fresh&rdquo; installation of Ubuntu. Everything seems to run 3-4 faster than before. Booting time only takes around 20 secs from 1-2 minutes, Sublime Text fired up as soon as I clicked it and Chrome jumping smoothly like kangaroo. However, I just realize that I forgot to back up my Thunderbird email account ( damn!). Before, I set up my Thunderbird email account in POP which means that it will delete all the emails in the server. So now I am losing 17 months of emails archive which I have to explain to my boss soon.</p>
@@ -518,9 +518,9 @@ $(document).ready(function () {
   
   <entry>
     <title type="html"><![CDATA[Curry Noodle]]></title>
-    <link href="http://rudylee.github.io/blog/2012/07/08/curry-noodle/"/>
+    <link href="http://rudylee.github.io/2012/07/08/curry-noodle/"/>
     <updated>2012-07-08T17:43:22+10:00</updated>
-    <id>http://rudylee.github.io/blog/2012/07/08/curry-noodle</id>
+    <id>http://rudylee.github.io/2012/07/08/curry-noodle</id>
     <content type="html"><![CDATA[<p>Last week I found video tutorial to cook curry noodle in <a href="http://www.youtube.com/watch?v=lMrFr8Eh_yM">YouTube</a> and decided to give it a try. Before, I cooked different type of curry (red and green curry ) and always made my own curry paste. The taste wasn&rsquo;t bad but obviously something missing and I don&rsquo;t know what it is.</p>
 
 <p>This weekend I am gonna do something different by using pre-made curry paste. After researching a little bit, I found people recommend to use Mae Ploy Curry Paste which they say is used in some of Thai restaurants in Australia. Here is the picture :</p>
@@ -558,9 +558,9 @@ $(document).ready(function () {
   
   <entry>
     <title type="html"><![CDATA[Assembla]]></title>
-    <link href="http://rudylee.github.io/blog/2012/04/10/assembla/"/>
+    <link href="http://rudylee.github.io/2012/04/10/assembla/"/>
     <updated>2012-04-10T15:43:50+10:00</updated>
-    <id>http://rudylee.github.io/blog/2012/04/10/assembla</id>
+    <id>http://rudylee.github.io/2012/04/10/assembla</id>
     <content type="html"><![CDATA[<p><a href="http://blog.rudylee.com/wp-content/uploads/2012/06/assembla.png"><img src="http://blog.rudylee.com/wp-content/uploads/2012/06/assembla-150x150.png" alt="" /></a>Recently, I just canceled my <a href="http://www.github.com">Github</a> micro plan and moved all my private projects to <a href="http://www.assembla.com/">Assembla</a>. Similar to Github, Assembla also offers Git hosting and you can host private projects for free. There are several paid plans that you can choose which basically add more features such as ticketing system, wiki, FTP build, supports, etc. So if you are like me ( only need Git/SVN private hosting for your projects ), I suggest you to try Assembla.</p>
 
 <p>Another great thing is no limitation of number of users that you can give access to your private projects. While in Github, the micro plan has limitation of one user that you can allow to access your projects.</p>
@@ -575,9 +575,9 @@ $(document).ready(function () {
   
   <entry>
     <title type="html"><![CDATA[Cake Bunny website now using twitter bootstrap!]]></title>
-    <link href="http://rudylee.github.io/blog/2012/03/20/cake-bunny-website-now-using-twitter-bootstrap/"/>
+    <link href="http://rudylee.github.io/2012/03/20/cake-bunny-website-now-using-twitter-bootstrap/"/>
     <updated>2012-03-20T12:52:00+11:00</updated>
-    <id>http://rudylee.github.io/blog/2012/03/20/cake-bunny-website-now-using-twitter-bootstrap</id>
+    <id>http://rudylee.github.io/2012/03/20/cake-bunny-website-now-using-twitter-bootstrap</id>
     <content type="html"><![CDATA[<p><a href="http://blog.rudylee.com/wp-content/uploads/2012/05/twitter-bootstrap.png"><img src="http://blog.rudylee.com/wp-content/uploads/2012/05/twitter-bootstrap-150x150.png" alt="" /></a>Today, I spent couple hours to update my <a href="http://www.rudylee.com/cbunny">Cake Bunny 1.0</a> and <a href="http://www.rudylee.com/cbunny2">Cake Bunny 2.0</a> websites. Cake Bunny is CakePHP website that I built to provide live demo for CakePHP tutorials in mt blog. At the moment, it has only two sample demos ( jQuery UI AutoComplete and jQuery UI AutoComplete Redirect).</p>
 
 <p>I decided to make over the design using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> instead of CakePHP default template. For you guys that haven&rsquo;t try twitter bootstrap yet, I suggest you give it a try. It has a lot of components inside it and provide you with basic layout ( pretty much similar with other CSS frameworks such as blueprint, 960, etc ).</p>
@@ -590,9 +590,9 @@ $(document).ready(function () {
   
   <entry>
     <title type="html"><![CDATA[Rails set up namespace and redirect from namespace]]></title>
-    <link href="http://rudylee.github.io/blog/2012/02/12/rails-set-up-namespace-and-redirect-from-namespace/"/>
+    <link href="http://rudylee.github.io/2012/02/12/rails-set-up-namespace-and-redirect-from-namespace/"/>
     <updated>2012-02-12T13:02:27+11:00</updated>
-    <id>http://rudylee.github.io/blog/2012/02/12/rails-set-up-namespace-and-redirect-from-namespace</id>
+    <id>http://rudylee.github.io/2012/02/12/rails-set-up-namespace-and-redirect-from-namespace</id>
     <content type="html"><![CDATA[<p>In order to differentiate between admin actions and users actions, you can set up what called &ldquo;namespace&rdquo; in your rails apps. The basic idea of this feature is you will have different controller and view files for each role in your application.</p>
 
 <p>This concept is similar with prefixes in CakePHP. However,  CakePHP allows you to put different action in one controller file, while in rails you have to create different controller and view file for the new namespace. Here is the sample namespace code that I put in my routes.rb file :</p>
@@ -624,9 +624,9 @@ $(document).ready(function () {
   
   <entry>
     <title type="html"><![CDATA[Execute JWPlayer shortcode in Wordpress custom template]]></title>
-    <link href="http://rudylee.github.io/blog/2012/01/08/execute-jwplayer-shortcode-in-wordpress-custom-template/"/>
+    <link href="http://rudylee.github.io/2012/01/08/execute-jwplayer-shortcode-in-wordpress-custom-template/"/>
     <updated>2012-01-08T12:51:22+11:00</updated>
-    <id>http://rudylee.github.io/blog/2012/01/08/execute-jwplayer-shortcode-in-wordpress-custom-template</id>
+    <id>http://rudylee.github.io/2012/01/08/execute-jwplayer-shortcode-in-wordpress-custom-template</id>
     <content type="html"><![CDATA[<p>JWPlayer has become my favorite video player for clients website especially after they release their <a href="http://wordpress.org/extend/plugins/jw-player-plugin-for-wordpress/">official Wordpress plugin</a>. The plugin almost done all the basic things ( shortcode, custom player, etc ). It&rsquo;s also integrated seamlessly with the Wordpress Media library which makes your life so much easier because you can easily add the player to a post straightly from media library. However, aside from all that simple integration and setup, it lacks of documentation could cause a headache especially if you are trying to do something out of the lane.</p>
 
 <p>Today, I was trying to use JWPlayer plugin to show video in a custom post type template which grab the video file from external URL ( not from Media Library ). I was thinking this would be an easy task because I could easily execute the shortcode using do_shortcode() function in Wordpress. But, apparently JWPlayer plugin handle the shortcode quite different from another plugin so you have to use jwplayer_tag_callback() function instead of do_shortcode(). I don&rsquo;t know the reason why they make it like that but as long as it works then it&rsquo;s fine. Here is the sample code to make it clear:</p>
@@ -642,9 +642,9 @@ jwplayer_tag_callback("[jwplayer file='http://xxx.com/xxx.mp4']");
   
   <entry>
     <title type="html"><![CDATA[Auto redirect in CakePHP jQuery AutoComplete ]]></title>
-    <link href="http://rudylee.github.io/blog/2011/12/12/auto-redirect-in-cakephp-jquery-autocomplete/"/>
+    <link href="http://rudylee.github.io/2011/12/12/auto-redirect-in-cakephp-jquery-autocomplete/"/>
     <updated>2011-12-12T15:11:56+11:00</updated>
-    <id>http://rudylee.github.io/blog/2011/12/12/auto-redirect-in-cakephp-jquery-autocomplete</id>
+    <id>http://rudylee.github.io/2011/12/12/auto-redirect-in-cakephp-jquery-autocomplete</id>
     <content type="html"><![CDATA[<blockquote><h2>Demo : <a href="http://cbunny.rudylee.com/autocomplete_redirect">http://cbunny.rudylee.com/autocomplete_redirect</a></h2>
 
 <p>Demo source code :<a href="https://github.com/rudylee/cbunny"> https://github.com/rudylee/cbunny</a></p></blockquote>
@@ -693,9 +693,9 @@ Just ignore line 8 and so, we gonna focus on line 2 to 7. In that line, I redire
   
   <entry>
     <title type="html"><![CDATA[Holiday has arrived]]></title>
-    <link href="http://rudylee.github.io/blog/2011/11/23/holiday-has-arrived/"/>
+    <link href="http://rudylee.github.io/2011/11/23/holiday-has-arrived/"/>
     <updated>2011-11-23T18:40:11+11:00</updated>
-    <id>http://rudylee.github.io/blog/2011/11/23/holiday-has-arrived</id>
+    <id>http://rudylee.github.io/2011/11/23/holiday-has-arrived</id>
     <content type="html"><![CDATA[<p><a href="http://blog.rudylee.com/wp-content/uploads/2011/11/3048143981_e990820985_z1.jpg"><img src="http://blog.rudylee.com/wp-content/uploads/2011/11/3048143981_e990820985_z1.jpg" alt="" /></a></p>
 
 <p>Today is the last day of my exams and I will have holiday for 3 months. It&rsquo;s quite long considering that you spent the same amount of time for study as well. That means in one semester you will have 3 months study and another 3 months for holiday. From my perspective, it&rsquo;s not efficient, wasting time and of course wasting money :D. But who am I to judge the system, the system is there for a reason which I don&rsquo;t care much.</p>
@@ -716,9 +716,9 @@ Just ignore line 8 and so, we gonna focus on line 2 to 7. In that line, I redire
   
   <entry>
     <title type="html"><![CDATA[Short conversation with my mom]]></title>
-    <link href="http://rudylee.github.io/blog/2011/10/23/short-conversation-with-my-mom/"/>
+    <link href="http://rudylee.github.io/2011/10/23/short-conversation-with-my-mom/"/>
     <updated>2011-10-23T18:54:59+11:00</updated>
-    <id>http://rudylee.github.io/blog/2011/10/23/short-conversation-with-my-mom</id>
+    <id>http://rudylee.github.io/2011/10/23/short-conversation-with-my-mom</id>
     <content type="html"><![CDATA[<p>Sepenggal perbincangan di telepon dengan nyokap&hellip;</p>
 
 <p>Gwa: Jadi kapan koko ted bakal married ? ( koko ted adalah panggilan gwa buat koko gwa :P )</p>
@@ -741,9 +741,9 @@ Just ignore line 8 and so, we gonna focus on line 2 to 7. In that line, I redire
   
   <entry>
     <title type="html"><![CDATA[Reasons why I hate long weekend]]></title>
-    <link href="http://rudylee.github.io/blog/2011/09/30/reasons-why-i-hate-long-weekend/"/>
+    <link href="http://rudylee.github.io/2011/09/30/reasons-why-i-hate-long-weekend/"/>
     <updated>2011-09-30T17:44:44+10:00</updated>
-    <id>http://rudylee.github.io/blog/2011/09/30/reasons-why-i-hate-long-weekend</id>
+    <id>http://rudylee.github.io/2011/09/30/reasons-why-i-hate-long-weekend</id>
     <content type="html"><![CDATA[<h1><strong>Too much sleep</strong></h1>
 
 <p><a href="http://blog.rudylee.com/wp-content/uploads/2011/10/302271589_0a29afd756_z.jpg"><img src="http://blog.rudylee.com/wp-content/uploads/2011/10/302271589_0a29afd756_z.jpg" alt="" /></a></p>

@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Group select box di CakePHP - blog.rudylee.com</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Grouping di dalam select box adalah hal yang gampang ketika kita menggunakan codingan php biasa, tetapi kalau sudah masuk ke dalam codingan CakePHP &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rudylee.github.io/2009/11/02/group-select-box-di-cakephp/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="blog.rudylee.com" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mob</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">blog.rudylee.com</a></h1>
+  
+    <h2>keep it humble</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:rudylee.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Group Select Box Di CakePHP</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-02T15:18:21+11:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Grouping di dalam select box adalah hal yang gampang ketika kita menggunakan codingan php biasa, tetapi kalau sudah masuk ke dalam codingan CakePHP kita harus banyak membaca documentation untuk teknik2nya, tickets jika ada yang pernah menanyakan hal yang sama dan tentu saja API agar kita tahu fungsi dari method yang akan kita pakai.</p>
+
+<p>Jadi sekarang kita akan membuat sebuah grouping dalam select box seperti dalam gambar di bawah ini :
+[caption id=&ldquo;&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;217&rdquo; caption=&ldquo;CakePHP Group Select&rdquo;]<img src="http://blog.rudylee.com/content/group-select-box.jpg" alt="CakePHP Group Select" />[/caption]</p>
+
+<p>Di dalam contoh diatas gwa menggunakan 3 buah table di antaranya table majors ( jurusan ), table faculties ( fakultas ) dan table levels ( untuk pembagian apakah dia D3/S1 ). Hal pertama yang harus kita lakukan adalah men-query isi table dari majors ( dalam hal ini gwa menggunakan ClassRegistry karena table majors tidak ada relation dengan controller gwa ) :</p>
+
+<pre><code>$majors = ClassRegistry::init("Major")-&gt;find("all");
+
+atau kalau punya relation / berada dalam controller sendiri
+$majors = $this-&gt;Major-&gt;find("all");
+</code></pre>
+
+<p>Kemudian kita akan menggabungkan hasil query tersebut dan menyusunnya menjadi array yang jika kita masukkan ke dalam form helper maka akan secara otomatis menjadi select box yang tergroup. Kita akan menggunakan bantuan Set::combine untuk melakukan hal tersebut. Berikut contoh codingannya :</p>
+
+<pre><code>$majorsCombine = Set::combine($majors, "{n}.Major.id", array("%s - %s",
+"{n}.Level.name", "{n}.Major.name"), "{n}.Faculty.name"); 
+
+untuk penjelasan parameternya dapat dilihat di API CakePHP : &lt;a href="http://api.cakephp.org/class/set#method-Setcombine"&gt;API CakePHP&lt;/a&gt;
+</code></pre>
+
+<p>sedikit penjelasan tentang parameter yang gwa gunakan yaitu :</p>
+
+<ul>
+<li><p>$majorsCombine <em>Nama variable penampung.</em></p></li>
+<li><p>Set::combine <em>Nama method yang kita gunakan.</em></p></li>
+<li><p>$majors <em>Sumber data kita</em></p></li>
+<li><p>{n}.Major.id <em>Path pertama atau biasanya nilai dari select box kita</em></p></li>
+<li><p>array(&lsquo;%s &ndash; %s&rsquo;,&lsquo;{n}.Level.name&rsquo;, &lsquo;{n}.Major.name&rsquo;) <em>Kalau ini path kedua yang berfungsi sebagai label dari isi select box kita, jika dilihat itu isinya ada level dan major jadi nanti keluarnya ( S1 &ndash; Teknik Informatika )</em></p></li>
+<li><p>{n}.Faculty.name&#8217; <em>ini nama groupnya</em></p></li>
+</ul>
+
+
+<p>Selanjutnya tinggal digunakan saja di viewnya seperti ini :</p>
+
+<pre><code>select("nama-form",$majorsCombine,null,null,"-- Pilih Jurusan Pertama --"); ?&gt;
+</code></pre>
+
+<p>Penjelasannya kira-kira begini :</p>
+
+<ul>
+<li><p>$form->select <em>ini form helper yang kita gunakan</em></p></li>
+<li><p>nama-form <em>nama form helper yang kita gunakan</em></p></li>
+<li><p>$majorsCombine <em>sumber data</em></p></li>
+<li><p>null,null,&lsquo;&mdash; Pilih Jurusan Pertama &mdash; <em>parameter tambahan lagi</em></p></li>
+</ul>
+
+
+<p>Semoga membantu, silakan dicoba.. kalau ga jalan, dicoba lagi, kalau ga jalan juga ya sudah terima nasih aja :D</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">admin</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-02T15:18:21+11:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/cakephp/'>CakePHP</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rudylee.github.io/2009/11/02/group-select-box-di-cakephp/" data-via="" data-counturl="http://rudylee.github.io/2009/11/02/group-select-box-di-cakephp/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/2009/11/02/membuat-image-sebagai-link-di-cakephp/" title="Previous Post: Membuat image sebagai link di CakePHP">&laquo; Membuat image sebagai link di CakePHP</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/2009/11/23/ruby-on-rails-in-kubuntu-904/" title="Next Post: Ruby on Rails in Kubuntu 9.04">Ruby on Rails in Kubuntu 9.04 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/05/27/playing-with-google-map-api/">Playing with Google Map API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/16/override-module-config-in-zend-framework-2/">Override module config in Zend Framework 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object/">Zend Framework 2 : The proper way to set application path in Javascript Object</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/30/my-review-after-two-months-using-vim/">My review after two months using VIM</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl/">Zend Framework 2 : get server URL in controller without using serverUrl()</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://rudylee.github.io/2009/11/02/group-select-box-di-cakephp/';
+        var disqus_url = 'http://rudylee.github.io/2009/11/02/group-select-box-di-cakephp/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

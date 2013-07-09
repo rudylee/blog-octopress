@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby on Rails | blog.rudylee.com]]></title>
+  <link href="http://rudylee.github.io/categories/ruby-on-rails/atom.xml" rel="self"/>
+  <link href="http://rudylee.github.io/"/>
+  <updated>2013-07-09T22:22:22+10:00</updated>
+  <id>http://rudylee.github.io/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails set up namespace and redirect from namespace]]></title>
+    <link href="http://rudylee.github.io/2012/02/12/rails-set-up-namespace-and-redirect-from-namespace/"/>
+    <updated>2012-02-12T13:02:27+11:00</updated>
+    <id>http://rudylee.github.io/2012/02/12/rails-set-up-namespace-and-redirect-from-namespace</id>
+    <content type="html"><![CDATA[<p>In order to differentiate between admin actions and users actions, you can set up what called &ldquo;namespace&rdquo; in your rails apps. The basic idea of this feature is you will have different controller and view files for each role in your application.</p>
+
+<p>This concept is similar with prefixes in CakePHP. However,  CakePHP allows you to put different action in one controller file, while in rails you have to create different controller and view file for the new namespace. Here is the sample namespace code that I put in my routes.rb file :</p>
+
+<pre><code>  namespace :admin do
+    resources :users
+    resources :products
+    resources :categories
+  end
+</code></pre>
+
+<p>The code means that users, products and categories will have admin namespace. The next step is to create new folder in your controller and view folder called &ldquo;admin&rdquo;. Here is the screenshot ( see the directory browser on the left hand side ) :</p>
+
+<p><a href="http://blog.rudylee.com/wp-content/uploads/2012/04/routes-rb.png"><img src="http://blog.rudylee.com/wp-content/uploads/2012/04/routes-rb-150x150.png" alt="" /></a></p>
+
+<p>Put the template and controller files inside these folders. You have to add Admin:: in front of the class definition of your controller file. So it&rsquo;s gonna be like this :</p>
+
+<pre><code>class Admin::UsersController &lt; ApplicationController
+</code></pre>
+
+<p>After you set up everything done, you can try to access your apps through <a href="http://your-url/admin/controller-path">http://your-url/admin/controller-path</a> ( ex: <a href="http://localhost:3000/admin/users">http://localhost:3000/admin/users</a> ). It should automatically pick the controller and view files from admin folder. And if you want to redirect to the original route, you have to add &lsquo;/&rsquo; in front of the controller name. Here is the code :</p>
+
+<pre><code>redirect_to :controller =&gt; "/sessions",:action =&gt; "new"
+</code></pre>
+
+<p>It means you will redirect the user to session controller outside of the namespace and load &ldquo;new&rdquo; action. That&rsquo;s all.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing rake command error in rails 3.0.7]]></title>
+    <link href="http://rudylee.github.io/2011/05/29/fixing-rake-command-error-in-rails-3-0/"/>
+    <updated>2011-05-29T16:39:57+10:00</updated>
+    <id>http://rudylee.github.io/2011/05/29/fixing-rake-command-error-in-rails-3-0</id>
+    <content type="html"><![CDATA[<p>Today I was trying to add rails project to Netbeans 6.9,but suddenly there is a pop up window that said &ldquo;Rake task fecthing failed&rdquo; with bunch of other errors. After that, I tried go to my application folder and try to run the rake command</p>
+
+<pre><code>rake -D
+</code></pre>
+
+<p>However I got this error</p>
+
+<pre><code>rudy@rudy-laptop:~/www/depot$ rake -D
+rake aborted!
+undefined method `task' for #&lt;depot::application:0x91fa9c4&gt;
+
+(See full trace by running task with --trace)
+</code></pre>
+
+<p>After a little bit research, I found that I have to uninstall my rake 0.9 and install 0.8.7 instead. So I ran this command :</p>
+
+<pre><code>gem uninstall rake -v 0.9
+gem install rake -v 0.8.7
+</code></pre>
+
+<p>Edited the gem file and added this code inside that file :</p>
+
+<pre><code>gem 'rake', '0.8.7'
+</code></pre>
+
+<p>Last step is update the bundle</p>
+
+<pre><code>bundle update
+</code></pre>
+
+<p>After that you can try run your rake command or import your project to Netbans, it&rsquo;s should be fine.</p>
+
+<p>UPDATE :
+It turns out that the problem is because I was using rake 0.9 and it&rsquo;s break out all the installation.</p>
+
+<pre><code>gem install bundler
+</code></pre>
+
+<p>You might want to install bundler if you encounter some errors related to Netbeans couldn&rsquo;t find bundler setup. Another thing is you have to add gem path to your Netbeans ( Tools > Rubygems ) and add your gem path.</p>
+
+<p>I am using rvm to install ruby and also rails. So I run this command to find gem path</p>
+
+<pre><code>rvm gemdir
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Rails in Kubuntu 9.04]]></title>
+    <link href="http://rudylee.github.io/2009/11/23/ruby-on-rails-in-kubuntu-904/"/>
+    <updated>2009-11-23T15:47:41+11:00</updated>
+    <id>http://rudylee.github.io/2009/11/23/ruby-on-rails-in-kubuntu-904</id>
+    <content type="html"><![CDATA[<p>Beberapa hari ini gwa disibukkan mencoba menginstall Ruby on Rails ( RoR ). Sebenarnya sudah cukup lama pengen coba-coba Ruby on Rails, tapi sekarang baru ada semangat sama ada waktu buat nyoba-nyoba.</p>
+
+<p>Menginstall Ruby on Rails ini dapat dibilang cukup memakan banyak waktu dikarenakan gwa menghabiskan 1 harian HANYA untuk install Kubuntu doank ( gara2 cd rom yang ga jelas ).</p>
+
+<p>Jadi setelah gwa berhasil menginstall kubuntu ( yang tentu saja gwa selesaikan dalam waktu 1 hari ) gwa mulai menginstall Ruby on Rails. Mungkin masih pada bingung sebenarnya Ruby on Rails itu apaan. Ruby on Rails itu adalah sebuah framework untuk pembuatan website yang dibuat dengan menggunakan bahasa Ruby.</p>
+
+<p>Apa istimewanya ? Kok semua sekarang pada ngomong Ruby on Rails mulu ? Kalau yang setau gwa Ruby on Rails adalah framework yang pertama kali menerapkan konsep MVC ( Model &ndash; View &ndash; Controller ) yang banyak diadopsi oleh framework-framework lain ( CakePHP, CI, Symfony, Spring, dll ). Selain itu Twitter juga menggunakan Ruby on Rails sebagai platform utamanya ( walaupun ada performance issue ).</p>
+
+<p>Yah jadi langsung aja kita mulai step-step menginstall Ruby on Rails. Langkah-langkahnya sebenarnya terbagi dalam beberapa bagian yaitu :</p>
+
+<ol>
+<li><p> Menginstall package yang dibutuhkan oleh Ruby on Rails</p></li>
+<li><p> Menginstall database server yang mau digunakan</p></li>
+<li><p> Menginstall Ruby, Rubygem, dan yang terakhir Rails</p></li>
+</ol>
+
+
+<p>Kelihatannya gampang menginstall Ruby on Rails, tetapi karena banyaknya dependency terhadap package membuat kita harus sering compile ulang Ruby ( mungkin yang pakai apt-get lebih gampang, tetapi sekarang kita akan mencoba install from source ).</p>
+
+<p>Berikut biodata dari Ruby yang akan kita install :</p>
+
+<ol>
+<li><p> ruby-1.8.7-p174</p></li>
+<li><p> rubygems-1.3.5</p></li>
+<li><p> rubygems-1.3.5</p></li>
+</ol>
+
+
+<p>Jadi sejauh pengalaman saya, beberapa package yang harus diinstall terlebih dahulu ( di Kubuntu ya, kalau distro lain ga ikutan ) adalah:</p>
+
+<ol>
+<li><p> Zlib</p></li>
+<li><p> Openssl</p></li>
+<li><p> Mysql dev ( jika ingin menggunakan mysql )</p></li>
+</ol>
+
+
+<p>Kalau mau install zlib di kubuntu tinggal ketik aja</p>
+
+<pre><code>sudo apt-get install zlib1g-dev
+</code></pre>
+
+<p>sementara untuk openssl ketik</p>
+
+<pre><code>sudo apt-get install libopenssl-ruby1.9
+sudo apt-get install libssl-dev
+</code></pre>
+
+<p>untuk library openssl bisa disesuaikan dengan versi rubynya ( dan kalau mau gampang search aja di Software Management kubuntunya ). Setelah itu kita akan menginstall mysql-server ( karena gwa pakainya mysql ). Kalau misalnya anda tidak ingin menggunakan mysql juga tidak apa-apa, karena defaultnya ruby itu menggunakan sqllite.</p>
+
+<p>untuk mysql saya menggunakan command ini</p>
+
+<pre><code>sudo apt-get install mysql-server
+</code></pre>
+
+<p>sementara untuk library dev mysqlnya gwa menggunakan Software Management( jadi gwa ga gitu ingat packagenya yang mana ). Setelah selesai install mysqlnya kita tinggal download aja source Ruby dari website Ruby on Rails yaitu di <a href="http://www.rubyonrails.org">www.rubyonrails.org</a> dan pilih menu download. Disana bakal ada tulisan <strong>Source: Compile it yourself</strong>, nah tinggal klik aja tulisan source nya dan anda sudah dapat sourcenya Ruby.</p>
+
+<p>Langkah-langkahnya kira-kira begini :</p>
+
+<ol>
+<li><p> Selesai download copy aja file source Rubynya ke mana aja ( ex : /usr/local )</p></li>
+<li><p> Extract file source tadi ( tar xzvf rubygems-1.3.5.tgz ).</p></li>
+<li><p> kemudian masuk ke dalam folder yang sudah diextract tadi.</p></li>
+<li><p> Jalankan langkah untuk compile ( <strong>./configure</strong>, <strong>make,</strong> dan terakhir adalah <strong>make install</strong> ).</p></li>
+<li><p> gwa sempat mencoba menggunakan ./configure &amp;&amp; make &amp;&amp; make install tapi hasilnya tidak berhasil ( jadi kalau ada yang mau coba silakan saja, gwa sih pakai cara manual, jalanin satu2 ).</p></li>
+</ol>
+
+
+<p>Nah setelah itu harusnya Ruby kita sudah terinstall, coba jalankan perintah ini :</p>
+
+<pre><code>ruby -v atau ruby --version
+</code></pre>
+
+<p>Jgn pernah jalanin ruby -version karena akan muncul error message ( harus &mdash; ). Kalau sudah terinstall harusnya muncul tulisan seperti ini :</p>
+
+<pre><code>ruby 1.8.7 (2009-06-12 patchlevel 174) [i686-linux]
+</code></pre>
+
+<p>Nah kalau sudah benar lanjut ke step selanjutnya, kalau gagal coba debugging sendiri aja ya ( googling gitu ). Selanjutnya kita akan menginstall RubyGems atau bisa disebut sebagai Package Managernya Ruby ( mirip apt-get tapi punyanya Ruby ). Langkah-langkahnya :</p>
+
+<ol>
+<li><p> Masuk lagi ke website Ruby on Rails bagian download, <a href="http://rubyonrails.org/download">http://rubyonrails.org/download</a></p></li>
+<li><p> Cari bagian RubyGems dan pilih Download</p></li>
+<li><p> Untuk versi terserah pilih yang mana suka la, gwa mah ambil yang paling baru.</p></li>
+<li><p> Setelah download tinggal pindahin aja ke folder mana aja ( ex : /usr/local ).</p></li>
+<li><p> Extract lagi RubyGems nya ( tar xzvf rubygems-1.3.5.tgz )</p></li>
+<li><p> Masuk ke folder yang baru diextract tadi dan jalankan perintah <strong>ruby setup.rb</strong></p></li>
+<li><p> Tunggu proses dan jika tidak terjadi error maka jalankan perintah <strong>gem help</strong></p></li>
+</ol>
+
+
+<p>Jika gem terinstall dengan benar maka harusnya muncul help tentang penggunaan gem. Sekarang kita akan menginstall rails, tetapi sebelum kita harus menginstall Rake.</p>
+
+<pre><code>gem install rake
+</code></pre>
+
+<p>Setelah selesai kita tinggal menginstall Rails dengan :</p>
+
+<pre><code>gem install rails
+</code></pre>
+
+<p>Selesai menginstall rails seharusnya semua langkah sudah selesai, kita tinggal mengetes apakah Ruby on Rails berjalan dengan baik. Masuk ke folder tempat dimana anda akan menyimpan file website anda nanti ( ex: /home/rudy/ruby ). Kemudian ketik perintah ini :</p>
+
+<pre><code>rails blog -d mysql
+</code></pre>
+
+<p>Dari perintah diatas kita akan membuat folder dengan nama blog dan menggunakan koneksi mysql ( kalau ga pakai -d mysql, secara otomatis ruby akan membuat konfigurasi menggunakan sqllite ).</p>
+
+<p>Masuk ke dalam folder blog tersebut, dan masuk ke dalam folder config dan cari file <strong>database.yml</strong>, kira-kira isinya begini :</p>
+
+<pre><code># MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+# Install the MySQL driver:
+#   gem install mysql
+# On Mac OS X:
+#   sudo gem install mysql -- --with-mysql-dir=/usr/local/mysql
+# On Mac OS X Leopard:
+#   sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+#       This sets the ARCHFLAGS environment variable to your native architecture
+# On Windows:
+#   gem install mysql
+#       Choose the win32 build.
+#       Install MySQL and put its /bin directory on your path.
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+development:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: blog_development
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: blog_test
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+production:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: blog_production
+  pool: 5
+  username: root
+  password: 
+  host: localhost
+</code></pre>
+
+<p>ubah username dan password sesuai dengan settingan mysql anda. Kemudian keluar dari folder config dan jalankan perintah ini :</p>
+
+<pre><code>rake db:create 
+</code></pre>
+
+<p>Jika benar maka database akan otomatis terbuat ( jika ada error message berarti ada package mysql yang belum terinstall dengan benar ). Lalu jalankan perintah ini lagi :</p>
+
+<pre><code>script/generate controller home index 
+</code></pre>
+
+<p>tunggu sampai proses generate selesai ( jika ada yang error, yah anda tau sendiri lah, berarti ada package yang kurang ). Trus jalanin lagi perintah untuk jalanin webservernya :</p>
+
+<pre><code>script/server 
+</code></pre>
+
+<p>Jika benar maka akan ada proses menjalankan web servernya ( jgn diclose terminalnya karena akan membuat web server tersebut mati ). Untuk mengakses aplikasi Ruby on Rails yang baru dibuat, masuk ke web browser anda dan ketik</p>
+
+<pre><code>http://localhost:3000/
+</code></pre>
+
+<p>Selamat, anda telah berhasil menginstall Ruby on Rails dan sekarang tinggal belajar configurasinya aja :D</p>
+]]></content>
+  </entry>
+  
+</feed>

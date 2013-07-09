@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Reviews | blog.rudylee.com]]></title>
+  <link href="http://rudylee.github.io/categories/reviews/atom.xml" rel="self"/>
+  <link href="http://rudylee.github.io/"/>
+  <updated>2013-07-09T22:22:22+10:00</updated>
+  <id>http://rudylee.github.io/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bookmark with Delicious]]></title>
+    <link href="http://rudylee.github.io/2010/07/25/bookmark-with-delicious/"/>
+    <updated>2010-07-25T16:02:20+10:00</updated>
+    <id>http://rudylee.github.io/2010/07/25/bookmark-with-delicious</id>
+    <content type="html"><![CDATA[<p>Have you ever heard about delicious ? no no, it&rsquo;s not foods that are delicious but this <a href="http://www.delicious.com">Delicious</a>.</p>
+
+<p>Delicious is a web application that allows to do the online bookmarking. If you say online that&rsquo;s mean it&rsquo;s not saved in your computer / laptop / server maybe. So if sometime you need to access your bookmark, you don&rsquo;t have to open your computer or digging your old harddisk, just grab your friend&rsquo;s computer, login to your Delicious and open the bookmark.</p>
+
+<p>And what I like is it has the plugin for Firefox. It works just like the normal bookmark in Firefox ( using the same shortcut ctrl+D ) and it will automatically synchronize with the server. With that feature, if you bookmarked a website in your home computer, when you go to the office in the next morning and running Firefox at your office&rsquo;s computer, the Delicious plugin will update all the bookmarks in your office&rsquo;s computer. Surely it will happen vice versa.</p>
+
+<p>The concept itself is simple, but the effect is so great. This online bookmark makes me don&rsquo;t have to worry losing my bookmark in the future.</p>
+
+<p>But just one thing that I think is missing. It doesn&rsquo;t provides you with the capability to grouping the bookmarks. Actually it has, through tagging. But I want something more like a folder, so I can put something that are important to some special folder. But overall the current features already fulfill my needs at the moment. ( I don&rsquo;t know if I have 1000 bookmark ) :D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lithium atau Li3 : PHP 5.3++ Framework]]></title>
+    <link href="http://rudylee.github.io/2009/12/27/lithium-atau-li3-php-53-framework/"/>
+    <updated>2009-12-27T20:22:33+11:00</updated>
+    <id>http://rudylee.github.io/2009/12/27/lithium-atau-li3-php-53-framework</id>
+    <content type="html"><![CDATA[<p>Setelah 3 hari dicekcoki dengan lagu <a href="http://www.boyceavenue.com/">Boyce Avenue</a> yang diputar berulang-ulang di foobar akhirnya gwa jadi ada semangat buat update blog. Sebenarnya pengen nulis tentang Ruby on Rails dan e-TextEditor tapi keknya lebih pengen tulis tentang Lithium dulu deh.</p>
+
+<p>Jadi apakah Lithium itu ? merk baterai ? merk baju ? merk mobil ? merk parfum ? atau merk deterjen ? jelas saja bukan. Lithium yang <del>saya</del> gwa maksud disini adalah salah satu framework PHP yang tersohor sekali seantero jagad raya, sampe presiden SBY aja kalo pidato dicoding dolo pake neh framework. Itu versi lebainya, sebenarnya Lithium atau Li3 ini adalah sebuah framework besutan bekas pentolan ex project manager dan lead developernya CakePHP.</p>
+
+<p>Seperti yang kita ketahui bersama bahwa Garrett J. Woodworth ( gwoo ) dan Nate Abele ( <em>nate</em> ) memutuskan untuk hengkang dari CakePHP kira-kira 2-3 bulan lalu. Banyak desas-desus mengatakan kalau mereka terlibat konflik dengan foundernya CakePHP ( PhpNut ) dimana founder CakePHP ini tidak setuju dengan ide mereka tentang Cake 3.0.</p>
+
+<p>Karena itulah akhirnya mereka minta cerai dan membuat framework sendiri yang basisnya dari Cake 3.0 dan diberi nama <a href="http://li3.rad-dev.org/">Lithium</a>. Mungkin yang menjadi pertanyaan yang muncul di benak kita adalah apakah kehebatan framework baru ini ? kenapa kita harus belajar pake framework ini ? haruskah kita meninggalkan framework lama demi Li3 ? apa yang harus kita katakan kepada anak istri kita ? apakah orang tuaku akan setuju dengan keputusan ini ? aku ini anak siapa ? pacarku lagi dimana ? dan banyak pertanyaan-pertanyaan lainnya&hellip;</p>
+
+<p>Beberapa fitur yang sempet gwa baca-baca dan sepertinya menarik adalah :</p>
+
+<ul>
+<li><p>Li3 menggunakan namespace yang sebenarnya sampai sekarang gwa belum mengerti banyak sih. Tetapi setau gwa namespace adalah fitur baru dari PHP 5.3 yang katanya dapat mempercepat performa dari framework ini.</p></li>
+<li><p>Li3 hanya untuk PHP 5.3++, berbeda dengan CakePHP yang mendukung PHP 4 &amp; 5. Hal inilah yang katanya salah satu pemicu kenapa founder CakePHP tidak menyetujui Cake 3.0</p></li>
+<li><p>Code Covention dimana disebutkan bahwa Lithium adalah framework pertama yang menggunakan Code Convention sehingga nanti kita dapat menggabungkan Lithium dengan framework seperti Symfony, dan Zend Framework</p></li>
+<li><p>Lithium dibangun untuk menjadi framework yang RAD ( rapid application development ) dan Light Weight ( ringan )</p></li>
+</ul>
+
+
+<p>Itulah beberapa fitur yang sempat gwa baca dan tentang Lithium. Untuk sekarang developmentnya baru menginjak versi 0.3, masih terlalu dini untuk membangun sebuah aplikasi dengan menggunakan framework ini tapi melihat dari visi yang ingin dicapai dan pengalaman dari developernya membuat framework ini salah satu framework yang menjanjikan nantinya.</p>
+
+<p>Bayangkan jika nanti kita bekerja sama dengan orang yang menggunakan framework Symfony, karena adanya Code Convention kita dapat dengan mudah menggabungkan library-library dari framework yang berbeda. Berapa banyak waktu yang bisa kita hemat dan tentu saja seberapa bahagianya istri atau pacar kita nanti melihat kerjaan kita cepat kelar, apalagi anak di rumah semakin senang karena ayahnya punya waktu lebih banyak buat main sama dia.</p>
+
+<p>Tapi untuk sekarang gwa sih lebih pengen belajar Ruby on Rails dulu, tar kalo Lithium dah stable baru jajal ini framework. :D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Forrest Gump]]></title>
+    <link href="http://rudylee.github.io/2009/05/10/forrest-gump/"/>
+    <updated>2009-05-10T00:20:44+10:00</updated>
+    <id>http://rudylee.github.io/2009/05/10/forrest-gump</id>
+    <content type="html"><![CDATA[<p>Forrest gump adalah film tahun 1994 dan gwa baru itu setelah selesai menontonnya. Sebuah film yang bagus, menyentuh, well composed, entertaining, pokoknya bagus deh. Yah mungkin semua pada bakal bilang &ldquo;gila, kemane aje loe&hellip; baru nonton sekarang !&rdquo;. Jujur gwa juga ga niat nonton pada awalnya&hellip; Jadi ceritanya gwa lagi nyari-nyari film buat didownload kemarin malam ( di indowebster ) nah ketemu lah ini Forrest Gump. Pertama lihat gwa kira ini film komedi soalnya ada tulisan Tom Hanks dan ada tulisan &lsquo;Forrest&rsquo; nya ( kirain film-film perang yang lucu-lucu gitu ), jadi tanpa pikir panjang di download la ini film.</p>
+
+<p>Selesai download filmnya ini kira-kira jam 11 tadi siang, tapi baru mulai nonton jam 5 sore tadi. Satu hal yang paling gwa suka di film ini adalah pemandangannya. Gila gwa suka banget ama pemandangan dekat rumahnya si &lsquo;Forrest Gump&rsquo; nya ini, selain itu juga pemandangan-pemandangan kota, pas dia lagi lari, dan banyak lagi. Selain itu lagu-lagunya juga bagus, menyentuh dan pas dengan momen-momennya.</p>
+
+<p>Sebenarnya film ini dikategorikan sebagai film drama komedi, tapi komposisi komedinya dapat dikatakan tidak sebanyak unsur dramanya. Tapi walaupun begitu film ini tetep sangat menghibur dan di sisi lain dapat membuat terharu ( apalagi sambil nonton ditemani suasana hening malam ). Alur ceritanya walaupun sedikit mudah ditebak tapi ternyata tebakan-tebakan gwa bisa meleset juga ( emang ga ahli mungkin ).</p>
+
+<p>Dari sisi cerita sih, sebenarnya bisa dikatakan &lsquo;too good to be true&rsquo; tapi sebenarnya intinya bukan disitunya sih tapi lebih ke makna dari masing-masing kejadian yang ada di film ini. Yah gwa mungkin ga bakalan sharing apa sebenarnya yang gwa dapat dari film ini, jadi gwa sharing beberapa memorable quote nya aja deh :</p>
+
+<ul>
+<li><p>My momma always said, &ldquo;Life was like a box of chocolates. You never know what you&rsquo;re gonna get.&rdquo;</p></li>
+<li><p>When I got tired, I slept. When I got hungry, I ate. When I had to go, you know, I went.</p></li>
+<li><p>My Mama always said you&rsquo;ve got to put the past behind you before you can move on.</p></li>
+<li><p>My momma always said you can tell a lot about a person by their shoes, where the go, where they&rsquo;ve been. I&rsquo;ve worn lots of shoes, I bet if I think about it real hard I can remember my first pair of shoes.</p></li>
+</ul>
+
+
+<p>Percakapan yang lucu di film ini</p>
+
+<p>Drill Sergeant: Gump! What&rsquo;s your sole purpose in this army?
+Forrest Gump: To do whatever you tell me, drill sergeant!
+Drill Sergeant: God damn it, Gump! You&rsquo;re a god damn genius! This is the most outstanding answer I have ever heard. You must have a goddamn I.Q. of 160. You are goddamn gifted, Private Gump. Listen up, people&hellip;
+Forrest Gump: [narrates] Now for some reason I fit in the army like one of them round pegs. It&rsquo;s not really hard. You just make your bed real neat and remember to stand up straight and always answer every question with &ldquo;Yes, drill sergeant.&rdquo;
+Drill Sergeant: &hellip;Is that clear?
+Forrest Gump: Yes, drill sergeant!</p>
+
+<p>Forrest Gump: DONE, DRILL SERGEANT!
+Drill Sergeant: GUUUUUUMP! Why did you put that weapon together so quickly, Gump?
+Forrest Gump: [confused] You told me to, Drill Sergeant?
+Drill Sergeant: Jesus H. Christ!
+[looks at stopwatch]
+Drill Sergeant: This is a new company record! If it wouldn&rsquo;t be such a waste of a damn-fine enlisted man I&rsquo;d recommend you for OCS! You are gonna be a general someday, Gump, now disassemble your weapon and continue!</p>
+
+<p>Sebenarnya lebih banyak lagi si quote2 yang bagus, bisa search sendiri di google atau nonton sendiri filmnya. Overall sih filmnya almost perfect menurut gwa, sisi cerita menyentuh dan inspiring banget. Tapi beberapa hal yang mengurangi suasananya adalah ketika adegan-adegan &lsquo;sex&rsquo; or something like that la. Karena adegan-adegan tersebut sangat mengganggu &lsquo;mood&rsquo; soalnya pas lagi moodnya pas, pas lihat begituan malah moodnya jadi beda deh wakakakaka&hellip;</p>
+
+<p>Trus pas adegan dia bertemu kembali dengan Jenny, hmm menurut gwa adegannya kurang menggigit, terlalu flat, biasa&hellip; sedikit mengecewakan&hellip; endingnya juga ga bisa dibilang happy ending amat sih, soalnya Jennynya mati sih hix&hellip; Bagian-bagian yang gwa suka itu pas dia berhasil membuat Letnan Dan nya sadar dan kembali ke jalan yang benar, dan akhirnya sukses ( ini yang gwa bilang &lsquo;too good to be true&rsquo; but it&rsquo;s still possible to be true ), selain itu pas Letnan Dan nya datang ke pernikahan dia dan Jenny seakan-akan menggiring penonton untuk melihat happy ending&hellip;</p>
+
+<p>Tapi keseluruhan film ini bagus, walaupun termasuk film lama ternyata tetep bagus dinonton sekarang ( sudah 15 tahun yang lalu ). Selama 2 jam film ini gwa ikut terhanyut dalam ceritanya, sampai pas habis pun gwa ga sadar kalau ternyata sudah habis ( pengen lagi hix, besok berburu film drama lagi dah ).</p>
+
+<p>Abis nonton ini jadi pengen duduk di tepi danau di alabama sambil baca ini novel Forrest Gump di sore hari yang indah, atau duduk di atas pohon memandang bintang di langit dengan kekasih di sebelah menemani ( wah suatu saat dah )</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu 9.04 Jaunty Jackalope]]></title>
+    <link href="http://rudylee.github.io/2009/04/28/ubuntu-904-jaunty-jackalope/"/>
+    <updated>2009-04-28T04:23:43+10:00</updated>
+    <id>http://rudylee.github.io/2009/04/28/ubuntu-904-jaunty-jackalope</id>
+    <content type="html"><![CDATA[<p>Hmmm sebenarnya hari ini lagi malas nulis-nulis sesuatu&hellip; Badan ini rasanya malas banget, pikiran lagi ruwet banget&hellip; seperti ada yang muter-muter di dalam kepala, mungkin gwa lagi ngidam kali ya ( halah ! )</p>
+
+<p>Yah intinya hari ini rasanya madesu (masa depan suram) sekali&hellip; mungkin kata populernya lagi melan mungkin ya&hellip; Pokoknya hari ini bawaannya malas banget dan merasa gimana gitu&hellip; yah mungkin besok lebih baik lagi deh rasanya&hellip;</p>
+
+<p>Nah makanya untuk menghilangkan rasa madesu ini, iseng-iseng pengen review sedikit tentang linux versi terbaru ( tadi sih sempat mikir lebih baik main dota daripada review ubuntu 9.04). Tapi ternyata Tuhan masih beritikat baik untuk mengembalikan gwa ke jalan yang benar&hellip;.</p>
+
+<p>Ya sudah, daripada ntar malah jadi ajang curhat lebih baik gwa mulai reviewnya&hellip; Jadi sekarang gwa bakal review tentang ubuntu 9.04 ( FYI gwa sudah makai ubuntu itu sejak ubuntu versi 8.04 ) jadi sebenarnya gwa blum punya kapabilitas buat nulis review tentang ubuntu sih&hellip; ( tapi daripada gwa melan2 ga jelas bagusan gwa nulis sesuatu yang berguna&hellip; hohoho jadi curhat lagi zzzz )</p>
+
+<p>Jadi perjalanan gwa untuk mencoba Ubuntu 9.04 ini dimulai dengan nongkrongin channel #ubuntu-release di server irc.freenode.net pada tanggal 24 April kemarin&hellip; Ternyata pada saat gwa masuk ( sekitar jam 11 siang WIB ) channel itu sudah dipenuhi oleh kurang lebih 300 orang ( tapi yang berisik tanya2 kapan keluarnya sih paling cuman 20 orang )&hellip; Jadi banyak insiden yang terjadi di channel #ubuntu-release&hellip; dimulai dari ribut-ribut sama bot IRC&hellip; ribut sama OP di channel&hellip; sampai ada yang posting-posting link downloadnya ( padahal di websitenya blum ada linknya ) tapi pas gwa coba itu link bisa jalan&hellip; tapi malas sih download dari international ( bagusan dari server lokal yaitu dari kambing UI )</p>
+
+<p>Setelah menunggu berjam-jam akhirnya ubuntu 9.04 resmi keluar sekitar jam 6 sore WIB tanggal 24 april&hellip; Tapi tetep aja gwa ga download saat itu juga ( maklum internet kos2an cuma 20kb/s )&hellip; Jadi gwa cuma nunggu selama lebih dari 5 jam cuma buat melihat para bule2 di channel #ubuntu-release ngomong &ldquo;I am proud to give you Ubuntu 9.04&rdquo; bener2 wasting time bener ( tapi menarik sih, lucu2 gimana gitu&hellip; hohoho makin malam makin ga jelas&hellip; ya udah BTT )..</p>
+
+<p>Intinya gwa mendownload Ubuntu 9.04 itu malamnya dari server UI ( kambing.ui.edu ) server lokal bro&hellip; kira-kira jam 8an gitu&hellip; pertama-tama sempet ragu jangan2 yang gwa download itu RC version&hellip; alias release candidate yang masih banyak bug&hellip; tapi pas dicek-cek lagi ternyata bener&hellip; jadi mulai dah download dari server lokal ( kalo lokal dapat 40kb/s ) lumayan la&hellip;</p>
+
+<p>Trus tinggal tidur&hellip; besok baru mulai deh install Ubuntu 9.04&hellip; dimulai dari burn ISO ke dalam CD&hellip; trus restart PC&hellip; trus ganti Boot Sequence&hellip; masukin cd&hellip; trus install deh&hellip;</p>
+
+<p>Sedikit banyak menu install Ubuntu 9.04 ini tidak berubah dari Ubuntu 8.04 tapi dalam langkah-langkah penginstallan banyak yang berubah.. mulai dari interface pemilihan zona waktu dan pemilihan jenis keyboard&hellip; Intinya design yang sekarang lebih yahud dah dari yang sebelumnya&hellip;</p>
+
+<p>Setelah next-next dan yes yes ( install linux sekarang tinggal next-next dan yes yes ) akhirnya berhasil install ubuntu 9.04 di komputer&hellip; mulai deh restart komputer&hellip; pas pertama restart komputer ternyata muncul error message soal GRUB error ( Grub itu buat atur dual booting di linux )&hellip;</p>
+
+<p>Ternyata problemnya karena gwa install ubuntunya di hard disk kedua dan dia install Grub itu di hard disk pertama&hellip; jadi gwa musti ganti boot sequence ke hard disk yang pertama&hellip; trus jalan deh&hellip; Abis itu muncul deh loading screen ubuntu 9.04 yang baru ( keren cuy yang baru&hellip; ga sih biasa aja :P )</p>
+
+<p>Beberapa hal yang berubah jadi keren di ubuntu 9.04 adalah :</p>
+
+<ul>
+<li><p>Loading Screen</p></li>
+<li><p>Login Screen</p></li>
+<li><p>Fitur pidginnya mirip yahoo messenger di Mac, bisa muncul online message di kiri atas layar ( keren deh pokoknya windows punya lewat..</p></li>
+</ul>
+
+
+<p>Yah beberapa yang keren sih itu aja secara dari segi interface mirip2 dengan Ubuntu 8.04&hellip; neh gwa kasih screenshot&hellip; itu fitur yang gwa bilang keren&hellip; liat kanan atas gambar&hellip;</p>
+
+<p><a href="http://blog.rudylee.com/content/Pidgin.png"><img src="http://blog.rudylee.com/content/Pidgin.png" alt="Pidgin" /></a></p>
+
+<p>Hohoho jadi bagi para jawara2 windows yang pengen coba-coba ubuntu silakan saja&hellip; menurut gwa ubuntu adalah linux yang paling user friendly sekarang dan paling ringan ( dibanding install suse 4 dvd ) wakakakaka atau pakai slackware&hellip; beh bisa botak&hellip;</p>
+
+<p>Hidup open source !~~! 5 star buat ubuntu deh ( hohoho semua review gwa kasih 5 star, ga pernah kurang ) + brb utak atik ubuntu lagi&hellip;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Review CakePHP]]></title>
+    <link href="http://rudylee.github.io/2009/04/18/review-cakephp/"/>
+    <updated>2009-04-18T23:37:28+10:00</updated>
+    <id>http://rudylee.github.io/2009/04/18/review-cakephp</id>
+    <content type="html"><![CDATA[<p>Setelah sekian lama ga update blog, akhirnya update blog lagi deh&hellip; Untuk kali ini ga bakalan cerita-cerita yang aneh-aneh ataupun yang lucu-lucu&hellip; soalnya emang lagi ga ada kejadian yang benar-benar &ldquo;klik&rdquo; yang bisa diceritakan ( beberapa hari ini semua terasa semu hix ).</p>
+
+<p>Jadi kali ini gwa akan melakukan review terhadap framework PHP yang sudah gwa pelajari kurang lebih 5 bulan lamanya yaitu CakePHP. Selama 5 bulan ini gwa lewati dengan mempelajari CakePHP, dari baca ebook, nonton video tutorial sampai tanya-tanya sama orang-orang di channel #cakephp di irc.freenode.net.</p>
+
+<p>Dalam waktu 5 bulan ini sudah banyak yang gwa pelajari dari CakePHP, tapi tetep masih lebih banyak lagi yang harus dipelajari dari CakePHP&hellip; Jadi intinya gwa bakal sharing apa yang sudah gwa dapatkan setelah lebih kurang 5 bulan mempelajari CakePHP ( FYI, gwa belom pernah pakai framework lain selain CakePHP ).</p>
+
+<p>Salah satu hal yang gwa dapatkan dari mempelajari CakePHP adalah mengerti arsitektur MVC ( Model View Controller ). Untuk yang pengen tahu lebih banyak tentang MVC dapat dibaca di <a href="http://en.wikipedia.org/wiki/Model-view-controller">http://en.wikipedia.org/wiki/Model-view-controller</a>.</p>
+
+<p>Tapi gwa coba rangkum beberapa hal yang gwa mengerti tentang MVC, dalam pemprograman MVC seluruh program dibagi menjadi 3 bagian utama yaitu Model ( berhubungan dengan database ), Controller ( berhubungan dengan logic ), View ( berhubungan dengan tampilan program).  Jadi jika pada pemprograman procedural atau pemprograman barbar kita bagi dalam function-function, maka pada MVC kita harus membaginya menjadi 3 bagian besar.</p>
+
+<p>Jika kita ingin melakukan query,validasi, edit data kita masukkan ke dalam Model. Kalau kita ingin mengatur aliran data maka kita memasukkannya ke dalam Controller, dan yang terakhir kali jika kita ingin mengatur tampilan dari program kita ( designnya ) maka kita atur di View. 3 hal tersebut saling berhubungan dan mempunyai peran masing-masing.</p>
+
+<p>Selain MVC tentu saja gwa banyak mempelajari penggunaan dari CakePHP itu sendiri. Penggunaan Helper-helper seperti AJAX, Session, Javascript, dan HTML. Jadi CakePHP secara default sudah menyediakan beberapa helper. Helper itu sendiri adalah sebuah class yang dapat digunakan untuk membantu kita dalam membuat aplikasi sesuai dengan helper yang kita gunakan. Jadi jika kita ingin membuat sebuah website yang menggunakan AJAX, kita dapat menggunakan AJAX helper yang dapat meringankan tugas kita dalam membuat aplikasi AJAX itu. Sama halnya jika kita ingin membuat session maka kita dapat menggunakan session helper untuk membantu kita mengatur session di CakePHP.</p>
+
+<p>Selain helper dikenal juga istilah element di dalam CakePHP. Element disini bukan berarti elemen air, elemen api, elemen tanah. Element di dalam CakePHP itu lebih dapat diartikan sebagai view yang reuseable. Jadi misalnya kita mempunyai sebuah form dan kita ingin membuat form tersebut di 2 view yang berbeda maka kita dapat menggunakan element. Jadi kita tidak perlu membuat ulang kembali form tersebut di 2 view yang berbeda, cukup buat sebuah element dan panggil element tersebut di 2 view itu.</p>
+
+<p>[caption id=&ldquo;&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;550&rdquo; caption=&ldquo;Paging dengan element&rdquo;]<img src="http://blog.rudylee.com/content/paging.jpg" alt="Paging dengan element" />[/caption]</p>
+
+<p>Dan satu hal lagi yang harus diperhatikan dalam merancang sebuah aplikasi dengan menggunakan konsep MVC adalah Model sebaiknya lebih memiliki banyak method dibandingkan controller. Hal itu dikarenakan konsep dari OOP itu sendiri yaitu &lsquo;reuseable&rsquo;.</p>
+
+<p>Jadi gwa bisa menyimpulkan selama 5 bulan apa saja keuntungan yang didapatkan dari mempelajari CakePHP</p>
+
+<ul>
+<li><p>Mengerti konsep MVC.</p></li>
+<li><p>Waktu untuk mendevelop program menjadi lebih cepat.</p></li>
+<li><p>Source code menjadi lebih terstruktur.</p></li>
+<li><p>Kemampuan berbahasa inggris meningkat ( banyak baca cookbook + tanya2 pakai bahasa inggris wakaka.</p></li>
+</ul>
+
+
+<p>Walaupun gwa tidak menampik adanya kerugian-kerugian yang didapatkan dari mempelajari CakePHP, ini beberapa kerugian tersebut :</p>
+
+<ul>
+<li><p>Harus belajar kembali karena dengan menggunakan framework tentu saja kita harus mempelajari API yang sudah tersedia.</p></li>
+<li><p>Aplikasi jadi lebih lemot.</p></li>
+<li><p>Jadi makin malas karena sudah dimanjakan dengan fitur-fitur walaupun tidak semalas  karena menggunakan CMS</p></li>
+<li><p>Makin lupa syntax2 PHP yang dasar karena keseringan menggunakan syntax CakePHP</p></li>
+</ul>
+
+
+<p>Tapi walaupun begitu semua kekurangan itu tertutupi oleh kelebihan-kelebihan yang didapatkan dari mempelajari CakePHP tersebut. Yah jelas, kalau banyak ruginya napaen gwa capek-capek belajar framework. Mungkin ada yang beranggapan kalau menggunakan framework itu sendiri dapat memperbodoh diri sendiri, dan gwa pun tidak menampik hal tersebut.</p>
+
+<p>Tapi gwa menganalogikan mempelajari framework ini seperti sedang memasak mie goreng. Bedanya jika kita menggunakan framework maka kita menggunakan mie yang sudah dijual di pasaran tanpa kita tahu cara membuat mie tersebut. Sementara orang yang tidak menggunakan framework adalah orang yang membuat mienya sendiri.</p>
+
+<p>Pertanyaannya adalah apakah mie goreng yang dibuat dengan mie jualan di pasar pasti lebih enak daripada mie yang dibuat sendiri ? bagaimana sebaliknya ? tentu saja jawabnya tergantung dari banyak faktor ( bisa kualitas mie, bisa kemampuan orang yang memasak ).</p>
+
+<p>Sama halnya dalam menggunakan framework, seberapa bagusnya aplikasi kita bukan saja ditentukan dari framework apa yang kita gunakan, bukan juga ditentukan dari apakah kita menggunakan framework atau tidak. Tetapi juga ditentukan dari kemampuan orang tersebut, karena di mata client tetap saja yang dilihat itu adalah hasil jadinya, bukan codingannya ( kebanyakan client kan ga ngerti2 banget :P ). Jadi client mana mo tau itu mie hasil buat sendiri ato hasil beli di pasar, yang mereka tahu cuma &ldquo;mie ini enak&rdquo;, &ldquo;mie ini ga enak&rdquo;. Udah itu aja, simple sekali kan ?</p>
+
+<p>Yah sebenarnya kalau mau didebatkan lagi sebenarnya banyak yang bisa didebatkan tapi intinya sekarang gwa malas nulis panjang-panjang dan juga tentu saja gwa mendukung semua orang untuk mempelajari framework. Kenapa ? karena sekarang persaingan sudah semakin ketat, kita sekarang membuat aplikasi semakin mudah dan semakin cepat. Ibarat kata pepatah &ldquo;Siapa cepat dia dapat&rdquo;. Sekarang itu ada di tangan anda, apakah anda ingin memakai mie yang dijual atau buat mie sendiri :P hohoho yang penting untuk sekarang 5 star buat CakePHP deh :)</p>
+]]></content>
+  </entry>
+  
+</feed>
