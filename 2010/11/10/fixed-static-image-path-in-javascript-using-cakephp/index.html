@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Fixed static image path in Javascript using CakePHP - blog.rudylee.com</title>
-  <meta name="author" content="Rudy Lee">
+  <title>Fixed static image path in Javascript using CakePHP - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="Today I was encountered a problem within the static path for images in my Javascript file. So this was a design that given by my friend Budi, and he &hellip;">
+  <meta name="description" content="Fixed Static Image Path in Javascript Using CakePHP Nov 10th, 2010 Today I was encountered a problem within the static path for images in my &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,14 +18,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rudylee.github.io/2010/11/10/fixed-static-image-path-in-javascript-using-cakephp/">
+  <link rel="canonical" href="http://rudylee.github.io/2010/11/10/fixed-static-image-path-in-javascript-using-cakephp">
   <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="blog.rudylee.com" type="application/atom+xml">
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -35,53 +39,42 @@
 </head>
 
 <body   >
-  <header role="banner"><hgroup>
-  <div id="logo">
-  	<div id="logoLeft">{</div>
-  	<div id="logoText">mob</div>
-  	<div id="logoRight">}</div>
-  	<div class="clear"></div>
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
   </div>
-  <h1><a href="/">blog.rudylee.com</a></h1>
-  
-    <h2>keep it humble</h2>
-  
-  <div class="clear"></div>
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:rudylee.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
 <article class="hentry" role="article">
   
+
   <header>
-    
-      
-        <h1 class="entry-title">Fixed Static Image Path in Javascript Using CakePHP</h1>
-      
-    
-    
-      <p class="meta">
-        
+  <div class="jumbotron">
+    Fixed Static Image Path in Javascript Using CakePHP
+	<h5>
 
 
 
@@ -93,460 +86,698 @@
   
 
 
-<time datetime="2010-11-10T18:58:34+11:00" pubdate data-updated="true">Nov 10<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
+<i class="icon-calendar-empty"></i> <time datetime="2010-11-10T18:58:34+11:00" pubdate data-updated="true">Nov 10<span>th</span>, 2010</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>Today I was encountered a problem within the static path for images in my Javascript file. So this was a design that given by my friend Budi, and he using a Jquery slider plugin in his design. Here are the original Javascript file that he gave me :</p>
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// set up horizontal scroll</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">setupFeaturedBoxes</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">buttons</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">previous</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">enabled</span><span class="o">:</span> <span class="s1">&#39;/img/arrow1-left.gif&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">hover</span><span class="o">:</span> <span class="s1">&#39;/img/arrow1-left.gif&#39;</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nx">next</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">enabled</span><span class="o">:</span> <span class="s1">&#39;/img/arrow1-right.gif&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">hover</span><span class="o">:</span> <span class="s1">&#39;/img/arrow1-right.gif&#39;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredContentWidth</span> <span class="o">=</span> <span class="mi">121</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredContentScrollPrefs</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">speed</span><span class="o">:</span> <span class="mi">800</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">axis</span><span class="o">:</span> <span class="s1">&#39;x&#39;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;.featuredBox&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredBox</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">featuredBox</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.scrollArrow&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;.next&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">hover</span><span class="p">(</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">next</span><span class="p">.</span><span class="nx">hover</span> <span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;pointer&#39;</span> <span class="p">);</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">next</span><span class="p">.</span><span class="nx">enabled</span> <span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span> <span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">)</span>
+</span><span class='line'><span class="p">.</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">featuredBox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.featuredContent&#39;</span><span class="p">).</span><span class="nx">scrollTo</span><span class="p">(</span>
+</span><span class='line'>  <span class="s1">&#39;+=&#39;</span> <span class="o">+</span> <span class="nx">featuredContentWidth</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">featuredContentScrollPrefs</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+</span><span class='line'><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;.prev&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">.</span><span class="nx">hover</span><span class="p">(</span>
+</span><span class='line'><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">previous</span><span class="p">.</span><span class="nx">hover</span> <span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;pointer&#39;</span> <span class="p">);</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">previous</span><span class="p">.</span><span class="nx">enabled</span> <span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span> <span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'><span class="p">.</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="nx">featuredBox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.featuredContent&#39;</span><span class="p">).</span><span class="nx">scrollTo</span><span class="p">(</span>
+</span><span class='line'>  <span class="s1">&#39;-=&#39;</span> <span class="o">+</span> <span class="nx">featuredContentWidth</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">featuredContentScrollPrefs</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;.featuredBox .featuredContent .featuredDisplayDiv&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="p">(</span> <span class="nx">featuredContentWidth</span> <span class="o">*</span> <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;ul li&#39;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span> <span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">setupFeaturedBoxes2</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">buttons</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'><span class="nx">previous</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">enabled</span><span class="o">:</span> <span class="s1">&#39;/img/arrow2-left.gif&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">hover</span><span class="o">:</span> <span class="s1">&#39;/img/arrow2-left.gif&#39;</span>
+</span><span class='line'><span class="p">},</span>
+</span><span class='line'><span class="nx">next</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">enabled</span><span class="o">:</span> <span class="s1">&#39;/img/arrow2-right.gif&#39;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">hover</span><span class="o">:</span> <span class="s1">&#39;/img/arrow2-right.gif&#39;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredContentWidth2</span> <span class="o">=</span> <span class="mi">172</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredContentScrollPrefs</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">speed</span><span class="o">:</span> <span class="mi">800</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">axis</span><span class="o">:</span> <span class="s1">&#39;x&#39;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;.featuredBox2&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredBox</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">featuredBox</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.scrollArrow&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;.next&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">hover</span><span class="p">(</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">next</span><span class="p">.</span><span class="nx">hover</span> <span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;pointer&#39;</span> <span class="p">);</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">next</span><span class="p">.</span><span class="nx">enabled</span> <span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span> <span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">featuredBox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.featuredContent2&#39;</span><span class="p">).</span><span class="nx">scrollTo</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;+=&#39;</span> <span class="o">+</span> <span class="nx">featuredContentWidth2</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">featuredContentScrollPrefs</span>
+</span><span class='line'>  <span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">})</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;.prev&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">hover</span><span class="p">(</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">previous</span><span class="p">.</span><span class="nx">hover</span> <span class="p">)</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;pointer&#39;</span> <span class="p">);</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">previous</span><span class="p">.</span><span class="nx">enabled</span> <span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span> <span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">featuredBox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.featuredContent2&#39;</span><span class="p">).</span><span class="nx">scrollTo</span><span class="p">(</span>
+</span><span class='line'>      <span class="s1">&#39;-=&#39;</span> <span class="o">+</span> <span class="nx">featuredContentWidth2</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">featuredContentScrollPrefs</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;.featuredBox2 .featuredContent2 .featuredDisplayDiv2&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="p">(</span> <span class="nx">featuredContentWidth2</span> <span class="o">*</span> <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;ul li&#39;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span> <span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="c1">// set up horizontal scroll</span>
+</span><span class='line'>  <span class="nx">setupFeaturedBoxes</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">setupFeaturedBoxes2</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="entry-content"><p>Today I was encountered a problem within the static path for images in my Javascript file. So this was a design that given by my friend Budi, and he using a Jquery slider plugin in his design. Here are the original Javascript file that he gave me :</p>
-
-<!-- more -->
-
-
-<pre><code>// set up horizontal scroll
-var setupFeaturedBoxes = function () {
-    var buttons = {
-        previous: {
-            enabled: '/img/arrow1-left.gif',
-            hover: '/img/arrow1-left.gif'
-        },
-        next: {
-            enabled: '/img/arrow1-right.gif',
-            hover: '/img/arrow1-right.gif'
-        }
-    };
-    var featuredContentWidth = 121;
-    var featuredContentScrollPrefs = {
-        speed: 800,
-        axis: 'x'
-    };
-    jQuery('.featuredBox').each( function (i) {
-        var featuredBox = jQuery(this);
-        featuredBox
-            .find('.scrollArrow')
-                .filter('.next')
-                    .hover(
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.next.hover )
-                                .css( 'cursor', 'pointer' )
-                            ;
-                        },
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.next.enabled )
-                                .css( 'cursor', 'default' )
-                            ;
-                        }
-                    )
-                    .click( function() {
-                        featuredBox.find('.featuredContent').scrollTo(
-                            '+=' + featuredContentWidth + 'px',
-                            featuredContentScrollPrefs
-                        );
-                        return false;
-                    })
-                .end()
-                .filter('.prev')
-                    .hover(
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.previous.hover )
-                                .css( 'cursor', 'pointer' )
-                            ;
-                        },
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.previous.enabled )
-                                .css( 'cursor', 'default' )
-                            ;
-                        }
-                    )
-                    .click( function() {
-                        featuredBox.find('.featuredContent').scrollTo(
-                            '-=' + featuredContentWidth + 'px',
-                            featuredContentScrollPrefs
-                        );
-                        return false;
-                    })
-        ;
-    });
-    jQuery('.featuredBox .featuredContent .featuredDisplayDiv').each( function (i) {
-        jQuery(this).css( 'width', ( featuredContentWidth * jQuery(this).find('ul li').size() ) + 'px' );
-    });
-};
-
-var setupFeaturedBoxes2 = function () {
-    var buttons = {
-        previous: {
-            enabled: '/img/arrow2-left.gif',
-            hover: '/img/arrow2-left.gif'
-        },
-        next: {
-            enabled: '/img/arrow2-right.gif',
-            hover: '/img/arrow2-right.gif'
-        }
-    };
-    var featuredContentWidth2 = 172;
-    var featuredContentScrollPrefs = {
-        speed: 800,
-        axis: 'x'
-    };
-    jQuery('.featuredBox2').each( function (i) {
-        var featuredBox = jQuery(this);
-        featuredBox
-            .find('.scrollArrow')
-                .filter('.next')
-                    .hover(
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.next.hover )
-                                .css( 'cursor', 'pointer' )
-                            ;
-                        },
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.next.enabled )
-                                .css( 'cursor', 'default' )
-                            ;
-                        }
-                    )
-                    .click( function() {
-                        featuredBox.find('.featuredContent2').scrollTo(
-                            '+=' + featuredContentWidth2 + 'px',
-                            featuredContentScrollPrefs
-                        );
-                        return false;
-                    })
-                .end()
-                .filter('.prev')
-                    .hover(
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.previous.hover )
-                                .css( 'cursor', 'pointer' )
-                            ;
-                        },
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.previous.enabled )
-                                .css( 'cursor', 'default' )
-                            ;
-                        }
-                    )
-                    .click( function() {
-                        featuredBox.find('.featuredContent2').scrollTo(
-                            '-=' + featuredContentWidth2 + 'px',
-                            featuredContentScrollPrefs
-                        );
-                        return false;
-                    })
-        ;
-    });
-    jQuery('.featuredBox2 .featuredContent2 .featuredDisplayDiv2').each( function (i) {
-        jQuery(this).css( 'width', ( featuredContentWidth2 * jQuery(this).find('ul li').size() ) + 'px' );
-    });
-};
-
-
-jQuery(document).ready(function(){
-
-
-// set up horizontal scroll
-    setupFeaturedBoxes();
-    setupFeaturedBoxes2();
-
-});
-</code></pre>
 
 <p>As you can see at the line 5 there is an image path in which needed by the slider to load the image. Actually I can easily using the absolute path but if change the environment or the path then the image will be broken. So here come the Router class of CakePHP to the rescue.</p>
 
 <p>The idea is to change the Javascript file to PHP file and change the path to use the Router class. Here is the sample of my PHP file :</p>
 
-<pre><code>&lt;script type="text/javascript" language="JavaScript"&gt;
-var setupFeaturedBoxes = function () {
-    var buttons = {
-        previous: {
-            enabled: &lt;?php Router::url('/img/arrow1-left.gif')?&gt;,
-            hover: &lt;?php Router::url('/img/arrow1-left.gif')?&gt;
-        },
-        next: {
-            enabled: &lt;?php Router::url('/img/arrow1-right.gif')?&gt;,
-            hover: &lt;?php Router::url('/img/arrow1-right.gif')?&gt;
-        }
-    };
-    var featuredContentWidth = 121;
-    var featuredContentScrollPrefs = {
-        speed: 800,
-        axis: 'x'
-    };
-    jQuery('.featuredBox').each( function (i) {
-        var featuredBox = jQuery(this);
-        featuredBox
-            .find('.scrollArrow')
-                .filter('.next')
-                    .hover(
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.next.hover )
-                                .css( 'cursor', 'pointer' )
-                            ;
-                        },
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.next.enabled )
-                                .css( 'cursor', 'default' )
-                            ;
-                        }
-                    )
-                    .click( function() {
-                        featuredBox.find('.featuredContent').scrollTo(
-                            '+=' + featuredContentWidth + 'px',
-                            featuredContentScrollPrefs
-                        );
-                        return false;
-                    })
-                .end()
-                .filter('.prev')
-                    .hover(
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.previous.hover )
-                                .css( 'cursor', 'pointer' )
-                            ;
-                        },
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.previous.enabled )
-                                .css( 'cursor', 'default' )
-                            ;
-                        }
-                    )
-                    .click( function() {
-                        featuredBox.find('.featuredContent').scrollTo(
-                            '-=' + featuredContentWidth + 'px',
-                            featuredContentScrollPrefs
-                        );
-                        return false;
-                    })
-        ;
-    });
-    jQuery('.featuredBox .featuredContent .featuredDisplayDiv').each( function (i) {
-        jQuery(this).css( 'width', ( featuredContentWidth * jQuery(this).find('ul li').size() ) + 'px' );
-    });
-};
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span> <span class="nx">language</span><span class="o">=</span><span class="s2">&quot;JavaScript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">setupFeaturedBoxes</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">buttons</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">previous</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">enabled</span><span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">Router</span><span class="o">::</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;/img/arrow1-left.gif&#39;</span><span class="p">)</span><span class="o">?&gt;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">hover</span><span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">Router</span><span class="o">::</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;/img/arrow1-left.gif&#39;</span><span class="p">)</span><span class="o">?&gt;</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">next</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">enabled</span><span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">Router</span><span class="o">::</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;/img/arrow1-right.gif&#39;</span><span class="p">)</span><span class="o">?&gt;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">hover</span><span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">Router</span><span class="o">::</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;/img/arrow1-right.gif&#39;</span><span class="p">)</span><span class="o">?&gt;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredContentWidth</span> <span class="o">=</span> <span class="mi">121</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredContentScrollPrefs</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">speed</span><span class="o">:</span> <span class="mi">800</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">axis</span><span class="o">:</span> <span class="s1">&#39;x&#39;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;.featuredBox&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">featuredBox</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">featuredBox</span>
+</span><span class='line'>          <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.scrollArrow&#39;</span><span class="p">)</span>
+</span><span class='line'>              <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;.next&#39;</span><span class="p">)</span>
+</span><span class='line'>                  <span class="p">.</span><span class="nx">hover</span><span class="p">(</span>
+</span><span class='line'>                      <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">next</span><span class="p">.</span><span class="nx">hover</span> <span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;pointer&#39;</span> <span class="p">)</span>
+</span><span class='line'>                          <span class="p">;</span>
+</span><span class='line'>                      <span class="p">},</span>
+</span><span class='line'>                      <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">next</span><span class="p">.</span><span class="nx">enabled</span> <span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span> <span class="p">)</span>
+</span><span class='line'>                          <span class="p">;</span>
+</span><span class='line'>                      <span class="p">}</span>
+</span><span class='line'>                  <span class="p">)</span>
+</span><span class='line'>                  <span class="p">.</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                      <span class="nx">featuredBox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.featuredContent&#39;</span><span class="p">).</span><span class="nx">scrollTo</span><span class="p">(</span>
+</span><span class='line'>                          <span class="s1">&#39;+=&#39;</span> <span class="o">+</span> <span class="nx">featuredContentWidth</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span>
+</span><span class='line'>                          <span class="nx">featuredContentScrollPrefs</span>
+</span><span class='line'>                      <span class="p">);</span>
+</span><span class='line'>                      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>                  <span class="p">})</span>
+</span><span class='line'>              <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+</span><span class='line'>              <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;.prev&#39;</span><span class="p">)</span>
+</span><span class='line'>                  <span class="p">.</span><span class="nx">hover</span><span class="p">(</span>
+</span><span class='line'>                      <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">previous</span><span class="p">.</span><span class="nx">hover</span> <span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;pointer&#39;</span> <span class="p">)</span>
+</span><span class='line'>                          <span class="p">;</span>
+</span><span class='line'>                      <span class="p">},</span>
+</span><span class='line'>                      <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">previous</span><span class="p">.</span><span class="nx">enabled</span> <span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span> <span class="p">)</span>
+</span><span class='line'>                          <span class="p">;</span>
+</span><span class='line'>                      <span class="p">}</span>
+</span><span class='line'>                  <span class="p">)</span>
+</span><span class='line'>                  <span class="p">.</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                      <span class="nx">featuredBox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.featuredContent&#39;</span><span class="p">).</span><span class="nx">scrollTo</span><span class="p">(</span>
+</span><span class='line'>                          <span class="s1">&#39;-=&#39;</span> <span class="o">+</span> <span class="nx">featuredContentWidth</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span>
+</span><span class='line'>                          <span class="nx">featuredContentScrollPrefs</span>
+</span><span class='line'>                      <span class="p">);</span>
+</span><span class='line'>                      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>                  <span class="p">})</span>
+</span><span class='line'>      <span class="p">;</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;.featuredBox .featuredContent .featuredDisplayDiv&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="p">(</span> <span class="nx">featuredContentWidth</span> <span class="o">*</span> <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;ul li&#39;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span> <span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">setupFeaturedBoxes2</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">buttons</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">previous</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">enabled</span><span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">Router</span><span class="o">::</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;/img/arrow2-left.gif&#39;</span><span class="p">)</span><span class="o">?&gt;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">hover</span><span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">Router</span><span class="o">::</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;/img/arrow2-left.gif&#39;</span><span class="p">)</span><span class="o">?&gt;</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">next</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">enabled</span><span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">Router</span><span class="o">::</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;/img/arrow2-right.gif&#39;</span><span class="p">)</span><span class="o">?&gt;</span><span class="p">,</span>
+</span><span class='line'>          <span class="nx">hover</span><span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">Router</span><span class="o">::</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;/img/arrow2-right.gif&#39;</span><span class="p">)</span><span class="o">?&gt;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredContentWidth2</span> <span class="o">=</span> <span class="mi">172</span><span class="p">;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">featuredContentScrollPrefs</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">speed</span><span class="o">:</span> <span class="mi">800</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">axis</span><span class="o">:</span> <span class="s1">&#39;x&#39;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;.featuredBox2&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kd">var</span> <span class="nx">featuredBox</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class='line'>      <span class="nx">featuredBox</span>
+</span><span class='line'>          <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.scrollArrow&#39;</span><span class="p">)</span>
+</span><span class='line'>              <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;.next&#39;</span><span class="p">)</span>
+</span><span class='line'>                  <span class="p">.</span><span class="nx">hover</span><span class="p">(</span>
+</span><span class='line'>                      <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">next</span><span class="p">.</span><span class="nx">hover</span> <span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;pointer&#39;</span> <span class="p">)</span>
+</span><span class='line'>                          <span class="p">;</span>
+</span><span class='line'>                      <span class="p">},</span>
+</span><span class='line'>                      <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">next</span><span class="p">.</span><span class="nx">enabled</span> <span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span> <span class="p">)</span>
+</span><span class='line'>                          <span class="p">;</span>
+</span><span class='line'>                      <span class="p">}</span>
+</span><span class='line'>                  <span class="p">)</span>
+</span><span class='line'>                  <span class="p">.</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                      <span class="nx">featuredBox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.featuredContent2&#39;</span><span class="p">).</span><span class="nx">scrollTo</span><span class="p">(</span>
+</span><span class='line'>                          <span class="s1">&#39;+=&#39;</span> <span class="o">+</span> <span class="nx">featuredContentWidth2</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span>
+</span><span class='line'>                          <span class="nx">featuredContentScrollPrefs</span>
+</span><span class='line'>                      <span class="p">);</span>
+</span><span class='line'>                      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>                  <span class="p">})</span>
+</span><span class='line'>              <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+</span><span class='line'>              <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;.prev&#39;</span><span class="p">)</span>
+</span><span class='line'>                  <span class="p">.</span><span class="nx">hover</span><span class="p">(</span>
+</span><span class='line'>                      <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">previous</span><span class="p">.</span><span class="nx">hover</span> <span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;pointer&#39;</span> <span class="p">)</span>
+</span><span class='line'>                          <span class="p">;</span>
+</span><span class='line'>                      <span class="p">},</span>
+</span><span class='line'>                      <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">attr</span><span class="p">(</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">previous</span><span class="p">.</span><span class="nx">enabled</span> <span class="p">)</span>
+</span><span class='line'>                              <span class="p">.</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span> <span class="p">)</span>
+</span><span class='line'>                          <span class="p">;</span>
+</span><span class='line'>                      <span class="p">}</span>
+</span><span class='line'>                  <span class="p">)</span>
+</span><span class='line'>                  <span class="p">.</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                      <span class="nx">featuredBox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.featuredContent2&#39;</span><span class="p">).</span><span class="nx">scrollTo</span><span class="p">(</span>
+</span><span class='line'>                          <span class="s1">&#39;-=&#39;</span> <span class="o">+</span> <span class="nx">featuredContentWidth2</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span>
+</span><span class='line'>                          <span class="nx">featuredContentScrollPrefs</span>
+</span><span class='line'>                      <span class="p">);</span>
+</span><span class='line'>                      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>                  <span class="p">})</span>
+</span><span class='line'>      <span class="p">;</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;.featuredBox2 .featuredContent2 .featuredDisplayDiv2&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span> <span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="p">(</span> <span class="nx">featuredContentWidth2</span> <span class="o">*</span> <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;ul li&#39;</span><span class="p">).</span><span class="nx">size</span><span class="p">()</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span> <span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// set up horizontal scroll</span>
+</span><span class='line'>  <span class="nx">setupFeaturedBoxes</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">setupFeaturedBoxes2</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-var setupFeaturedBoxes2 = function () {
-    var buttons = {
-        previous: {
-            enabled: &lt;?php Router::url('/img/arrow2-left.gif')?&gt;,
-            hover: &lt;?php Router::url('/img/arrow2-left.gif')?&gt;
-        },
-        next: {
-            enabled: &lt;?php Router::url('/img/arrow2-right.gif')?&gt;,
-            hover: &lt;?php Router::url('/img/arrow2-right.gif')?&gt;
-        }
-    };
-    var featuredContentWidth2 = 172;
-    var featuredContentScrollPrefs = {
-        speed: 800,
-        axis: 'x'
-    };
-    jQuery('.featuredBox2').each( function (i) {
-        var featuredBox = jQuery(this);
-        featuredBox
-            .find('.scrollArrow')
-                .filter('.next')
-                    .hover(
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.next.hover )
-                                .css( 'cursor', 'pointer' )
-                            ;
-                        },
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.next.enabled )
-                                .css( 'cursor', 'default' )
-                            ;
-                        }
-                    )
-                    .click( function() {
-                        featuredBox.find('.featuredContent2').scrollTo(
-                            '+=' + featuredContentWidth2 + 'px',
-                            featuredContentScrollPrefs
-                        );
-                        return false;
-                    })
-                .end()
-                .filter('.prev')
-                    .hover(
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.previous.hover )
-                                .css( 'cursor', 'pointer' )
-                            ;
-                        },
-                        function () {
-                            jQuery(this)
-                                .attr( 'src', buttons.previous.enabled )
-                                .css( 'cursor', 'default' )
-                            ;
-                        }
-                    )
-                    .click( function() {
-                        featuredBox.find('.featuredContent2').scrollTo(
-                            '-=' + featuredContentWidth2 + 'px',
-                            featuredContentScrollPrefs
-                        );
-                        return false;
-                    })
-        ;
-    });
-    jQuery('.featuredBox2 .featuredContent2 .featuredDisplayDiv2').each( function (i) {
-        jQuery(this).css( 'width', ( featuredContentWidth2 * jQuery(this).find('ul li').size() ) + 'px' );
-    });
-};
-
-
-jQuery(document).ready(function(){
-
-
-// set up horizontal scroll
-    setupFeaturedBoxes();
-    setupFeaturedBoxes2();
-
-});
-&lt;/script&gt;
-</code></pre>
 
 <p>As you can see I just change the image path to . I don&rsquo;t know if this is the best solution or not, but for now it&rsquo;s the simplest :D</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">admin</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-10T18:58:34+11:00" pubdate data-updated="true">Nov 10<span>th</span>, 2010</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/categories/cakephp/'>CakePHP</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rudylee.github.io/2010/11/10/fixed-static-image-path-in-javascript-using-cakephp/" data-via="" data-counturl="http://rudylee.github.io/2010/11/10/fixed-static-image-path-in-javascript-using-cakephp/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left articlenav" href="/2010/10/31/pengangguran/" title="Previous Post: Pengangguran">&laquo; Pengangguran</a>
-      
-      
-        <a class="basic-alignment right articlenav" href="/2010/12/22/pak-aking/" title="Next Post: Pak Aking">Pak Aking &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2013/05/27/playing-with-google-map-api/">Playing with Google Map API</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/16/override-module-config-in-zend-framework-2/">Override module config in Zend Framework 2</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object/">Zend Framework 2 : The proper way to set application path in Javascript Object</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/30/my-review-after-two-months-using-vim/">My review after two months using VIM</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl/">Zend Framework 2 : get server URL in controller without using serverUrl()</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
 
     </div>
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Rudy Lee -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/categories/CakePHP/"><span class="badge">CakePHP</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/2010/10/31/pengangguran/" title="Previous Post: Pengangguran">&laquo; Pengangguran</a>
+          
+          
+            <a class="basic-alignment right" href="/2010/12/22/pak-aking/" title="Next Post: Pak Aking">Pak Aking &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2013 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
 </p>
 
-</footer>
-  
 
-<script type="text/javascript">
-      var disqus_shortname = 'blogrudylee';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://rudylee.github.io/2010/11/10/fixed-static-image-path-in-javascript-using-cakephp/';
-        var disqus_url = 'http://rudylee.github.io/2010/11/10/fixed-static-image-path-in-javascript-using-cakephp/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
+        </footer>
+      </div>
+    </div>
+  </div>
+  
 
 
 

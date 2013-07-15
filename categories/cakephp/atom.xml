@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: CakePHP | blog.rudylee.com]]></title>
+  <title><![CDATA[Category: CakePHP | My Octopress Blog]]></title>
   <link href="http://rudylee.github.io/categories/cakephp/atom.xml" rel="self"/>
   <link href="http://rudylee.github.io/"/>
-  <updated>2013-07-09T22:22:22+10:00</updated>
+  <updated>2013-07-15T21:00:49+10:00</updated>
   <id>http://rudylee.github.io/</id>
   <author>
-    <name><![CDATA[Rudy Lee]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -27,103 +27,124 @@ Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee
 
 <p>After that we will create controller, action and view to put our input box. In this tutorial I&rsquo;ll use my Cbunny application and Users controller. I&rsquo;ll start by creating typeahead action, here is the code :</p>
 
-<pre><code>    public function typeahead() {
-        $this-&gt;User-&gt;recursive = 0;
-        $this-&gt;set('users', $this-&gt;paginate());       
-    }
+<p>``` php  <br/>
+public function typeahead() {</p>
+
+<pre><code>$this-&gt;User-&gt;recursive = 0;
+$this-&gt;set('users', $this-&gt;paginate());       
 </code></pre>
+
+<p>}
+```</p>
 
 <p>Nothing special happening rather than get current users from the table and paginate them. And here is the view :</p>
 
-<pre><code>&lt;div class="row"&gt;
-    &lt;div class="span12"&gt;
+<p>``` html</p>
 
-    &lt;!-- Typeahead Auto Complete --&gt;
-    &lt;div class="pull-right"&gt;
-        &lt;input type="text" data-provide="typeahead" id="user-typeahead"&gt;
-    &lt;/div&gt;
+<p><div class="row"></p>
 
-    &lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
-    &lt;table class="table"cellpadding="0" cellspacing="0"&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
-                &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;?php foreach ($users as $user): ?&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
-                &lt;td class="actions"&gt;
-                    &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;?php endforeach; ?&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
+<pre><code>&lt;div class="span12"&gt;
+
+&lt;!-- Typeahead Auto Complete --&gt;
+&lt;div class="pull-right"&gt;
+    &lt;input type="text" data-provide="typeahead" id="user-typeahead"&gt;
 &lt;/div&gt;
+
+&lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
+&lt;table class="table"cellpadding="0" cellspacing="0"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
+            &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;?php foreach ($users as $user): ?&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
+            &lt;td class="actions"&gt;
+                &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;?php endforeach; ?&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
 </code></pre>
+
+<p></div>
+```</p>
 
 <p>On line 5-7, I am defining input text with typeahead attribute and ID that we will use in Javascript code. The next step is to create Javascript object in your layout file. So add this code snippet in your default.ctp file :</p>
 
-<pre><code>        $cbunny = array(
-            'APP_PATH' =&gt; Router::url('/',true)
-        );
-        echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&gt;object($cbunny) . ';');
+<p>``` php  <br/>
+$cbunny = array(</p>
+
+<pre><code>'APP_PATH' =&gt; Router::url('/',true)
 </code></pre>
+
+<p>);
+echo $this->Html->scriptBlock(&lsquo;var CbunnyObj = &rsquo; . $this->Javascript->object($cbunny) . &lsquo;;&rsquo;);
+```</p>
 
 <p>You can change the $cbunny and CBunnyObj variable name to resemble your app name. However, the rest of the code has to be same as above. This snippet of code will create Javascript object which contains the root URL path of CakePHP.</p>
 
 <p>After we have the Javascript object variable, let&rsquo;s continue by creating the Javascript code. Inside your application Javascript file add these code :</p>
 
-<pre><code>  $('#user-typeahead').typeahead({
-    source: function (query, process) {
-      return $.ajax({
-        url: CbunnyObj.APP_PATH + 'users/typeahead_search',
-        type: 'get',
-        data: {q: query},
-        dataType: 'json',
-        success: function (json) {
-          return process(json);
-        }
-      });
-    }
-  });
+<p>``` javascript  <br/>
+$(&lsquo;#user-typeahead&rsquo;).typeahead({
+  source: function (query, process) {</p>
+
+<pre><code>return $.ajax({
+  url: CbunnyObj.APP_PATH + 'users/typeahead_search',
+  type: 'get',
+  data: {q: query},
+  dataType: 'json',
+  success: function (json) {
+    return process(json);
+  }
+});
 </code></pre>
+
+<p>  }
+});
+```</p>
 
 <p>In this code, we initialize the typeahead library and create AJAX request to the typeahead_search action. In the next step, we will create typeahead_search action that will handle AJAX request and return JSON result. Back to our users controller, create the typeahead action which will contain this code :</p>
 
-<pre><code>    public function typeahead_search() {
-        $this-&gt;autoRender = false;
-        $this-&gt;RequestHandler-&gt;respondAs('json');
+<p>``` php  <br/>
+public function typeahead_search() {</p>
 
-        // get the search term from URL
-        $term = $this-&gt;request-&gt;query['q'];
-        $users = $this-&gt;User-&gt;find('all',array(
-            'conditions' =&gt; array(
-                'User.username LIKE' =&gt; '%'.$term.'%'
-            )
-        ));
+<pre><code>$this-&gt;autoRender = false;
+$this-&gt;RequestHandler-&gt;respondAs('json');
 
-        // Format the result for select2
-        $result = array();
-        foreach($users as $key =&gt; $user) {
-            array_push($result, $user['User']['username']);
-        }
-        $users = $result;
+// get the search term from URL
+$term = $this-&gt;request-&gt;query['q'];
+$users = $this-&gt;User-&gt;find('all',array(
+    'conditions' =&gt; array(
+        'User.username LIKE' =&gt; '%'.$term.'%'
+    )
+));
 
-        echo json_encode($users);
-    }
+// Format the result for select2
+$result = array();
+foreach($users as $key =&gt; $user) {
+    array_push($result, $user['User']['username']);
+}
+$users = $result;
+
+echo json_encode($users);
 </code></pre>
+
+<p>}
+```</p>
 
 <p>This action will receive the request, search the database for relevant result and return it on JSON format.</p>
 ]]></content>
@@ -142,113 +163,134 @@ Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee
 
 <p>So the first step is to create controller that will contain our Select2 search box. In this tutorial, I&rsquo;ll create users controller and one action to put the select2 search box. Here is the snippet of my code :</p>
 
-<pre><code>    public function select2() {
-        $this-&gt;User-&gt;recursive = 0;
-        $this-&gt;set('users', $this-&gt;paginate());
-    }
+<p>``` php  <br/>
+public function select2() {</p>
+
+<pre><code>$this-&gt;User-&gt;recursive = 0;
+$this-&gt;set('users', $this-&gt;paginate());
 </code></pre>
+
+<p>}
+```</p>
 
 <p>After this you can create the view ( View/Users/select2.ctp ). Here is my view code :</p>
 
-<pre><code>&lt;div class="row"&gt;
-    &lt;div class="span12"&gt;
+<p>``` html</p>
 
-    &lt;!-- Select2 Auto Complete --&gt;
-    &lt;div class="pull-right"&gt;
-        &lt;input type="text" id="user-select2"&gt;
-    &lt;/div&gt;
+<p><div class="row"></p>
 
-    &lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
-    &lt;table class="table"cellpadding="0" cellspacing="0"&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
-                &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;?php foreach ($users as $user): ?&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
-                &lt;td class="actions"&gt;
-                    &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;?php endforeach; ?&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
+<pre><code>&lt;div class="span12"&gt;
+
+&lt;!-- Select2 Auto Complete --&gt;
+&lt;div class="pull-right"&gt;
+    &lt;input type="text" id="user-select2"&gt;
 &lt;/div&gt;
+
+&lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
+&lt;table class="table"cellpadding="0" cellspacing="0"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
+            &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;?php foreach ($users as $user): ?&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
+            &lt;td class="actions"&gt;
+                &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;?php endforeach; ?&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
 </code></pre>
+
+<p></div>
+```</p>
 
 <p>If you look at 5-7 you&rsquo;ll notice that I have input element with id element user-select2. We will use the ID inside our jQuery to initiate the Select2. The next step after this is to create a Javascript object to store the dynamic app path. Add this snippet of code into your layout file ( default.ctp ).</p>
 
-<pre><code>        $cbunny = array(
-            'APP_PATH' =&gt; Router::url('/',true)
-        );
-        echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&gt;object($cbunny) . ';');
+<p>``` php<br/>
+$cbunny = array(</p>
+
+<pre><code>'APP_PATH' =&gt; Router::url('/',true)
 </code></pre>
+
+<p>);
+echo $this->Html->scriptBlock(&lsquo;var CbunnyObj = &rsquo; . $this->Javascript->object($cbunny) . &lsquo;;&rsquo;);
+```</p>
 
 <p>You can change the $cbunny and CBunnyObj variable name to resemble your app name. However, the rest of the code has to be same as above. This snippet of code will create Javascript object which contains the root URL path of CakePHP.</p>
 
 <p>After we have the Javascript object, we will create jQuery code to create Select2 search box, process AJAX request and handle the respond. I&rsquo;ll start with creating cbunny.js file inside my webroot folder and add the file in my layout file. Here is the code :</p>
 
-<pre><code>/*global $, document, CbunnyObj */
-$(document).ready(function () {
+<p>``` javascript<br/>
+/<em>global $, document, CbunnyObj </em>/
+$(document).ready(function () {</p>
 
-  $('#user-select2').select2({
-    placeholder: "Search user auto complete",
-    minimumInputLength: 1,
-    ajax: {
-      url: CbunnyObj.APP_PATH + 'users/search',
-      dataType: 'json',
-      data: function (term, page) {
-        return {
-          q: term
-        };
-      },
-      results: function (data, page) {
-        return { results: data };
-      }
-    }
-  });
+<p>  $(&lsquo;#user-select2&rsquo;).select2({</p>
 
-});
+<pre><code>placeholder: "Search user auto complete",
+minimumInputLength: 1,
+ajax: {
+  url: CbunnyObj.APP_PATH + 'users/search',
+  dataType: 'json',
+  data: function (term, page) {
+    return {
+      q: term
+    };
+  },
+  results: function (data, page) {
+    return { results: data };
+  }
+}
 </code></pre>
+
+<p>  });</p>
+
+<p>});
+```</p>
 
 <p>I&rsquo;ll explain the Javascript code a little bit. Line 4-19 contain the definition of Select2 library. You can see we have ajax definition on line 7 which will perform AJAX request to  CbunnyObj.APP_PATH + &lsquo;users/search&rsquo;. CbunnyObj is javascript object variable that we have defined before and will translate into your CakePHP App path ( ex: <a href="http://cbunny.rudylee.com">http://cbunny.rudylee.com</a> ). I believe you understand the rest of the code as I just copied it from Select2 website.</p>
 
 <p>After this, our last step is to create action + view to handle the AJAX request. So we are going back to Users controller and add new action called &lsquo;search&rsquo;. Here is my &lsquo;search&rsquo; action code :</p>
 
-<pre><code>    public function search() {
-        $this-&gt;autoRender = false;
+<p>``` php
+public function search() {</p>
 
-        // get the search term from URL
-        $term = $this-&gt;request-&gt;query['q'];
-        $users = $this-&gt;User-&gt;find('all',array(
-            'conditions' =&gt; array(
-                'User.username LIKE' =&gt; '%'.$term.'%'
-            )
-        ));
+<pre><code>$this-&gt;autoRender = false;
 
-        // Format the result for select2
-        $result = array();
-        foreach($users as $key =&gt; $user) {
-            $result[$key]['id'] = (int) $user['User']['id'];
-            $result[$key]['text'] = $user['User']['username'];
-        }
-        $users = $result;
+// get the search term from URL
+$term = $this-&gt;request-&gt;query['q'];
+$users = $this-&gt;User-&gt;find('all',array(
+    'conditions' =&gt; array(
+        'User.username LIKE' =&gt; '%'.$term.'%'
+    )
+));
 
-        echo json_encode($users);
-    }
+// Format the result for select2
+$result = array();
+foreach($users as $key =&gt; $user) {
+    $result[$key]['id'] = (int) $user['User']['id'];
+    $result[$key]['text'] = $user['User']['username'];
+}
+$users = $result;
+
+echo json_encode($users);
 </code></pre>
+
+<p>}
+```</p>
 
 <p>On line 5, we grab the search query term from the URL and store into $term variable. After that, we will perform normal query to the table. When we get the result, we won&rsquo;t be able to use it straight away. We will have to reformat it so it can be readable by Select2. On line 12-17 we basically iterate through the $users variable and create new associative array which has id and text as their key.</p>
 
@@ -315,16 +357,15 @@ $(document).ready(function () {
 </ul>
 
 
-<p>Here is the sample of the action code:
-<code>
-</code></p>
+<p>Here is the sample of the action code:</p>
 
-<p>[php]    function admin_autoComplete() {</p>
+<p>``` php
+function admin_autoComplete() {</p>
 
 <pre><code>if (!empty($this-&gt;data)) {
     $this-&gt;redirect(array(
-    'controller' =&gt; 'users',
-    'action' =&gt; 'view', $this-&gt;data['Guest']['id']
+  'controller' =&gt; 'users',
+  'action' =&gt; 'view', $this-&gt;data['Guest']['id']
     ));
 }
 $this-&gt;autoRender = false;
@@ -337,10 +378,10 @@ $guests = $this-&gt;User-&gt;getGuests(array(
     )
     ));
 echo json_encode($this-&gt;User-&gt;autoComplete_encode($guests));
-}[/php]
 </code></pre>
 
-<p>``
+<p>  }
+```
 Just ignore line 8 and so, we gonna focus on line 2 to 7. In that line, I redirect the user to the view action which based on the Guest ID which I got from the form. You can change the controller/action in this section. I hope everything are clear. Cheers.</p>
 ]]></content>
   </entry>

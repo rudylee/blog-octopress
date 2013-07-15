@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Research | blog.rudylee.com]]></title>
+  <title><![CDATA[Category: Research | My Octopress Blog]]></title>
   <link href="http://rudylee.github.io/categories/research/atom.xml" rel="self"/>
   <link href="http://rudylee.github.io/"/>
-  <updated>2013-07-09T22:22:22+10:00</updated>
+  <updated>2013-07-15T21:00:49+10:00</updated>
   <id>http://rudylee.github.io/</id>
   <author>
-    <name><![CDATA[Rudy Lee]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -24,39 +24,43 @@
 
 <p>The code below set up the Google Map, put the marker and also make it grayscale</p>
 
-<pre><code>                function initialize() {
-                    var map;
-                    var location = new google.maps.LatLng(-33.87190930, 151.20480740);
-                    var styles = [
-                        {
-                            featureType: "all",
-                            elementType: "all",
-                            stylers: [
-                                { saturation: -100 }
-                            ]
-                        }
-                    ];
+<p>``` javascript  <br/>
+function initialize() {</p>
 
-                    var mapOptions = {
-                        center: location,
-                        zoom: 17,
-                        mapTypeControlOptions: {
-                            mapTypeId: [google.maps.MapTypeId.ROADMAP, 'theGray']
-                        }
-                    };
+<pre><code>var map;
+var location = new google.maps.LatLng(-33.87190930, 151.20480740);
+var styles = [
+    {
+        featureType: "all",
+        elementType: "all",
+        stylers: [
+            { saturation: -100 }
+        ]
+    }
+];
 
-                    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-                    var mapType = new google.maps.StyledMapType(styles, { name:"GrayScale" });    
-                    map.mapTypes.set('theGray', mapType);
-                    map.setMapTypeId('theGray');
+var mapOptions = {
+    center: location,
+    zoom: 17,
+    mapTypeControlOptions: {
+        mapTypeId: [google.maps.MapTypeId.ROADMAP, 'theGray']
+    }
+};
 
-                    marker = new google.maps.Marker({
-                        position: location,
-                        map: map
-                    });
-                }
-                google.maps.event.addDomListener(window, 'load', initialize);
+map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+var mapType = new google.maps.StyledMapType(styles, { name:"GrayScale" });    
+map.mapTypes.set('theGray', mapType);
+map.setMapTypeId('theGray');
+
+marker = new google.maps.Marker({
+    position: location,
+    map: map
+});
 </code></pre>
+
+<p>}
+google.maps.event.addDomListener(window, &lsquo;load&rsquo;, initialize);
+```</p>
 ]]></content>
   </entry>
   

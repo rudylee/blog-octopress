@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Zend Framework 2 | blog.rudylee.com]]></title>
+  <title><![CDATA[Category: Zend Framework 2 | My Octopress Blog]]></title>
   <link href="http://rudylee.github.io/categories/zend-framework-2/atom.xml" rel="self"/>
   <link href="http://rudylee.github.io/"/>
-  <updated>2013-07-09T22:22:22+10:00</updated>
+  <updated>2013-07-15T21:00:49+10:00</updated>
   <id>http://rudylee.github.io/</id>
   <author>
-    <name><![CDATA[Rudy Lee]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -22,23 +22,31 @@
 
 <p>The cleanest approach is to override specific configuration key by creating module-name.local.php file inside config/autoload folder. For example, you have &ldquo;Admin&rdquo; module and here is the sample module.config.php file :</p>
 
-<pre><code>return array(
-    'sms' =&gt; array(
-        'username' =&gt; 'rudy', //API access username
-        'password' =&gt; 'rudy', //API access password
-        'sender' =&gt; 'Rudy', // max of 11 alphanumeric or max of 15 numerical characters
-    ),
-);
+<p>``` php
+return array(</p>
+
+<pre><code>'sms' =&gt; array(
+    'username' =&gt; 'rudy', //API access username
+    'password' =&gt; 'rudy', //API access password
+    'sender' =&gt; 'Rudy', // max of 11 alphanumeric or max of 15 numerical characters
+),
 </code></pre>
+
+<p>);
+```</p>
 
 <p>You can override only the username by creating admin.local.php file inside config/autoload folder and put this code inside it :</p>
 
-<pre><code>return array(
-    'sms' =&gt; array(
-        'username' =&gt; 'override', //API access username
-    ),
-);
+<p>``` php  <br/>
+return array(</p>
+
+<pre><code>'sms' =&gt; array(
+    'username' =&gt; 'override', //API access username
+),
 </code></pre>
+
+<p>);
+```</p>
 
 <p>Zend Framework 2 will read this file and overwrite the username key inside module.config.php. Now you can create script during your deployment process to create this file automatically.</p>
 ]]></content>
@@ -51,6 +59,8 @@
     <id>http://rudylee.github.io/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object</id>
     <content type="html"><![CDATA[<p>Storing application path inside Javascript object is a way to avoid &ldquo;hard coded&rdquo; URL inside your Javascript file.  It is pretty common to have like this in your Javascript file :</p>
 
+<p>``` javascript</p>
+
 <pre><code>$.ajax({
     type: POST,
     url: 'http://localhost/my-website/register',
@@ -58,26 +68,36 @@
 })
 </code></pre>
 
+<p>```</p>
+
 <p>That approach is completely fine. However, when you need to deploy your application, you need to manually change all the URL to match with your server. The solution that I have been using for quite a long time is setting up Javascript object that contains path to my application.</p>
 
 <p>In CakePHP, this can be easily done by using URL method inside Router Class. Here is the sample :</p>
 
-<pre><code>$cbunny = array(
-    'APP_PATH' =&gt; Router::url('/',true)
-);
-echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&gt;object($cbunny) . ';');
+<p>``` php<br/>
+$cbunny = array(</p>
+
+<pre><code>'APP_PATH' =&gt; Router::url('/',true)
 </code></pre>
+
+<p>);
+echo $this->Html->scriptBlock(&lsquo;var CbunnyObj = &rsquo; . $this->Javascript->object($cbunny) . &lsquo;;&rsquo;);
+```</p>
 
 <p>In Zend Framework 2, you have to rely on serverUrl and basePath to achieve the same thing. Here is the proper way to do it in Zend Framework 2 :</p>
 
-<pre><code>        &lt;script type="text/javascript"&gt;
-            //&lt;![CDATA[
-                var CMSObj = {
-                    "APP_PATH":"&lt;?php echo $this-&gt;serverUrl() . $this-&gt;basePath() ?&gt;/"
-                };
-            //]]&gt;
-        &lt;/script&gt;
-</code></pre>
+<p>``` javascript</p>
+
+<script type="text/javascript">
+    //&lt;![CDATA[
+        var CMSObj = {
+            "APP_PATH":"<?php echo $this->serverUrl() . $this->basePath() ?>/"
+        };
+    //]]&gt;
+</script>
+
+
+<p>```</p>
 ]]></content>
   </entry>
   
@@ -90,8 +110,12 @@ echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&g
 
 <p>So, here is the code that I am using to get server URL in controller :</p>
 
+<p>``` php</p>
+
 <pre><code>$server_url = $this-&gt;getRequest()-&gt;getUri()-&gt;getScheme() . '://' . $this-&gt;getRequest()-&gt;getUri()-&gt;getHost();
 </code></pre>
+
+<p>```</p>
 
 <p>Probably it&rsquo;s not the best solution but it works for now :)</p>
 ]]></content>

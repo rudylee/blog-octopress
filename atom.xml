@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[blog.rudylee.com]]></title>
+  <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://rudylee.github.io/atom.xml" rel="self"/>
   <link href="http://rudylee.github.io/"/>
-  <updated>2013-07-09T22:22:22+10:00</updated>
+  <updated>2013-07-15T21:00:49+10:00</updated>
   <id>http://rudylee.github.io/</id>
   <author>
-    <name><![CDATA[Rudy Lee]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -24,39 +24,72 @@
 
 <p>The code below set up the Google Map, put the marker and also make it grayscale</p>
 
-<pre><code>                function initialize() {
-                    var map;
-                    var location = new google.maps.LatLng(-33.87190930, 151.20480740);
-                    var styles = [
-                        {
-                            featureType: "all",
-                            elementType: "all",
-                            stylers: [
-                                { saturation: -100 }
-                            ]
-                        }
-                    ];
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">initialize</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">map</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">location</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">LatLng</span><span class="p">(</span><span class="o">-</span><span class="mf">33.87190930</span><span class="p">,</span> <span class="mf">151.20480740</span><span class="p">);</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">styles</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="nx">featureType</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">elementType</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">stylers</span><span class="o">:</span> <span class="p">[</span>
+</span><span class='line'>                <span class="p">{</span> <span class="nx">saturation</span><span class="o">:</span> <span class="o">-</span><span class="mi">100</span> <span class="p">}</span>
+</span><span class='line'>            <span class="p">]</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">mapOptions</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">center</span><span class="o">:</span> <span class="nx">location</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">zoom</span><span class="o">:</span> <span class="mi">17</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">mapTypeControlOptions</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">mapTypeId</span><span class="o">:</span> <span class="p">[</span><span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">MapTypeId</span><span class="p">.</span><span class="nx">ROADMAP</span><span class="p">,</span> <span class="s1">&#39;theGray&#39;</span><span class="p">]</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Map</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;map-canvas&quot;</span><span class="p">),</span> <span class="nx">mapOptions</span><span class="p">);</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">mapType</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">StyledMapType</span><span class="p">(</span><span class="nx">styles</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span><span class="s2">&quot;GrayScale&quot;</span> <span class="p">});</span>
+</span><span class='line'>    <span class="nx">map</span><span class="p">.</span><span class="nx">mapTypes</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;theGray&#39;</span><span class="p">,</span> <span class="nx">mapType</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">map</span><span class="p">.</span><span class="nx">setMapTypeId</span><span class="p">(</span><span class="s1">&#39;theGray&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">marker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Marker</span><span class="p">({</span>
+</span><span class='line'>        <span class="nx">position</span><span class="o">:</span> <span class="nx">location</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">map</span><span class="o">:</span> <span class="nx">map</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addDomListener</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="nx">initialize</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-                    var mapOptions = {
-                        center: location,
-                        zoom: 17,
-                        mapTypeControlOptions: {
-                            mapTypeId: [google.maps.MapTypeId.ROADMAP, 'theGray']
-                        }
-                    };
-
-                    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-                    var mapType = new google.maps.StyledMapType(styles, { name:"GrayScale" });    
-                    map.mapTypes.set('theGray', mapType);
-                    map.setMapTypeId('theGray');
-
-                    marker = new google.maps.Marker({
-                        position: location,
-                        map: map
-                    });
-                }
-                google.maps.event.addDomListener(window, 'load', initialize);
-</code></pre>
 ]]></content>
   </entry>
   
@@ -69,23 +102,37 @@
 
 <p>The cleanest approach is to override specific configuration key by creating module-name.local.php file inside config/autoload folder. For example, you have &ldquo;Admin&rdquo; module and here is the sample module.config.php file :</p>
 
-<pre><code>return array(
-    'sms' =&gt; array(
-        'username' =&gt; 'rudy', //API access username
-        'password' =&gt; 'rudy', //API access password
-        'sender' =&gt; 'Rudy', // max of 11 alphanumeric or max of 15 numerical characters
-    ),
-);
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;sms&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>        <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;rudy&#39;</span><span class="p">,</span> <span class="c1">//API access username</span>
+</span><span class='line'>        <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;rudy&#39;</span><span class="p">,</span> <span class="c1">//API access password</span>
+</span><span class='line'>        <span class="s1">&#39;sender&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Rudy&#39;</span><span class="p">,</span> <span class="c1">// max of 11 alphanumeric or max of 15 numerical characters</span>
+</span><span class='line'>    <span class="p">),</span>
+</span><span class='line'><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>You can override only the username by creating admin.local.php file inside config/autoload folder and put this code inside it :</p>
 
-<pre><code>return array(
-    'sms' =&gt; array(
-        'username' =&gt; 'override', //API access username
-    ),
-);
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;sms&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>        <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;override&#39;</span><span class="p">,</span> <span class="c1">//API access username</span>
+</span><span class='line'>    <span class="p">),</span>
+</span><span class='line'><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Zend Framework 2 will read this file and overwrite the username key inside module.config.php. Now you can create script during your deployment process to create this file automatically.</p>
 ]]></content>
@@ -98,33 +145,54 @@
     <id>http://rudylee.github.io/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object</id>
     <content type="html"><![CDATA[<p>Storing application path inside Javascript object is a way to avoid &ldquo;hard coded&rdquo; URL inside your Javascript file.  It is pretty common to have like this in your Javascript file :</p>
 
-<pre><code>$.ajax({
-    type: POST,
-    url: 'http://localhost/my-website/register',
-    data: dataJSON
-})
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">type</span><span class="o">:</span> <span class="nx">POST</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://localhost/my-website/register&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">data</span><span class="o">:</span> <span class="nx">dataJSON</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>That approach is completely fine. However, when you need to deploy your application, you need to manually change all the URL to match with your server. The solution that I have been using for quite a long time is setting up Javascript object that contains path to my application.</p>
 
 <p>In CakePHP, this can be easily done by using URL method inside Router Class. Here is the sample :</p>
 
-<pre><code>$cbunny = array(
-    'APP_PATH' =&gt; Router::url('/',true)
-);
-echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&gt;object($cbunny) . ';');
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$cbunny</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;APP_PATH&#39;</span> <span class="o">=&gt;</span> <span class="nx">Router</span><span class="o">::</span><span class="na">url</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="k">true</span><span class="p">)</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">scriptBlock</span><span class="p">(</span><span class="s1">&#39;var CbunnyObj = &#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Javascript</span><span class="o">-&gt;</span><span class="na">object</span><span class="p">(</span><span class="nv">$cbunny</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;;&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>In Zend Framework 2, you have to rely on serverUrl and basePath to achieve the same thing. Here is the proper way to do it in Zend Framework 2 :</p>
 
-<pre><code>        &lt;script type="text/javascript"&gt;
-            //&lt;![CDATA[
-                var CMSObj = {
-                    "APP_PATH":"&lt;?php echo $this-&gt;serverUrl() . $this-&gt;basePath() ?&gt;/"
-                };
-            //]]&gt;
-        &lt;/script&gt;
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="c1">//&lt;![CDATA[</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">CMSObj</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>            <span class="s2">&quot;APP_PATH&quot;</span><span class="o">:</span><span class="s2">&quot;&lt;?php echo $this-&gt;serverUrl() . $this-&gt;basePath() ?&gt;/&quot;</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>    <span class="c1">//]]&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 ]]></content>
   </entry>
   
@@ -167,8 +235,10 @@ echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&g
 
 <p>So, here is the code that I am using to get server URL in controller :</p>
 
-<pre><code>$server_url = $this-&gt;getRequest()-&gt;getUri()-&gt;getScheme() . '://' . $this-&gt;getRequest()-&gt;getUri()-&gt;getHost();
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$server_url</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getUri</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getScheme</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39;://&#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getUri</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getHost</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Probably it&rsquo;s not the best solution but it works for now :)</p>
 ]]></content>
@@ -188,103 +258,186 @@ Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee
 
 <p>After that we will create controller, action and view to put our input box. In this tutorial I&rsquo;ll use my Cbunny application and Users controller. I&rsquo;ll start by creating typeahead action, here is the code :</p>
 
-<pre><code>    public function typeahead() {
-        $this-&gt;User-&gt;recursive = 0;
-        $this-&gt;set('users', $this-&gt;paginate());       
-    }
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">typeahead</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">User</span><span class="o">-&gt;</span><span class="na">recursive</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">paginate</span><span class="p">());</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Nothing special happening rather than get current users from the table and paginate them. And here is the view :</p>
 
-<pre><code>&lt;div class="row"&gt;
-    &lt;div class="span12"&gt;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span12&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">&lt;!-- Typeahead Auto Complete --&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pull-right&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">data-provide=</span><span class="s">&quot;typeahead&quot;</span> <span class="na">id=</span><span class="s">&quot;user-typeahead&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;h2&gt;</span><span class="cp">&lt;?php echo __(&#39;Users&#39;);?&gt;</span><span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="na">cellpadding=</span><span class="s">&quot;0&quot;</span> <span class="na">cellspacing=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;thead&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;id&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;username&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;password&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;created&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;modified&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">&quot;actions&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;?php echo __(&#39;Actions&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/thead&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;tbody&gt;</span>
+</span><span class='line'>            <span class="cp">&lt;?php foreach ($users as $user): ?&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;id&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;username&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;password&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;created&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;modified&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;actions&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                    <span class="cp">&lt;?php echo $this-&gt;Html-&gt;link(__(&#39;View&#39;), array(&#39;action&#39; =&gt; &#39;view&#39;, $user[&#39;User&#39;][&#39;id&#39;])); ?&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>            <span class="cp">&lt;?php endforeach; ?&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/tbody&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/table&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    &lt;!-- Typeahead Auto Complete --&gt;
-    &lt;div class="pull-right"&gt;
-        &lt;input type="text" data-provide="typeahead" id="user-typeahead"&gt;
-    &lt;/div&gt;
-
-    &lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
-    &lt;table class="table"cellpadding="0" cellspacing="0"&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
-                &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;?php foreach ($users as $user): ?&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
-                &lt;td class="actions"&gt;
-                    &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;?php endforeach; ?&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
-&lt;/div&gt;
-</code></pre>
 
 <p>On line 5-7, I am defining input text with typeahead attribute and ID that we will use in Javascript code. The next step is to create Javascript object in your layout file. So add this code snippet in your default.ctp file :</p>
 
-<pre><code>        $cbunny = array(
-            'APP_PATH' =&gt; Router::url('/',true)
-        );
-        echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&gt;object($cbunny) . ';');
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$cbunny</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;APP_PATH&#39;</span> <span class="o">=&gt;</span> <span class="nx">Router</span><span class="o">::</span><span class="na">url</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="k">true</span><span class="p">)</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">scriptBlock</span><span class="p">(</span><span class="s1">&#39;var CbunnyObj = &#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Javascript</span><span class="o">-&gt;</span><span class="na">object</span><span class="p">(</span><span class="nv">$cbunny</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;;&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>You can change the $cbunny and CBunnyObj variable name to resemble your app name. However, the rest of the code has to be same as above. This snippet of code will create Javascript object which contains the root URL path of CakePHP.</p>
 
 <p>After we have the Javascript object variable, let&rsquo;s continue by creating the Javascript code. Inside your application Javascript file add these code :</p>
 
-<pre><code>  $('#user-typeahead').typeahead({
-    source: function (query, process) {
-      return $.ajax({
-        url: CbunnyObj.APP_PATH + 'users/typeahead_search',
-        type: 'get',
-        data: {q: query},
-        dataType: 'json',
-        success: function (json) {
-          return process(json);
-        }
-      });
-    }
-  });
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#user-typeahead&#39;</span><span class="p">).</span><span class="nx">typeahead</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">source</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">process</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>      <span class="nx">url</span><span class="o">:</span> <span class="nx">CbunnyObj</span><span class="p">.</span><span class="nx">APP_PATH</span> <span class="o">+</span> <span class="s1">&#39;users/typeahead_search&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">data</span><span class="o">:</span> <span class="p">{</span><span class="nx">q</span><span class="o">:</span> <span class="nx">query</span><span class="p">},</span>
+</span><span class='line'>      <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">process</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>In this code, we initialize the typeahead library and create AJAX request to the typeahead_search action. In the next step, we will create typeahead_search action that will handle AJAX request and return JSON result. Back to our users controller, create the typeahead action which will contain this code :</p>
 
-<pre><code>    public function typeahead_search() {
-        $this-&gt;autoRender = false;
-        $this-&gt;RequestHandler-&gt;respondAs('json');
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">typeahead_search</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">autoRender</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">RequestHandler</span><span class="o">-&gt;</span><span class="na">respondAs</span><span class="p">(</span><span class="s1">&#39;json&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// get the search term from URL</span>
+</span><span class='line'>    <span class="nv">$term</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">[</span><span class="s1">&#39;q&#39;</span><span class="p">];</span>
+</span><span class='line'>    <span class="nv">$users</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">User</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="k">array</span><span class="p">(</span>
+</span><span class='line'>        <span class="s1">&#39;conditions&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>            <span class="s1">&#39;User.username LIKE&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;%&#39;</span><span class="o">.</span><span class="nv">$term</span><span class="o">.</span><span class="s1">&#39;%&#39;</span>
+</span><span class='line'>        <span class="p">)</span>
+</span><span class='line'>    <span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Format the result for select2</span>
+</span><span class='line'>    <span class="nv">$result</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+</span><span class='line'>    <span class="k">foreach</span><span class="p">(</span><span class="nv">$users</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nb">array_push</span><span class="p">(</span><span class="nv">$result</span><span class="p">,</span> <span class="nv">$user</span><span class="p">[</span><span class="s1">&#39;User&#39;</span><span class="p">][</span><span class="s1">&#39;username&#39;</span><span class="p">]);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nv">$users</span> <span class="o">=</span> <span class="nv">$result</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$users</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-        // get the search term from URL
-        $term = $this-&gt;request-&gt;query['q'];
-        $users = $this-&gt;User-&gt;find('all',array(
-            'conditions' =&gt; array(
-                'User.username LIKE' =&gt; '%'.$term.'%'
-            )
-        ));
-
-        // Format the result for select2
-        $result = array();
-        foreach($users as $key =&gt; $user) {
-            array_push($result, $user['User']['username']);
-        }
-        $users = $result;
-
-        echo json_encode($users);
-    }
-</code></pre>
 
 <p>This action will receive the request, search the database for relevant result and return it on JSON format.</p>
 ]]></content>
@@ -303,113 +456,204 @@ Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee
 
 <p>So the first step is to create controller that will contain our Select2 search box. In this tutorial, I&rsquo;ll create users controller and one action to put the select2 search box. Here is the snippet of my code :</p>
 
-<pre><code>    public function select2() {
-        $this-&gt;User-&gt;recursive = 0;
-        $this-&gt;set('users', $this-&gt;paginate());
-    }
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">select2</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">User</span><span class="o">-&gt;</span><span class="na">recursive</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">paginate</span><span class="p">());</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>After this you can create the view ( View/Users/select2.ctp ). Here is my view code :</p>
 
-<pre><code>&lt;div class="row"&gt;
-    &lt;div class="span12"&gt;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span12&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">&lt;!-- Select2 Auto Complete --&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pull-right&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;user-select2&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;h2&gt;</span><span class="cp">&lt;?php echo __(&#39;Users&#39;);?&gt;</span><span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">&quot;table&quot;</span><span class="na">cellpadding=</span><span class="s">&quot;0&quot;</span> <span class="na">cellspacing=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;thead&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;id&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;username&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;password&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;created&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th&gt;</span><span class="cp">&lt;?php echo $this-&gt;Paginator-&gt;sort(&#39;modified&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">&quot;actions&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;?php echo __(&#39;Actions&#39;);?&gt;</span><span class="nt">&lt;/th&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/thead&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;tbody&gt;</span>
+</span><span class='line'>            <span class="cp">&lt;?php foreach ($users as $user): ?&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;id&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;username&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;password&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;created&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php echo h($user[&#39;User&#39;][&#39;modified&#39;]); ?&gt;</span> <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;actions&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                    <span class="cp">&lt;?php echo $this-&gt;Html-&gt;link(__(&#39;View&#39;), array(&#39;action&#39; =&gt; &#39;view&#39;, $user[&#39;User&#39;][&#39;id&#39;])); ?&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>            <span class="cp">&lt;?php endforeach; ?&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/tbody&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/table&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    &lt;!-- Select2 Auto Complete --&gt;
-    &lt;div class="pull-right"&gt;
-        &lt;input type="text" id="user-select2"&gt;
-    &lt;/div&gt;
-
-    &lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
-    &lt;table class="table"cellpadding="0" cellspacing="0"&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
-                &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
-                &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;?php foreach ($users as $user): ?&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
-                &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
-                &lt;td class="actions"&gt;
-                    &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;?php endforeach; ?&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
-&lt;/div&gt;
-</code></pre>
 
 <p>If you look at 5-7 you&rsquo;ll notice that I have input element with id element user-select2. We will use the ID inside our jQuery to initiate the Select2. The next step after this is to create a Javascript object to store the dynamic app path. Add this snippet of code into your layout file ( default.ctp ).</p>
 
-<pre><code>        $cbunny = array(
-            'APP_PATH' =&gt; Router::url('/',true)
-        );
-        echo $this-&gt;Html-&gt;scriptBlock('var CbunnyObj = ' . $this-&gt;Javascript-&gt;object($cbunny) . ';');
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$cbunny</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>    <span class="s1">&#39;APP_PATH&#39;</span> <span class="o">=&gt;</span> <span class="nx">Router</span><span class="o">::</span><span class="na">url</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="k">true</span><span class="p">)</span>
+</span><span class='line'><span class="p">);</span>
+</span><span class='line'><span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Html</span><span class="o">-&gt;</span><span class="na">scriptBlock</span><span class="p">(</span><span class="s1">&#39;var CbunnyObj = &#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Javascript</span><span class="o">-&gt;</span><span class="na">object</span><span class="p">(</span><span class="nv">$cbunny</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;;&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>You can change the $cbunny and CBunnyObj variable name to resemble your app name. However, the rest of the code has to be same as above. This snippet of code will create Javascript object which contains the root URL path of CakePHP.</p>
 
 <p>After we have the Javascript object, we will create jQuery code to create Select2 search box, process AJAX request and handle the respond. I&rsquo;ll start with creating cbunny.js file inside my webroot folder and add the file in my layout file. Here is the code :</p>
 
-<pre><code>/*global $, document, CbunnyObj */
-$(document).ready(function () {
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="cm">/*global $, document, CbunnyObj */</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#user-select2&#39;</span><span class="p">).</span><span class="nx">select2</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">placeholder</span><span class="o">:</span> <span class="s2">&quot;Search user auto complete&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">minimumInputLength</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">ajax</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">url</span><span class="o">:</span> <span class="nx">CbunnyObj</span><span class="p">.</span><span class="nx">APP_PATH</span> <span class="o">+</span> <span class="s1">&#39;users/search&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">data</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">term</span><span class="p">,</span> <span class="nx">page</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">q</span><span class="o">:</span> <span class="nx">term</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>      <span class="nx">results</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">page</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="p">{</span> <span class="nx">results</span><span class="o">:</span> <span class="nx">data</span> <span class="p">};</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
-  $('#user-select2').select2({
-    placeholder: "Search user auto complete",
-    minimumInputLength: 1,
-    ajax: {
-      url: CbunnyObj.APP_PATH + 'users/search',
-      dataType: 'json',
-      data: function (term, page) {
-        return {
-          q: term
-        };
-      },
-      results: function (data, page) {
-        return { results: data };
-      }
-    }
-  });
-
-});
-</code></pre>
 
 <p>I&rsquo;ll explain the Javascript code a little bit. Line 4-19 contain the definition of Select2 library. You can see we have ajax definition on line 7 which will perform AJAX request to  CbunnyObj.APP_PATH + &lsquo;users/search&rsquo;. CbunnyObj is javascript object variable that we have defined before and will translate into your CakePHP App path ( ex: <a href="http://cbunny.rudylee.com">http://cbunny.rudylee.com</a> ). I believe you understand the rest of the code as I just copied it from Select2 website.</p>
 
 <p>After this, our last step is to create action + view to handle the AJAX request. So we are going back to Users controller and add new action called &lsquo;search&rsquo;. Here is my &lsquo;search&rsquo; action code :</p>
 
-<pre><code>    public function search() {
-        $this-&gt;autoRender = false;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">search</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">autoRender</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// get the search term from URL</span>
+</span><span class='line'>    <span class="nv">$term</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">[</span><span class="s1">&#39;q&#39;</span><span class="p">];</span>
+</span><span class='line'>    <span class="nv">$users</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">User</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">,</span><span class="k">array</span><span class="p">(</span>
+</span><span class='line'>        <span class="s1">&#39;conditions&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>            <span class="s1">&#39;User.username LIKE&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;%&#39;</span><span class="o">.</span><span class="nv">$term</span><span class="o">.</span><span class="s1">&#39;%&#39;</span>
+</span><span class='line'>        <span class="p">)</span>
+</span><span class='line'>    <span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Format the result for select2</span>
+</span><span class='line'>    <span class="nv">$result</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+</span><span class='line'>    <span class="k">foreach</span><span class="p">(</span><span class="nv">$users</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$result</span><span class="p">[</span><span class="nv">$key</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$user</span><span class="p">[</span><span class="s1">&#39;User&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">];</span>
+</span><span class='line'>        <span class="nv">$result</span><span class="p">[</span><span class="nv">$key</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$user</span><span class="p">[</span><span class="s1">&#39;User&#39;</span><span class="p">][</span><span class="s1">&#39;username&#39;</span><span class="p">];</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nv">$users</span> <span class="o">=</span> <span class="nv">$result</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$users</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-        // get the search term from URL
-        $term = $this-&gt;request-&gt;query['q'];
-        $users = $this-&gt;User-&gt;find('all',array(
-            'conditions' =&gt; array(
-                'User.username LIKE' =&gt; '%'.$term.'%'
-            )
-        ));
-
-        // Format the result for select2
-        $result = array();
-        foreach($users as $key =&gt; $user) {
-            $result[$key]['id'] = (int) $user['User']['id'];
-            $result[$key]['text'] = $user['User']['username'];
-        }
-        $users = $result;
-
-        echo json_encode($users);
-    }
-</code></pre>
 
 <p>On line 5, we grab the search query term from the URL and store into $term variable. After that, we will perform normal query to the table. When we get the result, we won&rsquo;t be able to use it straight away. We will have to reformat it so it can be readable by Select2. On line 12-17 we basically iterate through the $users variable and create new associative array which has id and text as their key.</p>
 
@@ -499,18 +743,14 @@ $(document).ready(function () {
 
 <p>Basically I am happy with my new &ldquo;fresh&rdquo; installation of Ubuntu. Everything seems to run 3-4 faster than before. Booting time only takes around 20 secs from 1-2 minutes, Sublime Text fired up as soon as I clicked it and Chrome jumping smoothly like kangaroo. However, I just realize that I forgot to back up my Thunderbird email account ( damn!). Before, I set up my Thunderbird email account in POP which means that it will delete all the emails in the server. So now I am losing 17 months of emails archive which I have to explain to my boss soon.</p>
 
-<p>So here are my applications line up for my &ldquo;fresh&rdquo; OS :</p>
-
-<ol>
-<li><p> Email Client : Thunderbird.</p></li>
-<li><p> <del>IDE</del> Text Editor : Sublime Text 2 and Vim.</p></li>
-<li><p> Web Server : Apache ( I was considering using Nginx, however it will take too much time rewriting all the .htaccess rule into Nginx configuration. I can&rsquo;t afford that ).</p></li>
-<li><p> Web Browser : Chrome.</p></li>
-<li><p> Source Control : Git and SVN.</p></li>
-<li><p> Music Player : Rhythm box ( stay with default ).</p></li>
-<li><p> Coming soon&hellip;</p></li>
-</ol>
-
+<p>So here are my applications line up for my &ldquo;fresh&rdquo; OS :
+* Email Client : Thunderbird.
+* IDE Text Editor : Sublime Text 2 and Vim.
+* Web Server : Apache ( I was considering using Nginx, however it will take too much time rewriting all the .htaccess rule into Nginx configuration. I can&rsquo;t afford that ).
+* Web Browser : Chrome.
+* Source Control : Git and SVN.
+* Music Player : Rhythm box ( stay with default ).
+* Coming soon&hellip;</p>
 
 <p>Next stop ? Installing Windows 7 64 bit and VirtualBox.</p>
 ]]></content>
@@ -529,23 +769,23 @@ $(document).ready(function () {
 
 <p>And here is the complete list of ingredients:</p>
 
-<ol>
-<li><p> Noodle ( any kind of noodle, I am using Hokkien noodle ).</p></li>
-<li><p> Curry Paste ( Mae Ploy ).</p></li>
-<li><p> Coconut Milk ( main ingredient ).</p></li>
-<li><p> Shallot.</p></li>
-<li><p> Garlic.</p></li>
-<li><p> Red Onion.</p></li>
-<li><p> Spring Onion.</p></li>
-<li><p> Chicken Breast.</p></li>
-<li><p> Prawns ( quite expensive, $5 for 10 prawns ).</p></li>
-<li><p>. Fried Tofu.</p></li>
-<li><p>. Chili Sauce ( I am using ABC Chili Sauce ).</p></li>
-<li><p>. Lemon Grass.</p></li>
-<li><p>. Hard Boiled Eggs ( optional ).</p></li>
-<li><p>. Shrimp Paste ( I switched dried shrimp in the video with this shrimp paste because the price of dried shrimp is too expensive ).</p></li>
-<li><p>. Sugar and Salt for tasting.</p></li>
-</ol>
+<ul>
+<li>Noodle ( any kind of noodle, I am using Hokkien noodle ).</li>
+<li>Curry Paste ( Mae Ploy ).</li>
+<li>Coconut Milk ( main ingredient ).</li>
+<li>Shallot.</li>
+<li>Garlic.</li>
+<li>Red Onion.</li>
+<li>Spring Onion.</li>
+<li>Chicken Breast.</li>
+<li>Prawns ( quite expensive, $5 for 10 prawns ).</li>
+<li>Fried Tofu.</li>
+<li>Chili Sauce ( I am using ABC Chili Sauce ).</li>
+<li>Lemon Grass.</li>
+<li>Hard Boiled Eggs ( optional ).</li>
+<li>Shrimp Paste ( I switched dried shrimp in the video with this shrimp paste because the price of dried shrimp is too expensive ).</li>
+<li>Sugar and Salt for tasting.</li>
+</ul>
 
 
 <p>I am not gonna explain how to cook it as you can learn it yourself from the video. You don&rsquo;t need to follow all the ingredients and try to experiment with your own style ( which I did ). And here is the final result of my Red Curry without the noodle :</p>
@@ -597,12 +837,18 @@ $(document).ready(function () {
 
 <p>This concept is similar with prefixes in CakePHP. However,  CakePHP allows you to put different action in one controller file, while in rails you have to create different controller and view file for the new namespace. Here is the sample namespace code that I put in my routes.rb file :</p>
 
-<pre><code>  namespace :admin do
-    resources :users
-    resources :products
-    resources :categories
-  end
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">namespace</span> <span class="ss">:admin</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:users</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:products</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:categories</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>The code means that users, products and categories will have admin namespace. The next step is to create new folder in your controller and view folder called &ldquo;admin&rdquo;. Here is the screenshot ( see the directory browser on the left hand side ) :</p>
 
@@ -610,13 +856,17 @@ $(document).ready(function () {
 
 <p>Put the template and controller files inside these folders. You have to add Admin:: in front of the class definition of your controller file. So it&rsquo;s gonna be like this :</p>
 
-<pre><code>class Admin::UsersController &lt; ApplicationController
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Admin</span><span class="o">::</span><span class="no">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>After you set up everything done, you can try to access your apps through <a href="http://your-url/admin/controller-path">http://your-url/admin/controller-path</a> ( ex: <a href="http://localhost:3000/admin/users">http://localhost:3000/admin/users</a> ). It should automatically pick the controller and view files from admin folder. And if you want to redirect to the original route, you have to add &lsquo;/&rsquo; in front of the controller name. Here is the code :</p>
 
-<pre><code>redirect_to :controller =&gt; "/sessions",:action =&gt; "new"
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">redirect_to</span> <span class="ss">:controller</span> <span class="o">=&gt;</span> <span class="s2">&quot;/sessions&quot;</span><span class="p">,</span><span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s2">&quot;new&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>It means you will redirect the user to session controller outside of the namespace and load &ldquo;new&rdquo; action. That&rsquo;s all.</p>
 ]]></content>
@@ -631,12 +881,20 @@ $(document).ready(function () {
 
 <p>Today, I was trying to use JWPlayer plugin to show video in a custom post type template which grab the video file from external URL ( not from Media Library ). I was thinking this would be an easy task because I could easily execute the shortcode using do_shortcode() function in Wordpress. But, apparently JWPlayer plugin handle the shortcode quite different from another plugin so you have to use jwplayer_tag_callback() function instead of do_shortcode(). I don&rsquo;t know the reason why they make it like that but as long as it works then it&rsquo;s fine. Here is the sample code to make it clear:</p>
 
-<pre><code>//won't work
-do_shortcode("[jwplayer file='http://xxx.com/xxx.mp4']");
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="c1">//won&#39;t work</span>
+</span><span class='line'><span class="nx">do_shortcode</span><span class="p">(</span><span class="s2">&quot;[jwplayer file=&#39;http://xxx.com/xxx.mp4&#39;]&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//obviously will work</span>
+</span><span class='line'><span class="nx">jwplayer_tag_callback</span><span class="p">(</span><span class="s2">&quot;[jwplayer file=&#39;http://xxx.com/xxx.mp4&#39;]&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-//obviously will work
-jwplayer_tag_callback("[jwplayer file='http://xxx.com/xxx.mp4']");
-</code></pre>
+
+
 ]]></content>
   </entry>
   
@@ -661,33 +919,48 @@ jwplayer_tag_callback("[jwplayer file='http://xxx.com/xxx.mp4']");
 </ul>
 
 
-<p>Here is the sample of the action code:
-<code>
-</code></p>
+<p>Here is the sample of the action code:</p>
 
-<p>[php]    function admin_autoComplete() {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">function</span> <span class="nf">admin_autoComplete</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+</span><span class='line'>      <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;users&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">[</span><span class="s1">&#39;Guest&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+</span><span class='line'>        <span class="p">));</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">autoRender</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nv">$guests</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">User</span><span class="o">-&gt;</span><span class="na">getGuests</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+</span><span class='line'>      <span class="s1">&#39;conditions&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>      <span class="s1">&#39;OR&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>          <span class="s1">&#39;User.name LIKE&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;%&#39;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;term&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span>
+</span><span class='line'>          <span class="s1">&#39;User.surname LIKE&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;%&#39;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;term&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;%&#39;</span>
+</span><span class='line'>      <span class="p">)</span>
+</span><span class='line'>      <span class="p">)</span>
+</span><span class='line'>      <span class="p">));</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">User</span><span class="o">-&gt;</span><span class="na">autoComplete_encode</span><span class="p">(</span><span class="nv">$guests</span><span class="p">));</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>if (!empty($this-&gt;data)) {
-    $this-&gt;redirect(array(
-    'controller' =&gt; 'users',
-    'action' =&gt; 'view', $this-&gt;data['Guest']['id']
-    ));
-}
-$this-&gt;autoRender = false;
-$guests = $this-&gt;User-&gt;getGuests(array(
-    'conditions' =&gt; array(
-    'OR' =&gt; array(
-        'User.name LIKE' =&gt; '%' . $_GET['term'] . '%',
-        'User.surname LIKE' =&gt; '%' . $_GET['term'] . '%'
-    )
-    )
-    ));
-echo json_encode($this-&gt;User-&gt;autoComplete_encode($guests));
-}[/php]
-</code></pre>
 
-<p>&#8220;
-Just ignore line 8 and so, we gonna focus on line 2 to 7. In that line, I redirect the user to the view action which based on the Guest ID which I got from the form. You can change the controller/action in this section. I hope everything are clear. Cheers.</p>
+<p>Just ignore line 8 and so, we gonna focus on line 2 to 7. In that line, I redirect the user to the view action which based on the Guest ID which I got from the form. You can change the controller/action in this section. I hope everything are clear. Cheers.</p>
 ]]></content>
   </entry>
   

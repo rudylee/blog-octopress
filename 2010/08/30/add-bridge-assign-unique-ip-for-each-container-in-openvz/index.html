@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Add bridge and assign unique IP for each container in OpenVZ - blog.rudylee.com</title>
-  <meta name="author" content="Rudy Lee">
+  <title>Add bridge and assign unique IP for each container in OpenVZ - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="I am writing this tutorial to refresh my mind ( I am not configuring the machine right now ), so forgive me if the explanations are not clear and &hellip;">
+  <meta name="description" content="Add Bridge and Assign Unique IP for Each Container in OpenVZ Aug 30th, 2010 I am writing this tutorial to refresh my mind ( I am not configuring the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,14 +18,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rudylee.github.io/2010/08/30/add-bridge-assign-unique-ip-for-each-container-in-openvz/">
+  <link rel="canonical" href="http://rudylee.github.io/2010/08/30/add-bridge-assign-unique-ip-for-each-container-in-openvz">
   <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="blog.rudylee.com" type="application/atom+xml">
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -35,53 +39,42 @@
 </head>
 
 <body   >
-  <header role="banner"><hgroup>
-  <div id="logo">
-  	<div id="logoLeft">{</div>
-  	<div id="logoText">mob</div>
-  	<div id="logoRight">}</div>
-  	<div class="clear"></div>
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
   </div>
-  <h1><a href="/">blog.rudylee.com</a></h1>
-  
-    <h2>keep it humble</h2>
-  
-  <div class="clear"></div>
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:rudylee.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
 <article class="hentry" role="article">
   
+
   <header>
-    
-      
-        <h1 class="entry-title">Add Bridge and Assign Unique IP for Each Container in OpenVZ</h1>
-      
-    
-    
-      <p class="meta">
-        
+  <div class="jumbotron">
+    Add Bridge and Assign Unique IP for Each Container in OpenVZ
+	<h5>
 
 
 
@@ -93,31 +86,29 @@
   
 
 
-<time datetime="2010-08-30T13:33:27+10:00" pubdate data-updated="true">Aug 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>I am writing this tutorial to refresh my mind ( I am not configuring the machine right now ), so forgive me if the explanations are not clear and structured.</p>
+<i class="icon-calendar-empty"></i> <time datetime="2010-08-30T13:33:27+10:00" pubdate data-updated="true">Aug 30<span>th</span>, 2010</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>I am writing this tutorial to refresh my mind ( I am not configuring the machine right now ), so forgive me if the explanations are not clear and structured.</p>
 
 <p>After successfully installed the OpenVZ, you need to configure the IP for the containers. If you are using the built in &ldquo;Venet&rdquo; you will end up making the host as the gateway. In the other words if you traceroute to your container IP, it will going through your host then to your container. Here are the sample of the scenario :</p>
 
 <ol>
-<li><p> Host IP : 202.58.181.2</p></li>
-<li><p> Container 1 : 202.58.181.50</p></li>
-<li><p> Container 2 : 202.58.181.51</p></li>
+<li><p>Host IP : 202.58.181.2</p></li>
+<li><p>Container 1 : 202.58.181.50</p></li>
+<li><p>Container 2 : 202.58.181.51</p></li>
 </ol>
 
 
 <p>Basically if you use the venet, if you traceroute to the Container 1 the result should be : Your ISP &ndash;> 202.58.181.2 &ndash;> 202.58.181.50 so the IP of the Host is showed up. Same if you try to traceroute to the second container. Thus, my solution to overcome this problem are :</p>
 
 <ol>
-<li><p> Make a bridge using brctl command</p></li>
-<li><p> Use the Veth instead of Venet</p></li>
-<li><p> Put all the Veth into the bridge</p></li>
-<li><p> Assign the Host IP to the bridge</p></li>
+<li><p>Make a bridge using brctl command</p></li>
+<li><p>Use the Veth instead of Venet</p></li>
+<li><p>Put all the Veth into the bridge</p></li>
+<li><p>Assign the Host IP to the bridge</p></li>
 </ol>
 
 
@@ -125,149 +116,120 @@
 
 <p>Here is my /etc/rc.local configuration looks like :</p>
 
-<pre><code>#!/bin/sh
-#
-# This script will be executed *after* all the other init scripts.
-# You can put your own initialization stuff in here if you don't
-# want to do the full Sys V style init stuff.
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># This script will be executed *after* all the other init scripts.</span>
+</span><span class='line'><span class="c"># You can put your own initialization stuff in here if you don&#39;t</span>
+</span><span class='line'><span class="c"># want to do the full Sys V style init stuff.</span>
+</span><span class='line'>
+</span><span class='line'>touch /var/lock/subsys/local
+</span><span class='line'>brctl addbr vzbr0
+</span><span class='line'>brctl addif vzbr0 eth0
+</span><span class='line'>brctl addif vzbr0 veth1.0
+</span><span class='line'>brctl addif vzbr0 veth2.0
+</span><span class='line'>brctl addif vzbr0 veth3.0
+</span><span class='line'>brctl addif vzbr0 veth4.0
+</span><span class='line'>ifconfig vzbr0 0
+</span><span class='line'>ip addr add 202.58.181.2/25 dev vzbr0
+</span><span class='line'><span class="nb">cd</span> /usr/local/webvz/ <span class="o">&amp;&amp;</span> /usr/bin/ruby script/server &amp;&gt;/dev/null &amp;
+</span></code></pre></td></tr></table></div></figure>
 
-touch /var/lock/subsys/local
-brctl addbr vzbr0
-brctl addif vzbr0 eth0
-brctl addif vzbr0 veth1.0
-brctl addif vzbr0 veth2.0
-brctl addif vzbr0 veth3.0
-brctl addif vzbr0 veth4.0
-ifconfig vzbr0 0
-ip addr add 202.58.181.2/25 dev vzbr0
-cd /usr/local/webvz/ &amp;&amp; /usr/bin/ruby script/server &amp;&gt;/dev/null &amp;
-</code></pre>
 
 <p>I&rsquo;ll update this post if I need to configure another VPS Server.</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">admin</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-30T13:33:27+10:00" pubdate data-updated="true">Aug 30<span>th</span>, 2010</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/categories/unix-and-linux/'>Unix and Linux</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rudylee.github.io/2010/08/30/add-bridge-assign-unique-ip-for-each-container-in-openvz/" data-via="" data-counturl="http://rudylee.github.io/2010/08/30/add-bridge-assign-unique-ip-for-each-container-in-openvz/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left articlenav" href="/2010/08/12/sydney-php-group/" title="Previous Post: Sydney PHP Group">&laquo; Sydney PHP Group</a>
-      
-      
-        <a class="basic-alignment right articlenav" href="/2010/09/30/redcar-textmate-alike-editor/" title="Next Post: Redcar : Textmate alike editor">Redcar : Textmate alike editor &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2013/05/27/playing-with-google-map-api/">Playing with Google Map API</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/16/override-module-config-in-zend-framework-2/">Override module config in Zend Framework 2</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/05/06/zend-framework-2-the-proper-way-to-set-application-path-in-javascript-object/">Zend Framework 2 : The proper way to set application path in Javascript Object</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/03/30/my-review-after-two-months-using-vim/">My review after two months using VIM</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/02/15/zend-framework-2-get-server-url-in-controller-without-using-serverurl/">Zend Framework 2 : get server URL in controller without using serverUrl()</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
 
     </div>
   </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Rudy Lee -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/categories/Unix and Linux/"><span class="badge">Unix and Linux</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/2010/08/12/sydney-php-group/" title="Previous Post: Sydney PHP Group">&laquo; Sydney PHP Group</a>
+          
+          
+            <a class="basic-alignment right" href="/2010/09/30/redcar-textmate-alike-editor/" title="Next Post: Redcar : Textmate alike editor">Redcar : Textmate alike editor &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2013 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
 </p>
 
-</footer>
-  
 
-<script type="text/javascript">
-      var disqus_shortname = 'blogrudylee';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://rudylee.github.io/2010/08/30/add-bridge-assign-unique-ip-for-each-container-in-openvz/';
-        var disqus_url = 'http://rudylee.github.io/2010/08/30/add-bridge-assign-unique-ip-for-each-container-in-openvz/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
+        </footer>
+      </div>
+    </div>
+  </div>
+  
 
 
 

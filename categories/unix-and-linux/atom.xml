@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Unix and Linux | blog.rudylee.com]]></title>
+  <title><![CDATA[Category: Unix and Linux | My Octopress Blog]]></title>
   <link href="http://rudylee.github.io/categories/unix-and-linux/atom.xml" rel="self"/>
   <link href="http://rudylee.github.io/"/>
-  <updated>2013-07-09T22:22:22+10:00</updated>
+  <updated>2013-07-15T21:00:49+10:00</updated>
   <id>http://rudylee.github.io/</id>
   <author>
-    <name><![CDATA[Rudy Lee]]></name>
+    <name><![CDATA[Your Name]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -52,18 +52,14 @@
 
 <p>Basically I am happy with my new &ldquo;fresh&rdquo; installation of Ubuntu. Everything seems to run 3-4 faster than before. Booting time only takes around 20 secs from 1-2 minutes, Sublime Text fired up as soon as I clicked it and Chrome jumping smoothly like kangaroo. However, I just realize that I forgot to back up my Thunderbird email account ( damn!). Before, I set up my Thunderbird email account in POP which means that it will delete all the emails in the server. So now I am losing 17 months of emails archive which I have to explain to my boss soon.</p>
 
-<p>So here are my applications line up for my &ldquo;fresh&rdquo; OS :</p>
-
-<ol>
-<li><p> Email Client : Thunderbird.</p></li>
-<li><p> <del>IDE</del> Text Editor : Sublime Text 2 and Vim.</p></li>
-<li><p> Web Server : Apache ( I was considering using Nginx, however it will take too much time rewriting all the .htaccess rule into Nginx configuration. I can&rsquo;t afford that ).</p></li>
-<li><p> Web Browser : Chrome.</p></li>
-<li><p> Source Control : Git and SVN.</p></li>
-<li><p> Music Player : Rhythm box ( stay with default ).</p></li>
-<li><p> Coming soon&hellip;</p></li>
-</ol>
-
+<p>So here are my applications line up for my &ldquo;fresh&rdquo; OS :
+* Email Client : Thunderbird.
+* IDE Text Editor : Sublime Text 2 and Vim.
+* Web Server : Apache ( I was considering using Nginx, however it will take too much time rewriting all the .htaccess rule into Nginx configuration. I can&rsquo;t afford that ).
+* Web Browser : Chrome.
+* Source Control : Git and SVN.
+* Music Player : Rhythm box ( stay with default ).
+* Coming soon&hellip;</p>
 
 <p>Next stop ? Installing Windows 7 64 bit and VirtualBox.</p>
 ]]></content>
@@ -110,19 +106,22 @@
 
 <p>1.Install the Apache GeoIP module and restart apache webserver</p>
 
-<pre><code>sudo apt-get install libapache2-geoip
+<p><code>bash    
+sudo apt-get install libapache2-geoip
 sudo /etc/init.d/apache2 restart
-</code></pre>
+</code></p>
 
 <p>2.Create the .htaccess file and put in your webroot folder / website folder</p>
 
-<pre><code>GeoIPEnable On
+<p>``` apache
+GeoIPEnable On</p>
 
-# Redirect one country
-RewriteEngine on
+<h1>Redirect one country</h1>
+
+<p>RewriteEngine on
 RewriteCond %{ENV:GEOIP_COUNTRY_CODE} ^AU$
-RewriteRule ^(.*)$ http://www.canada.com$1 [L]
-</code></pre>
+RewriteRule ^(.*)$ <a href="http://www.canada.com$1">http://www.canada.com$1</a> [L]
+```</p>
 
 <p>In the example above, GeoIP will check whether the visitor is from Australia or not. If the visitor is from Australia then apache will redirect the visitor to <a href="http://www.canada.com.">http://www.canada.com.</a> Quite simple and straight forward. You can see another example in here<a href="http://www.maxmind.com/app/mod_geoip"> http://www.maxmind.com/app/mod_geoip</a> ( ignore the GeoIPDBFile because it will cause error ).</p>
 ]]></content>
