@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CakePHP | My Octopress Blog]]></title>
+  <link href="http://rudylee.github.io/categories/cakephp/atom.xml" rel="self"/>
+  <link href="http://rudylee.github.io/"/>
+  <updated>2013-07-15T21:00:49+10:00</updated>
+  <id>http://rudylee.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bootstrap Typeahead CakePHP 2.0]]></title>
+    <link href="http://rudylee.github.io/2013/02/02/bootstrap-typeahead-cakephp-2-0/"/>
+    <updated>2013-02-02T20:13:35+11:00</updated>
+    <id>http://rudylee.github.io/2013/02/02/bootstrap-typeahead-cakephp-2-0</id>
+    <content type="html"><![CDATA[<h2></h2>
+
+<p>Demo : <a href="http://cbunny2.rudylee.com/users/typeahead">http://cbunny2.rudylee.com/users/typeahead</a>
+Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee/cbunny</a></p>
+
+<p>In this post, I&rsquo;ll explain how to integrate Twitter Bootstrap Typeahead with your CakePHP 2.0 application. We will avoid using helpers or plugins and stick with plain Javascript + jQuery. Make sure you have include jQuery, Bootstrap CSS and Bootstrap Javascript files in your CakePHP application. You can simply do it inside your default.ctp file ( the files are bootstrap.min.js and bootstrap.min.css ).</p>
+
+<p>After that we will create controller, action and view to put our input box. In this tutorial I&rsquo;ll use my Cbunny application and Users controller. I&rsquo;ll start by creating typeahead action, here is the code :</p>
+
+<p>``` php  <br/>
+public function typeahead() {</p>
+
+<pre><code>$this-&gt;User-&gt;recursive = 0;
+$this-&gt;set('users', $this-&gt;paginate());       
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Nothing special happening rather than get current users from the table and paginate them. And here is the view :</p>
+
+<p>``` html</p>
+
+<p><div class="row"></p>
+
+<pre><code>&lt;div class="span12"&gt;
+
+&lt;!-- Typeahead Auto Complete --&gt;
+&lt;div class="pull-right"&gt;
+    &lt;input type="text" data-provide="typeahead" id="user-typeahead"&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
+&lt;table class="table"cellpadding="0" cellspacing="0"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
+            &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;?php foreach ($users as $user): ?&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
+            &lt;td class="actions"&gt;
+                &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;?php endforeach; ?&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+```</p>
+
+<p>On line 5-7, I am defining input text with typeahead attribute and ID that we will use in Javascript code. The next step is to create Javascript object in your layout file. So add this code snippet in your default.ctp file :</p>
+
+<p>``` php  <br/>
+$cbunny = array(</p>
+
+<pre><code>'APP_PATH' =&gt; Router::url('/',true)
+</code></pre>
+
+<p>);
+echo $this->Html->scriptBlock(&lsquo;var CbunnyObj = &rsquo; . $this->Javascript->object($cbunny) . &lsquo;;&rsquo;);
+```</p>
+
+<p>You can change the $cbunny and CBunnyObj variable name to resemble your app name. However, the rest of the code has to be same as above. This snippet of code will create Javascript object which contains the root URL path of CakePHP.</p>
+
+<p>After we have the Javascript object variable, let&rsquo;s continue by creating the Javascript code. Inside your application Javascript file add these code :</p>
+
+<p>``` javascript  <br/>
+$(&lsquo;#user-typeahead&rsquo;).typeahead({
+  source: function (query, process) {</p>
+
+<pre><code>return $.ajax({
+  url: CbunnyObj.APP_PATH + 'users/typeahead_search',
+  type: 'get',
+  data: {q: query},
+  dataType: 'json',
+  success: function (json) {
+    return process(json);
+  }
+});
+</code></pre>
+
+<p>  }
+});
+```</p>
+
+<p>In this code, we initialize the typeahead library and create AJAX request to the typeahead_search action. In the next step, we will create typeahead_search action that will handle AJAX request and return JSON result. Back to our users controller, create the typeahead action which will contain this code :</p>
+
+<p>``` php  <br/>
+public function typeahead_search() {</p>
+
+<pre><code>$this-&gt;autoRender = false;
+$this-&gt;RequestHandler-&gt;respondAs('json');
+
+// get the search term from URL
+$term = $this-&gt;request-&gt;query['q'];
+$users = $this-&gt;User-&gt;find('all',array(
+    'conditions' =&gt; array(
+        'User.username LIKE' =&gt; '%'.$term.'%'
+    )
+));
+
+// Format the result for select2
+$result = array();
+foreach($users as $key =&gt; $user) {
+    array_push($result, $user['User']['username']);
+}
+$users = $result;
+
+echo json_encode($users);
+</code></pre>
+
+<p>}
+```</p>
+
+<p>This action will receive the request, search the database for relevant result and return it on JSON format.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Select2 AJAX Auto Complete with CakePHP 2.0]]></title>
+    <link href="http://rudylee.github.io/2013/02/02/select2-ajax-auto-complete-with-cakephp-2-0/"/>
+    <updated>2013-02-02T19:09:26+11:00</updated>
+    <id>http://rudylee.github.io/2013/02/02/select2-ajax-auto-complete-with-cakephp-2-0</id>
+    <content type="html"><![CDATA[<h2>Demo : <a href="http://cbunny2.rudylee.com/users/select2">http://cbunny2.rudylee.com/users/select2</a></h2>
+
+<p>Source : <a href="https://github.com/rudylee/cbunny">https://github.com/rudylee/cbunny</a></p>
+
+<p>In this post, I&rsquo;ll explain how to use <a href="http://ivaynberg.github.com/select2/">Select2</a> inside CakePHP. We will avoid using any helpers and rely on jQuery + Javascript. Before we start, I presume you have downloaded Select2 and included the Javascript and CSS files inside your layout. Thus, I won&rsquo;t explain how to import Select2 library into your CakePHP app ( you can download my cbunny app from Github if you are lost ).</p>
+
+<p>So the first step is to create controller that will contain our Select2 search box. In this tutorial, I&rsquo;ll create users controller and one action to put the select2 search box. Here is the snippet of my code :</p>
+
+<p>``` php  <br/>
+public function select2() {</p>
+
+<pre><code>$this-&gt;User-&gt;recursive = 0;
+$this-&gt;set('users', $this-&gt;paginate());
+</code></pre>
+
+<p>}
+```</p>
+
+<p>After this you can create the view ( View/Users/select2.ctp ). Here is my view code :</p>
+
+<p>``` html</p>
+
+<p><div class="row"></p>
+
+<pre><code>&lt;div class="span12"&gt;
+
+&lt;!-- Select2 Auto Complete --&gt;
+&lt;div class="pull-right"&gt;
+    &lt;input type="text" id="user-select2"&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;&lt;?php echo __('Users');?&gt;&lt;/h2&gt;
+&lt;table class="table"cellpadding="0" cellspacing="0"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('id');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('username');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('password');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('created');?&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;?php echo $this-&gt;Paginator-&gt;sort('modified');?&gt;&lt;/th&gt;
+            &lt;th class="actions"&gt;&lt;?php echo __('Actions');?&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;?php foreach ($users as $user): ?&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['id']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['username']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['password']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['created']); ?&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;?php echo h($user['User']['modified']); ?&gt; &lt;/td&gt;
+            &lt;td class="actions"&gt;
+                &lt;?php echo $this-&gt;Html-&gt;link(__('View'), array('action' =&gt; 'view', $user['User']['id'])); ?&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;?php endforeach; ?&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+```</p>
+
+<p>If you look at 5-7 you&rsquo;ll notice that I have input element with id element user-select2. We will use the ID inside our jQuery to initiate the Select2. The next step after this is to create a Javascript object to store the dynamic app path. Add this snippet of code into your layout file ( default.ctp ).</p>
+
+<p>``` php<br/>
+$cbunny = array(</p>
+
+<pre><code>'APP_PATH' =&gt; Router::url('/',true)
+</code></pre>
+
+<p>);
+echo $this->Html->scriptBlock(&lsquo;var CbunnyObj = &rsquo; . $this->Javascript->object($cbunny) . &lsquo;;&rsquo;);
+```</p>
+
+<p>You can change the $cbunny and CBunnyObj variable name to resemble your app name. However, the rest of the code has to be same as above. This snippet of code will create Javascript object which contains the root URL path of CakePHP.</p>
+
+<p>After we have the Javascript object, we will create jQuery code to create Select2 search box, process AJAX request and handle the respond. I&rsquo;ll start with creating cbunny.js file inside my webroot folder and add the file in my layout file. Here is the code :</p>
+
+<p>``` javascript<br/>
+/<em>global $, document, CbunnyObj </em>/
+$(document).ready(function () {</p>
+
+<p>  $(&lsquo;#user-select2&rsquo;).select2({</p>
+
+<pre><code>placeholder: "Search user auto complete",
+minimumInputLength: 1,
+ajax: {
+  url: CbunnyObj.APP_PATH + 'users/search',
+  dataType: 'json',
+  data: function (term, page) {
+    return {
+      q: term
+    };
+  },
+  results: function (data, page) {
+    return { results: data };
+  }
+}
+</code></pre>
+
+<p>  });</p>
+
+<p>});
+```</p>
+
+<p>I&rsquo;ll explain the Javascript code a little bit. Line 4-19 contain the definition of Select2 library. You can see we have ajax definition on line 7 which will perform AJAX request to  CbunnyObj.APP_PATH + &lsquo;users/search&rsquo;. CbunnyObj is javascript object variable that we have defined before and will translate into your CakePHP App path ( ex: <a href="http://cbunny.rudylee.com">http://cbunny.rudylee.com</a> ). I believe you understand the rest of the code as I just copied it from Select2 website.</p>
+
+<p>After this, our last step is to create action + view to handle the AJAX request. So we are going back to Users controller and add new action called &lsquo;search&rsquo;. Here is my &lsquo;search&rsquo; action code :</p>
+
+<p>``` php
+public function search() {</p>
+
+<pre><code>$this-&gt;autoRender = false;
+
+// get the search term from URL
+$term = $this-&gt;request-&gt;query['q'];
+$users = $this-&gt;User-&gt;find('all',array(
+    'conditions' =&gt; array(
+        'User.username LIKE' =&gt; '%'.$term.'%'
+    )
+));
+
+// Format the result for select2
+$result = array();
+foreach($users as $key =&gt; $user) {
+    $result[$key]['id'] = (int) $user['User']['id'];
+    $result[$key]['text'] = $user['User']['username'];
+}
+$users = $result;
+
+echo json_encode($users);
+</code></pre>
+
+<p>}
+```</p>
+
+<p>On line 5, we grab the search query term from the URL and store into $term variable. After that, we will perform normal query to the table. When we get the result, we won&rsquo;t be able to use it straight away. We will have to reformat it so it can be readable by Select2. On line 12-17 we basically iterate through the $users variable and create new associative array which has id and text as their key.</p>
+
+<p>That&rsquo;s it for the tutorial. If you are confuse, feel free to write comment below and I&rsquo;ll be happy to answer them.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[No prefix support for mapResources in CakePHP 2.x]]></title>
+    <link href="http://rudylee.github.io/2012/11/28/no-prefix-support-for-mapresources-in-cakephp-2-x/"/>
+    <updated>2012-11-28T13:45:18+11:00</updated>
+    <id>http://rudylee.github.io/2012/11/28/no-prefix-support-for-mapresources-in-cakephp-2-x</id>
+    <content type="html"><![CDATA[<p>REST API is relatively easy to implement if you are using web framework to build your application. In Rails, you just need to add single &lsquo;resources&rsquo;  entry in your routing file. In CakePHP, it has similar solution as you can read in the <a href="http://book.cakephp.org/2.0/en/development/rest.html">Cookbook</a>. However, currently there is no prefix support in CakePHP 2.x and this is confirmed in these links :</p>
+
+<ul>
+<li><p><a href="http://cakephp.lighthouseapp.com/projects/42648/tickets/968-rest-routes-with-prefix">http://cakephp.lighthouseapp.com/projects/42648/tickets/968-rest-routes-with-prefix</a></p></li>
+<li><p><a href="https://github.com/cakephp/cakephp/pull/763">https://github.com/cakephp/cakephp/pull/763</a></p></li>
+</ul>
+
+
+<p>This is a drawback because you are most likely will use prefix to build REST API. In my case, I have products controller in my application which has default CRUD actions and another set of actions with prefix ( api_index, api_view, etc ). Those actions with prefix in front of it will act as our RESTful API.</p>
+
+<p>You can try another approach by creating separate controller only to handle API request. For example, you will have to create controller called products_api to handle all restful API for specific controller. I am not a fan of this approach because you might end up having a lot of files and it&rsquo;s difficult to maintain.</p>
+
+<p>So, if you are on the same boat as me, you can follow this solution that I found. This solution only requires you to add one line of code to Router.php file in CakePHP lib folder ( <a href="https://github.com/DiegoMax/cakephp/commit/f203202ff78da930b472ecce817fdc6f19d6dfda">https://github.com/DiegoMax/cakephp/commit/f203202ff78da930b472ecce817fdc6f19d6dfda</a> ).</p>
+
+<p>Not a best solution but I don&rsquo;t want to wait until CakePHP 3.x released to finish my first CakePHP + Backbone.JS app. That&rsquo;s all, have a nice day.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cake Bunny website now using twitter bootstrap!]]></title>
+    <link href="http://rudylee.github.io/2012/03/20/cake-bunny-website-now-using-twitter-bootstrap/"/>
+    <updated>2012-03-20T12:52:00+11:00</updated>
+    <id>http://rudylee.github.io/2012/03/20/cake-bunny-website-now-using-twitter-bootstrap</id>
+    <content type="html"><![CDATA[<p><a href="http://blog.rudylee.com/wp-content/uploads/2012/05/twitter-bootstrap.png"><img src="http://blog.rudylee.com/wp-content/uploads/2012/05/twitter-bootstrap-150x150.png" alt="" /></a>Today, I spent couple hours to update my <a href="http://www.rudylee.com/cbunny">Cake Bunny 1.0</a> and <a href="http://www.rudylee.com/cbunny2">Cake Bunny 2.0</a> websites. Cake Bunny is CakePHP website that I built to provide live demo for CakePHP tutorials in mt blog. At the moment, it has only two sample demos ( jQuery UI AutoComplete and jQuery UI AutoComplete Redirect).</p>
+
+<p>I decided to make over the design using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> instead of CakePHP default template. For you guys that haven&rsquo;t try twitter bootstrap yet, I suggest you give it a try. It has a lot of components inside it and provide you with basic layout ( pretty much similar with other CSS frameworks such as blueprint, 960, etc ).</p>
+
+<p>And another great feature of twitter bootstrap is that you can build mobile friendly website by using what it called responsive design. Basically, it using Javascript to detect the browser that user using and will change certain elements to follow the user browser.</p>
+
+<p><a href="http://twitter.github.com/bootstrap/">Click here to find out more about Twitter Bootstrap!</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Auto redirect in CakePHP jQuery AutoComplete ]]></title>
+    <link href="http://rudylee.github.io/2011/12/12/auto-redirect-in-cakephp-jquery-autocomplete/"/>
+    <updated>2011-12-12T15:11:56+11:00</updated>
+    <id>http://rudylee.github.io/2011/12/12/auto-redirect-in-cakephp-jquery-autocomplete</id>
+    <content type="html"><![CDATA[<blockquote><h2>Demo : <a href="http://cbunny.rudylee.com/autocomplete_redirect">http://cbunny.rudylee.com/autocomplete_redirect</a></h2>
+
+<p>Demo source code :<a href="https://github.com/rudylee/cbunny"> https://github.com/rudylee/cbunny</a></p></blockquote>
+
+<p>In my previous post ( <a href="http://blog.rudylee.com/2011/07/25/jquery-ui-autocomplete-in-cakephp/">http://blog.rudylee.com/2011/07/25/jquery-ui-autocomplete-in-cakephp/</a> ) we have successfully integrated the jQuery AutoComplete with CakePHP with a little bit hacky way. Now we gonna add another feature that can redirect user to our desired place when they click the result value in the AutoComplete ( try the demo for more details ).</p>
+
+<p>So let&rsquo;s start the coding ( I assume you have integrated the jQuery UI AutoComplete in your apps, if you haven&rsquo;t, just read my previous post ), so basically what we need to do are divided into 4 steps:</p>
+
+<ul>
+<li><p>Wrap the jQuery UI AutoComplete search field in a form tag.</p></li>
+<li><p>Add a hidden field which will hold the ID of the result.</p></li>
+<li><p>Add &lsquo;select&rsquo; option into the helper.</p></li>
+<li><p>Set up the action that will handle the form submit</p></li>
+</ul>
+
+
+<p>Here is the sample of the action code:</p>
+
+<p>``` php
+function admin_autoComplete() {</p>
+
+<pre><code>if (!empty($this-&gt;data)) {
+    $this-&gt;redirect(array(
+  'controller' =&gt; 'users',
+  'action' =&gt; 'view', $this-&gt;data['Guest']['id']
+    ));
+}
+$this-&gt;autoRender = false;
+$guests = $this-&gt;User-&gt;getGuests(array(
+    'conditions' =&gt; array(
+    'OR' =&gt; array(
+        'User.name LIKE' =&gt; '%' . $_GET['term'] . '%',
+        'User.surname LIKE' =&gt; '%' . $_GET['term'] . '%'
+    )
+    )
+    ));
+echo json_encode($this-&gt;User-&gt;autoComplete_encode($guests));
+</code></pre>
+
+<p>  }
+```
+Just ignore line 8 and so, we gonna focus on line 2 to 7. In that line, I redirect the user to the view action which based on the Guest ID which I got from the form. You can change the controller/action in this section. I hope everything are clear. Cheers.</p>
+]]></content>
+  </entry>
+  
+</feed>

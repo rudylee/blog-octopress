@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Hotlinking protection di web server Apache - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Hotlinking Protection Di Web Server Apache Oct 19th, 2009 Hari ini gwa disibukkan dengan berbagai banyak kerjaan, entah kenapa kalau masuk kantor &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rudylee.github.io/2009/10/19/hotlinking-protection-di-web-server-apache">
+  <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Hotlinking Protection Di Web Server Apache
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2009-10-19T22:21:55+11:00" pubdate data-updated="true">Oct 19<span>th</span>, 2009</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>Hari ini gwa disibukkan dengan berbagai banyak kerjaan, entah kenapa kalau masuk kantor itu kerjaan tiba-tiba aja datang bertubi-tubi. Tapi kerjaan utama yang gwa lakukan hari ada memproteksi server Bee Watch.</p>
+
+<p>Yah, seperti yang kita ketahui bersama bahwa Bee Watch sangat menjadi incaran untuk di-embed ke web-web marketing kelas teri. Dimana siaran Bee Watch ( TV Online) digunakan sebagai penarik traffic ke website mereka dan di website mereka diletakkan bermacam-macam iklan entah darimana datangnya. Ada yang isinya iklan Joko Susilo lah, ada iklan google adsense la, dan iklan2 norak lainnya. Dan yang paling membuat gw prihatin adalah design website yang sangat kampungan dan acak-acakan ( sory kalo ini gwa ngomong jujur ).</p>
+
+<p>Selama ini gwa telah melakukan berbagai macam proteksi terhadap Bee Watch. Mulai dari proteksi dari FMS nya, random folder tempat simpan playernya , dan yang terakhir memasang firewall. Tapi ternyata memang dasar maling, tetep saja mereka selalu menemukan cara untuk menembus pertahanan yang gwa buat.</p>
+
+<p>Akhirnya gwa memutuskan membuat hotlink protection di web server Apache gwa dengan menggunakan .htaccess. Mungkin ada yang bertanya-tanya sebenarnya apa itu hotlink. Hotlink itu adalah sebuah istilah yang digunakan ketika sebuah website A yang menghosting katakanlah sebuah gambar yang berukuran 100 MB, kemudian secara tiba-tiba ada website B yang meng-link gambar tersebut ke website milik pribadinya untuk kepentingan dia sendiri.</p>
+
+<p>Ketika ada user yang mengakses website B dan menampilkan gambar yang dihosting oleh website A. Tentu saja hal itu merugikan website A dimana bandwidth yang digunakan adalah bandwidth website A, sementara website B cuma menikmati hasilnya tanpa harus kehilangan bandwidth yang berharga.</p>
+
+<p>Hal inilah yang terjadi dengan Bee Watch dimana ada beberapa website yang tidak bertanggung jawab dengan sengaja melakukan embed siaran Bee Watch untuk menarik traffic ke website mereka. Dan setelah googling-googling dan stress selama 1 jam memikirkan bagaimana cara mem-ban website tersebut akhirnya gwa menemukan sebuah fitur dari web apache yaitu disable hotlinking dengan .htaccess.</p>
+
+<p>Jadi konsepnya sangatlah simple dimana dengan menggunakan script .htaccess kita untuk mendisable semua akses ke file-file kita ( contoh : gambar .gif, .jpg, .png atau .swf ) sehingga hanya beberapa url saja yang telah kita allow dapat mengakses file tersebut ( dalam kasus ini gwa hanya mengallow domain binus-access.com dan 202.58.181.204 ).</p>
+
+<p>Jadi step-stepnya kira begini :</p>
+
+<ul>
+<li><p>Generate file .htaccess di web <a href="http://tools.dynamicdrive.com/userban/">ini</a></p></li>
+<li><p>Upload file .htaccess ke root webserver kita ( misalnya /var/www ).</p></li>
+<li><p>Testing hotlinking dari lokal</p></li>
+</ul>
+
+
+<p>Jika benar maka seharusnya kita tidak dapat mengakses content website kita dari localhost. Kira-kira begitulah salah satu web security yang sangat penting jika kita ingin memproteksi website kita dari tangan-tangan jahil. Selamat mencoba :)</p>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/categories/Research/"><span class="badge">Research</span></a>
+
+  <a href="/categories/Unix and Linux/"><span class="badge">Unix and Linux</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/2009/10/08/memories/" title="Previous Post: Memories...">&laquo; Memories...</a>
+          
+          
+            <a class="basic-alignment right" href="/2009/10/20/passing-parameters-di-paging-cakephp/" title="Next Post: Passing parameters di paging CakePHP">Passing parameters di paging CakePHP &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2013 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

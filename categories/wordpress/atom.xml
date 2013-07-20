@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Wordpress | My Octopress Blog]]></title>
+  <link href="http://rudylee.github.io/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://rudylee.github.io/"/>
+  <updated>2013-07-15T21:00:49+10:00</updated>
+  <id>http://rudylee.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Execute JWPlayer shortcode in Wordpress custom template]]></title>
+    <link href="http://rudylee.github.io/2012/01/08/execute-jwplayer-shortcode-in-wordpress-custom-template/"/>
+    <updated>2012-01-08T12:51:22+11:00</updated>
+    <id>http://rudylee.github.io/2012/01/08/execute-jwplayer-shortcode-in-wordpress-custom-template</id>
+    <content type="html"><![CDATA[<p>JWPlayer has become my favorite video player for clients website especially after they release their <a href="http://wordpress.org/extend/plugins/jw-player-plugin-for-wordpress/">official Wordpress plugin</a>. The plugin almost done all the basic things ( shortcode, custom player, etc ). It&rsquo;s also integrated seamlessly with the Wordpress Media library which makes your life so much easier because you can easily add the player to a post straightly from media library. However, aside from all that simple integration and setup, it lacks of documentation could cause a headache especially if you are trying to do something out of the lane.</p>
+
+<p>Today, I was trying to use JWPlayer plugin to show video in a custom post type template which grab the video file from external URL ( not from Media Library ). I was thinking this would be an easy task because I could easily execute the shortcode using do_shortcode() function in Wordpress. But, apparently JWPlayer plugin handle the shortcode quite different from another plugin so you have to use jwplayer_tag_callback() function instead of do_shortcode(). I don&rsquo;t know the reason why they make it like that but as long as it works then it&rsquo;s fine. Here is the sample code to make it clear:</p>
+
+<p>``` php  <br/>
+//won&rsquo;t work
+do_shortcode(&ldquo;[jwplayer file=&lsquo;<a href="http://xxx.com/xxx.mp4">http://xxx.com/xxx.mp4</a>&rsquo;]&rdquo;);</p>
+
+<p>//obviously will work
+jwplayer_tag_callback(&ldquo;[jwplayer file=&lsquo;<a href="http://xxx.com/xxx.mp4">http://xxx.com/xxx.mp4</a>&rsquo;]&rdquo;);
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Change wordpress default email and name]]></title>
+    <link href="http://rudylee.github.io/2011/06/20/change-wordpress-default-email-and-name/"/>
+    <updated>2011-06-20T14:12:53+10:00</updated>
+    <id>http://rudylee.github.io/2011/06/20/change-wordpress-default-email-and-name</id>
+    <content type="html"><![CDATA[<p>Actually you can find this solution easily in Google. However, I&rsquo;ll put it in my blog just because I am lazy to find it again.</p>
+
+<p>So wordpress has default email address and name which are &ldquo;Wordpress&rdquo; as the name, <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#119;&#x6f;&#114;&#100;&#x70;&#114;&#x65;&#115;&#x73;&#x40;&#121;&#x6f;&#117;&#114;&#100;&#x6f;&#109;&#97;&#105;&#110;&#46;&#x63;&#111;&#109;">&#119;&#111;&#114;&#100;&#x70;&#114;&#x65;&#x73;&#x73;&#x40;&#x79;&#x6f;&#117;&#x72;&#x64;&#x6f;&#109;&#x61;&#x69;&#110;&#46;&#x63;&#x6f;&#109;</a> as the email. To change it you can use plugin or put these wordpress action to your functions.php file in themes folder :</p>
+
+<p>``` php  <br/>
+add_filter(&lsquo;wp_mail_from&rsquo;, &lsquo;new_mail_from&rsquo;);
+add_filter(&lsquo;wp_mail_from_name&rsquo;, &lsquo;new_mail_from_name&rsquo;);</p>
+
+<p>function new_mail_from($old) {</p>
+
+<pre><code>return 'no-reply@rudylee.com';
+</code></pre>
+
+<p>}</p>
+
+<p>function new_mail_from_name($old) {</p>
+
+<pre><code>return 'Rudy';
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Just change the email address and name to your&rsquo;s. Hope it works, cheers.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Make wordpress using the latest jQuery]]></title>
+    <link href="http://rudylee.github.io/2011/05/24/wordpress-uses-the-latest-jquery/"/>
+    <updated>2011-05-24T14:45:58+10:00</updated>
+    <id>http://rudylee.github.io/2011/05/24/wordpress-uses-the-latest-jquery</id>
+    <content type="html"><![CDATA[<p>I just copied this from another website, put it here just in case that I forgot.</p>
+
+<p>``` php
+if( !is_admin()){</p>
+
+<pre><code>wp_deregister_script('jquery');
+wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"), false, '');
+wp_enqueue_script('jquery');
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Put this snippet to functions.php file in your theme folder ( eg : wp-content/theme/whatever/functions.php )</p>
+]]></content>
+  </entry>
+  
+</feed>
