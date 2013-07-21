@@ -50,18 +50,11 @@ the 'Bokap' : Kamu ini bukan orang marketing, kamu ini orang teknis. Jadi saya p
 Rudy         : Oh begitu ( mulai mengerti, kebiasaan beliau adalah ngomong mutar-mutar dengan analogi yang menarik )
 
 Pada akhirnya gwa juga tidak begitu menangkap apalah arti di balik analogi 'Kopi Susu' tersebut. Namun gwa bisa mengambil beberapa analisa :
-
-
-
 	
   * Intinya kita harus bisa menangkap perbedaan antara hal-hal teknis yang berbau logika dengan hal-hal marketing
-
 	
   * Gwa musti partisi otak
-
 	
   * Udah ikuti aja perintah the 'Bokap' ( ini versi negative thinking )
-
-
 
 Sebenarnya masih banyak hal-hal menarik yang diperbincangkan dengan beliau ( tentang bruce lee, tentang bob, tapi gwa lupa bob siapa ). Tapi yang benar-benar membuat gwa ingat hari ini cuma 'kopi susu' itu. Analogi yang aneh dan membingungkan tapi cukup menarik jika didengarkan secara langsung.

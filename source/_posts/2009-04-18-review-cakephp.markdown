@@ -37,38 +37,24 @@ Selain helper dikenal juga istilah element di dalam CakePHP. Element disini buka
 Dan satu hal lagi yang harus diperhatikan dalam merancang sebuah aplikasi dengan menggunakan konsep MVC adalah Model sebaiknya lebih memiliki banyak method dibandingkan controller. Hal itu dikarenakan konsep dari OOP itu sendiri yaitu 'reuseable'.
 
 Jadi gwa bisa menyimpulkan selama 5 bulan apa saja keuntungan yang didapatkan dari mempelajari CakePHP
-
-
-
 	
   * Mengerti konsep MVC.
-
 	
   * Waktu untuk mendevelop program menjadi lebih cepat.
-
 	
   * Source code menjadi lebih terstruktur.
-
 	
   * Kemampuan berbahasa inggris meningkat ( banyak baca cookbook + tanya2 pakai bahasa inggris wakaka.
 
-
-
 Walaupun gwa tidak menampik adanya kerugian-kerugian yang didapatkan dari mempelajari CakePHP, ini beberapa kerugian tersebut :
-
 	
   * Harus belajar kembali karena dengan menggunakan framework tentu saja kita harus mempelajari API yang sudah tersedia.
-
 	
   * Aplikasi jadi lebih lemot.
-
 	
   * Jadi makin malas karena sudah dimanjakan dengan fitur-fitur walaupun tidak semalas  karena menggunakan CMS
-
 	
   * Makin lupa syntax2 PHP yang dasar karena keseringan menggunakan syntax CakePHP
-
-
 
 Tapi walaupun begitu semua kekurangan itu tertutupi oleh kelebihan-kelebihan yang didapatkan dari mempelajari CakePHP tersebut. Yah jelas, kalau banyak ruginya napaen gwa capek-capek belajar framework. Mungkin ada yang beranggapan kalau menggunakan framework itu sendiri dapat memperbodoh diri sendiri, dan gwa pun tidak menampik hal tersebut. 
 

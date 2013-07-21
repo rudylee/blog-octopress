@@ -22,9 +22,6 @@ Trus abis liat harganya sempat shock juga ( gila 100 ribu 1 tahun + domain cuma 
 
 Abis itu mulai deh curhat, nyanyi, tanya-tanya, dan ternyata kata bos dracoola server IIX itu adanya besok... berikut cuplikan pembicaraan dengan bos dracoola
 
-
-    
-    
     ZhouYu (2/1/2009 4:34:07 PM): selamat sore
     drac0ola (2/1/2009 4:34:16 PM): selamat sore pula
     drac0ola (2/1/2009 4:34:17 PM): ada yambisa dibantu?
@@ -64,30 +61,19 @@ Abis itu mulai deh curhat, nyanyi, tanya-tanya, dan ternyata kata bos dracoola s
     drac0ola (2/1/2009 4:39:09 PM): makasi sblunnya yak
     ZhouYu (2/1/2009 4:39:13 PM): sep2
     
-
-
-
 yah begitulah sepenggal cerita dengan bos dracoola... setelah pembicaraan itu besoknya langsung deh gwa pesan itu hosting + domain ( dimulai dari transfer dan konfirmasi ). yah total prosesnya ga lama lah... kira-kira 20 menit saja dah kelar semuanya.
 
 Beberapa kesan setelah kurang lebih hampir 1 bulan hosting disini :
 
-
-
-	
   1. Harganya murah dibanding yang lain.
 
-	
   2. CSO nya ramah, low profile juga, rada jayuz wakakaka.
 
-	
   3. Server jarang bermasalah ( baru 1 bulan sih ).
 
-	
   4. Kalau ada apa-apa dikasih tau deh ( lewat email ).
 
-	
   5. Koneksi IIX nya cepet, ga tau dah bandwidth luarnya ( ntar deh kalau dah pindah ke luar negeri coba akses ).
-
 
 Yah overall sih dibanding tempat hosting lain hampir mirip-mirip la tapi memang yang menjadi unique point adalah HARGA ( wah gila harganya mahasiswa banget ). Jadi ibarat iklan obat nyamuk "Ma, emang ga ada yang lebih bagus dari **** ?" trus si Mama ngomong deh "Lebih mahal banyak !" nah cocok banget buat dikaitkan dengan hal ini.
 

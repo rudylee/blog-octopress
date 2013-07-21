@@ -38,20 +38,13 @@ Kenapa seperti itu ? karena ada daya dorong yang ditimbulkan ketika kita turun d
 Jadi kalau kita turun dengan kaki kanan secara otomatis berat badan kita akan tertumpu di sebelah kanan, maka jika dipadu dengan daya dorong yang ditimbulkan maka kita bisa saja jatuh dan saat itu juga menjadi almarhum... Beda halnya kalau kita mengikuti pesan si kenet dengan menggunakan kaki kiri. Jika menggunakan kaki kiri tentu saja berat badan kita akan tertumpu di kiri dan dengan daya dorong kanan maka daya dorong itu akan netral...
 
 Jadi kesimpulan yang bisa didapatkan adalah :
-
-
-
 	
   * Ternyata teknik untuk naik dan turun bus itu ada.
-
 	
   * Kenet bus itu ternyata terpelajar juga.
-
 	
   * Belajar ilmu baru itu bisa dari siapa aja dan bisa kapan saja.
-
 	
   * Seringlah memperhatikan hal-hal yang tidak penting.
-
 
 Hohoho yah kira-kira itu lah sharing pengalaman yang ga penting sih... tapi lumayan berguna buat yang blom pernah naik bus, jadi biar ga malu-malu in kalo jatuh dari bus :)

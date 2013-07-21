@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://rudylee.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://blog.rudylee.com
+title: Blog Rudy Lee
+subtitle: keep it humble
+author: Rudy Lee
 simple_search: http://google.com/search
 description:
 
@@ -40,6 +40,12 @@ rdiscount:
     - footnotes
     - smart
 pygments: false # default python pygments have been replaced by pygments.rb
+
+navigation:
+- text: Home
+  url: /
+- text: Archives
+  url: /archives
 
 paginate: 10          # Posts per page on the blog index
 pagination_dir: # Directory base for pagination URLs eg. /blog/page/2/
@@ -90,7 +96,7 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
+disqus_short_name: blogrudylee
 disqus_show_comment_count: false
 
 # Google Analytics

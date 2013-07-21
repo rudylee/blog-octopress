@@ -27,9 +27,6 @@ Sebelum bahas kedalam-dalam bahas dolo deh pengertian dari Single Sign On. Seben
 
 Nah, untuk membuat teknologi Single Sign On ini tidaklah sulit, karena sekarang telah tersedia banyak teknologi, framework yang open source dan commercial. Beberapa framework dan teknologi itu antara lain :
 
-
-
-	
   * [Central Authentication Services](http://www.jasig.org/cas)
 
 	
@@ -43,8 +40,6 @@ Nah, untuk membuat teknologi Single Sign On ini tidaklah sulit, karena sekarang 
 
 	
   * [OAuth](http://oauth.net/)
-
-
 
 Dari beberapa pilihan tersebut yang sudah pernah gwa coba cuma CAS dan Josso. Pada akhirnya pilihan gwa jatuh kepada CAS. Alasan utama kenapa gwa memilih CAS sangatlah simple yaitu karena paling gampang dipakai...
 

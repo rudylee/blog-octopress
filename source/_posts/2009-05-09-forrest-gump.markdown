@@ -24,9 +24,6 @@ Selesai download filmnya ini kira-kira jam 11 tadi siang, tapi baru mulai nonton
 Sebenarnya film ini dikategorikan sebagai film drama komedi, tapi komposisi komedinya dapat dikatakan tidak sebanyak unsur dramanya. Tapi walaupun begitu film ini tetep sangat menghibur dan di sisi lain dapat membuat terharu ( apalagi sambil nonton ditemani suasana hening malam ). Alur ceritanya walaupun sedikit mudah ditebak tapi ternyata tebakan-tebakan gwa bisa meleset juga ( emang ga ahli mungkin ). 
 
 Dari sisi cerita sih, sebenarnya bisa dikatakan 'too good to be true' tapi sebenarnya intinya bukan disitunya sih tapi lebih ke makna dari masing-masing kejadian yang ada di film ini. Yah gwa mungkin ga bakalan sharing apa sebenarnya yang gwa dapat dari film ini, jadi gwa sharing beberapa memorable quote nya aja deh :
-
-
-
 	
   * My momma always said, "Life was like a box of chocolates. You never know what you're gonna get." 
 
@@ -38,8 +35,6 @@ Dari sisi cerita sih, sebenarnya bisa dikatakan 'too good to be true' tapi seben
 
 	
   * My momma always said you can tell a lot about a person by their shoes, where the go, where they've been. I've worn lots of shoes, I bet if I think about it real hard I can remember my first pair of shoes. 
-
-
 
 Percakapan yang lucu di film ini 
 

@@ -39,22 +39,10 @@ Jadi konsepnya sangatlah simple dimana dengan menggunakan script .htaccess kita 
 
 Jadi step-stepnya kira begini :
 
-
-
-
-	
   * Generate file .htaccess di web [ini](http://tools.dynamicdrive.com/userban/)
-
-
 	
   * Upload file .htaccess ke root webserver kita ( misalnya /var/www ).
-
-
 	
   * Testing hotlinking dari lokal
 
-
-
-
 Jika benar maka seharusnya kita tidak dapat mengakses content website kita dari localhost. Kira-kira begitulah salah satu web security yang sangat penting jika kita ingin memproteksi website kita dari tangan-tangan jahil. Selamat mencoba :)
-

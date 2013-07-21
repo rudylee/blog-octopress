@@ -40,18 +40,11 @@ Ternyata problemnya karena gwa install ubuntunya di hard disk kedua dan dia inst
 
 Beberapa hal yang berubah jadi keren di ubuntu 9.04 adalah :
 
-
-
-	
   * Loading Screen
-
 	
   * Login Screen
-
 	
   * Fitur pidginnya mirip yahoo messenger di Mac, bisa muncul online message di kiri atas layar ( keren deh pokoknya windows punya lewat..
-
-
 
 Yah beberapa yang keren sih itu aja secara dari segi interface mirip2 dengan Ubuntu 8.04... neh gwa kasih screenshot... itu fitur yang gwa bilang keren... liat kanan atas gambar...
 

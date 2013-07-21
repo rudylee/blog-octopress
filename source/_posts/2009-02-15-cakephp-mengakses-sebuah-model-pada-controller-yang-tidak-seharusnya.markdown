@@ -23,14 +23,9 @@ Sebagai contoh lagi misalnya kita ingin pada_ users_controller_ dapat melakukan 
 
 Ada beberapa cara yang dapat dilakukan untuk mensolusikan hal tersebut :
 
-
-
-	
   1. Pada _users_controller_ kita dapat menambahkan variable baru yaitu _$uses = array('User','Item'); _dengan melakukan hal itu maka kita dapat melakukan query seperti biasa ( _$this->Item->find('all'); )_
 
-	
   2. Satu cara lagi lebih praktis dilakukan dan bisa lebih fleksibel dilakukan yaitu dengan menggunakan _ClassRegistry. _Jadi tanpa harus menambahkan variable kita cukup melakukan pencarian ( contoh : _$items = ClassRegistry::init('Item')->find('all'); )_.
-
 
 Itulah 2 cara yang dapat dilakukan jika anda ingin melakukan akses model yang sama sekali tidak ada relasi, tetapi jika anda terpaksa melakukan hal ini mungkin ada yang salah terjadi pada rancangan database anda karena rancangan database yang baik tidak seharusnya dapat melakukan query untuk database yang tidak saling berkaitan.
 

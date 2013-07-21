@@ -33,25 +33,12 @@ Besoknya, setelah menghabiskan 1 malam berbincang-bincang dengan abang jasri gwa
 
 Balik dari bandung ternyata kerjaan gwa belum habis dimana gwa harus menyelesaikan website untuk marketing binus dan juga website dikti yang tidak pernah kelar-kelar. Jadi sekarang tugas gwa minggu ini adalah cuma 2 itu, walaupun ternyata masih banyak kerjaan lagi antara lain :
 
-
-
-	
   * Ngurusin IndoKaya
-
-
 	
   * Bantuin webnya Agus dan Bahut
-
-
 	
   * Ngupdate web team-cars
-
-
 	
   * Tentu saja selesaikan web dikti dan web marketing
 
-
-
-
 Diantara itu semua masih ada seminar dan mungkin workshop blackberry minggu depan + ada project baru. Keknya gwa bulan ini harus bekerja sangat keras dan kurangi waktu tidur + nonton Tom and Jerry. Jadi buat Tom and Jerry ku tunggu sebentar ya, gwa mo selesain kerjaan dulu hix.
-
