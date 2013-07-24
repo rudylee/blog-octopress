@@ -18,22 +18,13 @@ I had always thought Vim's user are just trying to show off that they are differ
 
 After started using Vim, I can feel that I am more productive and less stressful when programming. All the shortcuts definitively help you to avoid redundancy and remove your reliance on mouse. You can navigate through the source code by only using keyboard.
 
-
-[![Practical Vim](http://blog.rudylee.com/wp-content/uploads/2013/03/41LK8SwU4WL._SX225_-150x150.jpg)](http://www.amazon.com/Practical-Vim-Thought-Pragmatic-Programmers/dp/1934356980/ref=sr_1_1?ie=UTF8&qid=1364646960&sr=8-1&keywords=vim)
-
-
 The book that I am using to learn VIM is[ "Practical Vim : Edit Text at the Speed of Thought" by Drew Neil](http://www.amazon.com/Practical-Vim-Thought-Pragmatic-Programmers/dp/1934356980/ref=sr_1_1?ie=UTF8&qid=1364646960&sr=8-1&keywords=vim). If you are new with Vim, I'll strongly recommend to start with this book. This book has collection of tips on how to use Vim in real situation and you going to feel you learn Vim faster.
 
 However, before deciding to learn Vim, you need to know that Vim is not for everyone. You know that you are not suitable for Vim when you :
 
-
-
-	
   * Still looking at your keyboard when typing.
-
 	
   * Have problem or hate remembering shortcuts.
-
 	
   * Don't have any curiosity to find another way to achieve something.
 
