@@ -5,7 +5,7 @@ date: 2013-01-15 11:58:18+00:00
 layout: post
 slug: science-of-productivity
 title: Science of Productivity
-categories:
+categories: 
 - My Stories
 ---
 
