@@ -12,7 +12,7 @@ categories:
 
 The main purpose of this post is only to write about Google Map API for future reference. Here are the code snippets :
 
-Get the latitude and longitude based on address : [http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&sensor=true](http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&sensor=true)
+Get the latitude and longitude based on address : [http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&sensor=true](http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&sensor=true)
 
 The code below set up the Google Map, put the marker and also make it grayscale
 
