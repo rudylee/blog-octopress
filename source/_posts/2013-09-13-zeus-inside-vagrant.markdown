@@ -7,7 +7,7 @@ categories:
 - Ruby on Rails
 ---
 
-I have been using Vagrant as my development environment for the last couple weeks. It has been helpful as I prefer to use Linux as my development environment and I can only use Windows at my workplace. With Vagrant, I can easily set up new Linux machine, install Vim plus all the plugins and also have completely separate machine for each project. 
+I have been using Vagrant as my development environment for the last couple weeks. It has been very helpful as I prefer to use Linux as my development environment and I can only use Windows at my workplace. With Vagrant, I can easily set up new Linux machine, install Vim plus all the plugins and completely separate development machine for each project. 
 
 Today, I was trying to use Zeus to speed up my Rspec test inside one of the Rails projects. I found this gem through a screencast by Ryan Bates about Fast Test. 
 
