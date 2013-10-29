@@ -11,7 +11,7 @@ categories:
 
 I was trying to use Rails to build REST API for my AngularJS app and came across CORS error on my Chrome developer tools. 
 
-According to [Alexey Vasiliev] (http://leopard.in.ua/2012/07/08/using-cors-with-rails/), Cross-origin resource sharing (CORS) is a web browser technology specification which defines ways for a web server to allow its resources to be accessed by a web page from a different domain. Such access would otherwise be forbidden by the same origin policy. CORS defines a way in which the browser and the server can interact to determine whether or not to allow the cross-origin request. It is a compromise that allows greater flexibility, but is more secure than simply allowing all such requests. CORS is supported in the following browsers:
+According to [Alexey Vasiliev](http://leopard.in.ua/2012/07/08/using-cors-with-rails/), Cross-origin resource sharing (CORS) is a web browser technology specification which defines ways for a web server to allow its resources to be accessed by a web page from a different domain. Such access would otherwise be forbidden by the same origin policy. CORS defines a way in which the browser and the server can interact to determine whether or not to allow the cross-origin request. It is a compromise that allows greater flexibility, but is more secure than simply allowing all such requests. CORS is supported in the following browsers:
 
 After following couple of outdated tutorials, I found the quick solution for it. Here are the steps:
 
