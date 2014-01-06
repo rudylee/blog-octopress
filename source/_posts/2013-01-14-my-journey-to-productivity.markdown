@@ -10,7 +10,7 @@ categories:
 - My Stories
 ---
 
-Today marks two weeks of my journey trying new method to boost my productivity. For several years, I am an avid fan of procrastination which I am still now. This has bring me a lot of troubles such as projects are off-schedule, self development postponed, and working on assignments at the last minute. I have tried several productivity techniques and sadly say, none of them show significant effect. One of the popular technique that I used is [Pomodoro](http://www.pomodorotechnique.com/) technique. For you guys that never heard about Pomodoro, I suggest to click the link provided. For you guys that are too lazy to click the link, here is the deinition of Pomodoro that I grabbed from the website :
+Today marks two weeks of my journey trying new method to boost my productivity. For several years, I am an avid fan of procrastination which I am still now. This has bring me a lot of troubles such as projects are off-schedule, self development postponed, and working on assignments at the last minute. I have tried several productivity techniques and sadly say, none of them show significant effect. One of the popular technique that I used is [Pomodoro](http://www.pomodorotechnique.com/) technique. For you guys that never heard about Pomodoro, I suggest to click the link provided. For you guys that are too lazy to click the link, here is the deinition of Pomodoro that I grabbed from the website :
 
 
 > It is a time management method created by Francesco Cirillo in the 1980s that helps you accomplish what you want to do by transforming time into a valuable ally. Why is it so popular? Because it is easy to use, and most of all, because it works!
