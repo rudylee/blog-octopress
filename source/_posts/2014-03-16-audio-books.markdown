@@ -7,7 +7,9 @@ categories:
 - My Stories
 ---
 
-Around October 2013, I decided to move from city to Gladesville which located 9 kilometres north-west of Sydney CBD. It wasn't easy decision because I need to spend about 2 hours every day on commuting. For the first couple months, I was fine with the long commuting time. I can distract myself with social media and games. However, I started to feel unproductive and I can feel it affected my concentration throughout the day. So, I tried to do some research on the Internet about productive activities you can do while commuting. Most of the articles that I found suggest you to listen either podcasts or audio books. 
+Around October 2013, I decided to move from city to Gladesville which located 9 kilometres north-west of Sydney CBD. It wasn't easy decision because I need to spend about 2 hours every day on commuting. 
+
+For the first couple months, I was fine with the long commuting time. I can distract myself with social media and games. However, I started to feel unproductive and I can feel it affected my concentration throughout the day. So, I tried to do some research on the Internet about productive activities you can do while commuting. Most of the articles that I found suggest you to listen either podcasts or audio books. 
 
 I decided to give audio book a try and downloaded ['Eat That Frog' by Brian Tracy](http://www.amazon.com/Eat-That-Frog-Great-Procrastinating/dp/1576754227). If you are interested, you can easily find the audio version of this book on YouTube. At first, I was a little bit skeptical with the result but it turned out to be really helpful. I can feel that my life is back on track again. I'll suggest you to listen to the audi book more than once so you will get better understanding about the topic and refresh your mind everyday. 
 
