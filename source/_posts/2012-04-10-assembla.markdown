@@ -10,7 +10,7 @@ categories:
 - Unix and Linux
 ---
 
-[![](http://blog.rudylee.com/wp-content/uploads/2012/06/assembla-150x150.png)](http://blog.rudylee.com/wp-content/uploads/2012/06/assembla.png)Recently, I just canceled my [Github](http://www.github.com) micro plan and moved all my private projects to [Assembla](http://www.assembla.com/). Similar to Github, Assembla also offers Git hosting and you can host private projects for free. There are several paid plans that you can choose which basically add more features such as ticketing system, wiki, FTP build, supports, etc. So if you are like me ( only need Git/SVN private hosting for your projects ), I suggest you to try Assembla.
+Recently, I just canceled my [Github](http://www.github.com) micro plan and moved all my private projects to [Assembla](http://www.assembla.com/). Similar to Github, Assembla also offers Git hosting and you can host private projects for free. There are several paid plans that you can choose which basically add more features such as ticketing system, wiki, FTP build, supports, etc. So if you are like me ( only need Git/SVN private hosting for your projects ), I suggest you to try Assembla.
 
 Another great thing is no limitation of number of users that you can give access to your private projects. While in Github, the micro plan has limitation of one user that you can allow to access your projects.
 

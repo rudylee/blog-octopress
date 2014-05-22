@@ -39,7 +39,7 @@ end
 
 The code means that users, products and categories will have admin namespace. The next step is to create new folder in your controller and view folder called "admin". Here is the screenshot ( see the directory browser on the left hand side ) :
 
-[![](http://blog.rudylee.com/wp-content/uploads/2012/04/routes-rb-150x150.png)](http://blog.rudylee.com/wp-content/uploads/2012/04/routes-rb.png)
+[![](http://blog.rudylee.com/wp-content/uploads/2012/04/routes-rb.png)](http://blog.rudylee.com/wp-content/uploads/2012/04/routes-rb.png)
 
 Put the template and controller files inside these folders. You have to add Admin:: in front of the class definition of your controller file. So it's gonna be like this :
 
