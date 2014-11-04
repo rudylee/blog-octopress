@@ -7,7 +7,7 @@ categories:
 - Ruby on Rails
 ---
 
-## Warning: I might update this post in the future if I find better way to achieve this
+## McFlyyy pointed out another solution to solve this problem. I haven't tested it myself so follow it at your own risk [Click Here](https://stackoverflow.com/questions/18538549/cant-get-rack-cors-working-in-rails-application/20464939#20464939)
 
 I was trying to use Rails to build REST API for my AngularJS app and came across CORS error on my Chrome developer tools. 
 
