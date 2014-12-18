@@ -18,4 +18,17 @@ So, here is the code that I am using to get server URL in controller :
     $server_url = $this->getRequest()->getUri()->getScheme() . '://' . $this->getRequest()->getUri()->getHost();
 ```
 
-Probably it's not the best solution but it works for now :)
+Probably it's not the best solution but it works for now. Please check the other solutions below:
+
+## Other solutions from the comments below
+
+``` php
+    $helper = new Zend\View\Helper\ServerUrl();
+    $url = $helper->__invoke(true);
+```
+
+``` php
+    $this->getEvent()->getRouter()->assemble(array(), array('name'=>'home', 'force_canonical'=>true));
+    // WHERE default is the name of your route, "default" or whatever you use
+```
+
