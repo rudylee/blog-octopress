@@ -45,7 +45,7 @@ Another annoying problem you might encounter is file path character limit. This 
 ### Add symbolic link to the 'node_modules' folder you just created inside your project folder
 
 ``` bash
-  ln -sf /vagrant/node_modules /vagrant/your-project-folder
+  ln -sf ~/node_modules /vagrant/your-project-folder
 ```
 
 This solution will ensure that all the node modules are stored inside home directory instead of synced folder.
