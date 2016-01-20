@@ -14,7 +14,6 @@ Gila.... entah kenapa gwa suka banget kalo jalan2 di Jakarta pas malam hari, ent
 
 neh hasil gambar2 comotan dari google... walaupun tak melihat gambarnya ga bisa membangkitkan perasaan yang gwa rasain saat ngeliat langsung, tapi lumayan la :)
 
-![](http://blog.rudylee.com/content/night1.jpg)
-![](http://blog.rudylee.com/content/night2.jpg)
+( UPDATE: Gambar nya hilang ketika gwa update blog dari Wordpress ke Octopress )
 
 udah ah cari bedak dolo, gila malam2 gini gatal... pertanda apa ini ? ada yang kangen kali ya wakakakaka
