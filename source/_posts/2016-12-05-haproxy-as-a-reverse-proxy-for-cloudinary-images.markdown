@@ -12,7 +12,7 @@ We are using in one of our applications [Cloudinary](http://cloudinary.com/) to 
 
 I was given a task to setup a CNAME subdomain in CloudFlare to forward the request to Cloudinary. This way we can still have the benefit of serving static images from CDN as well as reducing the Cloudinary bandwidth usage.
 
-My solution is to set HAProxy as a reverse proxy which responsibility to fetch images from Cloudinary server. You can see the overview diagram below:
+My solution is to set HAProxy as a reverse proxy which responsible to fetch images from Cloudinary server. You can see the overview diagram below:
 
 [![](/images/posts/HAProxy-as-a-reverse-proxy.png)](/images/posts/HAProxy-as-a-reverse-proxy.png)
 
