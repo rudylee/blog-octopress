@@ -54,4 +54,4 @@ Read the instruction
 cat index.md | more
 ```
 
-In the file, you will find instructions on how to connect to the L2TP server all different operating systems.
+In the file, you will find instructions on how to connect to the L2TP server from all different operating systems.
