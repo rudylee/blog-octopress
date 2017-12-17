@@ -1,0 +1,26 @@
+Google Spreadsheet provides a convenient way to store, edit, share and retrieve data. This makes Google Spreadsheet suitable if you want to quickly prototype an app and don't want to spend time building a backend system to manage your data.
+
+The reason I said that is because Google Spreadsheet has a feature that allow people to display the data in the spreadsheet in JSON format. 
+
+In order to access this feature, first you need to publish the spreadsheet to the web. You can easily do this by going to the File menu and choose Publish to the web.
+
+After that, you need to get the ID of your spreadsheet which can easily get from the the spreadsheet URL.
+
+The format of your spreadsheet URL should be something like this https://docs.google.com/spreadsheets/d/17CAMo4mY7pdlk7jgV2385FLVzDV3L8cUDidhfge8U_J4/edit#gid=0
+
+The spreadsheet ID is the characters between the `d` and `edit`, which in that example is `17CAMo4mY7pdlk7jgV2385FLVzDV3L8cUDidhfge8U_J4`
+
+Basically you can use https://spreadsheets.google.com/feeds/list/17CAMo4mY7pdlk7jgVRmgD5FLVzDV3L8cUDiHaT8U_J4/od6/public/values?alt=json
+
+Spreadsheet URL: https://docs.google.com/spreadsheets/d/17CAMo4mY7pdlk7jgVRmgD5FLVzDV3L8cUDiHaT8U_J4/edit#gid=0
+
+JSON API: https://spreadsheets.google.com/feeds/list/17CAMo4mY7pdlk7jgVRmgD5FLVzDV3L8cUDiHaT8U_J4/od6/public/values?alt=json
+
+# The spreadsheet is public but not published to the web
+
+You can use `importrange` formula to get the data from another spreadsheet and import it into your spreadsheet
+
+=importrange("URL-TO-SPREADSHEET", "SHEET NAME!CELL RANGE")
+
+For Example:
+=importrange("https://docs.google.com/spreadsheets/d/1ql32s8kcUB-Q8AEwxrCzPYJzNgaQ2CknW4J0rlnJqfE","SBW Optimal Conversions!A1:I190")
