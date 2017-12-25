@@ -1,16 +1,31 @@
-Google Spreadsheet provides a convenient way to store, edit, share and retrieve data. This makes Google Spreadsheet suitable if you want to quickly prototype an app and don't want to spend time building a backend system to manage your data.
+Data store is an important piece in most of the modern applications. The implementation can range from a simple text file to complicated database systems. In this blog post, I will show you how to use Google Spreadsheet as a data store for your application. 
 
-The reason I said that is because Google Spreadsheet has a feature that allow people to display the data in the spreadsheet in JSON format. 
+Google Spreadsheet provides a convenient way to store, edit, share and retrieve data. This makes Google Spreadsheet appealing if you want to quickly prototype an app and don't want to spend time building a CRUD system to manage your data. It also allow you to output the spreadsheet data in JSON format. This means you can so Google Spreadsheet as your JSON API.
 
-In order to access this feature, first you need to publish the spreadsheet to the web. You can easily do this by going to the File menu and choose Publish to the web.
+# Publish the spreadsheet to the web
 
-After that, you need to get the ID of your spreadsheet which can easily get from the the spreadsheet URL.
+In order to enable this feature, first you need to publish the spreadsheet to the web. You can easily do this by going to the File menu and choose Publish to the web. See the screenshot below.
 
-The format of your spreadsheet URL should be something like this https://docs.google.com/spreadsheets/d/17CAMo4mY7pdlk7jgV2385FLVzDV3L8cUDidhfge8U_J4/edit#gid=0
+# Get the ID of the spreadsheet
 
-The spreadsheet ID is the characters between the `d` and `edit`, which in that example is `17CAMo4mY7pdlk7jgV2385FLVzDV3L8cUDidhfge8U_J4`
+The next thing that you have to do is getting the spreadsheet ID from the URL.
 
-Basically you can use https://spreadsheets.google.com/feeds/list/17CAMo4mY7pdlk7jgVRmgD5FLVzDV3L8cUDiHaT8U_J4/od6/public/values?alt=json
+The URL of your spreadsheet should be something like this https://docs.google.com/spreadsheets/d/17CAMo4mY7pdlk7jgV2385FLVzDV3L8cUDidhfge8U_J4/edit#gid=0
+
+The spreadsheet ID is the characters between the `d` and `edit`, which in example above is `17CAMo4mY7pdlk7jgV2385FLVzDV3L8cUDidhfge8U_J4`
+
+# Copy the ID and construct the JSON API endpoint
+
+After retrieving the ID, you can construct the API endpoint. The URL format as follow:
+
+```
+https://spreadsheets.google.com/feeds/list/replace-this-with-your-spreadsheet-id/od6/public/values?alt=json
+```
+
+
+
+
+https://spreadsheets.google.com/feeds/list/17CAMo4mY7pdlk7jgVRmgD5FLVzDV3L8cUDiHaT8U_J4/od6/public/values?alt=json
 
 Spreadsheet URL: https://docs.google.com/spreadsheets/d/17CAMo4mY7pdlk7jgVRmgD5FLVzDV3L8cUDiHaT8U_J4/edit#gid=0
 
