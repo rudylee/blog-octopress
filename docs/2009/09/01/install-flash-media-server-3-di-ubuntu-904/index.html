@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Install Flash Media Server 3 di Ubuntu 9.04 - Blog Rudy Lee</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Install Flash Media Server 3 Di Ubuntu 9.04 Sep 1st, 2009 Hari ini gwa mencoba menginstall ulang Flash Media Server 3 untuk TV Streaming ( Bee Watch &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.rudylee.com/2009/09/01/install-flash-media-server-3-di-ubuntu-904">
+  <link href="/favicon.ico" rel="icon">
+  <link href='//fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog Rudy Lee" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10301272-8']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+  heap.load("1170192688");
+</script>
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("61a006900f814889fdc104eecb397ac0");</script><!-- end Mixpanel -->
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/">Home</a></li>
+    
+        <li ><a href="/archives">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/rudylee" title="Github Profile"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    
+    <li><a href="http://twitter.com/rudylee88" title="Twitter Profile"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Install Flash Media Server 3 Di Ubuntu 9.04
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2009-09-01T16:37:37+10:00" pubdate data-updated="true">Sep 1<span>st</span>, 2009</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>Hari ini gwa mencoba menginstall ulang Flash Media Server 3 untuk TV Streaming ( Bee Watch ) pada Ubuntu 9.04. Jadi proses install dimulai dari install Ubuntu 9.04 yang memakan waktu 1 hari dikarenakan hard disk yang rusak ( untung udah ganti dengan yang baru ).</p>
+
+<p>Nah jadi setelah setting-setting sana sini mulailah install FMS ( Flash Media Server ), dimulai dari copy installer FMS 3 ke server trus mulai deh extract dengan menggunakan perintah</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>tar zxvf
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>setelah selesai extract dilanjutkan dengan menginstall flash media servernya, masuk ke folder FMS nya dan ketik command berikut</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>./installFMS
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ikuti langkah-langkahnya, isi serial number, set port, dan settingan-settingan lainnya. Ketika proses install selesai seharusnya akan muncul error message yang mengatakan NSPR library tidak tersedia, kira-kira begini error messagenya :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Starting Adobe Flash Media Server <span class="o">(</span>please check /var/log/messages<span class="o">)</span>
+</span><span class='line'>Error: Flash Media Server needs the NSPR library installed.
+</span><span class='line'>Admin server:fmsadmin <span class="nb">command</span>:start
+</span><span class='line'>Starting Adobe Flash Media Admin Server <span class="o">(</span>please check /var/log/messages<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Hal itu disebabkan karena FMS membutuhkan 2 library yaitu libnspr4.so dan libasneu.so.1. Untuk libnspr4.so kita tinggal melakukan apt-get saja.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>apt-get install libnspr4-dev
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>sementara untuk libasneu.so.1 sudah disediakan oleh FMS dan kita tinggal mengarahkannya. Pertama-tama buat file adobe_fms.conf di folder /etc/ld.so.conf.d kemudian file tersebut isi dengan path ke folder FMS</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /etc/ld.so.conf.d
+</span><span class='line'>vim adobe_fms.conf
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>isi dengan /opt/adobe/fms
+untuk menjalankan konfigurasinya jalankan perintah ldconfig</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ldconfig
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>dan</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ldd /opt/adobe/fms/fmscore
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>untuk mengecek hasil konfigurasi
+jika benar maka akan muncul tampilan seperti ini :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>linux-gate.so.1 <span class="o">=</span>&gt;  <span class="o">(</span>0xb80af000<span class="o">)</span>
+</span><span class='line'>libpthread.so.0 <span class="o">=</span>&gt; /lib/tls/i686/cmov/libpthread.so.0 <span class="o">(</span>0xb8090000<span class="o">)</span>
+</span><span class='line'>libnspr4.so <span class="o">=</span>&gt; /usr/lib/libnspr4.so <span class="o">(</span>0xb805a000<span class="o">)</span>
+</span><span class='line'>libplc4.so <span class="o">=</span>&gt; /usr/lib/libplc4.so <span class="o">(</span>0xb8054000<span class="o">)</span>
+</span><span class='line'>libplds4.so <span class="o">=</span>&gt; /usr/lib/libplds4.so <span class="o">(</span>0xb8050000<span class="o">)</span>
+</span><span class='line'>libasneu.so.1 <span class="o">=</span>&gt; /opt/adobe/fms/libasneu.so.1 <span class="o">(</span>0xb8047000<span class="o">)</span>
+</span><span class='line'>librt.so.1 <span class="o">=</span>&gt; /lib/tls/i686/cmov/librt.so.1 <span class="o">(</span>0xb803e000<span class="o">)</span>
+</span><span class='line'>libdl.so.2 <span class="o">=</span>&gt; /lib/tls/i686/cmov/libdl.so.2 <span class="o">(</span>0xb803a000<span class="o">)</span>
+</span><span class='line'>libstdc++.so.6 <span class="o">=</span>&gt; /usr/lib/libstdc++.so.6 <span class="o">(</span>0xb7f4b000<span class="o">)</span>
+</span><span class='line'>libm.so.6 <span class="o">=</span>&gt; /lib/tls/i686/cmov/libm.so.6 <span class="o">(</span>0xb7f24000<span class="o">)</span>
+</span><span class='line'>libgcc_s.so.1 <span class="o">=</span>&gt; /lib/libgcc_s.so.1 <span class="o">(</span>0xb7f15000<span class="o">)</span>
+</span><span class='line'>libc.so.6 <span class="o">=</span>&gt; /lib/tls/i686/cmov/libc.so.6 <span class="o">(</span>0xb7db2000<span class="o">)</span>
+</span><span class='line'>/lib/ld-linux.so.2 <span class="o">(</span>0xb80b0000<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>setelah itu coba jalankan FMS nya sekarang</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>/etc/init.d/fms start
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>jika terjadi error / tidak jalan maka anda harus menjalankan perintah-perintah lagi dibawah ini</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /usr/lib/
+</span><span class='line'>ln -s libcrypto.so.0.9.8 libcrypto.so.4
+</span><span class='line'>ln -s libssl.so.0.9.8 libssl.so.4
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>trus sekarang coba jalankan lagi /etc/init.d/fms start dan seharusnya sekarang semuanya sudah berjalan dengan baik :)</p>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/2009/08/31/melihat-pemakaian-hard-disk-di-linuxunix/" title="Previous Post: Melihat pemakaian hard disk di Linux/Unix">&laquo; Melihat pemakaian hard disk di Linux/Unix</a>
+          
+          
+            <a class="basic-alignment right" href="/2009/10/08/lagi-pengen-update-blog/" title="Next Post: Lagi pengen update blog !">Lagi pengen update blog ! &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2019 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.rudylee.com/2009/09/01/install-flash-media-server-3-di-ubuntu-904/';
+        var disqus_url = 'http://blog.rudylee.com/2009/09/01/install-flash-media-server-3-di-ubuntu-904/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

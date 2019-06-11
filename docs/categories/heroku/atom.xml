@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Heroku | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/heroku/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Run Code Snippet in Heroku Rails Console]]></title>
+    <link href="http://blog.rudylee.com/2018/08/18/how-to-run-code-snippet-in-heroku-rails-console/"/>
+    <updated>2018-08-18T11:40:00+10:00</updated>
+    <id>http://blog.rudylee.com/2018/08/18/how-to-run-code-snippet-in-heroku-rails-console</id>
+    <content type="html"><![CDATA[<p>Often in my day to day work, I need to run a snippet in rails console to fix or investigate issues. Since our application is hosted on Heroku, I can do this by running <code>heroku rails console --app app-name</code> and in a matter of seconds I am connected to the rails console on production.</p>
+
+<p>In some cases, I need to run a really long code snippet especially if the fix needs to touch a lot of data. Usually I will copy the snippet line by line into the rails console because sometimes one of the lines will return a data and it will mess up the snippet.</p>
+
+<p>After wasting a lot of time, I started thinking on a better way to do this. That&rsquo;s when I decided to use <code>eval</code> and <code>open</code> to help me running long code snippet. The idea is pretty simple, I need a place to securely host the code snippet, use <code>open</code> to read the code snippet and run it using <code>eval</code>.</p>
+
+<p>At the moment, I am using Github secret gist. You can use S3 bucket or your own web server as long as heroku can access it. If you are using Github gist, make sure you use the <code>raw</code> link. You can grab the <code>raw</code> link by clicking the <code>Raw</code> button on the top right hand corner of your gist. The format of the link should be something like
+<code>https://gist.githubusercontent.com/yourgithubaccount/randomhash/raw/randomhash/file.rb</code></p>
+
+<p>After you got the link, you can write 2 lines snippet to read and execute the file.</p>
+
+<p><code>ruby
+file = open("put-link-to-your-code-snippet-here")
+eval(file.read)
+</code></p>
+
+<p>I hope you find that useful and let me know if you have a better way to do this.</p>
+]]></content>
+  </entry>
+  
+</feed>

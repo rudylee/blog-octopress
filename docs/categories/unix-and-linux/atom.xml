@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Unix and Linux | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/unix-and-linux/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setting Up L2TP VPN to Bypass Great Firewall Of China]]></title>
+    <link href="http://blog.rudylee.com/2017/01/11/setting-up-l2tp-vpn-to-bypass-great-firewall-of-china/"/>
+    <updated>2017-01-11T19:41:00+11:00</updated>
+    <id>http://blog.rudylee.com/2017/01/11/setting-up-l2tp-vpn-to-bypass-great-firewall-of-china</id>
+    <content type="html"><![CDATA[<p>Last month, I traveled to China for the second time. Unlike my first trip, this time I am more prepared to bypass the great firewall of China.</p>
+
+<p>During my first trip in China, I was mainly relying on simple SSH tunnel to get access to Gmail and all other blocked services. This solution is unrealiable because I couldn&rsquo;t use it on my Android phone. Aside from that, I also kept having constant dropouts which explained in this blog post <a href="http://blog.zorinaq.com/my-experience-with-the-great-firewall-of-china/">http://blog.zorinaq.com/my-experience-with-the-great-firewall-of-china/</a></p>
+
+<p>After an extensive research and also a recommendation from one of my friends, I decided to install an L2TP VPN server in Japan. I choose Japan because it&rsquo;s close to China and I can use Tokyo AWS Region.</p>
+
+<p>I ended up using this ansible playbook that I found when I was looking for tutorials <a href="https://github.com/jlund/streisand">https://github.com/jlund/streisand</a>. It&rsquo;s basically an Ansible Playbook which help you to install various software such as OpenVPN, L2TP, Tor, etc. You just need to run one shell script and it will install all of those software to your target host.</p>
+
+<h3>Running the playbook</h3>
+
+<p>Since I already have ansible installed, I just need to clone the project and run the setup script. If not a complete tutorial on how to get started you can check this installation guide here <a href="https://github.com/jlund/streisand#installation">https://github.com/jlund/streisand#installation</a>.</p>
+
+<p>Cloning the project</p>
+
+<p><code>
+git clone https://github.com/jlund/streisand.git &amp;&amp; cd streisand
+</code></p>
+
+<p>Running the setup script</p>
+
+<p><code>
+./streisand
+</code></p>
+
+<p>When you run the setup script, it will ask few questions such as where to host the server, AWS Access Keys, etc. I am using AWS because I can use the free tier to run the VPN server. On AWS, it will take around 45 minutes to finish the whole installation process.</p>
+
+<h3>Using the VPN</h3>
+
+<p>When the whole installation finished, the playbook will create instructions files in the server. You need to SSH to the server in order to view the instruction.</p>
+
+<p><code>
+ssh ubuntu@server-ip
+</code></p>
+
+<p>Go to the NGINX folder to see file</p>
+
+<p><code>
+cd /var/www/streisand/l2tp-ipsec
+</code></p>
+
+<p>Read the instruction</p>
+
+<p><code>
+cat index.md | more
+</code></p>
+
+<p>In the file, you will find instructions on how to connect to the L2TP server from all different operating systems.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HAProxy as a reverse proxy for cloudinary images]]></title>
+    <link href="http://blog.rudylee.com/2016/12/05/haproxy-as-a-reverse-proxy-for-cloudinary-images/"/>
+    <updated>2016-12-05T13:51:00+11:00</updated>
+    <id>http://blog.rudylee.com/2016/12/05/haproxy-as-a-reverse-proxy-for-cloudinary-images</id>
+    <content type="html"><![CDATA[<p>We are using in one of our applications <a href="http://cloudinary.com/">Cloudinary</a> to host and resize images on the fly. We are also using <a href="http://www.cloudflare.com">Cloudflare</a> for our CDN and DNS management.</p>
+
+<p>I was given a task to setup a CNAME subdomain in CloudFlare to forward the request to Cloudinary. This way we can still have the benefit of serving static images from CDN as well as reducing the Cloudinary bandwidth usage.</p>
+
+<p>My solution is to set HAProxy as a reverse proxy which responsible to fetch images from Cloudinary server. You can see the overview diagram below:</p>
+
+<p><a href="/images/posts/HAProxy-as-a-reverse-proxy.png"><img src="/images/posts/HAProxy-as-a-reverse-proxy.png" alt="" /></a></p>
+
+<p>The first thing we have to do is to create an ACL in HAProxy for our cloudinary subdomain</p>
+
+<p>In the configuration below, we are telling HAProxy to forward all requests from <code>cloudinary-asset.rudylee.com</code> to <code>cloudinary-backend</code>:</p>
+
+<p>```
+listen  http</p>
+
+<pre><code>    bind 127.0.0.1:8080
+    maxconn     18000
+
+    acl host_cloudinary hdr(host) -i cloudinary-asset.rudylee.com
+
+    use_backend cloudinary-backend if host_cloudinary
+</code></pre>
+
+<p>```</p>
+
+<p>Next one is to create a new backend.</p>
+
+<p>```
+backend cloudinary-backend</p>
+
+<pre><code>    http-request set-header Host res.cloudinary.com
+    server cloudinary res.cloudinary.com:80
+</code></pre>
+
+<p>```</p>
+
+<p>Restart HAProxy and you should be able to use the subdomain to serve images from Cloudinary (eg: <a href="http://cloudinary-asset.rudylee.com/rudylee/image/upload/12298848/icon/12379593943923.png">http://cloudinary-asset.rudylee.com/rudylee/image/upload/12298848/icon/12379593943923.png</a> )</p>
+
+<p>Requesting the images through SSL should work if you have SSL termination configured in your HAProxy.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HAProxy and A/B Testing]]></title>
+    <link href="http://blog.rudylee.com/2016/04/13/haproxy-and-a-slash-b-testing/"/>
+    <updated>2016-04-13T15:59:00+10:00</updated>
+    <id>http://blog.rudylee.com/2016/04/13/haproxy-and-a-slash-b-testing</id>
+    <content type="html"><![CDATA[<p>Few weeks ago, I was given a task to create an A/B test using HAProxy. I need to make HAProxy to split traffic between two different applications ( Rails and NodeJS )</p>
+
+<p>In this blog post, I&rsquo;ll explain how to achieve this.</p>
+
+<h3>Create ACL for the page you want to A/B test</h3>
+
+<p>The first step you have to do is to create an ACL for the URL you want to A/B test. In this example, the URL path is <code>/ab-test-path</code></p>
+
+<p><code>
+acl ab_test_url path_beg /ab-test-path
+</code></p>
+
+<h3>Direct the traffic based on ACL rule and cookie</h3>
+
+<p>```</p>
+
+<h1>Send user to first backend if they have SITEID cookie with cookie_first_backend value</h1>
+
+<p>use_backend first-backend if { req.cook(SITEID) -m beg cookie_first_backend }</p>
+
+<h1>Send user to second backend if they have SITEID cookie with cookie_second_backend value and the URL they request is ab_test_url</h1>
+
+<p>use_backend second-backend if { req.cook(SITEID) -m beg cookie_second_backend } ab_test_url</p>
+
+<h1>If the doesn&rsquo;t have any cookie send them to ab-test backend</h1>
+
+<p>use_backend ab-test-backend if ab_test_url</p>
+
+<h1>By default send all traffic to the first backend</h1>
+
+<p>default_backend first-backend
+```</p>
+
+<h3>Create all the backends</h3>
+
+<p>```
+backend first-backend</p>
+
+<pre><code>    appsession JSESSIONID len 52 timeout 3h
+    cookie SERVERID insert
+
+    balance leastconn
+    server  backend02a-aws-syd 10.0.105.102:80 check maxconn 3000 inter 30s
+    server  backend02b-aws-syd 10.0.106.102:80 check maxconn 3000 inter 30s
+</code></pre>
+
+<p>backend second-backend</p>
+
+<pre><code>    server  backend03a-aws-syd 10.0.105.103:80 check maxconn 3000 inter 30s
+</code></pre>
+
+<p>backend ab-test-backend</p>
+
+<pre><code>    balance roundrobin
+    cookie SITEID insert indirect nocache maxlife 48h
+
+    server backend02a-aws-syd 10.0.105.102:80 weight 25 cookie cookie_first_backend
+    server backend02b-aws-syd 10.0.106.102:80 weight 25 cookie cookie_first_backend
+
+    server backend03a-aws-syd 10.0.105.103:80 weight 50 cookie cookie_second_backend
+</code></pre>
+
+<p>```</p>
+
+<p>The final HAProxy config should be something like this:</p>
+
+<p>```
+listen  http 127.0.0.1:8080</p>
+
+<pre><code>    maxconn     18000
+
+    # A/B Test ACLs
+    acl ab_test_url path_beg /ab-test-path
+
+    use_backend first-backend if { req.cook(SITEID) -m beg cookie_first_backend }
+    use_backend second-backend if { req.cook(SITEID) -m beg cookie_second_backend } ab_test_url
+    use_backend ab-test-backend if ab_test_url
+
+    default_backend first-backend
+</code></pre>
+
+<p>backend first-backend</p>
+
+<pre><code>    appsession JSESSIONID len 52 timeout 3h
+    cookie SERVERID insert
+
+    balance leastconn
+    server  backend02a-aws-syd 10.0.105.102:80 check maxconn 3000 inter 30s
+    server  backend02b-aws-syd 10.0.106.102:80 check maxconn 3000 inter 30s
+</code></pre>
+
+<p>backend second-backend</p>
+
+<pre><code>    server  backend03a-aws-syd 10.0.105.103:80 check maxconn 3000 inter 30s
+</code></pre>
+
+<p>backend ab-test-backend</p>
+
+<pre><code>    balance roundrobin
+    cookie SITEID insert indirect nocache maxlife 48h
+
+    server backend02a-aws-syd 10.0.105.102:80 weight 25 cookie cookie_first_backend
+    server backend02b-aws-syd 10.0.106.102:80 weight 25 cookie cookie_first_backend
+
+    server backend03a-aws-syd 10.0.105.103:80 weight 50 cookie cookie_second_backend
+</code></pre>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Create SSH Tunnel To Backup PostgreSQL Database]]></title>
+    <link href="http://blog.rudylee.com/2015/08/31/create-ssh-tunnel-to-backup-postgresql-database/"/>
+    <updated>2015-08-31T10:28:00+10:00</updated>
+    <id>http://blog.rudylee.com/2015/08/31/create-ssh-tunnel-to-backup-postgresql-database</id>
+    <content type="html"><![CDATA[<p>Today, I was trying to create a backup of production database. The problem is we have two different version of PostgreSQL running on production and these databases can only be accessed from front end(FE) server. We have older version of PostgreSQL client installed in all FE server which means I can&rsquo;t use it to run pg_dump.</p>
+
+<h2>SSH Tunnel to the rescue</h2>
+
+<p>One solution to this problem is to create a SSH tunnel. Since I have the latest version of PostgreSQL client installed in my machine, I can run pg_dump locally which will connect to the database through SSH tunnel.</p>
+
+<p>Here is the command I used to create SSH tunnel:
+```bash</p>
+
+<h1>Format: ssh -L &lt;local-port>:&lt;db-hostname>:&lt;db-port> &lt;fe-username>@&lt;fe-hostname></h1>
+
+<p>ssh -L 9000:database.com:5432 <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#111;&#58;&#117;&#x62;&#x75;&#x6e;&#x74;&#x75;&#x40;&#112;&#x72;&#x6f;&#x64;&#117;&#x63;&#x74;&#x69;&#x6f;&#110;&#46;&#x73;&#x65;&#x72;&#x76;&#101;&#114;&#115;&#x2e;&#99;&#x6f;&#x6d;">&#117;&#98;&#x75;&#110;&#x74;&#117;&#x40;&#x70;&#114;&#x6f;&#100;&#x75;&#99;&#x74;&#105;&#x6f;&#110;&#46;&#115;&#101;&#x72;&#x76;&#x65;&#114;&#115;&#x2e;&#x63;&#x6f;&#x6d;</a>
+```</p>
+
+<p>After this you can check whether the SSH tunnel is succesfully created by running this and look for port 9000
+<code>bash
+netstat -na | grep LISTEN
+</code></p>
+
+<p>If you confirm that the SSH tunnel is working, you can run psql to connect or pg_dump to backup your database
+<code>bash
+psql -h localhost -p 9000
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Symbolic Links With Vagrant Windows]]></title>
+    <link href="http://blog.rudylee.com/2014/10/27/symbolic-links-with-vagrant-windows/"/>
+    <updated>2014-10-27T14:22:00+11:00</updated>
+    <id>http://blog.rudylee.com/2014/10/27/symbolic-links-with-vagrant-windows</id>
+    <content type="html"><![CDATA[<p>There are few known limitations when using Vagrant on Windows machine. One of these limitations is the lack of symbolic links support on synced folder.</p>
+
+<p>Symbolic links are used heavily by NPM to create shortcut for the libraries. I posted more details about this here: <a href="http://blog.rudylee.com/2013/10/24/fix-npm-symlink-problem-in-vagrant/">http://blog.rudylee.com/2013/10/24/fix-npm-symlink-problem-in-vagrant/</a></p>
+
+<p>Most of the time, you can get away with &lsquo;npm &mdash;no-bin-link&rsquo; solution. However, you need more robust solution if you are using complex tools such as Grunt or Yeoman.</p>
+
+<p>In this post, I&rsquo;ll show you the proper way to add symbolic links support to your Vagrant machine.</p>
+
+<p>First, you need to add this code snippet inside your Vagrantfile</p>
+
+<p>``` bash
+config.vm.provider &ldquo;virtualbox&rdquo; do |v|</p>
+
+<pre><code>v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+</code></pre>
+
+<p>end
+```</p>
+
+<p>VirtualBox disables symbolic links for security reasons. In order to pass this restriction, you need to boot up the Vagrant machine in Administrator mode.</p>
+
+<p>You can do this by simply right clicking on your Command Prompt or Git Bash icon and click &lsquo;Run as Administrator&rsquo;. See the picture below if you can&rsquo;t find it.</p>
+
+<p><a href="/images/run_as_admin.png"><img src="/images/run_as_admin.png" alt="" /></a></p>
+
+<p>After that, boot up the Vagrant machine normally with &lsquo;vagrant up&rsquo; command. Wait until the machine boots up, SSH to the machine and try to create symbolic link in the synced folder.</p>
+
+<h2>File path 255 character limit</h2>
+
+<p>Another annoying problem you might encounter is file path character limit. This happens quite often if you are using a node module with long name. You can easily solve this by following these steps:</p>
+
+<h3>Create &lsquo;node_modules&rsquo; folder in your home folder</h3>
+
+<p><code>bash
+  mkdir ~/node_modules
+</code></p>
+
+<h3>Add symbolic link to the &lsquo;node_modules&rsquo; folder you just created inside your project folder</h3>
+
+<p><code>bash
+  ln -sf ~/node_modules /vagrant/your-project-folder
+</code></p>
+
+<p>This solution will ensure that all the node modules are stored inside home directory instead of synced folder.</p>
+]]></content>
+  </entry>
+  
+</feed>

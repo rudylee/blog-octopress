@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Go | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/go/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Download CSV Test in Go]]></title>
+    <link href="http://blog.rudylee.com/2018/06/23/download-csv-test-in-go/"/>
+    <updated>2018-06-23T12:39:00+10:00</updated>
+    <id>http://blog.rudylee.com/2018/06/23/download-csv-test-in-go</id>
+    <content type="html"><![CDATA[<p>In the project I am working on, I have to write a test for a function that download CSV from external website and store it locally. I am pretty new in Go so please let me know if I am doing it wrong.</p>
+
+<p>The function is pretty simple, it uses the Go <code>net/http</code> package to send a <code>GET</code> request and <code>os</code> package to write the HTTP response to a local file. See the full code below:</p>
+
+<p>```go
+package main</p>
+
+<p>import (
+  &ldquo;io&rdquo;
+  &ldquo;log&rdquo;
+  &ldquo;net/http&rdquo;
+  &ldquo;os&rdquo;
+)</p>
+
+<p>func main() {
+  DownloadCSV(&ldquo;<a href="https://www.asx.com.au/asx/research/ASXListedCompanies.csv">https://www.asx.com.au/asx/research/ASXListedCompanies.csv</a>&rdquo;, &ldquo;asx-companies.csv&rdquo;)
+}</p>
+
+<p>func DownloadCSV(url string, filename string) error {
+  out, _ := os.Create(filename)
+  defer out.Close()</p>
+
+<p>  resp, err := http.Get(url)
+  defer resp.Body.Close()</p>
+
+<p>  if _, err := io.Copy(out, resp.Body); err != nil {</p>
+
+<pre><code>log.Fatal(err)
+</code></pre>
+
+<p>  }</p>
+
+<p>  return err
+}
+```</p>
+
+<p>The function we want to test is <code>DownloadCSV</code> which expects two arguments. <code>url</code> is a URL endpoint that host the CSV and <code>filename</code> is the name of local file to store the HTTP response.</p>
+
+<p>There are three things I want to test here:</p>
+
+<ol>
+<li><code>http.Get</code> shouldn&rsquo;t return an error</li>
+<li>It should create a local CSV file</li>
+<li>The content of the local CSV file should match with the server</li>
+</ol>
+
+
+<h2><code>http.Get</code> shouldn&rsquo;t return an error</h2>
+
+<p>To test the first one, we will use an awesome Go package called <code>net/http/httptest</code>. This package allows us to create a HTTP server and set the response to whatever you want.</p>
+
+<p>In the code below, you can see we start with creating the server which return a 200 response status ( line 10 &ndash; 12 ). After that, we pass the URL of the server to the <code>DownloadCSV</code> function and also the required filename.</p>
+
+<p>At the end, we do the assertion to make sure the function does not return an error. We are using Go testing package <code>Errorf</code> method to output the message if the assertion fail. This is important because we need it to mark the test as <code>FAIL</code>.</p>
+
+<p>```go
+package main</p>
+
+<p>import (
+  &ldquo;net/http&rdquo;
+  &ldquo;net/http/httptest&rdquo;
+  &ldquo;testing&rdquo;
+)</p>
+
+<p>func TestDownloadCSV(t <em>testing.T) {
+  ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r </em>http.Request) {</p>
+
+<pre><code>w.WriteHeader(http.StatusOK)
+</code></pre>
+
+<p>  }))
+  defer ts.Close()</p>
+
+<p>  file := &ldquo;test.csv&rdquo;
+  err := DownloadCSV(ts.URL, file)</p>
+
+<p>  if err != nil {</p>
+
+<pre><code>t.Errorf("Shouldn't have received an error, got %s", err)
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<h2>It should create a local CSV file</h2>
+
+<p>We are going to use the <code>os</code> package to check the file existence and delete it after the test finished. Three functions we will use are  <code>Stat</code>, <code>IsNotExist</code> and <code>Remove</code>. <code>Stat</code> and <code>IsNotExists</code> are used to assert the file existence and <code>Remove</code> will clean up the file after test finished.</p>
+
+<p>```go
+package main</p>
+
+<p>import (
+  &ldquo;net/http&rdquo;
+  &ldquo;net/http/httptest&rdquo;
+  &ldquo;os&rdquo;
+  &ldquo;testing&rdquo;
+)</p>
+
+<p>func TestDownloadCSV(t <em>testing.T) {
+  ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r </em>http.Request) {</p>
+
+<pre><code>w.WriteHeader(http.StatusOK)
+</code></pre>
+
+<p>  }))
+  defer ts.Close()</p>
+
+<p>  file := &ldquo;test.csv&rdquo;
+  err := DownloadCSV(ts.URL, file)</p>
+
+<p>  if err != nil {</p>
+
+<pre><code>t.Errorf("Shouldn't have received an error, got %s", err)
+</code></pre>
+
+<p>  }</p>
+
+<p>  if _, err := os.Stat(file); os.IsNotExist(err) {</p>
+
+<pre><code>t.Errorf("Should have created a CSV file")
+</code></pre>
+
+<p>  }</p>
+
+<p>  os.Remove(file)
+}
+```</p>
+
+<h2>The content of the local CSV file should match with the server</h2>
+
+<p>The simplest way to do this test is to configure the <code>httptest</code> server to return a string and check if that string exists in the test file. We can take this a bit further by using an actual CSV file.</p>
+
+<p>We can use test fixture to achieve this. We will create a new folder called <code>testdata</code>, put a CSV file inside it, set the <code>httptest</code> server to read the file using <code>ioutil.ReadFile</code> and return the content to the client. We will also use <code>ioutil.ReadFile</code> to do the assertion to compare the content of the files. Here is the final version of the test:</p>
+
+<p>```go
+package main</p>
+
+<p>import (
+  &ldquo;bytes&rdquo;
+  &ldquo;io/ioutil&rdquo;
+  &ldquo;net/http&rdquo;
+  &ldquo;net/http/httptest&rdquo;
+  &ldquo;os&rdquo;
+  &ldquo;testing&rdquo;
+)</p>
+
+<p>func TestDownloadCSV(t *testing.T) {
+  test_csv, _ := ioutil.ReadFile(&ldquo;testdata/asx-companies.csv&rdquo;)</p>
+
+<p>  ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {</p>
+
+<pre><code>w.Write(test_csv)
+</code></pre>
+
+<p>  }))
+  defer ts.Close()</p>
+
+<p>  file := &ldquo;test.csv&rdquo;
+  err := DownloadCSV(ts.URL, file)</p>
+
+<p>  if err != nil {</p>
+
+<pre><code>t.Errorf("Shouldn't have received an error, got %s", err)
+</code></pre>
+
+<p>  }</p>
+
+<p>  if _, err := os.Stat(file); os.IsNotExist(err) {</p>
+
+<pre><code>t.Errorf("Should have created a CSV file")
+</code></pre>
+
+<p>  }</p>
+
+<p>  expected, _ := ioutil.ReadFile(file)</p>
+
+<p>  if !bytes.Equal(test_csv, expected) {</p>
+
+<pre><code>t.Errorf("CSV file should have correct content")
+</code></pre>
+
+<p>  }</p>
+
+<p>  os.Remove(file)
+}
+```</p>
+
+<p>You can check out the full code here: <a href="https://github.com/rudylee/go-playground">https://github.com/rudylee/go-playground</a> and please leave a comment if find any errors.</p>
+]]></content>
+  </entry>
+  
+</feed>

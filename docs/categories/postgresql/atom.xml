@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PostgreSQL | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/postgresql/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Create SSH Tunnel To Backup PostgreSQL Database]]></title>
+    <link href="http://blog.rudylee.com/2015/08/31/create-ssh-tunnel-to-backup-postgresql-database/"/>
+    <updated>2015-08-31T10:28:00+10:00</updated>
+    <id>http://blog.rudylee.com/2015/08/31/create-ssh-tunnel-to-backup-postgresql-database</id>
+    <content type="html"><![CDATA[<p>Today, I was trying to create a backup of production database. The problem is we have two different version of PostgreSQL running on production and these databases can only be accessed from front end(FE) server. We have older version of PostgreSQL client installed in all FE server which means I can&rsquo;t use it to run pg_dump.</p>
+
+<h2>SSH Tunnel to the rescue</h2>
+
+<p>One solution to this problem is to create a SSH tunnel. Since I have the latest version of PostgreSQL client installed in my machine, I can run pg_dump locally which will connect to the database through SSH tunnel.</p>
+
+<p>Here is the command I used to create SSH tunnel:
+```bash</p>
+
+<h1>Format: ssh -L &lt;local-port>:&lt;db-hostname>:&lt;db-port> &lt;fe-username>@&lt;fe-hostname></h1>
+
+<p>ssh -L 9000:database.com:5432 <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#58;&#117;&#98;&#117;&#x6e;&#x74;&#117;&#64;&#x70;&#x72;&#111;&#x64;&#117;&#x63;&#116;&#x69;&#x6f;&#x6e;&#x2e;&#115;&#x65;&#x72;&#x76;&#x65;&#114;&#115;&#x2e;&#99;&#111;&#109;">&#117;&#98;&#117;&#110;&#116;&#x75;&#x40;&#112;&#x72;&#x6f;&#x64;&#x75;&#99;&#x74;&#x69;&#x6f;&#110;&#46;&#115;&#101;&#x72;&#x76;&#x65;&#114;&#115;&#46;&#99;&#x6f;&#109;</a>
+```</p>
+
+<p>After this you can check whether the SSH tunnel is succesfully created by running this and look for port 9000
+<code>bash
+netstat -na | grep LISTEN
+</code></p>
+
+<p>If you confirm that the SSH tunnel is working, you can run psql to connect or pg_dump to backup your database
+<code>bash
+psql -h localhost -p 9000
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

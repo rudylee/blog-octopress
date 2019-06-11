@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Elastic Cloud | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/elastic-cloud/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setting Up Elasticsearch Watcher to Check For Cluster Status on Elastic Cloud]]></title>
+    <link href="http://blog.rudylee.com/2017/01/30/setting-up-elasticsearch-watcher-to-check-for-cluster-status-on-elastic-cloud/"/>
+    <updated>2017-01-30T15:48:00+11:00</updated>
+    <id>http://blog.rudylee.com/2017/01/30/setting-up-elasticsearch-watcher-to-check-for-cluster-status-on-elastic-cloud</id>
+    <content type="html"><![CDATA[<p>Last week, I was busy migrating our staging and production Elasticsearch clusters from AWS Elasticsearch to Elastic Cloud. The reason behind this migration is because we need dynamic scripting feature in our application and Elastic Cloud is the only managed Elasticsearch hosting that currently supports dynamic scripting.</p>
+
+<p>In terms of pricing, Elastic Cloud is slightly more expensive than AWS Elasticsearch. I think this is because they are using AWS EC2 under the hood. You can compare the pricing of both services here <a href="https://aws.amazon.com/elasticsearch-service/pricing/">https://aws.amazon.com/elasticsearch-service/pricing/</a> and <a href="https://www.elastic.co/cloud/as-a-service/pricing">https://www.elastic.co/cloud/as-a-service/pricing</a>.</p>
+
+<p>As of now, Elastic Cloud supports the latest version of Elasticsearch which is 5.1.2. If you like living on the edge, I recommend you to try Elastic Cloud.</p>
+
+<h2>Creating a watcher</h2>
+
+<p>On AWS, we can use Cloud Watch to monitor our Elasticsearch cluster health status as well as monitoring other metrics such as memory and cpu usage. With Elastic Cloud, we have to use Elastic Watcher or Alerting to monitor and trigger alerts.</p>
+
+<p>Currently, there is no UI to set up the watcher on Elastic Cloud. To create a watcher, you have to send a PUT request to your cluster. Please note that this blog post is based on Elasticsearch version <code>1.7.6</code> and Elasticsearch Watcher version is <code>1.0.1</code>.</p>
+
+<p>First thing you have to do is to enable the watcher plugin on the Elastic Cloud clusters configuration. See screenshot below:</p>
+
+<p><a href="/images/posts/elastic-cloud/enable%20elastic%20cloud%20watcher%20plugin.png"><img src="/images/posts/elastic-cloud/enable%20elastic%20cloud%20watcher%20plugin.png" alt="" /></a></p>
+
+<p>The next thing to do is to add an alert recepient email to the Elastic Cloud whitelist. In order to do this, go to <code>Account &gt; Email settings</code> and scroll to the bottom of the page. See screenshot below:</p>
+
+<p><a href="/images/posts/elastic-cloud/whitelist.png"><img src="/images/posts/elastic-cloud/whitelist.png" alt="" /></a></p>
+
+<p>Shortly after that, you will receive an email to confirm this request for whitelist. Confirm the request and you are ready to receive email from Elastic Cloud.</p>
+
+<p>Now open up your REST client app or if you are one of those CLI Guru, you can stick with CURL. As I mentioned earlier, we will send a PUT request to our cluster to create a watcher.</p>
+
+<p>The endpoint of the request is something like this <code>http://elastic-cloud-username:elastic-cloud-password@elastic-cloud-cluster-host:9200/_watcher/watch/cluster_health_watch</code></p>
+
+<p>You have to replace <code>elastic-cloud-username</code>, <code>elastic-cloud-password</code> and <code>elastic-cloud-cluster-host</code> with your cluster details.</p>
+
+<p>And here is the JSON content of the request: ( please replace the host, auth username, auth password and to email with your cluster details )</p>
+
+<p>```
+{
+  &ldquo;trigger&rdquo; : {</p>
+
+<pre><code>"schedule" : { "interval" : "10s" }
+</code></pre>
+
+<p>  },
+  &ldquo;input&rdquo; : {</p>
+
+<pre><code>"http" : {
+  "request" : {
+   "host" : "add-your-elastic-cloud-host-here",
+   "port" : 9200,
+   "path" : "/_cluster/health",
+   "auth" : {
+      "basic" : {
+        "username" : "your-elastic-cloud-username",
+        "password" : "your-elastic-cloud-password"
+      }
+    }
+  }
+}
+</code></pre>
+
+<p>  },
+  &ldquo;condition&rdquo; : {</p>
+
+<pre><code>"compare" : {
+  "ctx.payload.status" : { "eq" : "red" }
+}
+</code></pre>
+
+<p>  },
+  &ldquo;actions&rdquo; : {</p>
+
+<pre><code>"send_email" : {
+  "email" : {
+    "to" : "the-recepient-email-address",
+    "subject" : "Cluster Status Warning",
+    "body" : "Cluster status is RED"
+  }
+}
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<p>In a nutshell, the request above will create a watcher that will get triggered every 10s, gets the input from our Elasticsearch <code>/_cluster/health</code> page, checks for cluster status ( see condition section ) and sends an email if the condition is matched.</p>
+
+<p>Here is the screenshot of my PUT request using <a href="https://insomnia.rest/">Insomnia REST Client</a>:</p>
+
+<p>After sending the request, we can confirm if the watcher is created successfully or not by visiting this endpoint on our browser <code>http://elasticsearch-cluster-host:9200/_watcher/watch/cluster_health_watch</code></p>
+
+<p>If the watcher is created successfully, you should see a response like this:</p>
+
+<p><a href="/images/posts/elastic-cloud/insomnia%20put%20request.png"><img src="/images/posts/elastic-cloud/insomnia%20put%20request.png" alt="" /></a></p>
+
+<h2>Delete the watcher</h2>
+
+<p>You can send a DELETE request if you want to delete the watcher</p>
+
+<p><code>curl -XDELETE http://elasticsearch-cluster-host:9200/_watcher/watch/cluster_health_watch</code></p>
+
+<h2>Check if your watcher was triggered</h2>
+
+<p>You can check if your watcher has been triggered by sending a GET request to <code>/.watch_history*/search?pretty</code> with the following query:</p>
+
+<p><a href="/images/posts/elastic-cloud/watcher%20response.png"><img src="/images/posts/elastic-cloud/watcher%20response.png" alt="" /></a></p>
+
+<p>```
+{
+  &ldquo;query&rdquo; : {</p>
+
+<pre><code>"match" : { "result.condition.met" : true }
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<p>If the query returns a hit, it means that your watcher has been triggered. This is helpful during debugging.</p>
+
+<p>That&rsquo;s it for now, the next thing I need to figure out is to create alerting for CPU and memory usage. I&rsquo;ll leave it for another blog post.</p>
+]]></content>
+  </entry>
+  
+</feed>

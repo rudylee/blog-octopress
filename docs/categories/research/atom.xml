@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Research | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/research/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Playing with Google Map API]]></title>
+    <link href="http://blog.rudylee.com/2013/05/27/playing-with-google-map-api/"/>
+    <updated>2013-05-27T11:16:02+10:00</updated>
+    <id>http://blog.rudylee.com/2013/05/27/playing-with-google-map-api</id>
+    <content type="html"><![CDATA[<p>The main purpose of this post is only to write about Google Map API for future reference. Here are the code snippets :</p>
+
+<p>Get the latitude and longitude based on address : <a href="http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&amp;sensor=true">http://maps.googleapis.com/maps/api/geocode/json?address=435A%20Kent%20St&amp;sensor=true</a></p>
+
+<p>The code below set up the Google Map, put the marker and also make it grayscale</p>
+
+<p>``` javascript  <br/>
+function initialize() {</p>
+
+<pre><code>var map;
+var location = new google.maps.LatLng(-33.87190930, 151.20480740);
+var styles = [
+    {
+        featureType: "all",
+        elementType: "all",
+        stylers: [
+            { saturation: -100 }
+        ]
+    }
+];
+
+var mapOptions = {
+    center: location,
+    zoom: 17,
+    mapTypeControlOptions: {
+        mapTypeId: [google.maps.MapTypeId.ROADMAP, 'theGray']
+    }
+};
+
+map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+var mapType = new google.maps.StyledMapType(styles, { name:"GrayScale" });    
+map.mapTypes.set('theGray', mapType);
+map.setMapTypeId('theGray');
+
+marker = new google.maps.Marker({
+    position: location,
+    map: map
+});
+</code></pre>
+
+<p>}
+google.maps.event.addDomListener(window, &lsquo;load&rsquo;, initialize);
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hotlinking protection di web server Apache]]></title>
+    <link href="http://blog.rudylee.com/2009/10/19/hotlinking-protection-di-web-server-apache/"/>
+    <updated>2009-10-19T22:21:55+11:00</updated>
+    <id>http://blog.rudylee.com/2009/10/19/hotlinking-protection-di-web-server-apache</id>
+    <content type="html"><![CDATA[<p>Hari ini gwa disibukkan dengan berbagai banyak kerjaan, entah kenapa kalau masuk kantor itu kerjaan tiba-tiba aja datang bertubi-tubi. Tapi kerjaan utama yang gwa lakukan hari ada memproteksi server Bee Watch.</p>
+
+<p>Yah, seperti yang kita ketahui bersama bahwa Bee Watch sangat menjadi incaran untuk di-embed ke web-web marketing kelas teri. Dimana siaran Bee Watch ( TV Online) digunakan sebagai penarik traffic ke website mereka dan di website mereka diletakkan bermacam-macam iklan entah darimana datangnya. Ada yang isinya iklan Joko Susilo lah, ada iklan google adsense la, dan iklan2 norak lainnya. Dan yang paling membuat gw prihatin adalah design website yang sangat kampungan dan acak-acakan ( sory kalo ini gwa ngomong jujur ).</p>
+
+<p>Selama ini gwa telah melakukan berbagai macam proteksi terhadap Bee Watch. Mulai dari proteksi dari FMS nya, random folder tempat simpan playernya , dan yang terakhir memasang firewall. Tapi ternyata memang dasar maling, tetep saja mereka selalu menemukan cara untuk menembus pertahanan yang gwa buat.</p>
+
+<p>Akhirnya gwa memutuskan membuat hotlink protection di web server Apache gwa dengan menggunakan .htaccess. Mungkin ada yang bertanya-tanya sebenarnya apa itu hotlink. Hotlink itu adalah sebuah istilah yang digunakan ketika sebuah website A yang menghosting katakanlah sebuah gambar yang berukuran 100 MB, kemudian secara tiba-tiba ada website B yang meng-link gambar tersebut ke website milik pribadinya untuk kepentingan dia sendiri.</p>
+
+<p>Ketika ada user yang mengakses website B dan menampilkan gambar yang dihosting oleh website A. Tentu saja hal itu merugikan website A dimana bandwidth yang digunakan adalah bandwidth website A, sementara website B cuma menikmati hasilnya tanpa harus kehilangan bandwidth yang berharga.</p>
+
+<p>Hal inilah yang terjadi dengan Bee Watch dimana ada beberapa website yang tidak bertanggung jawab dengan sengaja melakukan embed siaran Bee Watch untuk menarik traffic ke website mereka. Dan setelah googling-googling dan stress selama 1 jam memikirkan bagaimana cara mem-ban website tersebut akhirnya gwa menemukan sebuah fitur dari web apache yaitu disable hotlinking dengan .htaccess.</p>
+
+<p>Jadi konsepnya sangatlah simple dimana dengan menggunakan script .htaccess kita untuk mendisable semua akses ke file-file kita ( contoh : gambar .gif, .jpg, .png atau .swf ) sehingga hanya beberapa url saja yang telah kita allow dapat mengakses file tersebut ( dalam kasus ini gwa hanya mengallow domain binus-access.com dan 202.58.181.204 ).</p>
+
+<p>Jadi step-stepnya kira begini :</p>
+
+<ul>
+<li><p>Generate file .htaccess di web <a href="http://tools.dynamicdrive.com/userban/">ini</a></p></li>
+<li><p>Upload file .htaccess ke root webserver kita ( misalnya /var/www ).</p></li>
+<li><p>Testing hotlinking dari lokal</p></li>
+</ul>
+
+
+<p>Jika benar maka seharusnya kita tidak dapat mengakses content website kita dari localhost. Kira-kira begitulah salah satu web security yang sangat penting jika kita ingin memproteksi website kita dari tangan-tangan jahil. Selamat mencoba :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Single Sign On, CAS, Josso, Crowd, OpenID, dan OAuth]]></title>
+    <link href="http://blog.rudylee.com/2009/06/05/single-sign-on-cas-josso-crowd-openid-dan-oauth/"/>
+    <updated>2009-06-05T03:08:25+10:00</updated>
+    <id>http://blog.rudylee.com/2009/06/05/single-sign-on-cas-josso-crowd-openid-dan-oauth</id>
+    <content type="html"><![CDATA[<p>Karena banyak yang minta dikirimin skripsi, sekarang udah gwa upload skripsi gwa. Silakan di download <a href="http://blog.rudylee.com/content/softcover%2027jan.doc"><strong>Klik Disini</strong></a></p>
+
+<p>Lagi pengen update blog, tapi bingung musti ngisi apa&hellip; pengen curhat tapi nanti pada tanya2 lagi&hellip; ya sudah lah daripada cerita-cerita ga jelas bagusan bahas tentang single sign on atau SSO&hellip;</p>
+
+<p>Single sign on ini merupakan topik skripsi gwa tahun lalu&hellip; yah bisa dibilang semester kemarin secara gwa sedang menunggu wisuda hari sabtu ini&hellip; ( sambil menunggu bak cang juga dari pekanbaru&hellip; ea ).</p>
+
+<p>Sebelum bahas kedalam-dalam bahas dolo deh pengertian dari Single Sign On. Sebenarnya gwa juga bingung musti mengartikan dalam kata-kata, intinya sih dengan single sign on kita dapat membuat user hanya perlu melakukan login sekali untuk dapat mengakses aplikasi-aplikasi ( dalam hal ini bisa saja web atau aplikasi desktop) yang berbeda dan yang tentu saja pada server yang berbeda&hellip; Kalau pengen tahu lebih jelas cek di wikipedia saja <a href="http://en.wikipedia.org/wiki/Single_sign-on">http://en.wikipedia.org/wiki/Single_sign-on</a>. Untuk contoh realnya bisa liat yahoo messenger, ketika kita login di yahoo messenger ketik kita masuk ke web mailnya untuk mengecek email, kita tidak perlu melakukan login lagi karena kita sudah login melalui yahoo messengernya. Jadi itu adalah salah satu contoh Single Sign On.</p>
+
+<p>Nah, untuk membuat teknologi Single Sign On ini tidaklah sulit, karena sekarang telah tersedia banyak teknologi, framework yang open source dan commercial. Beberapa framework dan teknologi itu antara lain :</p>
+
+<ul>
+<li><p><a href="http://www.jasig.org/cas">Central Authentication Services</a></p></li>
+<li><p><a href="http://www.josso.org">Josso</a></p></li>
+<li><p><a href="http://www.atlassian.com/software/crowd/">Crowd ( Comercial )</a></p></li>
+<li><p><a href="http://openid.net/">OpenID</a></p></li>
+<li><p><a href="http://oauth.net/">OAuth</a></p></li>
+</ul>
+
+
+<p>Dari beberapa pilihan tersebut yang sudah pernah gwa coba cuma CAS dan Josso. Pada akhirnya pilihan gwa jatuh kepada CAS. Alasan utama kenapa gwa memilih CAS sangatlah simple yaitu karena paling gampang dipakai&hellip;</p>
+
+<p>Tapi walaupun gampang dipakai ternyata CAS cukup handal juga untuk dipakai sebagai framework Single Sign On. Buktinya adalah banyaknya plugin yang dapat membantu kita jika ingin mengintegrasikan CAS ke aplikasi web lain ( misalnya ingin mengintegrasikan aplikasi web ASP dengan aplikasi web PHP )&hellip;</p>
+
+<p>Jadi pada skripsi gwa, gwa diharuskan mengintegrasikan beberapa aplikasi web dan desktop antara lain portal ( menggunakan Joomla ), blog ( menggunakan wordpress MU ), messenger ( menggunakan spark ), dan forum ( menggunakan fireboard dan terintegrasi dengan joomla ). Sementara untuk databasenya sendiri menggunakan Open <a href="http://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol">Lightweight Directory Access Protocol</a> ( OpenLDAP )&hellip;</p>
+
+<p>Sebelum membahas lebih lanjut gwa akan menjelaskan sedikit tentang framework CAS ini dahulu. CAS adalah sebuah framework untuk Single Sign On yang dibuat dengan bahasa Java atau lebih tepatnya JSP. Jadi CAS ini dapat dikatakan sebuah aplikasi web yang digunakan untuk meng-handle autentikasi nantinya ( sebagai pintu gerbang autentikasi nantinya ). Oleh karena itu setiap kita ingin melakukan autentikasi maka kita akan diredirect ke server CAS ini dan baru nantinya akan diredirect kembali ke aplikasi.</p>
+
+<p>Kemudian yang menjadi pertanyaannya adalah bagaimana caranya aplikasi dapat mengetahui bahwa user tersebut telah melakukan login atau tidak. Konsep kerja CAS sebenarnya menggunakan Ticket Granting dimana ketika user melakukan login, user akan diberikan ticket ( dalam hal ini tersimpan dalam cookies ) yang nantinya digunakan untuk mengautentikasikan user pada setiap aplikasinya. Jadi nantinya di setiap aplikasi akan dilakukan pengecekan dari ticket yang telah diberikan oleh CAS tersebut.</p>
+
+<p>Mungkin nanti gwa bakal bikin tutorial untuk CAS ini karena ada rencana pengen nyoba-nyoba CAS versi terbaru. Tapi selain itu gwa juga pengen nyoba teknologi baru yang hampir mirip dengan SSO yaitu OpenID dan OAuth. Dari hasil membaca-baca sedikit gwa menarik kesimpulan bahwa OpenID dan OAuth adalah sebuah konsep dimana kita dapat menggunakan username kita di aplikasi lain tanpa aplikasi tersebut mengakses database username kita. Yah mungkin hampir mirip dengan konsep SOAP, tapi gwa sendiri belum mendalami SOAP, OpenID dan OAuth. Mungkin nanti gwa bakal posting hasil researchnya.</p>
+]]></content>
+  </entry>
+  
+</feed>

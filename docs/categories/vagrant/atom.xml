@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vagrant | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/vagrant/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Symbolic Links With Vagrant Windows]]></title>
+    <link href="http://blog.rudylee.com/2014/10/27/symbolic-links-with-vagrant-windows/"/>
+    <updated>2014-10-27T14:22:00+11:00</updated>
+    <id>http://blog.rudylee.com/2014/10/27/symbolic-links-with-vagrant-windows</id>
+    <content type="html"><![CDATA[<p>There are few known limitations when using Vagrant on Windows machine. One of these limitations is the lack of symbolic links support on synced folder.</p>
+
+<p>Symbolic links are used heavily by NPM to create shortcut for the libraries. I posted more details about this here: <a href="http://blog.rudylee.com/2013/10/24/fix-npm-symlink-problem-in-vagrant/">http://blog.rudylee.com/2013/10/24/fix-npm-symlink-problem-in-vagrant/</a></p>
+
+<p>Most of the time, you can get away with &lsquo;npm &mdash;no-bin-link&rsquo; solution. However, you need more robust solution if you are using complex tools such as Grunt or Yeoman.</p>
+
+<p>In this post, I&rsquo;ll show you the proper way to add symbolic links support to your Vagrant machine.</p>
+
+<p>First, you need to add this code snippet inside your Vagrantfile</p>
+
+<p>``` bash
+config.vm.provider &ldquo;virtualbox&rdquo; do |v|</p>
+
+<pre><code>v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+</code></pre>
+
+<p>end
+```</p>
+
+<p>VirtualBox disables symbolic links for security reasons. In order to pass this restriction, you need to boot up the Vagrant machine in Administrator mode.</p>
+
+<p>You can do this by simply right clicking on your Command Prompt or Git Bash icon and click &lsquo;Run as Administrator&rsquo;. See the picture below if you can&rsquo;t find it.</p>
+
+<p><a href="/images/run_as_admin.png"><img src="/images/run_as_admin.png" alt="" /></a></p>
+
+<p>After that, boot up the Vagrant machine normally with &lsquo;vagrant up&rsquo; command. Wait until the machine boots up, SSH to the machine and try to create symbolic link in the synced folder.</p>
+
+<h2>File path 255 character limit</h2>
+
+<p>Another annoying problem you might encounter is file path character limit. This happens quite often if you are using a node module with long name. You can easily solve this by following these steps:</p>
+
+<h3>Create &lsquo;node_modules&rsquo; folder in your home folder</h3>
+
+<p><code>bash
+  mkdir ~/node_modules
+</code></p>
+
+<h3>Add symbolic link to the &lsquo;node_modules&rsquo; folder you just created inside your project folder</h3>
+
+<p><code>bash
+  ln -sf ~/node_modules /vagrant/your-project-folder
+</code></p>
+
+<p>This solution will ensure that all the node modules are stored inside home directory instead of synced folder.</p>
+]]></content>
+  </entry>
+  
+</feed>

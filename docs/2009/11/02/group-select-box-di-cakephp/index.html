@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Group select box di CakePHP - Blog Rudy Lee</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Group Select Box Di CakePHP Nov 2nd, 2009 Grouping di dalam select box adalah hal yang gampang ketika kita menggunakan codingan php biasa, tetapi &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.rudylee.com/2009/11/02/group-select-box-di-cakephp">
+  <link href="/favicon.ico" rel="icon">
+  <link href='//fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog Rudy Lee" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10301272-8']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+  heap.load("1170192688");
+</script>
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("61a006900f814889fdc104eecb397ac0");</script><!-- end Mixpanel -->
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/">Home</a></li>
+    
+        <li ><a href="/archives">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/rudylee" title="Github Profile"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    
+    <li><a href="http://twitter.com/rudylee88" title="Twitter Profile"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Group Select Box Di CakePHP
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2009-11-02T15:18:21+11:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2009</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>Grouping di dalam select box adalah hal yang gampang ketika kita menggunakan codingan php biasa, tetapi kalau sudah masuk ke dalam codingan CakePHP kita harus banyak membaca documentation untuk teknik2nya, tickets jika ada yang pernah menanyakan hal yang sama dan tentu saja API agar kita tahu fungsi dari method yang akan kita pakai.</p>
+
+<p>Jadi sekarang kita akan membuat sebuah grouping dalam select box seperti dalam gambar di bawah ini :
+[caption id=&ldquo;&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;217&rdquo; caption=&ldquo;CakePHP Group Select&rdquo;]<img src="http://blog.rudylee.com/content/group-select-box.jpg" alt="CakePHP Group Select" />[/caption]</p>
+
+<p>Di dalam contoh diatas gwa menggunakan 3 buah table di antaranya table majors ( jurusan ), table faculties ( fakultas ) dan table levels ( untuk pembagian apakah dia D3/S1 ). Hal pertama yang harus kita lakukan adalah men-query isi table dari majors ( dalam hal ini gwa menggunakan ClassRegistry karena table majors tidak ada relation dengan controller gwa ) :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$majors</span> <span class="o">=</span> <span class="nx">ClassRegistry</span><span class="o">::</span><span class="na">init</span><span class="p">(</span><span class="s2">&quot;Major&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>atau kalau punya relation / berada dalam controller sendiri</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$majors</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Major</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Kemudian kita akan menggabungkan hasil query tersebut dan menyusunnya menjadi array yang jika kita masukkan ke dalam form helper maka akan secara otomatis menjadi select box yang tergroup. Kita akan menggunakan bantuan Set::combine untuk melakukan hal tersebut. Berikut contoh codingannya :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$majorsCombine</span> <span class="o">=</span> <span class="nx">Set</span><span class="o">::</span><span class="na">combine</span><span class="p">(</span><span class="nv">$majors</span><span class="p">,</span> <span class="s2">&quot;{n}.Major.id&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;%s - %s&quot;</span><span class="p">,</span>
+</span><span class='line'><span class="s2">&quot;{n}.Level.name&quot;</span><span class="p">,</span> <span class="s2">&quot;{n}.Major.name&quot;</span><span class="p">),</span> <span class="s2">&quot;{n}.Faculty.name&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>untuk penjelasan parameternya dapat dilihat di API CakePHP : <a href="http://api.cakephp.org/class/set#method-Setcombine">API CakePHP</a></p>
+
+<p>sedikit penjelasan tentang parameter yang gwa gunakan yaitu :</p>
+
+<ul>
+<li><p>$majorsCombine <em>Nama variable penampung.</em></p></li>
+<li><p>Set::combine <em>Nama method yang kita gunakan.</em></p></li>
+<li><p>$majors <em>Sumber data kita</em></p></li>
+<li><p>{n}.Major.id <em>Path pertama atau biasanya nilai dari select box kita</em></p></li>
+<li><p>array(&lsquo;%s &ndash; %s&rsquo;,&lsquo;{n}.Level.name&rsquo;, &lsquo;{n}.Major.name&rsquo;) <em>Kalau ini path kedua yang berfungsi sebagai label dari isi select box kita, jika dilihat itu isinya ada level dan major jadi nanti keluarnya ( S1 &ndash; Teknik Informatika )</em></p></li>
+<li><p>{n}.Faculty.name&#8217; <em>ini nama groupnya</em></p></li>
+</ul>
+
+
+<p>Selanjutnya tinggal digunakan saja di viewnya seperti ini :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s2">&quot;nama-form&quot;</span><span class="p">,</span><span class="nv">$majorsCombine</span><span class="p">,</span><span class="k">null</span><span class="p">,</span><span class="k">null</span><span class="p">,</span><span class="s2">&quot;-- Pilih Jurusan Pertama --&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Penjelasannya kira-kira begini :</p>
+
+<ul>
+<li><p>$form->select <em>ini form helper yang kita gunakan</em></p></li>
+<li><p>nama-form <em>nama form helper yang kita gunakan</em></p></li>
+<li><p>$majorsCombine <em>sumber data</em></p></li>
+<li><p>null,null,&lsquo;&mdash; Pilih Jurusan Pertama &mdash; <em>parameter tambahan lagi</em></p></li>
+</ul>
+
+
+<p>Semoga membantu, silakan dicoba.. kalau ga jalan, dicoba lagi, kalau ga jalan juga ya sudah terima nasih aja :D</p>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/categories/cakephp/"><span class="badge">CakePHP</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/2009/11/02/membuat-image-sebagai-link-di-cakephp/" title="Previous Post: Membuat image sebagai link di CakePHP">&laquo; Membuat image sebagai link di CakePHP</a>
+          
+          
+            <a class="basic-alignment right" href="/2009/11/23/ruby-on-rails-in-kubuntu-904/" title="Next Post: Ruby on Rails in Kubuntu 9.04">Ruby on Rails in Kubuntu 9.04 &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2019 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.rudylee.com/2009/11/02/group-select-box-di-cakephp/';
+        var disqus_url = 'http://blog.rudylee.com/2009/11/02/group-select-box-di-cakephp/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

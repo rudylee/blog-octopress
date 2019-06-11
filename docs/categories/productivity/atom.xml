@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Productivity | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/productivity/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Trello Card Repeater]]></title>
+    <link href="http://blog.rudylee.com/2017/12/17/trello-card-repeater/"/>
+    <updated>2017-12-17T18:41:00+11:00</updated>
+    <id>http://blog.rudylee.com/2017/12/17/trello-card-repeater</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been using Trello as my primary task managers for the past couple of years.  Recently, I found a very useful feature in Trello that helps me automating the creation of repetitive tasks.</p>
+
+<p>This feature allows you to tell Trello to create a card on specified time such as daily, weekly, monthly or annually.</p>
+
+<p>At the moment, I am using this feature to create a few daily tasks that I want to do first in the morning such as meditation, coding exercise and learning chinese.</p>
+
+<p>I am not a disciplined person and I found that this feature has been helping me forming new habits. I set it to put the tasks on the top of my todo list which makes it difficult for me to ignore those tasks in the morning.</p>
+
+<p>Research says it takes around 66 days for a new habit to form. I suggest you to try this feature if you want to create a new habit and make it part of daily routine.</p>
+
+<p>Check out this link for more details on how to use and set up the repeat card <a href="https://blog.trello.com/trello-card-repeater">https://blog.trello.com/trello-card-repeater</a></p>
+]]></content>
+  </entry>
+  
+</feed>

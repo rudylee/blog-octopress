@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: AngularJS | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/angularjs/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[AngularJS Free Course by Code School]]></title>
+    <link href="http://blog.rudylee.com/2014/05/26/angularjs-free-course-by-code-school/"/>
+    <updated>2014-05-26T05:41:00+10:00</updated>
+    <id>http://blog.rudylee.com/2014/05/26/angularjs-free-course-by-code-school</id>
+    <content type="html"><![CDATA[<p>I spent some time last weekend to run through the new <a href="https://www.codeschool.com/courses/shaping-up-with-angular-js">AngularJS course by Code School</a>. This course is sponsored by Google which means you don&rsquo;t need to pay for the Code School membership to play this course. AngularJS is one of the popular Javascript frameworks to build single page app application. You might be familiar with other frameworks such as <a href="http://emberjs.com/">Ember.js</a>, <a href="http://backbonejs.org/">Backbone.js</a> and <a href="http://knockoutjs.com/">Knockout.js</a>.</p>
+
+<p>I really enjoyed the course and definitely learned something new from it. It covers the basic concept about directives, services and dependecy injection. I didn&rsquo;t understand those features when the first time I learned about AngularJS. In the beginning of learning AngularJS, I tended to copy and paste code without understanding the meaning behind it. This caused confusion when I tried to learn more about the framework.</p>
+
+<p>Code School also released another screencast on how to build AngularJS app from scratch. I&rsquo;ll suggest you to check that one out as well so you can apply the knowledge that you have learned from the course to build real application. However, you have to become the member to get access to the screencast.  There are also some other websites that provide AngularJS videos such as <a href="http://www.egghead.io">http://www.egghead.io</a> and <a href="http://www.thinkster.io">http://www.thinkster.io</a></p>
+]]></content>
+  </entry>
+  
+</feed>

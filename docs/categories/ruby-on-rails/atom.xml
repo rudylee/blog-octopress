@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby on Rails | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/ruby-on-rails/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Run Code Snippet in Heroku Rails Console]]></title>
+    <link href="http://blog.rudylee.com/2018/08/18/how-to-run-code-snippet-in-heroku-rails-console/"/>
+    <updated>2018-08-18T11:40:00+10:00</updated>
+    <id>http://blog.rudylee.com/2018/08/18/how-to-run-code-snippet-in-heroku-rails-console</id>
+    <content type="html"><![CDATA[<p>Often in my day to day work, I need to run a snippet in rails console to fix or investigate issues. Since our application is hosted on Heroku, I can do this by running <code>heroku rails console --app app-name</code> and in a matter of seconds I am connected to the rails console on production.</p>
+
+<p>In some cases, I need to run a really long code snippet especially if the fix needs to touch a lot of data. Usually I will copy the snippet line by line into the rails console because sometimes one of the lines will return a data and it will mess up the snippet.</p>
+
+<p>After wasting a lot of time, I started thinking on a better way to do this. That&rsquo;s when I decided to use <code>eval</code> and <code>open</code> to help me running long code snippet. The idea is pretty simple, I need a place to securely host the code snippet, use <code>open</code> to read the code snippet and run it using <code>eval</code>.</p>
+
+<p>At the moment, I am using Github secret gist. You can use S3 bucket or your own web server as long as heroku can access it. If you are using Github gist, make sure you use the <code>raw</code> link. You can grab the <code>raw</code> link by clicking the <code>Raw</code> button on the top right hand corner of your gist. The format of the link should be something like
+<code>https://gist.githubusercontent.com/yourgithubaccount/randomhash/raw/randomhash/file.rb</code></p>
+
+<p>After you got the link, you can write 2 lines snippet to read and execute the file.</p>
+
+<p><code>ruby
+file = open("put-link-to-your-code-snippet-here")
+eval(file.read)
+</code></p>
+
+<p>I hope you find that useful and let me know if you have a better way to do this.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Run Sidekiq Jobs Without Starting Worker Process]]></title>
+    <link href="http://blog.rudylee.com/2017/08/06/run-sidekiq-jobs-without-starting-worker-process/"/>
+    <updated>2017-08-06T22:53:00+10:00</updated>
+    <id>http://blog.rudylee.com/2017/08/06/run-sidekiq-jobs-without-starting-worker-process</id>
+    <content type="html"><![CDATA[<p>You can add the code snippet below to <code>config/initializers/sidekiq.rb</code> if you don&rsquo;t want to start a separate sidekiq workers.</p>
+
+<p>The configuration below will make sure that the sidekiq jobs will be executed without worker process.</p>
+
+<p>This is handy if you don&rsquo;t want to open an extra terminal tab or tmux window for worker process.</p>
+
+<p>```ruby</p>
+
+<h1>config/initializers/sidekiq.rb</h1>
+
+<p>if Rails.env.development?
+  require &lsquo;sidekiq/testing&rsquo;
+  Sidekiq::Testing.inline!
+end
+```</p>
+
+<p>See the official Sidekiq wiki for more information: <a href="https://github.com/mperham/sidekiq/wiki/Testing">https://github.com/mperham/sidekiq/wiki/Testing</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Engines and Vim]]></title>
+    <link href="http://blog.rudylee.com/2015/05/03/rails-engines-and-vim/"/>
+    <updated>2015-05-03T16:14:00+10:00</updated>
+    <id>http://blog.rudylee.com/2015/05/03/rails-engines-and-vim</id>
+    <content type="html"><![CDATA[<p>At the moment, I am working on a Ruby on Rails projects using Rails Engines ( you can read more about Rails Engines here: <a href="http://guides.rubyonrails.org/engines.html">http://guides.rubyonrails.org/engines.html</a> ). In this post, I&rsquo;ll share my tips and trick on how to configure your vim to work with Rails Engines.</p>
+
+<h1>NERDTree Bookmark</h1>
+
+<p>I am using NERDTree Bookmark to quickly jump between different engines. If you are using NERDTree, you can create a bookmark by putting your cursor on one of the Rails Engines directory and use the command below:</p>
+
+<p><code>
+:Bookmark &lt;engine name&gt;
+</code></p>
+
+<p>After you created the bookmark, you can see the bookmarks list by pressing <code>B</code> inside NERDTree window. See the screenshot below:</p>
+
+<p><a href="/images/vim-bookmarks.png"><img src="/images/vim-bookmarks.png" alt="" /></a></p>
+
+<p>I also added these two options to my vimrc file.</p>
+
+<p><code>
+" Automatically show bookmarks list when you open NERDTree
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=2
+</code></p>
+
+<p><code>NERDTreeChDirMode</code> changes the current working directory of your vim to your bookmark directory. This will also enable my favourite rails.vim feature which is open alternate file.</p>
+
+<h1>CtrlP Working Path Mode</h1>
+
+<p>It is normal for Rails Engines to share similar directory structure and filenames. However, this creates problem when you want to search a file using CtrlP plugin. Combined with <code>NERDTreeChDirMode</code>, you can tell CtrlP to search only in the current working directory.</p>
+
+<p>Add this option to your vimrc file to enable this feature:</p>
+
+<p><code>
+let g:ctrlp_working_path_mode = 'a'
+</code></p>
+
+<p>That&rsquo;s it for now, I&rsquo;ll update this post if I find a better workflow or configuration. If you are interested, you can check my full vimrc file here: <a href="https://github.com/rudylee/dotfiles/blob/master/vimrc">https://github.com/rudylee/dotfiles/blob/master/vimrc</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Add 'current' class to website menu in Rails]]></title>
+    <link href="http://blog.rudylee.com/2014/01/15/add-current-class-to-website-menu-in-rails/"/>
+    <updated>2014-01-15T04:52:00+11:00</updated>
+    <id>http://blog.rudylee.com/2014/01/15/add-current-class-to-website-menu-in-rails</id>
+    <content type="html"><![CDATA[<p>It is common to have &lsquo;active&rsquo; state or &lsquo;current&rsquo; state on website navigation. This will help visitors to know which page they have selected.</p>
+
+<p>This solution is based on Stackoverflow&rsquo;s question which I couldn&rsquo;t find. First, I&rsquo;ll create a method inside Rails application_helper.rb file. I&rsquo;ll call this method cp(). Here are the syntax:</p>
+
+<p>``` ruby application_helper.rb
+module ApplicationHelper
+  def cp(path)</p>
+
+<pre><code>current_route = Rails.application.routes.recognize_path(path)
+"current" if current_page?(path) or params[:controller] == current_route[:controller]
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>The method uses current_page and Rails.application.routes.recognize_path to get information about current page.</p>
+
+<p>After that we can use it in our view. Here is the example:</p>
+
+<p>``` ruby application.html.erb
+<nav id="menu-panel"></p>
+
+<pre><code>&lt;%= link_to 'SERVICES', services_path, class: cp('/services') %&gt;
+&lt;%= link_to 'FACILITIES', facilities_path, class: cp('/facilities') %&gt;
+&lt;%= link_to 'ABOUT', about_path, class: cp('/about') %&gt;
+&lt;%= link_to 'CAREERS', careers_path, class: cp(careers_path) %&gt;
+&lt;%= link_to 'BLOG', blog_index_path, class: cp(blog_index_path) %&gt;
+&lt;%= link_to 'CONTACT', contact_path, class: cp('/contact') %&gt;
+&lt;a href="#" id="close-menu-panel"&gt;&lt;b&gt;CLOSE&lt;/b&gt;&lt;/a&gt;
+</code></pre>
+
+<p></nav>
+```</p>
+
+<p>I hope that helps.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails 4 CORS]]></title>
+    <link href="http://blog.rudylee.com/2013/10/29/rails-4-cors/"/>
+    <updated>2013-10-29T02:02:00+11:00</updated>
+    <id>http://blog.rudylee.com/2013/10/29/rails-4-cors</id>
+    <content type="html"><![CDATA[<h2>McFlyyy pointed out another solution to solve this problem. I haven&rsquo;t tested it myself so follow it at your own risk <a href="https://stackoverflow.com/questions/18538549/cant-get-rack-cors-working-in-rails-application/20464939#20464939">Click Here</a></h2>
+
+<p>I was trying to use Rails to build REST API for my AngularJS app and came across CORS error on my Chrome developer tools.</p>
+
+<p>According to <a href="http://leopard.in.ua/2012/07/08/using-cors-with-rails/">Alexey Vasiliev</a>, Cross-origin resource sharing (CORS) is a web browser technology specification which defines ways for a web server to allow its resources to be accessed by a web page from a different domain. Such access would otherwise be forbidden by the same origin policy. CORS defines a way in which the browser and the server can interact to determine whether or not to allow the cross-origin request. It is a compromise that allows greater flexibility, but is more secure than simply allowing all such requests. CORS is supported in the following browsers:</p>
+
+<p>After following couple of outdated tutorials, I found the quick solution for it. Here are the steps:</p>
+
+<h1>Add route to handle OPTIONS method</h1>
+
+<p>AngularJS using OPTIONS method to check the CORS support on the API server. Thus, you need to add line in your route file to handle this. This can be done by adding code like this</p>
+
+<p><code>ruby
+match 'users', to: 'users#index', via: [:options]
+resources :users
+</code></p>
+
+<p>To check whether your configuration is correct you can run &lsquo;rake routes&rsquo;. It should print out something like this:</p>
+
+<p>``` bash
+   Prefix Verb    URI Pattern               Controller#Action</p>
+
+<pre><code>users OPTIONS /users(.:format)          users#index
+      GET     /users(.:format)          users#index
+      POST    /users(.:format)          users#create
+</code></pre>
+
+<p> new_user GET     /users/new(.:format)      users#new
+edit_user GET     /users/:id/edit(.:format) users#edit</p>
+
+<pre><code> user GET     /users/:id(.:format)      users#show
+      PATCH   /users/:id(.:format)      users#update
+      PUT     /users/:id(.:format)      users#update
+      DELETE  /users/:id(.:format)      users#destroy
+ root GET     /                         users#index
+</code></pre>
+
+<p>```</p>
+
+<p>You can see on the second line, we handle OPTIONS verb and redirect to index action.</p>
+
+<h1>Add before_filter and after_filter to allow CORS</h1>
+
+<p>The next step is we need to return proper header to tell AngularJS that our server allow CORS. Here is the sample controller file:</p>
+
+<p>``` ruby
+UsersController &lt; ApplicationController</p>
+
+<p>  skip_before_filter :verify_authenticity_token
+  before_filter :cors_preflight_check
+  after_filter :cors_set_access_control_headers</p>
+
+<p>  # For all responses in this controller, return the CORS access control headers.
+  def cors_set_access_control_headers</p>
+
+<pre><code>headers['Access-Control-Allow-Origin'] = '*'
+headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+headers['Access-Control-Max-Age'] = "1728000"
+</code></pre>
+
+<p>  end</p>
+
+<p>  # If this is a preflight OPTIONS request, then short-circuit the
+  # request, return only the necessary headers and return an empty
+  # text/plain.</p>
+
+<p>  def cors_preflight_check</p>
+
+<pre><code>headers['Access-Control-Allow-Origin'] = '*'
+headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version'
+headers['Access-Control-Max-Age'] = '1728000'
+</code></pre>
+
+<p>  end</p>
+
+<p>  def index</p>
+
+<pre><code>@users = User.all
+
+respond_to do |format|
+  format.json { render :json =&gt; @users }
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>We need to add skip_before_filter :verify_authenticity_token because Rails will return 422 status code and error message &lsquo;Can&rsquo;t verify CSRF token authenticity&rsquo;</p>
+]]></content>
+  </entry>
+  
+</feed>

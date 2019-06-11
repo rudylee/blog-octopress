@@ -1,0 +1,1300 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blog Rudy Lee</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Hi. I&#8217;m Rudy Lee. Here are some thoughts of mine. Aug 18th, 2018 Heroku Ruby on Rails How to Run Code Snippet in Heroku Rails Console Often in &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.rudylee.com">
+  <link href="/favicon.ico" rel="icon">
+  <link href='//fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog Rudy Lee" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10301272-8']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+  heap.load("1170192688");
+</script>
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("61a006900f814889fdc104eecb397ac0");</script><!-- end Mixpanel -->
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/">Home</a></li>
+    
+        <li ><a href="/archives">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/rudylee" title="Github Profile"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    
+    <li><a href="http://twitter.com/rudylee88" title="Twitter Profile"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div class="jumbotron">
+  <div class="container">
+    Hi. I&#8217;m Rudy Lee.
+    <h3 class="tagline">Here are some thoughts of mine.</h3>
+  </div>
+</div>
+
+
+<div class="blog-index">
+  
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2018-08-18T11:40:00+10:00" pubdate data-updated="true">Aug 18<span>th</span>, 2018</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/heroku/"><span class="badge">Heroku</span></a>
+          
+          <a href="/categories/ruby-on-rails/"><span class="badge">Ruby on Rails</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2018/08/18/how-to-run-code-snippet-in-heroku-rails-console/">How to Run Code Snippet in Heroku Rails Console</a></h1>
+      <p>Often in my day to day work, I need to run a snippet in rails console to fix or investigate issues. Since our application is hosted on Heroku, I can do this by running <code>heroku rails console --app app-name</code> and in a matter of seconds I am connected to the rails console on production.</p>
+
+<p>In some cases, I need to run a really long code snippet especially if the fix needs to touch a lot of data. Usually I will copy the snippet line by line into the rails console because sometimes one of the lines will return a data and it will mess up the snippet.</p>
+
+<p>After wasting a lot of time, I started thinking on a better way to do this. That&rsquo;s when I decided to use <code>eval</code> and <code>open</code> to help me running long code snippet. The idea is pretty simple, I need a place to securely host the code snippet, use <code>open</code> to read the code snippet and run it using <code>eval</code>.</p>
+
+<p>At the moment, I am using Github secret gist. You can use S3 bucket or your own web server as long as heroku can access it. If you are using Github gist, make sure you use the <code>raw</code> link. You can grab the <code>raw</code> link by clicking the <code>Raw</code> button on the top right hand corner of your gist. The format of the link should be something like
+<code>https://gist.githubusercontent.com/yourgithubaccount/randomhash/raw/randomhash/file.rb</code></p>
+
+<p>After you got the link, you can write 2 lines snippet to read and execute the file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;put-link-to-your-code-snippet-here&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nb">eval</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I hope you find that useful and let me know if you have a better way to do this.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2018-06-23T12:39:00+10:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2018</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/go/"><span class="badge">Go</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2018/06/23/download-csv-test-in-go/">Download CSV Test in Go</a></h1>
+      <p>In the project I am working on, I have to write a test for a function that download CSV from external website and store it locally. I am pretty new in Go so please let me know if I am doing it wrong.</p>
+
+<p>The function is pretty simple, it uses the Go <code>net/http</code> package to send a <code>GET</code> request and <code>os</code> package to write the HTTP response to a local file. See the full code below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>  <span class="s">&quot;io&quot;</span>
+</span><span class='line'>  <span class="s">&quot;log&quot;</span>
+</span><span class='line'>  <span class="s">&quot;net/http&quot;</span>
+</span><span class='line'>  <span class="s">&quot;os&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">DownloadCSV</span><span class="p">(</span><span class="s">&quot;https://www.asx.com.au/asx/research/ASXListedCompanies.csv&quot;</span><span class="p">,</span> <span class="s">&quot;asx-companies.csv&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">DownloadCSV</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">filename</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">out</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">filename</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">defer</span> <span class="nx">out</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">io</span><span class="p">.</span><span class="nx">Copy</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">err</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The function we want to test is <code>DownloadCSV</code> which expects two arguments. <code>url</code> is a URL endpoint that host the CSV and <code>filename</code> is the name of local file to store the HTTP response.</p>
+
+<p>There are three things I want to test here:</p>
+
+<ol>
+<li><code>http.Get</code> shouldn&rsquo;t return an error</li>
+<li>It should create a local CSV file</li>
+<li>The content of the local CSV file should match with the server</li>
+</ol>
+
+
+<h2><code>http.Get</code> shouldn&rsquo;t return an error</h2>
+
+<p>To test the first one, we will use an awesome Go package called <code>net/http/httptest</code>. This package allows us to create a HTTP server and set the response to whatever you want.</p>
+
+<p>In the code below, you can see we start with creating the server which return a 200 response status ( line 10 &ndash; 12 ). After that, we pass the URL of the server to the <code>DownloadCSV</code> function and also the required filename.</p>
+
+<p>At the end, we do the assertion to make sure the function does not return an error. We are using Go testing package <code>Errorf</code> method to output the message if the assertion fail. This is important because we need it to mark the test as <code>FAIL</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>  <span class="s">&quot;net/http&quot;</span>
+</span><span class='line'>  <span class="s">&quot;net/http/httptest&quot;</span>
+</span><span class='line'>  <span class="s">&quot;testing&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">TestDownloadCSV</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">ts</span> <span class="o">:=</span> <span class="nx">httptest</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}))</span>
+</span><span class='line'>  <span class="k">defer</span> <span class="nx">ts</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">file</span> <span class="o">:=</span> <span class="s">&quot;test.csv&quot;</span>
+</span><span class='line'>  <span class="nx">err</span> <span class="o">:=</span> <span class="nx">DownloadCSV</span><span class="p">(</span><span class="nx">ts</span><span class="p">.</span><span class="nx">URL</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;Shouldn&#39;t have received an error, got %s&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>It should create a local CSV file</h2>
+
+<p>We are going to use the <code>os</code> package to check the file existence and delete it after the test finished. Three functions we will use are  <code>Stat</code>, <code>IsNotExist</code> and <code>Remove</code>. <code>Stat</code> and <code>IsNotExists</code> are used to assert the file existence and <code>Remove</code> will clean up the file after test finished.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>  <span class="s">&quot;net/http&quot;</span>
+</span><span class='line'>  <span class="s">&quot;net/http/httptest&quot;</span>
+</span><span class='line'>  <span class="s">&quot;os&quot;</span>
+</span><span class='line'>  <span class="s">&quot;testing&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">TestDownloadCSV</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">ts</span> <span class="o">:=</span> <span class="nx">httptest</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}))</span>
+</span><span class='line'>  <span class="k">defer</span> <span class="nx">ts</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">file</span> <span class="o">:=</span> <span class="s">&quot;test.csv&quot;</span>
+</span><span class='line'>  <span class="nx">err</span> <span class="o">:=</span> <span class="nx">DownloadCSV</span><span class="p">(</span><span class="nx">ts</span><span class="p">.</span><span class="nx">URL</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;Shouldn&#39;t have received an error, got %s&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stat</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span> <span class="nx">os</span><span class="p">.</span><span class="nx">IsNotExist</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;Should have created a CSV file&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">os</span><span class="p">.</span><span class="nx">Remove</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>The content of the local CSV file should match with the server</h2>
+
+<p>The simplest way to do this test is to configure the <code>httptest</code> server to return a string and check if that string exists in the test file. We can take this a bit further by using an actual CSV file.</p>
+
+<p>We can use test fixture to achieve this. We will create a new folder called <code>testdata</code>, put a CSV file inside it, set the <code>httptest</code> server to read the file using <code>ioutil.ReadFile</code> and return the content to the client. We will also use <code>ioutil.ReadFile</code> to do the assertion to compare the content of the files. Here is the final version of the test:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>  <span class="s">&quot;bytes&quot;</span>
+</span><span class='line'>  <span class="s">&quot;io/ioutil&quot;</span>
+</span><span class='line'>  <span class="s">&quot;net/http&quot;</span>
+</span><span class='line'>  <span class="s">&quot;net/http/httptest&quot;</span>
+</span><span class='line'>  <span class="s">&quot;os&quot;</span>
+</span><span class='line'>  <span class="s">&quot;testing&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">TestDownloadCSV</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">test_csv</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;testdata/asx-companies.csv&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">ts</span> <span class="o">:=</span> <span class="nx">httptest</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">w</span><span class="p">.</span><span class="nx">Write</span><span class="p">(</span><span class="nx">test_csv</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}))</span>
+</span><span class='line'>  <span class="k">defer</span> <span class="nx">ts</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">file</span> <span class="o">:=</span> <span class="s">&quot;test.csv&quot;</span>
+</span><span class='line'>  <span class="nx">err</span> <span class="o">:=</span> <span class="nx">DownloadCSV</span><span class="p">(</span><span class="nx">ts</span><span class="p">.</span><span class="nx">URL</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;Shouldn&#39;t have received an error, got %s&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stat</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span> <span class="nx">os</span><span class="p">.</span><span class="nx">IsNotExist</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;Should have created a CSV file&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">expected</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="p">!</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">test_csv</span><span class="p">,</span> <span class="nx">expected</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;CSV file should have correct content&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">os</span><span class="p">.</span><span class="nx">Remove</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can check out the full code here: <a href="https://github.com/rudylee/go-playground">https://github.com/rudylee/go-playground</a> and please leave a comment if find any errors.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2017-12-25T17:12:00+11:00" pubdate data-updated="true">Dec 25<span>th</span>, 2017</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/google-spreadsheet/"><span class="badge">Google Spreadsheet</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2017/12/25/google-spreadsheet-as-json-api/">Google Spreadsheet as JSON API</a></h1>
+      <p>Data store is an important piece in most of the modern applications. The implementation can range from a simple text file to a complicated database systems. In this blog post, I will show you how to use Google Spreadsheet as a data store for your application.</p>
+
+<p>Google Spreadsheet provides a convenient way to store, edit, share and retrieve data. This makes Google Spreadsheet appealing if you want to quickly prototype an app and don&rsquo;t want to spend time building a CRUD interface to manage your data. It is also allow you to output the spreadsheet data in JSON format. This means you use Google spreadsheet as your JSON API.</p>
+
+<h1>Publish the spreadsheet to the web</h1>
+
+<p>In order to enable this feature, first you need to publish the spreadsheet to the web. You can easily do this by going to the File menu and choose Publish to the web. This only works if you own or have admin access to the spreadsheet. See the screenshot below.</p>
+
+<p><a href="/images/posts/google-spreadsheet-json-api/publish-to-the-web.png"><img src="/images/posts/google-spreadsheet-json-api/publish-to-the-web.png" alt="" /></a></p>
+
+<h1>Get the ID of the spreadsheet</h1>
+
+<p>The next thing that you have to do is getting the spreadsheet ID from the URL.</p>
+
+<p>The URL of your spreadsheet should be something like this <code>https://docs.google.com/spreadsheets/d/17CAMo4mY7pdlk7jgV2385FLVzDV3L8cUDidhfge8U_J4/edit#gid=0</code></p>
+
+<p>The spreadsheet ID is the characters between the <code>d</code> and <code>edit</code>, which in the example above is <code>17CAMo4mY7pdlk7jgV2385FLVzDV3L8cUDidhfge8U_J4</code></p>
+
+<h1>Copy the ID and construct the JSON API endpoint</h1>
+
+<p>After retrieving the ID, you can start constructing the JSON API endpoint. The URL format as follow:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>https://spreadsheets.google.com/feeds/list/replace-this-with-your-spreadsheet-id/od6/public/values?alt=json</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If we are using the spreadsheet URL in the previous section ( <a href="https://docs.google.com/spreadsheets/d/17CAMo4mY7pdlk7jgVRmgD5FLVzDV3L8cUDiHaT8U_J4/edit#gid=0">https://docs.google.com/spreadsheets/d/17CAMo4mY7pdlk7jgVRmgD5FLVzDV3L8cUDiHaT8U_J4/edit#gid=0</a> ), the JSON API URL will be:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>https://spreadsheets.google.com/feeds/list/17CAMo4mY7pdlk7jgVRmgD5FLVzDV3L8cUDiHaT8U_J4/od6/public/values?alt=json</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>The spreadsheet is public but not published to the web</h1>
+
+<p>In some cases, you might want to use a public Google spreadsheet but it is not published to the web. I discovered from the official Google forum that you can use <code>importrange</code> formula to retrieve the data from another spreadsheet and import it into your spreadsheet.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>=importrange("URL-TO-SPREADSHEET", "SHEET NAME!CELL RANGE")</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Take for example this public spreadsheet that I don&rsquo;t have admin access to: <code>https://docs.google.com/spreadsheets/d/1ql32s8kcUB-Q8AEwxrCzPYJzNgaQ2CknW4J0rlnJqfE/edit#gid=1671204426</code></p>
+
+<p>I will create another spreadsheet and use the <code>importrange</code> formula to import the data from that public spreadsheet into my spreadsheet</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>=importrange("https://docs.google.com/spreadsheets/d/1ql32s8kcUB-Q8AEwxrCzPYJzNgaQ2CknW4J0rlnJqfE","SBW Optimal Conversions!A1:I190")</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It should look something like this:</p>
+
+<p><a href="/images/posts/google-spreadsheet-json-api/import-range.png"><img src="/images/posts/google-spreadsheet-json-api/import-range.png" alt="" /></a></p>
+
+<p>As you might think, this solution is prone to error because the formula will break if the owner of the original spreadsheet changes the sheet&rsquo;s name.</p>
+
+<p>It&rsquo;s something I can live with since it&rsquo;s so much easier to update the sheet&rsquo;s name rather than asking the owner to publish spreadsheet to the web.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2017-12-17T18:41:00+11:00" pubdate data-updated="true">Dec 17<span>th</span>, 2017</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/productivity/"><span class="badge">Productivity</span></a>
+          
+          <a href="/categories/trello/"><span class="badge">Trello</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2017/12/17/trello-card-repeater/">Trello Card Repeater</a></h1>
+      <p>I&rsquo;ve been using Trello as my primary task managers for the past couple of years.  Recently, I found a very useful feature in Trello that helps me automating the creation of repetitive tasks.</p>
+
+<p>This feature allows you to tell Trello to create a card on specified time such as daily, weekly, monthly or annually.</p>
+
+<p>At the moment, I am using this feature to create a few daily tasks that I want to do first in the morning such as meditation, coding exercise and learning chinese.</p>
+
+<p>I am not a disciplined person and I found that this feature has been helping me forming new habits. I set it to put the tasks on the top of my todo list which makes it difficult for me to ignore those tasks in the morning.</p>
+
+<p>Research says it takes around 66 days for a new habit to form. I suggest you to try this feature if you want to create a new habit and make it part of daily routine.</p>
+
+<p>Check out this link for more details on how to use and set up the repeat card <a href="https://blog.trello.com/trello-card-repeater">https://blog.trello.com/trello-card-repeater</a></p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2017-08-06T22:53:00+10:00" pubdate data-updated="true">Aug 6<span>th</span>, 2017</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/ruby-on-rails/"><span class="badge">Ruby on Rails</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2017/08/06/run-sidekiq-jobs-without-starting-worker-process/">Run Sidekiq Jobs Without Starting Worker Process</a></h1>
+      <p>You can add the code snippet below to <code>config/initializers/sidekiq.rb</code> if you don&rsquo;t want to start a separate sidekiq workers.</p>
+
+<p>The configuration below will make sure that the sidekiq jobs will be executed without worker process.</p>
+
+<p>This is handy if you don&rsquo;t want to open an extra terminal tab or tmux window for worker process.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># config/initializers/sidekiq.rb</span>
+</span><span class='line'><span class="k">if</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">development?</span>
+</span><span class='line'>  <span class="nb">require</span> <span class="s1">&#39;sidekiq/testing&#39;</span>
+</span><span class='line'>  <span class="ss">Sidekiq</span><span class="p">:</span><span class="ss">:Testing</span><span class="o">.</span><span class="n">inline!</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>See the official Sidekiq wiki for more information: <a href="https://github.com/mperham/sidekiq/wiki/Testing">https://github.com/mperham/sidekiq/wiki/Testing</a></p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2017-07-28T10:55:00+10:00" pubdate data-updated="true">Jul 28<span>th</span>, 2017</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/regex/"><span class="badge">Regex</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2017/07/28/regular-expression-for-a-string-containing-one-word-but-not-another/">Regular Expression For A String Containing One Word But Not Another</a></h1>
+      <p>Last weekend, one our apps that is hosted on Heroku were reporting a lot of R14 errors.</p>
+
+<p>R14 is an error that thrown by Heroku if the machine is running out of memory.</p>
+
+<p>I quickly jumped into (logentries)[<a href="https://logentries.com/">https://logentries.com/</a>] to download the log file and opened it in Sublime Text.</p>
+
+<p>However, I was having problem finding the request that is causing the problem because we also have our background job workers reporting R14 errors.</p>
+
+<p>I decided to use regex to find a line that has <code>R14</code> but doesn&rsquo;t contain any of the background worker&rsquo;s name,</p>
+
+<p>This is the regex that I used to find the line:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>^(?!.*(lowworker|highworker|run)).*R14.*$</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The regex above will match the line that has <code>R14</code> but doesn&rsquo;t contain <code>lowworker</code> or <code>highworker</code> and <code>run</code></p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2017-07-01T12:29:00+10:00" pubdate data-updated="true">Jul 1<span>st</span>, 2017</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/new-relic/"><span class="badge">New Relic</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2017/07/01/monitor-background-jobs-with-new-relic-query-language/">Monitor Background Jobs with New Relic Query Language</a></h1>
+      <h1>Background</h1>
+
+<p>In this blog post, I&rsquo;ll show you how to set up an alert to monitor your sidekiq jobs using New Relic Query Language and New Relic Alert.</p>
+
+<p>I was given a task to find a solution to monitor our sidekiq jobs. In the past, I used New Relic Sidekiq Plugin ( <a href="https://newrelic.com/plugins/secondimpression/131">https://newrelic.com/plugins/secondimpression/131</a> ) to do this.</p>
+
+<p>The plugin is a Ruby app that connects to your Redis instance, retrieves all of the sidekiq metrics such as jobs, queues and send it to New Relic using the agent library.</p>
+
+<p>This means you need to host the Ruby app somewhere and make sure the plugin can connect to your Redis instance.</p>
+
+<p>However, I found a much better solution using NRQL that doesn&rsquo;t require you to set up a new server or install any plugins.</p>
+
+<h1>New Relic Query Language ( NRQL )</h1>
+
+<p>NRQL definition from the official New Relic docs ( <a href="https://docs.newrelic.com/docs/insights/nrql-new-relic-query-language/using-nrql/introduction-nrql">https://docs.newrelic.com/docs/insights/nrql-new-relic-query-language/using-nrql/introduction-nrql</a> )</p>
+
+<p>The New Relic Query Language (NRQL), similar to SQL, is a query language for making calls against the Insights event database. NRQL enables you to query data collected from your application and transform that data into dynamic charts. From there, you can interpret your data to better understand how your application is used in a variety of ways.</p>
+
+<p>Using NRQL, You can run a query to get the amount of background jobs that has been executed for a specific time period.</p>
+
+<p>Here is the query to get the count of background jobs:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT count(name) FROM Transaction WHERE transactionType='Other'</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>New Relic Alert and NRQL</h1>
+
+<p>First thing you have to do is to create a New Relic alert policy using NRQL. See the screenshots below:</p>
+
+<p><a href="/images/posts/nrql-sidekiq/1.png"><img src="/images/posts/nrql-sidekiq/1.png" alt="" /></a></p>
+
+<p><a href="/images/posts/nrql-sidekiq/2.png"><img src="/images/posts/nrql-sidekiq/2.png" alt="" /></a></p>
+
+<p>Choose <code>NRQL</code> on the <code>Categorize</code> step</p>
+
+<p><a href="/images/posts/nrql-sidekiq/3.png"><img src="/images/posts/nrql-sidekiq/3.png" alt="" /></a></p>
+
+<p>And put the the following query:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SELECT count(name) FROM Transaction WHERE transactionType='Other'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, you can set up a condition when it will fire the alert.</p>
+
+<p>In the screenshot below, you can see that I set the alert to fire if there are no background jobs running within 15 minutes.</p>
+
+<p><a href="/images/posts/nrql-sidekiq/4.png"><img src="/images/posts/nrql-sidekiq/4.png" alt="" /></a></p>
+
+<p><a href="/images/posts/nrql-sidekiq/5.png"><img src="/images/posts/nrql-sidekiq/5.png" alt="" /></a></p>
+
+<p>I hope this tutorial will give you an idea on how to monitor your background jobs.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2017-01-30T15:48:00+11:00" pubdate data-updated="true">Jan 30<span>th</span>, 2017</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/elastic-cloud/"><span class="badge">Elastic Cloud</span></a>
+          
+          <a href="/categories/elasticsearch/"><span class="badge">Elasticsearch</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2017/01/30/setting-up-elasticsearch-watcher-to-check-for-cluster-status-on-elastic-cloud/">Setting Up Elasticsearch Watcher to Check For Cluster Status on Elastic Cloud</a></h1>
+      <p>Last week, I was busy migrating our staging and production Elasticsearch clusters from AWS Elasticsearch to Elastic Cloud. The reason behind this migration is because we need dynamic scripting feature in our application and Elastic Cloud is the only managed Elasticsearch hosting that currently supports dynamic scripting.</p>
+
+<p>In terms of pricing, Elastic Cloud is slightly more expensive than AWS Elasticsearch. I think this is because they are using AWS EC2 under the hood. You can compare the pricing of both services here <a href="https://aws.amazon.com/elasticsearch-service/pricing/">https://aws.amazon.com/elasticsearch-service/pricing/</a> and <a href="https://www.elastic.co/cloud/as-a-service/pricing">https://www.elastic.co/cloud/as-a-service/pricing</a>.</p>
+
+<p>As of now, Elastic Cloud supports the latest version of Elasticsearch which is 5.1.2. If you like living on the edge, I recommend you to try Elastic Cloud.</p>
+
+<h2>Creating a watcher</h2>
+
+<p>On AWS, we can use Cloud Watch to monitor our Elasticsearch cluster health status as well as monitoring other metrics such as memory and cpu usage. With Elastic Cloud, we have to use Elastic Watcher or Alerting to monitor and trigger alerts.</p>
+
+<p>Currently, there is no UI to set up the watcher on Elastic Cloud. To create a watcher, you have to send a PUT request to your cluster. Please note that this blog post is based on Elasticsearch version <code>1.7.6</code> and Elasticsearch Watcher version is <code>1.0.1</code>.</p>
+
+<p>First thing you have to do is to enable the watcher plugin on the Elastic Cloud clusters configuration. See screenshot below:</p>
+
+<p><a href="/images/posts/elastic-cloud/enable%20elastic%20cloud%20watcher%20plugin.png"><img src="/images/posts/elastic-cloud/enable%20elastic%20cloud%20watcher%20plugin.png" alt="" /></a></p>
+
+<p>The next thing to do is to add an alert recepient email to the Elastic Cloud whitelist. In order to do this, go to <code>Account &gt; Email settings</code> and scroll to the bottom of the page. See screenshot below:</p>
+
+<p><a href="/images/posts/elastic-cloud/whitelist.png"><img src="/images/posts/elastic-cloud/whitelist.png" alt="" /></a></p>
+
+<p>Shortly after that, you will receive an email to confirm this request for whitelist. Confirm the request and you are ready to receive email from Elastic Cloud.</p>
+
+<p>Now open up your REST client app or if you are one of those CLI Guru, you can stick with CURL. As I mentioned earlier, we will send a PUT request to our cluster to create a watcher.</p>
+
+<p>The endpoint of the request is something like this <code>http://elastic-cloud-username:elastic-cloud-password@elastic-cloud-cluster-host:9200/_watcher/watch/cluster_health_watch</code></p>
+
+<p>You have to replace <code>elastic-cloud-username</code>, <code>elastic-cloud-password</code> and <code>elastic-cloud-cluster-host</code> with your cluster details.</p>
+
+<p>And here is the JSON content of the request: ( please replace the host, auth username, auth password and to email with your cluster details )</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "trigger" : {
+</span><span class='line'>    "schedule" : { "interval" : "10s" }
+</span><span class='line'>  },
+</span><span class='line'>  "input" : {
+</span><span class='line'>    "http" : {
+</span><span class='line'>      "request" : {
+</span><span class='line'>       "host" : "add-your-elastic-cloud-host-here",
+</span><span class='line'>       "port" : 9200,
+</span><span class='line'>       "path" : "/_cluster/health",
+</span><span class='line'>       "auth" : {
+</span><span class='line'>          "basic" : {
+</span><span class='line'>            "username" : "your-elastic-cloud-username",
+</span><span class='line'>            "password" : "your-elastic-cloud-password"
+</span><span class='line'>          }
+</span><span class='line'>        }
+</span><span class='line'>      }
+</span><span class='line'>    }
+</span><span class='line'>  },
+</span><span class='line'>  "condition" : {
+</span><span class='line'>    "compare" : {
+</span><span class='line'>      "ctx.payload.status" : { "eq" : "red" }
+</span><span class='line'>    }
+</span><span class='line'>  },
+</span><span class='line'>  "actions" : {
+</span><span class='line'>    "send_email" : {
+</span><span class='line'>      "email" : {
+</span><span class='line'>        "to" : "the-recepient-email-address",
+</span><span class='line'>        "subject" : "Cluster Status Warning",
+</span><span class='line'>        "body" : "Cluster status is RED"
+</span><span class='line'>      }
+</span><span class='line'>    }
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In a nutshell, the request above will create a watcher that will get triggered every 10s, gets the input from our Elasticsearch <code>/_cluster/health</code> page, checks for cluster status ( see condition section ) and sends an email if the condition is matched.</p>
+
+<p>Here is the screenshot of my PUT request using <a href="https://insomnia.rest/">Insomnia REST Client</a>:</p>
+
+<p>After sending the request, we can confirm if the watcher is created successfully or not by visiting this endpoint on our browser <code>http://elasticsearch-cluster-host:9200/_watcher/watch/cluster_health_watch</code></p>
+
+<p>If the watcher is created successfully, you should see a response like this:</p>
+
+<p><a href="/images/posts/elastic-cloud/insomnia%20put%20request.png"><img src="/images/posts/elastic-cloud/insomnia%20put%20request.png" alt="" /></a></p>
+
+<h2>Delete the watcher</h2>
+
+<p>You can send a DELETE request if you want to delete the watcher</p>
+
+<p><code>curl -XDELETE http://elasticsearch-cluster-host:9200/_watcher/watch/cluster_health_watch</code></p>
+
+<h2>Check if your watcher was triggered</h2>
+
+<p>You can check if your watcher has been triggered by sending a GET request to <code>/.watch_history*/search?pretty</code> with the following query:</p>
+
+<p><a href="/images/posts/elastic-cloud/watcher%20response.png"><img src="/images/posts/elastic-cloud/watcher%20response.png" alt="" /></a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "query" : {
+</span><span class='line'>    "match" : { "result.condition.met" : true }
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If the query returns a hit, it means that your watcher has been triggered. This is helpful during debugging.</p>
+
+<p>That&rsquo;s it for now, the next thing I need to figure out is to create alerting for CPU and memory usage. I&rsquo;ll leave it for another blog post.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2017-01-11T19:41:00+11:00" pubdate data-updated="true">Jan 11<span>th</span>, 2017</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/l2tp/"><span class="badge">L2TP</span></a>
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2017/01/11/setting-up-l2tp-vpn-to-bypass-great-firewall-of-china/">Setting Up L2TP VPN to Bypass Great Firewall Of China</a></h1>
+      <p>Last month, I traveled to China for the second time. Unlike my first trip, this time I am more prepared to bypass the great firewall of China.</p>
+
+<p>During my first trip in China, I was mainly relying on simple SSH tunnel to get access to Gmail and all other blocked services. This solution is unrealiable because I couldn&rsquo;t use it on my Android phone. Aside from that, I also kept having constant dropouts which explained in this blog post <a href="http://blog.zorinaq.com/my-experience-with-the-great-firewall-of-china/">http://blog.zorinaq.com/my-experience-with-the-great-firewall-of-china/</a></p>
+
+<p>After an extensive research and also a recommendation from one of my friends, I decided to install an L2TP VPN server in Japan. I choose Japan because it&rsquo;s close to China and I can use Tokyo AWS Region.</p>
+
+<p>I ended up using this ansible playbook that I found when I was looking for tutorials <a href="https://github.com/jlund/streisand">https://github.com/jlund/streisand</a>. It&rsquo;s basically an Ansible Playbook which help you to install various software such as OpenVPN, L2TP, Tor, etc. You just need to run one shell script and it will install all of those software to your target host.</p>
+
+<h3>Running the playbook</h3>
+
+<p>Since I already have ansible installed, I just need to clone the project and run the setup script. If not a complete tutorial on how to get started you can check this installation guide here <a href="https://github.com/jlund/streisand#installation">https://github.com/jlund/streisand#installation</a>.</p>
+
+<p>Cloning the project</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/jlund/streisand.git && cd streisand</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Running the setup script</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./streisand</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When you run the setup script, it will ask few questions such as where to host the server, AWS Access Keys, etc. I am using AWS because I can use the free tier to run the VPN server. On AWS, it will take around 45 minutes to finish the whole installation process.</p>
+
+<h3>Using the VPN</h3>
+
+<p>When the whole installation finished, the playbook will create instructions files in the server. You need to SSH to the server in order to view the instruction.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh ubuntu@server-ip</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Go to the NGINX folder to see file</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /var/www/streisand/l2tp-ipsec</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Read the instruction</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat index.md | more</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the file, you will find instructions on how to connect to the L2TP server from all different operating systems.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2016-12-05T13:51:00+11:00" pubdate data-updated="true">Dec 5<span>th</span>, 2016</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/haproxy/"><span class="badge">HAProxy</span></a>
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2016/12/05/haproxy-as-a-reverse-proxy-for-cloudinary-images/">HAProxy as a reverse proxy for cloudinary images</a></h1>
+      <p>We are using in one of our applications <a href="http://cloudinary.com/">Cloudinary</a> to host and resize images on the fly. We are also using <a href="http://www.cloudflare.com">Cloudflare</a> for our CDN and DNS management.</p>
+
+<p>I was given a task to setup a CNAME subdomain in CloudFlare to forward the request to Cloudinary. This way we can still have the benefit of serving static images from CDN as well as reducing the Cloudinary bandwidth usage.</p>
+
+<p>My solution is to set HAProxy as a reverse proxy which responsible to fetch images from Cloudinary server. You can see the overview diagram below:</p>
+
+<p><a href="/images/posts/HAProxy-as-a-reverse-proxy.png"><img src="/images/posts/HAProxy-as-a-reverse-proxy.png" alt="" /></a></p>
+
+<p>The first thing we have to do is to create an ACL in HAProxy for our cloudinary subdomain</p>
+
+<p>In the configuration below, we are telling HAProxy to forward all requests from <code>cloudinary-asset.rudylee.com</code> to <code>cloudinary-backend</code>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>listen  http
+</span><span class='line'>        bind 127.0.0.1:8080
+</span><span class='line'>        maxconn     18000
+</span><span class='line'>
+</span><span class='line'>        acl host_cloudinary hdr(host) -i cloudinary-asset.rudylee.com
+</span><span class='line'>
+</span><span class='line'>        use_backend cloudinary-backend if host_cloudinary</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Next one is to create a new backend.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>backend cloudinary-backend
+</span><span class='line'>        http-request set-header Host res.cloudinary.com
+</span><span class='line'>        server cloudinary res.cloudinary.com:80</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Restart HAProxy and you should be able to use the subdomain to serve images from Cloudinary (eg: <a href="http://cloudinary-asset.rudylee.com/rudylee/image/upload/12298848/icon/12379593943923.png">http://cloudinary-asset.rudylee.com/rudylee/image/upload/12298848/icon/12379593943923.png</a> )</p>
+
+<p>Requesting the images through SSL should work if you have SSL termination configured in your HAProxy.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+  
+  <div class="pagination">
+    
+    <a class="prev" href="/page/2/">&larr; Older</a>
+    
+
+    
+  </div>
+</div>
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2019 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

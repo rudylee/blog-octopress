@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Review CakePHP - Blog Rudy Lee</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Review CakePHP Apr 18th, 2009 Setelah sekian lama ga update blog, akhirnya update blog lagi deh&hellip; Untuk kali ini ga bakalan cerita-cerita yang &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.rudylee.com/2009/04/18/review-cakephp">
+  <link href="/favicon.ico" rel="icon">
+  <link href='//fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog Rudy Lee" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10301272-8']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+  heap.load("1170192688");
+</script>
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("61a006900f814889fdc104eecb397ac0");</script><!-- end Mixpanel -->
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/">Home</a></li>
+    
+        <li ><a href="/archives">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/rudylee" title="Github Profile"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    
+    <li><a href="http://twitter.com/rudylee88" title="Twitter Profile"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Review CakePHP
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2009-04-18T23:37:28+10:00" pubdate data-updated="true">Apr 18<span>th</span>, 2009</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>Setelah sekian lama ga update blog, akhirnya update blog lagi deh&hellip; Untuk kali ini ga bakalan cerita-cerita yang aneh-aneh ataupun yang lucu-lucu&hellip; soalnya emang lagi ga ada kejadian yang benar-benar &ldquo;klik&rdquo; yang bisa diceritakan ( beberapa hari ini semua terasa semu hix ).</p>
+
+<p>Jadi kali ini gwa akan melakukan review terhadap framework PHP yang sudah gwa pelajari kurang lebih 5 bulan lamanya yaitu CakePHP. Selama 5 bulan ini gwa lewati dengan mempelajari CakePHP, dari baca ebook, nonton video tutorial sampai tanya-tanya sama orang-orang di channel #cakephp di irc.freenode.net.</p>
+
+<p>Dalam waktu 5 bulan ini sudah banyak yang gwa pelajari dari CakePHP, tapi tetep masih lebih banyak lagi yang harus dipelajari dari CakePHP&hellip; Jadi intinya gwa bakal sharing apa yang sudah gwa dapatkan setelah lebih kurang 5 bulan mempelajari CakePHP ( FYI, gwa belom pernah pakai framework lain selain CakePHP ).</p>
+
+<p>Salah satu hal yang gwa dapatkan dari mempelajari CakePHP adalah mengerti arsitektur MVC ( Model View Controller ). Untuk yang pengen tahu lebih banyak tentang MVC dapat dibaca di <a href="http://en.wikipedia.org/wiki/Model-view-controller">http://en.wikipedia.org/wiki/Model-view-controller</a>.</p>
+
+<p>Tapi gwa coba rangkum beberapa hal yang gwa mengerti tentang MVC, dalam pemprograman MVC seluruh program dibagi menjadi 3 bagian utama yaitu Model ( berhubungan dengan database ), Controller ( berhubungan dengan logic ), View ( berhubungan dengan tampilan program).  Jadi jika pada pemprograman procedural atau pemprograman barbar kita bagi dalam function-function, maka pada MVC kita harus membaginya menjadi 3 bagian besar.</p>
+
+<p>Jika kita ingin melakukan query,validasi, edit data kita masukkan ke dalam Model. Kalau kita ingin mengatur aliran data maka kita memasukkannya ke dalam Controller, dan yang terakhir kali jika kita ingin mengatur tampilan dari program kita ( designnya ) maka kita atur di View. 3 hal tersebut saling berhubungan dan mempunyai peran masing-masing.</p>
+
+<p>Selain MVC tentu saja gwa banyak mempelajari penggunaan dari CakePHP itu sendiri. Penggunaan Helper-helper seperti AJAX, Session, Javascript, dan HTML. Jadi CakePHP secara default sudah menyediakan beberapa helper. Helper itu sendiri adalah sebuah class yang dapat digunakan untuk membantu kita dalam membuat aplikasi sesuai dengan helper yang kita gunakan. Jadi jika kita ingin membuat sebuah website yang menggunakan AJAX, kita dapat menggunakan AJAX helper yang dapat meringankan tugas kita dalam membuat aplikasi AJAX itu. Sama halnya jika kita ingin membuat session maka kita dapat menggunakan session helper untuk membantu kita mengatur session di CakePHP.</p>
+
+<p>Selain helper dikenal juga istilah element di dalam CakePHP. Element disini bukan berarti elemen air, elemen api, elemen tanah. Element di dalam CakePHP itu lebih dapat diartikan sebagai view yang reuseable. Jadi misalnya kita mempunyai sebuah form dan kita ingin membuat form tersebut di 2 view yang berbeda maka kita dapat menggunakan element. Jadi kita tidak perlu membuat ulang kembali form tersebut di 2 view yang berbeda, cukup buat sebuah element dan panggil element tersebut di 2 view itu.</p>
+
+<p>[caption id=&ldquo;&rdquo; align=&ldquo;alignnone&rdquo; width=&ldquo;550&rdquo; caption=&ldquo;Paging dengan element&rdquo;]<img src="http://blog.rudylee.com/content/paging.jpg" alt="Paging dengan element" />[/caption]</p>
+
+<p>Dan satu hal lagi yang harus diperhatikan dalam merancang sebuah aplikasi dengan menggunakan konsep MVC adalah Model sebaiknya lebih memiliki banyak method dibandingkan controller. Hal itu dikarenakan konsep dari OOP itu sendiri yaitu &lsquo;reuseable&rsquo;.</p>
+
+<p>Jadi gwa bisa menyimpulkan selama 5 bulan apa saja keuntungan yang didapatkan dari mempelajari CakePHP</p>
+
+<ul>
+<li><p>Mengerti konsep MVC.</p></li>
+<li><p>Waktu untuk mendevelop program menjadi lebih cepat.</p></li>
+<li><p>Source code menjadi lebih terstruktur.</p></li>
+<li><p>Kemampuan berbahasa inggris meningkat ( banyak baca cookbook + tanya2 pakai bahasa inggris wakaka.</p></li>
+</ul>
+
+
+<p>Walaupun gwa tidak menampik adanya kerugian-kerugian yang didapatkan dari mempelajari CakePHP, ini beberapa kerugian tersebut :</p>
+
+<ul>
+<li><p>Harus belajar kembali karena dengan menggunakan framework tentu saja kita harus mempelajari API yang sudah tersedia.</p></li>
+<li><p>Aplikasi jadi lebih lemot.</p></li>
+<li><p>Jadi makin malas karena sudah dimanjakan dengan fitur-fitur walaupun tidak semalas  karena menggunakan CMS</p></li>
+<li><p>Makin lupa syntax2 PHP yang dasar karena keseringan menggunakan syntax CakePHP</p></li>
+</ul>
+
+
+<p>Tapi walaupun begitu semua kekurangan itu tertutupi oleh kelebihan-kelebihan yang didapatkan dari mempelajari CakePHP tersebut. Yah jelas, kalau banyak ruginya napaen gwa capek-capek belajar framework. Mungkin ada yang beranggapan kalau menggunakan framework itu sendiri dapat memperbodoh diri sendiri, dan gwa pun tidak menampik hal tersebut.</p>
+
+<p>Tapi gwa menganalogikan mempelajari framework ini seperti sedang memasak mie goreng. Bedanya jika kita menggunakan framework maka kita menggunakan mie yang sudah dijual di pasaran tanpa kita tahu cara membuat mie tersebut. Sementara orang yang tidak menggunakan framework adalah orang yang membuat mienya sendiri.</p>
+
+<p>Pertanyaannya adalah apakah mie goreng yang dibuat dengan mie jualan di pasar pasti lebih enak daripada mie yang dibuat sendiri ? bagaimana sebaliknya ? tentu saja jawabnya tergantung dari banyak faktor ( bisa kualitas mie, bisa kemampuan orang yang memasak ).</p>
+
+<p>Sama halnya dalam menggunakan framework, seberapa bagusnya aplikasi kita bukan saja ditentukan dari framework apa yang kita gunakan, bukan juga ditentukan dari apakah kita menggunakan framework atau tidak. Tetapi juga ditentukan dari kemampuan orang tersebut, karena di mata client tetap saja yang dilihat itu adalah hasil jadinya, bukan codingannya ( kebanyakan client kan ga ngerti2 banget :P ). Jadi client mana mo tau itu mie hasil buat sendiri ato hasil beli di pasar, yang mereka tahu cuma &ldquo;mie ini enak&rdquo;, &ldquo;mie ini ga enak&rdquo;. Udah itu aja, simple sekali kan ?</p>
+
+<p>Yah sebenarnya kalau mau didebatkan lagi sebenarnya banyak yang bisa didebatkan tapi intinya sekarang gwa malas nulis panjang-panjang dan juga tentu saja gwa mendukung semua orang untuk mempelajari framework. Kenapa ? karena sekarang persaingan sudah semakin ketat, kita sekarang membuat aplikasi semakin mudah dan semakin cepat. Ibarat kata pepatah &ldquo;Siapa cepat dia dapat&rdquo;. Sekarang itu ada di tangan anda, apakah anda ingin memakai mie yang dijual atau buat mie sendiri :P hohoho yang penting untuk sekarang 5 star buat CakePHP deh :)</p>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/categories/cakephp/"><span class="badge">CakePHP</span></a>
+
+  <a href="/categories/reviews/"><span class="badge">Reviews</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/2009/03/31/ibu-ibu-bapak-tua-mungkin-gay-dan-phobia/" title="Previous Post: Ibu-ibu dan yang lainnya">&laquo; Ibu-ibu dan yang lainnya</a>
+          
+          
+            <a class="basic-alignment right" href="/2009/04/28/ubuntu-904-jaunty-jackalope/" title="Next Post: Ubuntu 9.04 Jaunty Jackalope">Ubuntu 9.04 Jaunty Jackalope &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2019 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.rudylee.com/2009/04/18/review-cakephp/';
+        var disqus_url = 'http://blog.rudylee.com/2009/04/18/review-cakephp/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

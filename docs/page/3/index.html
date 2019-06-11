@@ -1,0 +1,1262 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blog Rudy Lee</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Hi. I&#8217;m Rudy Lee. Here are some thoughts of mine. May 22nd, 2014 Unix and Linux Configuring Elastic Beanstalk Environment with .ebextensions &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.rudylee.com/page/3">
+  <link href="/favicon.ico" rel="icon">
+  <link href='//fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog Rudy Lee" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10301272-8']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+  heap.load("1170192688");
+</script>
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("61a006900f814889fdc104eecb397ac0");</script><!-- end Mixpanel -->
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/">Home</a></li>
+    
+        <li ><a href="/archives">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/rudylee" title="Github Profile"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    
+    <li><a href="http://twitter.com/rudylee88" title="Twitter Profile"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div class="jumbotron">
+  <div class="container">
+    Hi. I&#8217;m Rudy Lee.
+    <h3 class="tagline">Here are some thoughts of mine.</h3>
+  </div>
+</div>
+
+
+<div class="blog-index">
+  
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2014-05-22T01:44:00+10:00" pubdate data-updated="true">May 22<span>nd</span>, 2014</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2014/05/22/configuring-elastic-beanstalk-environment-with-ebextensions/">Configuring Elastic Beanstalk Environment with .ebextensions</a></h1>
+      <p>At <a href="http://www.captiv8.com.au">Captiv8</a>, we are using Amazon AWS to host most of our PHP projects. We are heavily rely on Elastic Beanstalk to help us set up PHP environment, database and load balancer. On top of that, we are also managing our own server image based on Amazon AMI. In this image, we installed additional software and packages that we need for our application. However, this approach has a drawback as it is difficult to maintain the image and track changes. Everytime you need to update the image, you have to create new server, install the new software and export it into new image. This will leave you with bunch of different images and it is hard to tell what are the things that have changed inside each image.</p>
+
+<h1>Chef</h1>
+
+<p>In order to solve these problems, I decided to find a way to automate the process. My first attempt was trying to use Chef to provision the Elastic Beanstalk environment. I have been using Chef for a while to provision my Vagrant machines. It is powerful and more convenient in compare with bash scripts. Since I am already familiar with Chef, I started looking at tutorials on how to use Chef with Elastic Beanstalk. Most of the tutorials that I found don&rsquo;t provide easy way to integrate Chef with Elastic Beanstalk. One of them mentions about using AWS OpsWorks with Chef but I think it is overkill for the time being. So, I ditched Chef and start looking for another solution.</p>
+
+<h1>ebextensions</h1>
+
+<p>ebextensions is another solution that I found after checking the official documentation of Elastic Beanstalk. With this solution, you need to to create .ebextensions folder inside your project and create a file to define what are the packages that you want to install into the environment. Elastic Beanstalk will automatically run the script every time you deploy a new version of the application. Aside from that, you can also tell ebextensions to execute shell script in the instance or changing permission of a file. You can read more details about ebextension here: <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers-ec2.html">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers-ec2.html</a></p>
+
+<p>This is my directory structure at the moment:
+<a href="/images/ebextensions.png"><img src="/images/ebextensions.png" alt="" /></a></p>
+
+<p>Here is the example of my ebextension config file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">packages</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">yum</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">mlocate</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">commands</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">01updateComposer</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">export COMPOSER_HOME=/root &amp;&amp; /usr/bin/composer.phar self-update</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">02updateTag</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ec2-create-tags $(ec2-metadata -i | cut -d &#39; &#39; -f2) --tag Project=ChangeThis</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">cwd</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/home/ec2-user</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">env</span><span class="p-Indicator">:</span>
+</span><span class='line'>      <span class="l-Scalar-Plain">EC2_HOME</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/opt/aws/apitools/ec2</span>
+</span><span class='line'>      <span class="l-Scalar-Plain">EC2_URL</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">https://ec2.ap-southeast-2.amazonaws.com</span>
+</span><span class='line'>      <span class="l-Scalar-Plain">JAVA_HOME</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/usr/lib/jvm/jre</span>
+</span><span class='line'>      <span class="l-Scalar-Plain">PATH</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/bin:/usr/bin:/opt/aws/bin/</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">container_commands</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">01-command</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">updatedb</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">02-command</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">rm -rf /captiv8/.ebextensions</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">03-command</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">mkdir -p /captiv8/.ebextensions</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">04-command</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">cp -R .ebextensions/* /captiv8/.ebextensions/</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">05-command</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bash /captiv8/.ebextensions/scripts/app-setup.sh</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">option_settings</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">namespace</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">aws:elasticbeanstalk:application:environment</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">option_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">COMPOSER_HOME</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">value</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/root</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And this is the example of my bash script:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># References: </span>
+</span><span class='line'><span class="c"># - http://www.hudku.com/blog/configuration-setup-customizing-aws-elastic-beanstalk/</span>
+</span><span class='line'><span class="c"># - http://www.hudku.com/blog/security-credentials-customizing-aws/#.elastic-beanstalk-app</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Main configuration, change these for each project</span>
+</span><span class='line'><span class="nv">appName</span><span class="o">=</span><span class="s2">&quot;change_this&quot;</span>
+</span><span class='line'><span class="nv">newrelicLicense</span><span class="o">=</span><span class="s2">&quot;newreliclicense&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Check if this is the very first time that this script is running</span>
+</span><span class='line'><span class="k">if</span> <span class="o">([</span> ! -f /root/.not-a-new-instance.txt <span class="o">])</span> <span class="k">then</span>
+</span><span class='line'><span class="k">  </span><span class="nv">newEC2Instance</span><span class="o">=</span><span class="nb">true</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Install applications if this is new instance</span>
+</span><span class='line'><span class="k">if</span> <span class="o">([</span> <span class="nv">$newEC2Instance</span> <span class="o">])</span> <span class="k">then</span>
+</span><span class='line'>    <span class="c"># Allow sudo command to be used as part of beanstalk ebextensions scripts without a terminal</span>
+</span><span class='line'>    grep -q <span class="s1">&#39;Defaults:root !requiretty&#39;</span> /etc/sudoers.d/<span class="nv">$appName</span> <span class="o">||</span> <span class="nb">echo</span> -e <span class="s1">&#39;Defaults:root !requirettyn&#39;</span> &gt; /etc/sudoers.d/<span class="nv">$appName</span>
+</span><span class='line'>    chmod 440 /etc/sudoers.d/<span class="nv">$appName</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># Add sudo command if not already present to .bashrc of ec2-user so that we are logged on as root when we use ssh</span>
+</span><span class='line'>    grep -q <span class="s2">&quot;sudo -s&quot;</span> /home/ec2-user/.bashrc <span class="o">||</span> <span class="nb">echo</span> -e <span class="s2">&quot;nsudo -sn&quot;</span> &gt;&gt; /home/ec2-user/.bashrc
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># Install phpMyAdmin</span>
+</span><span class='line'>  yum -y --enablerepo<span class="o">=</span>epel install phpmyadmin
+</span><span class='line'>  rm /etc/httpd/conf.d/phpMyAdmin.conf
+</span><span class='line'>  rm /etc/phpMyAdmin/config.inc.php
+</span><span class='line'>  mv /captiv8/.ebextensions/templates/phpMyAdmin/phpMyAdmin.conf /etc/httpd/conf.d/
+</span><span class='line'>  mv /captiv8/.ebextensions/templates/phpMyAdmin/config.inc.php /etc/phpMyAdmin/
+</span><span class='line'>  chmod 644 /etc/httpd/conf.d/phpMyAdmin.conf
+</span><span class='line'>  chmod 644 /etc/phpMyAdmin/config.inc.php
+</span><span class='line'>  service httpd restart
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># Install New Relic</span>
+</span><span class='line'>  rpm -Uvh http://yum.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm
+</span><span class='line'>  yum -y install newrelic-php5
+</span><span class='line'>  <span class="nb">echo</span> -ne <span class="err">&#39;</span><span class="se">\n\&#39;</span> | newrelic-install install
+</span><span class='line'>  rm /etc/php.d/newrelic.ini
+</span><span class='line'>  mv /captiv8/.ebextensions/templates/newrelic/newrelic.ini /etc/php.d/
+</span><span class='line'>  chmod 644 /etc/php.d/newrelic.ini
+</span><span class='line'>  perl -pi -e <span class="s2">&quot;s/PHP Application/$appName/g&quot;</span> /etc/php.d/newrelic.ini
+</span><span class='line'>  perl -pi -e <span class="s2">&quot;s/newrelicLicense/$newrelicLicense/g&quot;</span> /etc/php.d/newrelic.ini
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># Install New Relic Server Monitor  </span>
+</span><span class='line'>  yum -y install newrelic-sysmond
+</span><span class='line'>  nrsysmond-config --set <span class="nv">license_key</span><span class="o">=</span><span class="nv">$newrelicLicense</span>
+</span><span class='line'>  /etc/init.d/newrelic-sysmond start
+</span><span class='line'>  service httpd restart
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># Install OSSEC</span>
+</span><span class='line'>  yum -y install mysql-devel postgresql-devel
+</span><span class='line'>  wget http://www.ossec.net/files/ossec-hids-2.7.1.tar.gz -P /captiv8
+</span><span class='line'>  tar xzvf /captiv8/ossec-hids-2.7.1.tar.gz -C /captiv8
+</span><span class='line'>  rm /captiv8/ossec-hids-2.7.1.tar.gz
+</span><span class='line'>  rm /captiv8/ossec-hids-2.7.1/etc/preloaded-vars.conf
+</span><span class='line'>  mv /captiv8/.ebextensions/templates/ossec/preloaded-vars.conf /captiv8/ossec-hids-2.7.1/etc/
+</span><span class='line'>  /captiv8/ossec-hids-2.7.1/install.sh
+</span><span class='line'>  /var/ossec/bin/ossec-control start
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># If new instance, now it is not new anymore</span>
+</span><span class='line'><span class="k">if</span> <span class="o">([</span> <span class="nv">$newEC2Instance</span> <span class="o">])</span> <span class="k">then</span>
+</span><span class='line'><span class="k">    </span><span class="nb">echo</span> -n <span class="s2">&quot;&quot;</span> &gt; /root/.not-a-new-instance.txt
+</span><span class='line'>    chmod 644 /etc/php.d/.not-a-new-instance
+</span><span class='line'><span class="k">fi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Inside my ebextensions config file, I call the shell script which will install additional software. The benefit of using shell script is you have more options and it is much easier to customize the software. Since the .ebextensions folder is copied to the instance, you can tell the shell script to copy a template config file that you have prepared before hand. I hope you find this blog post useful.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2014-03-27T23:30:00+11:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/my-stories/"><span class="badge">My Stories</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2014/03/27/audio-books/">Audio Books</a></h1>
+      <p>Around October 2013, I decided to move from city to Gladesville which located 9 kilometres north-west of Sydney CBD. It wasn&rsquo;t easy decision because I need to spend about 2 hours on commuting every day.</p>
+
+<p>For the first couple months, I was fine with the long commuting time. I can distract myself with my phone or sleeping on the bus. However, I started to feel unproductive and I can feel it affected my concentration throughout the day. So, I tried to do some research on the Internet about productive use of commuting time. Most of the articles that I found suggesting to listen either podcasts or audio books.</p>
+
+<p>I decided to give audio book a try and downloaded <a href="http://www.amazon.com/Eat-That-Frog-Great-Procrastinating/dp/1576754227">Eat That Frog by Brian Tracy</a>. If you are interested, you can easily find the audio version of this book on YouTube. At first, I was a little bit skeptical with the result but it turned out to be really helpful. I can feel that my life is back on track again. I started to use <a href="http://trello.com/">Trello</a> to keep my list of tasks. Once in a while, I&rsquo;ll update my goals and create separate boards for each project.</p>
+
+<p>Since that, I have been listening to several different audio books such as <a href="http://www.amazon.com/168-Hours-Have-More-Think/dp/159184410X">168 hours by Laura Vanderkam</a> and <a href="http://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0142000280">Getting things done by David Allen</a>. Both of them shared some basic principles from Eat that frog. I prefer Getting things done because it&rsquo;s more straight forward and focusing on actions you can perform to improve your productivity. Although, I can say that this book is quite to hard understand so you need to listen it more than once to get a good grasp of the concept.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2014-01-15T04:52:00+11:00" pubdate data-updated="true">Jan 15<span>th</span>, 2014</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/ruby-on-rails/"><span class="badge">Ruby on Rails</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2014/01/15/add-current-class-to-website-menu-in-rails/">Add &#8216;current&#8217; class to website menu in Rails</a></h1>
+      <p>It is common to have &lsquo;active&rsquo; state or &lsquo;current&rsquo; state on website navigation. This will help visitors to know which page they have selected.</p>
+
+<p>This solution is based on Stackoverflow&rsquo;s question which I couldn&rsquo;t find. First, I&rsquo;ll create a method inside Rails application_helper.rb file. I&rsquo;ll call this method cp(). Here are the syntax:</p>
+
+<figure class='code'><figcaption><span>application_helper.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">cp</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">current_route</span> <span class="o">=</span> <span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">recognize_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="s2">&quot;current&quot;</span> <span class="k">if</span> <span class="n">current_page?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">or</span> <span class="n">params</span><span class="o">[</span><span class="ss">:controller</span><span class="o">]</span> <span class="o">==</span> <span class="n">current_route</span><span class="o">[</span><span class="ss">:controller</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The method uses current_page and Rails.application.routes.recognize_path to get information about current page.</p>
+
+<p>After that we can use it in our view. Here is the example:</p>
+
+<figure class='code'><figcaption><span>application.html.erb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="n">nav</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;menu-panel&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= link_to &#39;SERVICES&#39;, services_path, class: cp(&#39;/services&#39;) %&gt;</span>
+</span><span class='line'><span class="sx">    &lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;FACILITIES&#39;</span><span class="p">,</span> <span class="n">facilities_path</span><span class="p">,</span> <span class="ss">class</span><span class="p">:</span> <span class="n">cp</span><span class="p">(</span><span class="s1">&#39;/facilities&#39;</span><span class="p">)</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">    &lt;%= link_to &#39;ABOUT&#39;, about_path, class: cp(&#39;/about&#39;) %&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="sx">%= link_to &#39;CAREERS&#39;, careers_path, class: cp(careers_path) %&gt;</span>
+</span><span class='line'><span class="sx">    &lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;BLOG&#39;</span><span class="p">,</span> <span class="n">blog_index_path</span><span class="p">,</span> <span class="ss">class</span><span class="p">:</span> <span class="n">cp</span><span class="p">(</span><span class="n">blog_index_path</span><span class="p">)</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">    &lt;%= link_to &#39;CONTACT&#39;, contact_path, class: cp(&#39;/contact&#39;) %&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;#&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;close-menu-panel&quot;</span><span class="o">&gt;&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="no">CLOSE</span><span class="o">&lt;</span><span class="sr">/b&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/nav&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I hope that helps.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-12-06T03:43:00+11:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2013/12/06/install-the-latest-tmux-on-ubuntu-12-dot-04/">Install the latest tmux on Ubuntu 12.04</a></h1>
+      <p>In this post, I will show you how to install the latest tmux on Ubuntu 12.04. First, we need to install &lsquo;add-apt-repository&rsquo; command on our machine. This can be done by running these commands:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install software-properties-common
+</span><span class='line'>
+</span><span class='line'>sudo apt-get install python-software-properties
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that you can add third party repository ( Ubuntu official repository does not have latest tmux at the moment )</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo add-apt-repository ppa:pi-rho/dev
+</span><span class='line'>
+</span><span class='line'>sudo apt-get update
+</span><span class='line'>
+</span><span class='line'>sudo apt-get install tmux
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I will suggest you to install the latest tmux if you want to use Tmuxinator.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-10-29T02:02:00+11:00" pubdate data-updated="true">Oct 29<span>th</span>, 2013</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/ruby-on-rails/"><span class="badge">Ruby on Rails</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2013/10/29/rails-4-cors/">Rails 4 CORS</a></h1>
+      <h2>McFlyyy pointed out another solution to solve this problem. I haven&rsquo;t tested it myself so follow it at your own risk <a href="https://stackoverflow.com/questions/18538549/cant-get-rack-cors-working-in-rails-application/20464939#20464939">Click Here</a></h2>
+
+<p>I was trying to use Rails to build REST API for my AngularJS app and came across CORS error on my Chrome developer tools.</p>
+
+<p>According to <a href="http://leopard.in.ua/2012/07/08/using-cors-with-rails/">Alexey Vasiliev</a>, Cross-origin resource sharing (CORS) is a web browser technology specification which defines ways for a web server to allow its resources to be accessed by a web page from a different domain. Such access would otherwise be forbidden by the same origin policy. CORS defines a way in which the browser and the server can interact to determine whether or not to allow the cross-origin request. It is a compromise that allows greater flexibility, but is more secure than simply allowing all such requests. CORS is supported in the following browsers:</p>
+
+<p>After following couple of outdated tutorials, I found the quick solution for it. Here are the steps:</p>
+
+<h1>Add route to handle OPTIONS method</h1>
+
+<p>AngularJS using OPTIONS method to check the CORS support on the API server. Thus, you need to add line in your route file to handle this. This can be done by adding code like this</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">match</span> <span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s1">&#39;users#index&#39;</span><span class="p">,</span> <span class="ss">via</span><span class="p">:</span> <span class="o">[</span><span class="ss">:options</span><span class="o">]</span>
+</span><span class='line'><span class="n">resources</span> <span class="ss">:users</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To check whether your configuration is correct you can run &lsquo;rake routes&rsquo;. It should print out something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>   Prefix Verb    URI Pattern               Controller#Action
+</span><span class='line'>    users OPTIONS /users<span class="o">(</span>.:format<span class="o">)</span>          users#index
+</span><span class='line'>          GET     /users<span class="o">(</span>.:format<span class="o">)</span>          users#index
+</span><span class='line'>          POST    /users<span class="o">(</span>.:format<span class="o">)</span>          users#create
+</span><span class='line'> new_user GET     /users/new<span class="o">(</span>.:format<span class="o">)</span>      users#new
+</span><span class='line'>edit_user GET     /users/:id/edit<span class="o">(</span>.:format<span class="o">)</span> users#edit
+</span><span class='line'>     user GET     /users/:id<span class="o">(</span>.:format<span class="o">)</span>      users#show
+</span><span class='line'>          PATCH   /users/:id<span class="o">(</span>.:format<span class="o">)</span>      users#update
+</span><span class='line'>          PUT     /users/:id<span class="o">(</span>.:format<span class="o">)</span>      users#update
+</span><span class='line'>          DELETE  /users/:id<span class="o">(</span>.:format<span class="o">)</span>      users#destroy
+</span><span class='line'>     root GET     /                         users#index
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can see on the second line, we handle OPTIONS verb and redirect to index action.</p>
+
+<h1>Add before_filter and after_filter to allow CORS</h1>
+
+<p>The next step is we need to return proper header to tell AngularJS that our server allow CORS. Here is the sample controller file:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">UsersController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">skip_before_filter</span> <span class="ss">:verify_authenticity_token</span>
+</span><span class='line'>  <span class="n">before_filter</span> <span class="ss">:cors_preflight_check</span>
+</span><span class='line'>  <span class="n">after_filter</span> <span class="ss">:cors_set_access_control_headers</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># For all responses in this controller, return the CORS access control headers.</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">cors_set_access_control_headers</span>
+</span><span class='line'>    <span class="n">headers</span><span class="o">[</span><span class="s1">&#39;Access-Control-Allow-Origin&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span>
+</span><span class='line'>    <span class="n">headers</span><span class="o">[</span><span class="s1">&#39;Access-Control-Allow-Methods&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;POST, GET, OPTIONS&#39;</span>
+</span><span class='line'>    <span class="n">headers</span><span class="o">[</span><span class="s1">&#39;Access-Control-Max-Age&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;1728000&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># If this is a preflight OPTIONS request, then short-circuit the</span>
+</span><span class='line'>  <span class="c1"># request, return only the necessary headers and return an empty</span>
+</span><span class='line'>  <span class="c1"># text/plain.</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">cors_preflight_check</span>
+</span><span class='line'>    <span class="n">headers</span><span class="o">[</span><span class="s1">&#39;Access-Control-Allow-Origin&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span>
+</span><span class='line'>    <span class="n">headers</span><span class="o">[</span><span class="s1">&#39;Access-Control-Allow-Methods&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;POST, GET, OPTIONS&#39;</span>
+</span><span class='line'>    <span class="n">headers</span><span class="o">[</span><span class="s1">&#39;Access-Control-Allow-Headers&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;X-Requested-With, X-Prototype-Version&#39;</span>
+</span><span class='line'>    <span class="n">headers</span><span class="o">[</span><span class="s1">&#39;Access-Control-Max-Age&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;1728000&#39;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>    <span class="vi">@users</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</span><span class='line'>      <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">:json</span> <span class="o">=&gt;</span> <span class="vi">@users</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We need to add skip_before_filter :verify_authenticity_token because Rails will return 422 status code and error message &lsquo;Can&rsquo;t verify CSRF token authenticity&rsquo;</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-10-24T00:16:00+11:00" pubdate data-updated="true">Oct 24<span>th</span>, 2013</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2013/10/24/fix-npm-symlink-problem-in-vagrant/">Fix npm symlink problem in Vagrant</a></h1>
+      <p>Today I encountered weird symlink error when trying to install npm modules on my Vagrant Ubuntu Box. The error says &ldquo;pm ERR! Error: UNKNOWN, symlink &lsquo;../which/bin/which&rsquo;&rdquo;.</p>
+
+<p>After quick Google, it turns out the problem is caused by npm trying to create symlink which is not supported on Windows ( I am using Windows 8 as my host machine ).</p>
+
+<p>Here is quick solution which allow you to install npm modules without creating any symlinks :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>npm install --no-bin-link
+</span></code></pre></td></tr></table></div></figure>
+
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-09-18T00:58:00+10:00" pubdate data-updated="true">Sep 18<span>th</span>, 2013</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2013/09/18/trailing-characters-m/">Trailing Characters ^M</a></h1>
+      <p>This morning I ran into weird errors in one of my Vagrant machine. These errors come up when I was trying to run tmux and vim:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Error detected <span class="k">while </span>processing /home/vagrant/.vimrc:
+</span><span class='line'>line    1:
+</span><span class='line'>E488: Trailing characters: nocompatible^M
+</span><span class='line'>line    2:
+</span><span class='line'>E488: Trailing characters: nu^M
+</span><span class='line'>line    3:
+</span><span class='line'>E488: Trailing characters: nobackup^M
+</span><span class='line'>line    4:
+</span><span class='line'>E488: Trailing characters: nowritebackup^M
+</span><span class='line'>line    5:
+</span><span class='line'>E488: Trailing characters: noswapfile^M
+</span><span class='line'>line    6:
+</span><span class='line'>E488: Trailing characters: hlsearch^M
+</span><span class='line'>line    7:
+</span><span class='line'>E488: Trailing characters: ruler^M
+</span><span class='line'>line    8:
+</span><span class='line'>E474: Invalid argument: <span class="nv">laststatus</span><span class="o">=</span>2^M
+</span><span class='line'>line    9:
+</span><span class='line'>E474: Invalid argument: <span class="nv">tabstop</span><span class="o">=</span>2^M
+</span><span class='line'>line   10:
+</span><span class='line'>E474: Invalid argument: <span class="nv">shiftwidth</span><span class="o">=</span>2^M
+</span><span class='line'>line   11:
+</span><span class='line'>E488: Trailing characters: expandtab^M
+</span><span class='line'>Vim: Error reading input, exiting...ne down, b/u/k: up, q: quit
+</span><span class='line'>Vim: Finished.
+</span><span class='line'>Press ENTER or <span class="nb">type command </span>to continueVim: Error reading input, exiting...
+</span><span class='line'>Vim: Finished.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I had similar problem before when trying to edit file from Windows machine inside vim. ^M character is added by Windows machine to mark newline in their files.</p>
+
+<p>The quickest solution to fix this is by installing &lsquo;dos2unix&rsquo; software and let it fix the file for you. In Ubuntu, you can run this command to install it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install dos2unix
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And fix the file by typing this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>dos2unix &lt;file&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It will automatically remove all the trailing characters for you.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-09-13T00:14:00+10:00" pubdate data-updated="true">Sep 13<span>th</span>, 2013</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/ruby-on-rails/"><span class="badge">Ruby on Rails</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2013/09/13/zeus-inside-vagrant/">Zeus inside Vagrant</a></h1>
+      <p>I have been using Vagrant as my development environment for the last couple weeks. It has been very helpful as I prefer to use Linux as my development environment and I can only use Windows at my workplace. With Vagrant, I can easily set up new Linux machine, install Vim plus all the plugins and completely separate development machine for each project.</p>
+
+<p>Today, I was trying to use Zeus to speed up my Rspec test inside one of the Rails projects. I found this gem through a screencast by Ryan Bates about Fast Test.</p>
+
+<p>Install Zeus is pretty easy, you just need to run this command on your terminal:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>gem install zeus
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that you just need to go to the directory of your Rails app and start the Zeus server using this command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>zeus start
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, when I got an error when I was trying to ran that command. Here is the error:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>vagrant@precise32:/vagrant<span class="nv">$ </span>zeus start
+</span><span class='line'>Starting Zeus server
+</span><span class='line'><span class="o">[</span>ready<span class="o">]</span> <span class="o">[</span>crashed<span class="o">]</span> <span class="o">[</span>running<span class="o">]</span> <span class="o">[</span>connecting<span class="o">]</span> <span class="o">[</span>waiting<span class="o">]</span>
+</span><span class='line'>boot
+</span><span class='line'>└── default_bundle
+</span><span class='line'>    ├── development_environment
+</span><span class='line'>    │   └── prerake
+</span><span class='line'>    └── test_environment
+</span><span class='line'>        ├── cucumber_environment
+</span><span class='line'>        └── test_helper
+</span><span class='line'>
+</span><span class='line'>Available Commands: <span class="o">[</span>waiting<span class="o">]</span> <span class="o">[</span>crashed<span class="o">]</span> <span class="o">[</span>ready<span class="o">]</span>
+</span><span class='line'>zeus rake
+</span><span class='line'>zeus runner <span class="o">(</span><span class="nb">alias</span>: r<span class="o">)</span>
+</span><span class='line'>zeus console <span class="o">(</span><span class="nb">alias</span>: c<span class="o">)</span>
+</span><span class='line'>zeus server <span class="o">(</span><span class="nb">alias</span>: s<span class="o">)</span>
+</span><span class='line'>zeus generate <span class="o">(</span><span class="nb">alias</span>: g<span class="o">)</span>
+</span><span class='line'>zeus destroy <span class="o">(</span><span class="nb">alias</span>: d<span class="o">)</span>
+</span><span class='line'>zeus dbconsole
+</span><span class='line'>zeus cucumber
+</span><span class='line'>zeus <span class="nb">test</span> <span class="o">(</span><span class="nb">alias</span>: rspec, testrb<span class="o">)</span>
+</span><span class='line'>It looks like Zeus is already running. If not, remove .zeus.sock and try again.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can see on the last line that it&rsquo;s complaining something about .zeus.sock. The solution is pretty easy, you just need to add environment variable to your Vagrant machine. Use this command to add environment variable:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">ZEUSSOCK</span><span class="o">=</span>/tmp/zeus.sock
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Also make sure you use the latest version of Zeus. Add this line inside your Gemfile:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Use Zeus</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;zeus&#39;</span><span class="p">,</span> <span class="s2">&quot;&gt;= 0.13.4.pre2&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Run &lsquo;bundle&rsquo; to install the gem and update the version. You should be able to run &lsquo;zeus start&rsquo; now and other Rails commands.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-08-04T17:08:00+10:00" pubdate data-updated="true">Aug 4<span>th</span>, 2013</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/my-stories/"><span class="badge">My Stories</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2013/08/04/refocus/">Refocus</a></h1>
+      <p>For the past few weeks, it seems that I am gradually moving into different life style. When I was still doing my course, it is almost impossible to spend time on the weekend to catch up with friends, walking around city and trying new stuff. Everytime my friend invited me to hang out with them I always said that I need to finish my assignments.</p>
+
+<p>I remember one of my friend just asked me this question &ldquo;So, what you usually do during the weekend ?&rdquo; and I answered &ldquo;Nothing, just doing my assigments and other stuff&rdquo;. He looked surprised with my answer and he added &ldquo;Don&rsquo;t you have any friends that invited you out ?&rdquo;. At that time, I realized that he must be feel pity and I said to him &ldquo;At first, you might feel that your life is unfair. You will think that why everyone can enjoy their life during the weekend and you trapped here working on your assigments. But, as the time goes you start to get used to it&rdquo;.</p>
+
+<p>So for the past few months, I have been doing the same routine. Working and attending the class during the weekdays, working on assignments with my group mate during the weekend. Sometimes, I felt stress and tired but believe me, that was the most meaningful moment in my life. During that time, I definitely know what I am going to do everyday and somehow I feel more motivated.</p>
+
+<p>The problem with my current life style is I have more control on what I can do during my free time. I can decide that I can go to cinema, buy clothes, trying this new restaurant or just spending whole day watching YouTube. However, I started to feel that this path is leading me to different direction. The direction that I might regret in the future.</p>
+
+<p>That is why I decided to start writing more blog posts about my life experience. I believe writing blog post can help you refocus on what you should do.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-07-26T14:37:00+10:00" pubdate data-updated="true">Jul 26<span>th</span>, 2013</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/linux/"><span class="badge">Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2013/07/26/sending-email-from-amazon-ec2-using-postfix-and-amazon-ses/">Sending email from Amazon EC2 using postfix and Amazon SES</a></h1>
+      <p>Sending email is a basic functionality that most of the applications need to support. In my company latest project, we have to send invitation emails to users through an Amazon EC2 instance. It is relatively easy task because I can use built in email library from Code Igniter and point it to Amazon SES. It works perfectly until my colleague realize that there is a slightly delay when the application sends the email.</p>
+
+<p>It turns out that the built in email library inside Code Igniter has to wait for the response from Amazon SES to send the email. After a little bit of research, we found that we can solve the problem by using either sendmail or postfix to send the emails.</p>
+
+<h2>Sendmail</h2>
+
+<p>The first approach that we tried was using sendmail to send the email. You can find the tutorial to set it up in the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sendmail.html">official Amazon SES documentation</a>. It is pretty easy to set up because the default Amazon EC2 Linux Image already have sendmail installed by default.</p>
+
+<p>The problem that we found with this solution is you can only send email to verified email address only. The tutorial mentions that you need to request for production access to be able to send email to unverified email addresses.</p>
+
+<h2>Postfix</h2>
+
+<p>After the sendmail approach, we decided to try the other approach which is using postfix to send the email. This is also easy to set up by following the tutorial from <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/postfix.html">official documentation</a>. The only thing that is missing from the tutorial is to switch the MTA from sendmail to postfix.</p>
+
+<p>First thing that you have to do is to install postfix. This can be easily done through yum package manager :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>yum install postfix
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You don&rsquo;t need to uninstall sendmail because they can just work together just fine. You just need to turn off the sendmail server and switch on postfix server.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo /etc/init.d/sendmail stop
+</span><span class='line'>sudo /etc/init.d/postfix start
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that you need to switch the MTA from sendmail to postfix using this command</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo alternatives --set mta /usr/sbin/sendmail.postfix
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you get to this point, you just need to follow the tutorial from official documentation to set up postfix and use Amazon SES as the relay. After you are done with the configuration there is another thing that you need to solve. You might notice there is a timeout when you are trying to send emails in huge volume. The workaround for this problem is you have to ask Amazon to remove the limitation on your account.</p>
+
+<p>Amazon put throttle on port 25 to prevent user to use Amazon EC2 for spam machine. This cause connection timeout which prevent you from sending email in real time. To solve this you have to send support request to remove this limitation. So, good luck with that.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+  
+  <div class="pagination">
+    
+    <a class="prev" href="/page/4/">&larr; Older</a>
+    
+
+    
+    <a class="next" href="/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2019 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

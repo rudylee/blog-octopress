@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Koneksi ke Microsoft SQL Server dengan PHP di FreeBSD - Blog Rudy Lee</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Koneksi Ke Microsoft SQL Server Dengan PHP Di FreeBSD Jul 24th, 2009 Beberapa hari yang lalu gwa melakukan perpindahan server Binus Access ke server &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.rudylee.com/2009/07/24/koneksi-ke-microsoft-sql-server-dengan-php-di-freebsd">
+  <link href="/favicon.ico" rel="icon">
+  <link href='//fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog Rudy Lee" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10301272-8']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+  heap.load("1170192688");
+</script>
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("61a006900f814889fdc104eecb397ac0");</script><!-- end Mixpanel -->
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/">Home</a></li>
+    
+        <li ><a href="/archives">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/rudylee" title="Github Profile"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    
+    <li><a href="http://twitter.com/rudylee88" title="Twitter Profile"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Koneksi Ke Microsoft SQL Server Dengan PHP Di FreeBSD
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2009-07-24T01:06:55+10:00" pubdate data-updated="true">Jul 24<span>th</span>, 2009</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>Beberapa hari yang lalu gwa melakukan perpindahan server Binus Access ke server baru yang menggunakan FreeBSD ( sebelumnya menggunaka Ubuntu Server 8.04 ). Setelah melakukan konfigurasi-konfigurasi dan beberapa persiapan yaitu :</p>
+
+<ul>
+<li><p>Backup database dan file website Binus Access</p></li>
+<li><p>Konfigurasi Nginx ( web servernya ganti Nginx ) agar bisa membaca mod_rewrite</p></li>
+<li><p>Setting NFS dari server asterix ke server Binus Access</p></li>
+<li><p>Setting IP</p></li>
+<li><p>Beberapa settingan kecil lainnya</p></li>
+</ul>
+
+
+<p>Jadi setelah dirasa semua persiapan sudah kelar, akhirnya perpindahan server dilakukan yaitu mencabut kabel LAN di server lama dan mencoloknya di server baru ( yap pindahin server cuma begitu saja ). Nah setelah gwa melakukan perpindahan server gwa pun mencoba semua fitur-fitur yang ada di binus-access satu persatu apakah ada yang ga jalan. Ternyata eh ternyata pas gwa tes registrasi untuk user baru terjadilah error dimana yang kalau gwa telusuri dikarenakan server tersebut tidak dapat mengakses server binusmaya ( menggunakan mssql ).</p>
+
+<p>Jadi gwa pun mulai mencek dengan menggunakan phpinfo(); apakah extension mssql sudah terinstall di server FreeBSD tersebut atau blum ( karena seingat gwa pas nginstall php-fpm extension mssql sudah gwa aktifkan ), pas gwa cek ternyata extension mssql sudah terinstall dengan benarnya ( berarti tidak ada kesalahan dengan extension mssql.</p>
+
+<p>Setelah itu gwa pun mulai searching di google dan akhirnya ketemu sebuah artikel yang menyebutkan tentang FreeTDS, gwa sih kurang ngerti juga tentang FreeTDS tapi kalau artikel itu bilang kalau mau connect mssql menggunakan FreeBSD harus menggunakan FreeTDS ini. Oleh karena itu tanpa banyak cing cong langsung saja gwa install FreeTDS lewat ports FreeBSD, neh syntaxnya :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /usr/ports/databases/freetds
+</span><span class='line'>make install clean
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Setelah menginstall FreeTDS langsung saja config freetds.confnya yang terletak di <strong>/usr/local/etc/freetds.conf </strong> ini isinya config freetds gwa :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+</pre></td><td class='code'><pre><code class='apache'><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c">#   $Id: freetds.conf,v 1.11 2005/12/05 21:34:12 freddy77 Exp $</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># The freetds.conf file is a replacement for the original interfaces</span>
+</span><span class='line'><span class="c"># file developed by Sybase.  You may use either this or the interfaces</span>
+</span><span class='line'><span class="c"># file, but not both.</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># FreeTDS will search for a conf file in the following order:</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c">#     1) check if a file was set programatically via dbsetifile() and</span>
+</span><span class='line'><span class="c">#        is in .conf format, if so use that,</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c">#     2) otherwise, if env variable FREETDSCONF specifies a properly </span>
+</span><span class='line'><span class="c">#        formatted config file, use it,</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c">#     3) otherwise, look in ~/.freetds.conf,</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c">#     4) otherwise, look in @sysconfdir@/freetds.conf</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># If FreeTDS has found no suitable conf file it will then search for</span>
+</span><span class='line'><span class="c"># an interfaces file in the following order:</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c">#     1) check if a file was set programatically via dbsetifile() and </span>
+</span><span class='line'><span class="c">#        is in interfaces format, if so use that,</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c">#     2) look in ~/.interfaces</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c">#     3) look in $SYBASE/interfaces (where $SYBASE is an environment</span>
+</span><span class='line'><span class="c">#        variable)</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Only hostname, port number, and protocol version can be specified</span>
+</span><span class='line'><span class="c"># using the interfaces format.</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># The conf file format follows a modified Samba style layout.  There</span>
+</span><span class='line'><span class="c"># is a [global] section which will affect all database servers and</span>
+</span><span class='line'><span class="c"># basic program behaviour, and a section headed with the database</span>
+</span><span class='line'><span class="c"># server&#39;s name which will have settings which override the global</span>
+</span><span class='line'><span class="c"># ones.</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Note that environment variables TDSVER, TDSDUMP, TDSPORT, TDSQUERY, </span>
+</span><span class='line'><span class="c"># and TDSHOST will override values set by a .conf or .interfaces file.</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># To review the processing of the above, set env variable TDSDUMPCONFIG</span>
+</span><span class='line'><span class="c"># to a file name to log configuration processing.</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Global settings, any value here may be overridden by a database</span>
+</span><span class='line'><span class="c"># server specific section</span>
+</span><span class='line'><span class="err">[global]</span>
+</span><span class='line'>        <span class="c"># TDS protocol version</span>
+</span><span class='line'>  <span class="nb">tds</span> version = <span class="m">4</span>.2
+</span><span class='line'>
+</span><span class='line'><span class="err">;</span>    <span class="nb">initial</span> block size = <span class="m">512</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># uses some fixes required for some bugged MSSQL 7.0 server that</span>
+</span><span class='line'>  <span class="c"># return invalid data to big endian clients</span>
+</span><span class='line'>  <span class="c"># NOTE TDS version 7.0 or 8.0 should be used instead</span>
+</span><span class='line'><span class="err">;</span>    <span class="nb">swap</span> broken dates = no
+</span><span class='line'><span class="err">;</span>    <span class="nb">swap</span> broken money = no
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># Whether to write a TDSDUMP file for diagnostic purposes</span>
+</span><span class='line'>  <span class="c"># (setting this to /tmp is insecure on a multi-user system)</span>
+</span><span class='line'><span class="err">;</span>    <span class="nb">dump</span> file = <span class="sx">/tmp/freetds.log</span>
+</span><span class='line'><span class="err">;</span>    <span class="nb">debug</span> flags = <span class="m">0</span>xffff
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># Command and connection timeouts</span>
+</span><span class='line'><span class="err">;</span>    <span class="nb">timeout</span> = <span class="m">10</span>
+</span><span class='line'><span class="err">;</span>    <span class="nb">connect</span> timeout = <span class="m">10</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># If you get out of memory errors, it may mean that your client</span>
+</span><span class='line'>  <span class="c"># is trying to allocate a huge buffer for a TEXT field.  </span>
+</span><span class='line'>  <span class="c"># (Microsoft servers sometimes pretend TEXT columns are</span>
+</span><span class='line'>  <span class="c"># 4 GB wide!)   If you have this problem, try setting </span>
+</span><span class='line'>  <span class="c"># &#39;text size&#39; to a more reasonable limit </span>
+</span><span class='line'>  <span class="nb">text</span> size = <span class="m">64512</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># This is a Sybase hosted database server, if you are directly on the</span>
+</span><span class='line'><span class="c"># net you can use it to test.</span>
+</span><span class='line'><span class="err">[JDBC]</span>
+</span><span class='line'>  <span class="nb">host</span> = <span class="m">192.138.151.39</span>
+</span><span class='line'>  <span class="nb">port</span> = <span class="m">4444</span>
+</span><span class='line'>  <span class="nb">tds</span> version = <span class="m">5</span>.0
+</span><span class='line'>
+</span><span class='line'><span class="c"># The same server, using TDS 4.2.  Used in configuration examples for the</span>
+</span><span class='line'><span class="c"># pool server, since the pool server supports only TDS 4.2.</span>
+</span><span class='line'><span class="err">[JDBC_42]</span>
+</span><span class='line'>  <span class="nb">host</span> = <span class="m">192.138.151.39</span>
+</span><span class='line'>  <span class="nb">port</span> = <span class="m">4444</span>
+</span><span class='line'>  <span class="nb">tds</span> version = <span class="m">4</span>.2
+</span><span class='line'>
+</span><span class='line'><span class="c"># The client connecting to the pool server will use this to find its</span>
+</span><span class='line'><span class="c"># listening socket.  This entry assumes that the client is on the same</span>
+</span><span class='line'><span class="c"># system as the pool server.</span>
+</span><span class='line'><span class="err">[mypool]</span>
+</span><span class='line'>  <span class="nb">host</span> = <span class="m">127.0.0.1</span>
+</span><span class='line'>  <span class="nb">port</span> = <span class="m">5000</span>
+</span><span class='line'>  <span class="nb">tds</span> version = <span class="m">4</span>.2
+</span><span class='line'>
+</span><span class='line'><span class="c"># A typical Microsoft SQL Server 7.0 configuration    </span>
+</span><span class='line'><span class="err">;[MyServer70]</span>
+</span><span class='line'><span class="err">;</span>    <span class="nb">host</span> = ntmachine.domain.com
+</span><span class='line'><span class="err">;</span>    <span class="nb">port</span> = <span class="m">1433</span>
+</span><span class='line'><span class="err">;</span>    <span class="nb">tds</span> version = <span class="m">7</span>.0
+</span><span class='line'>
+</span><span class='line'><span class="c"># A typical Microsoft SQL Server 2000 configuration</span>
+</span><span class='line'><span class="err">[stored]</span>
+</span><span class='line'>  <span class="nb">host</span> = <span class="m">10.21.50.16</span>
+</span><span class='line'>  <span class="nb">port</span> = <span class="m">1433</span>
+</span><span class='line'>  <span class="nb">tds</span> version = <span class="m">8</span>.0
+</span><span class='line'>
+</span><span class='line'><span class="c"># A typical Microsoft SQL Server 6.x configuration    </span>
+</span><span class='line'><span class="err">;[MyServer65]</span>
+</span><span class='line'><span class="err">;</span>    <span class="nb">host</span> = ntmachine.domain.com
+</span><span class='line'><span class="err">;</span>    <span class="nb">port</span> = <span class="m">1433</span>
+</span><span class='line'><span class="err">;</span>    <span class="nb">tds</span> version = <span class="m">4</span>.2
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>jadi buat settingan mssql buat server binusmaya itu gwa letakin di bagian ini :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='apache'><span class='line'><span class="c"># A typical Microsoft SQL Server 2000 configuration</span>
+</span><span class='line'><span class="err">[stored]</span>
+</span><span class='line'>  <span class="nb">host</span> = xx.xx.xx.xx
+</span><span class='line'>  <span class="nb">port</span> = <span class="m">1433</span>
+</span><span class='line'>  <span class="nb">tds</span> version = <span class="m">8</span>.0
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ganti tulisan xx.xx.xx.xx dengan ip server SQL Server nya. Nah sekarang saatnya mencoba melakukan koneksi ( ada sedikit perbedaan cara melakukan koneksi ) begini contoh codingnya dalam PHP :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$host</span> <span class="o">=</span> <span class="s2">&quot;stored&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$user</span> <span class="o">=</span> <span class="s2">&quot;yourusername&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$pass</span> <span class="o">=</span> <span class="s2">&quot;yourpassword&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$db</span> <span class="o">=</span> <span class="nb">mssql_connect</span><span class="p">(</span><span class="nv">$host</span><span class="p">,</span><span class="nv">$user</span><span class="p">,</span><span class="nv">$pass</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span> <span class="p">(</span><span class="s2">&quot;Unable to connect to mssql databases&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Jadi perbedaannya adalah $host yang harus diisi dengan nama yang ada set di freetds.conf tadi, jadi jika pada freetds.conf ada menset namanya menjadi &ldquo;mssql&rdquo; maka pada host anda ubah menjadi &ldquo;mssql&rdquo;. Kira-kira begitulah caranya yang cukup membuat gwa pusing selama 2 jam mencari-cari caranya. Lanjut ngejunk lagi ah :P</p>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/2009/07/19/setting-mod_rewrite-atau-sef-joomla-di-nginx/" title="Previous Post: Setting mod_rewrite atau SEF Joomla di Nginx">&laquo; Setting mod_rewrite atau SEF Joomla di Nginx</a>
+          
+          
+            <a class="basic-alignment right" href="/2009/08/16/my-blog-top-search-terms-cakephp/" title="Next Post: My blog top search terms - CakePHP">My blog top search terms - CakePHP &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2019 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.rudylee.com/2009/07/24/koneksi-ke-microsoft-sql-server-dengan-php-di-freebsd/';
+        var disqus_url = 'http://blog.rudylee.com/2009/07/24/koneksi-ke-microsoft-sql-server-dengan-php-di-freebsd/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

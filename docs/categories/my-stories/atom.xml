@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: My Stories | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/my-stories/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Audio Books]]></title>
+    <link href="http://blog.rudylee.com/2014/03/27/audio-books/"/>
+    <updated>2014-03-27T23:30:00+11:00</updated>
+    <id>http://blog.rudylee.com/2014/03/27/audio-books</id>
+    <content type="html"><![CDATA[<p>Around October 2013, I decided to move from city to Gladesville which located 9 kilometres north-west of Sydney CBD. It wasn&rsquo;t easy decision because I need to spend about 2 hours on commuting every day.</p>
+
+<p>For the first couple months, I was fine with the long commuting time. I can distract myself with my phone or sleeping on the bus. However, I started to feel unproductive and I can feel it affected my concentration throughout the day. So, I tried to do some research on the Internet about productive use of commuting time. Most of the articles that I found suggesting to listen either podcasts or audio books.</p>
+
+<p>I decided to give audio book a try and downloaded <a href="http://www.amazon.com/Eat-That-Frog-Great-Procrastinating/dp/1576754227">Eat That Frog by Brian Tracy</a>. If you are interested, you can easily find the audio version of this book on YouTube. At first, I was a little bit skeptical with the result but it turned out to be really helpful. I can feel that my life is back on track again. I started to use <a href="http://trello.com/">Trello</a> to keep my list of tasks. Once in a while, I&rsquo;ll update my goals and create separate boards for each project.</p>
+
+<p>Since that, I have been listening to several different audio books such as <a href="http://www.amazon.com/168-Hours-Have-More-Think/dp/159184410X">168 hours by Laura Vanderkam</a> and <a href="http://www.amazon.com/Getting-Things-Done-Stress-Free-Productivity/dp/0142000280">Getting things done by David Allen</a>. Both of them shared some basic principles from Eat that frog. I prefer Getting things done because it&rsquo;s more straight forward and focusing on actions you can perform to improve your productivity. Although, I can say that this book is quite to hard understand so you need to listen it more than once to get a good grasp of the concept.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Refocus]]></title>
+    <link href="http://blog.rudylee.com/2013/08/04/refocus/"/>
+    <updated>2013-08-04T17:08:00+10:00</updated>
+    <id>http://blog.rudylee.com/2013/08/04/refocus</id>
+    <content type="html"><![CDATA[<p>For the past few weeks, it seems that I am gradually moving into different life style. When I was still doing my course, it is almost impossible to spend time on the weekend to catch up with friends, walking around city and trying new stuff. Everytime my friend invited me to hang out with them I always said that I need to finish my assignments.</p>
+
+<p>I remember one of my friend just asked me this question &ldquo;So, what you usually do during the weekend ?&rdquo; and I answered &ldquo;Nothing, just doing my assigments and other stuff&rdquo;. He looked surprised with my answer and he added &ldquo;Don&rsquo;t you have any friends that invited you out ?&rdquo;. At that time, I realized that he must be feel pity and I said to him &ldquo;At first, you might feel that your life is unfair. You will think that why everyone can enjoy their life during the weekend and you trapped here working on your assigments. But, as the time goes you start to get used to it&rdquo;.</p>
+
+<p>So for the past few months, I have been doing the same routine. Working and attending the class during the weekdays, working on assignments with my group mate during the weekend. Sometimes, I felt stress and tired but believe me, that was the most meaningful moment in my life. During that time, I definitely know what I am going to do everyday and somehow I feel more motivated.</p>
+
+<p>The problem with my current life style is I have more control on what I can do during my free time. I can decide that I can go to cinema, buy clothes, trying this new restaurant or just spending whole day watching YouTube. However, I started to feel that this path is leading me to different direction. The direction that I might regret in the future.</p>
+
+<p>That is why I decided to start writing more blog posts about my life experience. I believe writing blog post can help you refocus on what you should do.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Migrate to Octopress]]></title>
+    <link href="http://blog.rudylee.com/2013/07/25/migrate-to-octopress/"/>
+    <updated>2013-07-25T20:26:00+10:00</updated>
+    <id>http://blog.rudylee.com/2013/07/25/migrate-to-octopress</id>
+    <content type="html"><![CDATA[<p>Today, I decided to upload my new blog using Octopress into live. I have spent the last two weeks migrating my blog posts into Octopress. The process was not as smooth as I thought. I had to check every single blog post and re-apply all the code snippet tags, fix typo and add missing post.</p>
+
+<p>After all, I am quite happy with the end result. I can easily add new blog post through terminal and edit the post using my current favourite text editor Vim. The other good thing is the beautiful code snippet which is one of the reasons I moved from Wordpress.</p>
+
+<p>I am looking forward to post more tutorials about PHP, Rails, NodeJS, AngularJS and so on.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Science of Productivity]]></title>
+    <link href="http://blog.rudylee.com/2013/01/15/science-of-productivity/"/>
+    <updated>2013-01-15T22:58:18+11:00</updated>
+    <id>http://blog.rudylee.com/2013/01/15/science-of-productivity</id>
+    <content type="html"><![CDATA[<p>Continuing from my <a href="http://blog.rudylee.com/2013/01/14/my-journey-to-productivity/">previous post about productivity</a>, I just found a video that you guys might wanna check out. It covers some of the techniques from my previous post such as make your todo list doable and set up the morning dash.</p>
+
+<p><div class="embed-video-container"><iframe src="//www.youtube.com/embed/lHfjvYzr-3g" allowfullscreen></iframe></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My journey to productivity]]></title>
+    <link href="http://blog.rudylee.com/2013/01/14/my-journey-to-productivity/"/>
+    <updated>2013-01-14T15:03:15+11:00</updated>
+    <id>http://blog.rudylee.com/2013/01/14/my-journey-to-productivity</id>
+    <content type="html"><![CDATA[<p>Today marks two weeks of my journey trying new method to boost my productivity. For several years, I am an avid fan of procrastination which I am still now. This has bring me a lot of troubles such as projects are off-schedule, self development postponed, and working on assignments at the last minute. I have tried several productivity techniques and sadly say, none of them show significant effect. One of the popular technique that I used is <a href="http://www.pomodorotechnique.com/">Pomodoro</a> technique. For you guys that never heard about Pomodoro, I suggest to click the link provided. For you guys that are too lazy to click the link, here is the deinition of Pomodoro that I grabbed from the website :</p>
+
+<blockquote><p>It is a time management method created by Francesco Cirillo in the 1980s that helps you accomplish what you want to do by transforming time into a valuable ally. Why is it so popular? Because it is easy to use, and most of all, because it works!</p></blockquote>
+
+<p>Basically the Pomodoro technique tells you to pick a task, working on it under certain time limit ( usually 25 minutes ), take a break for 5 minutes and repeat the same process again. Each cycle is what called Pomodoro, after you have finished 4 Pomodoro, you are allowed to take longer break ( 30 minutes ).</p>
+
+<p>From my personal experience, it is a good technique but you need huge amount of self discipline. People with lack of self discipline tend to lose their focus in the middle of Pomodoro. Most of the time I am only able to do 2 perfect Pomodoro without any distractions, sometimes even less. After that usually I am end up watching Youtube, checking Facebook or even playing games.</p>
+
+<h3>Lifehacker</h3>
+
+<p>I am a type of person that definitely lack of self discipline. I can force and motivate myself to finish a work if there is someone watching my back, for example working in an office environment where you have colleagues monitoring what you are doing. However, one month ago I was trying find a new way to solve this problem because I am on Uni holiday and close to Christmas holiday.</p>
+
+<p>My first choice to find solution is <a href="http://www.lifehacker.com.au/">Lifehacker</a> website. It is one of the popular websites that provides information to boost your productivity in simple ways ( sometimes ). However, because it has lot of articles, most of the time you find it hard to find article that suit your problem.</p>
+
+<p>After trying various keywords to help me find article that match my problem, I decided to give up and looking for books instead. Luckily it&rsquo;s not that difficult because as soon as I typed &lsquo;lifehacker&rsquo; in Amazon, it comes up with this <a href="http://www.amazon.com/Lifehacker-Working-Smarter-Faster-ebook/dp/B0055AUGG8/ref=sr_1_2?ie=UTF8&amp;qid=1357975024&amp;sr=8-2&amp;keywords=lifehacker">book</a>(Lifehacker: The Guide to Working Smarter, Faster, and Better ). The book basically contains the same articles from the website but the good part is all the articles has been grouped into relevant chapter for easier search and read.</p>
+
+<p>I&rsquo;ll suggest you skip most of the chapters in the book and only focus on the chapters that can solve your problem. In my case, I am only focus on these topics :</p>
+
+<ol>
+<li><p> Make your To-Do List Doable. Based on <a href="http://lifehacker.com/270404/how-to-make-your-to+do-list-doable">this article</a>.</p></li>
+<li><p> Set Up a Morning Dash.</p></li>
+<li><p> Dash through tasks with a timer.</p></li>
+<li><p> Limit visits to Time-Wasting websites.</p></li>
+</ol>
+
+
+<p>Out of those 4 topics, my favourite is number one. To-do list is a must have thing in my daily life. Not only it is useful to remind you what to do, but it also useful as a planning tool. Unfortunately, for the past few years I have done a simple mistake and made most of my to-do items in my list untouched. The mistake is simply on the way I write the todo items.</p>
+
+<p>Before I read this article, I tend to put things such as &ldquo;Redesign personal website&rdquo;, &ldquo;Working on project A&rdquo;, and &ldquo;Working on project B&rdquo; in my todo list. According to the article, these type of tasks cannot be called tasks but projects. Tasks are more descriptive and can be done in short time. So if we pick redesign personal website project, some examples of the tasks are create the sitemap or create the home screen wire frame based on sitemap.</p>
+
+<p>The first time I tried this approach, I am little bit sceptical. But believe it or not, I am find it easier to focus on my tasks when I write clearer task. The problem with unclear task are you will spend time to figure what to do and the chances that it will affect your motivation is higher.</p>
+
+<p>I think that&rsquo;s all for this article, I&rsquo;ll try share my experience in the next article.</p>
+]]></content>
+  </entry>
+  
+</feed>

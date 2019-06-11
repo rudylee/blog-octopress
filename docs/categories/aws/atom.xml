@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: AWS | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/aws/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Create new user on Amazon AMI and give it root access]]></title>
+    <link href="http://blog.rudylee.com/2016/03/09/create-new-user-on-amazon-ami-and-give-it-root-access/"/>
+    <updated>2016-03-09T14:55:00+11:00</updated>
+    <id>http://blog.rudylee.com/2016/03/09/create-new-user-on-amazon-ami-and-give-it-root-access</id>
+    <content type="html"><![CDATA[<p>Setup your new EC2 instance on AWS and choose Amazon AMI.</p>
+
+<p>SSH to your instance using your private key
+<code>
+ssh -i &lt;path-to-your-pem-file&gt; ec2-user@&lt;ec2-endpoint-or-ip&gt;
+</code></p>
+
+<p>Change to root
+<code>
+sudo su
+</code></p>
+
+<p>Create new group for your user ( in this case my group name is &lsquo;dev&rsquo; )</p>
+
+<p><code>
+groupadd dev
+</code></p>
+
+<p>Create new user and assign it to your recently created group</p>
+
+<p><code>
+useradd -g dev dev
+</code></p>
+
+<p>Give the username root access
+<code>
+visudo
+</code></p>
+
+<p>Add this to the bottom of the file
+<code>
+dev     ALL=(ALL)       NOPASSWD:ALL
+</code></p>
+
+<p>Delete the password for &lsquo;dev&rsquo; user
+<code>
+sudo passwd dev -d
+</code></p>
+
+<p>Change to the &lsquo;dev&rsquo; user
+<code>
+su dev
+</code></p>
+
+<p>Try run sudo su whether you can gain root privileges
+<code>
+sudo su
+</code></p>
+
+<p>Change user back to dev and set authorized_keys for ssh
+<code>
+exit
+mkdir ~/.ssh
+vi ~/.ssh/authorized_keys
+chmod -R 700 ~/.ssh
+</code></p>
+
+<p>If everything is correct, you should be able to change to root user from dev without providing any password.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Copying Files Between Two S3 Buckets]]></title>
+    <link href="http://blog.rudylee.com/2015/10/16/copying-files-between-two-s3-buckets/"/>
+    <updated>2015-10-16T12:00:00+11:00</updated>
+    <id>http://blog.rudylee.com/2015/10/16/copying-files-between-two-s3-buckets</id>
+    <content type="html"><![CDATA[<p>Today, I have to copy files from one S3 bucket to another S3 bucket which sitting in separate AWS account.</p>
+
+<p>Initially, I was thinking to use S3 clients ( Tranmit or Cyberduck ) to download the files first and manually upload the files again to the other S3 Bucket. However, this approach will consume a lot of bandwidth and really slow if you have a lot of files in your S3 bucket.</p>
+
+<p>After a bit of research, I found that you can easily copy files between two S3 buckets. You can use either s4cmd or AWS CLI.</p>
+
+<h2>s3cmd or s4cmd</h2>
+
+<p>Run this command to install s4cmd</p>
+
+<p><code>bash
+pip install s4cmd
+</code></p>
+
+<p>After you finished setting up the AWS credentials, you can start the copying process.</p>
+
+<p>```bash</p>
+
+<h1>format</h1>
+
+<p>s4cmd cp s3://&lt;source-bucket> s3://&lt;target-bucket>/ &mdash;recursive</p>
+
+<h1>example</h1>
+
+<p>s4cmd cp s3://rudylee-images s3://rudylee-new-images/ &mdash;recursive
+```</p>
+
+<h2>AWS CLI</h2>
+
+<p>Install the cli through pip</p>
+
+<p><code>bash
+pip install awscli
+</code></p>
+
+<p>And configure it</p>
+
+<p><code>bash
+awscli configure
+</code></p>
+
+<p>The usage is quite similar to s4cmd, see below:</p>
+
+<p><code>bash
+aws s3 cp s3://&lt;source-bucket&gt; s3://&lt;destination-bucket&gt;
+</code></p>
+
+<p>I prefer using AWS CLI because it has more options and official support. AWS CLI has a built it support can specify the ACL and permission of the objects.</p>
+
+<p>```bash</p>
+
+<h1>The command below will allow the target bucket owner to have full access to the object</h1>
+
+<p>aws s3 cp s3://&lt;source-bucket> s3://&lt;target-bucket> &mdash;acl &ldquo;bucket-owner-full-control&rdquo; &mdash;recursive
+```</p>
+
+<p>Since my target bucket is sitting in separate AWS account, I have to set another permission to allow everyone to upload and delete files into my target bucket.</p>
+
+<p>If you want to follow this approach, make sure to delete that permission after you finished with the copying.</p>
+
+<p>The other option is to set the S3 bucket policy manually, see this link: <a href="http://serverfault.com/questions/556077/what-is-causing-access-denied-when-using-the-aws-cli-to-download-from-amazon-s3">http://serverfault.com/questions/556077/what-is-causing-access-denied-when-using-the-aws-cli-to-download-from-amazon-s3</a></p>
+]]></content>
+  </entry>
+  
+</feed>

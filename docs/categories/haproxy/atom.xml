@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: HAProxy | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/haproxy/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HAProxy as a reverse proxy for cloudinary images]]></title>
+    <link href="http://blog.rudylee.com/2016/12/05/haproxy-as-a-reverse-proxy-for-cloudinary-images/"/>
+    <updated>2016-12-05T13:51:00+11:00</updated>
+    <id>http://blog.rudylee.com/2016/12/05/haproxy-as-a-reverse-proxy-for-cloudinary-images</id>
+    <content type="html"><![CDATA[<p>We are using in one of our applications <a href="http://cloudinary.com/">Cloudinary</a> to host and resize images on the fly. We are also using <a href="http://www.cloudflare.com">Cloudflare</a> for our CDN and DNS management.</p>
+
+<p>I was given a task to setup a CNAME subdomain in CloudFlare to forward the request to Cloudinary. This way we can still have the benefit of serving static images from CDN as well as reducing the Cloudinary bandwidth usage.</p>
+
+<p>My solution is to set HAProxy as a reverse proxy which responsible to fetch images from Cloudinary server. You can see the overview diagram below:</p>
+
+<p><a href="/images/posts/HAProxy-as-a-reverse-proxy.png"><img src="/images/posts/HAProxy-as-a-reverse-proxy.png" alt="" /></a></p>
+
+<p>The first thing we have to do is to create an ACL in HAProxy for our cloudinary subdomain</p>
+
+<p>In the configuration below, we are telling HAProxy to forward all requests from <code>cloudinary-asset.rudylee.com</code> to <code>cloudinary-backend</code>:</p>
+
+<p>```
+listen  http</p>
+
+<pre><code>    bind 127.0.0.1:8080
+    maxconn     18000
+
+    acl host_cloudinary hdr(host) -i cloudinary-asset.rudylee.com
+
+    use_backend cloudinary-backend if host_cloudinary
+</code></pre>
+
+<p>```</p>
+
+<p>Next one is to create a new backend.</p>
+
+<p>```
+backend cloudinary-backend</p>
+
+<pre><code>    http-request set-header Host res.cloudinary.com
+    server cloudinary res.cloudinary.com:80
+</code></pre>
+
+<p>```</p>
+
+<p>Restart HAProxy and you should be able to use the subdomain to serve images from Cloudinary (eg: <a href="http://cloudinary-asset.rudylee.com/rudylee/image/upload/12298848/icon/12379593943923.png">http://cloudinary-asset.rudylee.com/rudylee/image/upload/12298848/icon/12379593943923.png</a> )</p>
+
+<p>Requesting the images through SSL should work if you have SSL termination configured in your HAProxy.</p>
+]]></content>
+  </entry>
+  
+</feed>

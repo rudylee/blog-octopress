@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Regex | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/regex/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Regular Expression For A String Containing One Word But Not Another]]></title>
+    <link href="http://blog.rudylee.com/2017/07/28/regular-expression-for-a-string-containing-one-word-but-not-another/"/>
+    <updated>2017-07-28T10:55:00+10:00</updated>
+    <id>http://blog.rudylee.com/2017/07/28/regular-expression-for-a-string-containing-one-word-but-not-another</id>
+    <content type="html"><![CDATA[<p>Last weekend, one our apps that is hosted on Heroku were reporting a lot of R14 errors.</p>
+
+<p>R14 is an error that thrown by Heroku if the machine is running out of memory.</p>
+
+<p>I quickly jumped into (logentries)[<a href="https://logentries.com/">https://logentries.com/</a>] to download the log file and opened it in Sublime Text.</p>
+
+<p>However, I was having problem finding the request that is causing the problem because we also have our background job workers reporting R14 errors.</p>
+
+<p>I decided to use regex to find a line that has <code>R14</code> but doesn&rsquo;t contain any of the background worker&rsquo;s name,</p>
+
+<p>This is the regex that I used to find the line:</p>
+
+<p><code>
+^(?!.*(lowworker|highworker|run)).*R14.*$
+</code></p>
+
+<p>The regex above will match the line that has <code>R14</code> but doesn&rsquo;t contain <code>lowworker</code> or <code>highworker</code> and <code>run</code></p>
+]]></content>
+  </entry>
+  
+</feed>

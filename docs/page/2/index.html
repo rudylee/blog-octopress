@@ -1,0 +1,1082 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blog Rudy Lee</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Hi. I&#8217;m Rudy Lee. Here are some thoughts of mine. Apr 13th, 2016 Unix and Linux HAProxy and A/B Testing Few weeks ago, I was given a task to &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.rudylee.com/page/2">
+  <link href="/favicon.ico" rel="icon">
+  <link href='//fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog Rudy Lee" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10301272-8']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+  heap.load("1170192688");
+</script>
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("61a006900f814889fdc104eecb397ac0");</script><!-- end Mixpanel -->
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/">Home</a></li>
+    
+        <li ><a href="/archives">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/rudylee" title="Github Profile"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    
+    <li><a href="http://twitter.com/rudylee88" title="Twitter Profile"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div class="jumbotron">
+  <div class="container">
+    Hi. I&#8217;m Rudy Lee.
+    <h3 class="tagline">Here are some thoughts of mine.</h3>
+  </div>
+</div>
+
+
+<div class="blog-index">
+  
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2016-04-13T15:59:00+10:00" pubdate data-updated="true">Apr 13<span>th</span>, 2016</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2016/04/13/haproxy-and-a-slash-b-testing/">HAProxy and A/B Testing</a></h1>
+      <p>Few weeks ago, I was given a task to create an A/B test using HAProxy. I need to make HAProxy to split traffic between two different applications ( Rails and NodeJS )</p>
+
+<p>In this blog post, I&rsquo;ll explain how to achieve this.</p>
+
+<h3>Create ACL for the page you want to A/B test</h3>
+
+<p>The first step you have to do is to create an ACL for the URL you want to A/B test. In this example, the URL path is <code>/ab-test-path</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>acl ab_test_url path_beg /ab-test-path</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Direct the traffic based on ACL rule and cookie</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># Send user to first backend if they have SITEID cookie with cookie_first_backend value
+</span><span class='line'>use_backend first-backend if { req.cook(SITEID) -m beg cookie_first_backend }
+</span><span class='line'>
+</span><span class='line'># Send user to second backend if they have SITEID cookie with cookie_second_backend value and the URL they request is ab_test_url
+</span><span class='line'>use_backend second-backend if { req.cook(SITEID) -m beg cookie_second_backend } ab_test_url
+</span><span class='line'>
+</span><span class='line'># If the doesn't have any cookie send them to ab-test backend
+</span><span class='line'>use_backend ab-test-backend if ab_test_url
+</span><span class='line'>
+</span><span class='line'># By default send all traffic to the first backend
+</span><span class='line'>default_backend first-backend</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Create all the backends</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>backend first-backend
+</span><span class='line'>        appsession JSESSIONID len 52 timeout 3h
+</span><span class='line'>        cookie SERVERID insert
+</span><span class='line'>
+</span><span class='line'>        balance leastconn
+</span><span class='line'>        server  backend02a-aws-syd 10.0.105.102:80 check maxconn 3000 inter 30s
+</span><span class='line'>        server  backend02b-aws-syd 10.0.106.102:80 check maxconn 3000 inter 30s
+</span><span class='line'>
+</span><span class='line'>backend second-backend
+</span><span class='line'>        server  backend03a-aws-syd 10.0.105.103:80 check maxconn 3000 inter 30s
+</span><span class='line'>
+</span><span class='line'>backend ab-test-backend
+</span><span class='line'>        balance roundrobin
+</span><span class='line'>        cookie SITEID insert indirect nocache maxlife 48h
+</span><span class='line'>
+</span><span class='line'>        server backend02a-aws-syd 10.0.105.102:80 weight 25 cookie cookie_first_backend
+</span><span class='line'>        server backend02b-aws-syd 10.0.106.102:80 weight 25 cookie cookie_first_backend
+</span><span class='line'>
+</span><span class='line'>        server backend03a-aws-syd 10.0.105.103:80 weight 50 cookie cookie_second_backend</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The final HAProxy config should be something like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>listen  http 127.0.0.1:8080
+</span><span class='line'>        maxconn     18000
+</span><span class='line'>
+</span><span class='line'>        # A/B Test ACLs
+</span><span class='line'>        acl ab_test_url path_beg /ab-test-path
+</span><span class='line'>
+</span><span class='line'>        use_backend first-backend if { req.cook(SITEID) -m beg cookie_first_backend }
+</span><span class='line'>        use_backend second-backend if { req.cook(SITEID) -m beg cookie_second_backend } ab_test_url
+</span><span class='line'>        use_backend ab-test-backend if ab_test_url
+</span><span class='line'>
+</span><span class='line'>        default_backend first-backend
+</span><span class='line'>
+</span><span class='line'>backend first-backend
+</span><span class='line'>        appsession JSESSIONID len 52 timeout 3h
+</span><span class='line'>        cookie SERVERID insert
+</span><span class='line'>
+</span><span class='line'>        balance leastconn
+</span><span class='line'>        server  backend02a-aws-syd 10.0.105.102:80 check maxconn 3000 inter 30s
+</span><span class='line'>        server  backend02b-aws-syd 10.0.106.102:80 check maxconn 3000 inter 30s
+</span><span class='line'>
+</span><span class='line'>backend second-backend
+</span><span class='line'>        server  backend03a-aws-syd 10.0.105.103:80 check maxconn 3000 inter 30s
+</span><span class='line'>
+</span><span class='line'>backend ab-test-backend
+</span><span class='line'>        balance roundrobin
+</span><span class='line'>        cookie SITEID insert indirect nocache maxlife 48h
+</span><span class='line'>
+</span><span class='line'>        server backend02a-aws-syd 10.0.105.102:80 weight 25 cookie cookie_first_backend
+</span><span class='line'>        server backend02b-aws-syd 10.0.106.102:80 weight 25 cookie cookie_first_backend
+</span><span class='line'>
+</span><span class='line'>        server backend03a-aws-syd 10.0.105.103:80 weight 50 cookie cookie_second_backend</span></code></pre></td></tr></table></div></figure>
+
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2016-03-09T14:55:00+11:00" pubdate data-updated="true">Mar 9<span>th</span>, 2016</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/aws/"><span class="badge">AWS</span></a>
+          
+          <a href="/categories/linux/"><span class="badge">Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2016/03/09/create-new-user-on-amazon-ami-and-give-it-root-access/">Create new user on Amazon AMI and give it root access</a></h1>
+      <p>Setup your new EC2 instance on AWS and choose Amazon AMI.</p>
+
+<p>SSH to your instance using your private key</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh -i &lt;path-to-your-pem-file&gt; ec2-user@&lt;ec2-endpoint-or-ip&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Change to root</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo su</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Create new group for your user ( in this case my group name is &lsquo;dev&rsquo; )</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>groupadd dev</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Create new user and assign it to your recently created group</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>useradd -g dev dev</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Give the username root access</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>visudo</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add this to the bottom of the file</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>dev     ALL=(ALL)       NOPASSWD:ALL</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Delete the password for &lsquo;dev&rsquo; user</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo passwd dev -d</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Change to the &lsquo;dev&rsquo; user</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>su dev</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Try run sudo su whether you can gain root privileges</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo su</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Change user back to dev and set authorized_keys for ssh</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>exit
+</span><span class='line'>mkdir ~/.ssh
+</span><span class='line'>vi ~/.ssh/authorized_keys
+</span><span class='line'>chmod -R 700 ~/.ssh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If everything is correct, you should be able to change to root user from dev without providing any password.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2016-02-16T16:14:00+11:00" pubdate data-updated="true">Feb 16<span>th</span>, 2016</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/elasticsearch/"><span class="badge">Elasticsearch</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2016/02/16/import-json-to-elasticsearch-using-jq/">Import JSON to Elasticsearch using jq</a></h1>
+      <p>This is based on <a href="http://kevinmarsh.com/2014/10/23/using-jq-to-import-json-into-elasticsearch.html">http://kevinmarsh.com/2014/10/23/using-jq-to-import-json-into-elasticsearch.html</a></p>
+
+<p>Install jq first on Mac</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install jq</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Import the JSON file to Elasticsearch index</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cat file.json | jq -c '.[] | {"index": {"_index": "bookmarks", "_type": "bookmark", "_id": .id}}, .' | curl -XPOST localhost:9200/_bulk --data-binary @-</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Check for the list of indexes <a href="http://localhost:9200/_cat/indices?v">http://localhost:9200/_cat/indices?v</a></p>
+
+<p>See the list of records <a href="http:/localhost:9200//bookmarks/_search">http:/localhost:9200//bookmarks/_search</a></p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2016-01-20T14:26:00+11:00" pubdate data-updated="true">Jan 20<span>th</span>, 2016</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/git/"><span class="badge">Git</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2016/01/20/reopen-last-commit-in-git/">Reopen Last Commit in Git</a></h1>
+      <p>Run the command below if you want to reopen the last commit in your git</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git reset --soft HEAD~
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is useful if you miss something in your last commit. Instead of creating new commit and squashing it, you can open last commit and fix it there.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2015-10-16T12:00:00+11:00" pubdate data-updated="true">Oct 16<span>th</span>, 2015</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/aws/"><span class="badge">AWS</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2015/10/16/copying-files-between-two-s3-buckets/">Copying Files Between Two S3 Buckets</a></h1>
+      <p>Today, I have to copy files from one S3 bucket to another S3 bucket which sitting in separate AWS account.</p>
+
+<p>Initially, I was thinking to use S3 clients ( Tranmit or Cyberduck ) to download the files first and manually upload the files again to the other S3 Bucket. However, this approach will consume a lot of bandwidth and really slow if you have a lot of files in your S3 bucket.</p>
+
+<p>After a bit of research, I found that you can easily copy files between two S3 buckets. You can use either s4cmd or AWS CLI.</p>
+
+<h2>s3cmd or s4cmd</h2>
+
+<p>Run this command to install s4cmd</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install s4cmd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After you finished setting up the AWS credentials, you can start the copying process.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># format</span>
+</span><span class='line'>s4cmd cp s3://&lt;<span class="nb">source</span>-bucket&gt; s3://&lt;target-bucket&gt;/ --recursive
+</span><span class='line'>
+</span><span class='line'><span class="c">#example</span>
+</span><span class='line'>s4cmd cp s3://rudylee-images s3://rudylee-new-images/ --recursive
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>AWS CLI</h2>
+
+<p>Install the cli through pip</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install awscli
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And configure it</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>awscli configure
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The usage is quite similar to s4cmd, see below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>aws s3 cp s3://&lt;<span class="nb">source</span>-bucket&gt; s3://&lt;destination-bucket&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I prefer using AWS CLI because it has more options and official support. AWS CLI has a built it support can specify the ACL and permission of the objects.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># The command below will allow the target bucket owner to have full access to the object</span>
+</span><span class='line'>aws s3 cp s3://&lt;<span class="nb">source</span>-bucket&gt; s3://&lt;target-bucket&gt; --acl <span class="s2">&quot;bucket-owner-full-control&quot;</span> --recursive
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Since my target bucket is sitting in separate AWS account, I have to set another permission to allow everyone to upload and delete files into my target bucket.</p>
+
+<p>If you want to follow this approach, make sure to delete that permission after you finished with the copying.</p>
+
+<p>The other option is to set the S3 bucket policy manually, see this link: <a href="http://serverfault.com/questions/556077/what-is-causing-access-denied-when-using-the-aws-cli-to-download-from-amazon-s3">http://serverfault.com/questions/556077/what-is-causing-access-denied-when-using-the-aws-cli-to-download-from-amazon-s3</a></p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2015-08-31T10:28:00+10:00" pubdate data-updated="true">Aug 31<span>st</span>, 2015</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/postgresql/"><span class="badge">PostgreSQL</span></a>
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2015/08/31/create-ssh-tunnel-to-backup-postgresql-database/">Create SSH Tunnel To Backup PostgreSQL Database</a></h1>
+      <p>Today, I was trying to create a backup of production database. The problem is we have two different version of PostgreSQL running on production and these databases can only be accessed from front end(FE) server. We have older version of PostgreSQL client installed in all FE server which means I can&rsquo;t use it to run pg_dump.</p>
+
+<h2>SSH Tunnel to the rescue</h2>
+
+<p>One solution to this problem is to create a SSH tunnel. Since I have the latest version of PostgreSQL client installed in my machine, I can run pg_dump locally which will connect to the database through SSH tunnel.</p>
+
+<p>Here is the command I used to create SSH tunnel:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># Format: ssh -L &lt;local-port&gt;:&lt;db-hostname&gt;:&lt;db-port&gt; &lt;fe-username&gt;@&lt;fe-hostname&gt;</span>
+</span><span class='line'>ssh -L 9000:database.com:5432 ubuntu@production.servers.com
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After this you can check whether the SSH tunnel is succesfully created by running this and look for port 9000</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>netstat -na | grep LISTEN
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you confirm that the SSH tunnel is working, you can run psql to connect or pg_dump to backup your database</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>psql -h localhost -p 9000
+</span></code></pre></td></tr></table></div></figure>
+
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2015-05-03T16:14:00+10:00" pubdate data-updated="true">May 3<span>rd</span>, 2015</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/ruby-on-rails/"><span class="badge">Ruby on Rails</span></a>
+          
+          <a href="/categories/vim/"><span class="badge">Vim</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2015/05/03/rails-engines-and-vim/">Rails Engines and Vim</a></h1>
+      <p>At the moment, I am working on a Ruby on Rails projects using Rails Engines ( you can read more about Rails Engines here: <a href="http://guides.rubyonrails.org/engines.html">http://guides.rubyonrails.org/engines.html</a> ). In this post, I&rsquo;ll share my tips and trick on how to configure your vim to work with Rails Engines.</p>
+
+<h1>NERDTree Bookmark</h1>
+
+<p>I am using NERDTree Bookmark to quickly jump between different engines. If you are using NERDTree, you can create a bookmark by putting your cursor on one of the Rails Engines directory and use the command below:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:Bookmark &lt;engine name&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After you created the bookmark, you can see the bookmarks list by pressing <code>B</code> inside NERDTree window. See the screenshot below:</p>
+
+<p><a href="/images/vim-bookmarks.png"><img src="/images/vim-bookmarks.png" alt="" /></a></p>
+
+<p>I also added these two options to my vimrc file.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>" Automatically show bookmarks list when you open NERDTree
+</span><span class='line'>let NERDTreeShowBookmarks=1
+</span><span class='line'>let NERDTreeChDirMode=2</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><code>NERDTreeChDirMode</code> changes the current working directory of your vim to your bookmark directory. This will also enable my favourite rails.vim feature which is open alternate file.</p>
+
+<h1>CtrlP Working Path Mode</h1>
+
+<p>It is normal for Rails Engines to share similar directory structure and filenames. However, this creates problem when you want to search a file using CtrlP plugin. Combined with <code>NERDTreeChDirMode</code>, you can tell CtrlP to search only in the current working directory.</p>
+
+<p>Add this option to your vimrc file to enable this feature:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let g:ctrlp_working_path_mode = 'a'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s it for now, I&rsquo;ll update this post if I find a better workflow or configuration. If you are interested, you can check my full vimrc file here: <a href="https://github.com/rudylee/dotfiles/blob/master/vimrc">https://github.com/rudylee/dotfiles/blob/master/vimrc</a></p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2014-10-27T14:22:00+11:00" pubdate data-updated="true">Oct 27<span>th</span>, 2014</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          <a href="/categories/vagrant/"><span class="badge">Vagrant</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2014/10/27/symbolic-links-with-vagrant-windows/">Symbolic Links With Vagrant Windows</a></h1>
+      <p>There are few known limitations when using Vagrant on Windows machine. One of these limitations is the lack of symbolic links support on synced folder.</p>
+
+<p>Symbolic links are used heavily by NPM to create shortcut for the libraries. I posted more details about this here: <a href="http://blog.rudylee.com/2013/10/24/fix-npm-symlink-problem-in-vagrant/">http://blog.rudylee.com/2013/10/24/fix-npm-symlink-problem-in-vagrant/</a></p>
+
+<p>Most of the time, you can get away with &lsquo;npm &mdash;no-bin-link&rsquo; solution. However, you need more robust solution if you are using complex tools such as Grunt or Yeoman.</p>
+
+<p>In this post, I&rsquo;ll show you the proper way to add symbolic links support to your Vagrant machine.</p>
+
+<p>First, you need to add this code snippet inside your Vagrantfile</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>config.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> |v|
+</span><span class='line'>    v.customize <span class="o">[</span><span class="s2">&quot;setextradata&quot;</span>, :id, <span class="s2">&quot;VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root&quot;</span>, <span class="s2">&quot;1&quot;</span><span class="o">]</span>
+</span><span class='line'>end
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>VirtualBox disables symbolic links for security reasons. In order to pass this restriction, you need to boot up the Vagrant machine in Administrator mode.</p>
+
+<p>You can do this by simply right clicking on your Command Prompt or Git Bash icon and click &lsquo;Run as Administrator&rsquo;. See the picture below if you can&rsquo;t find it.</p>
+
+<p><a href="/images/run_as_admin.png"><img src="/images/run_as_admin.png" alt="" /></a></p>
+
+<p>After that, boot up the Vagrant machine normally with &lsquo;vagrant up&rsquo; command. Wait until the machine boots up, SSH to the machine and try to create symbolic link in the synced folder.</p>
+
+<h2>File path 255 character limit</h2>
+
+<p>Another annoying problem you might encounter is file path character limit. This happens quite often if you are using a node module with long name. You can easily solve this by following these steps:</p>
+
+<h3>Create &lsquo;node_modules&rsquo; folder in your home folder</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  mkdir ~/node_modules
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Add symbolic link to the &lsquo;node_modules&rsquo; folder you just created inside your project folder</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  ln -sf ~/node_modules /vagrant/your-project-folder
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This solution will ensure that all the node modules are stored inside home directory instead of synced folder.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2014-09-18T21:54:00+10:00" pubdate data-updated="true">Sep 18<span>th</span>, 2014</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2014/09/18/enable-http-authentication-on-certain-domain/">Enable HTTP authentication on certain domain</a></h1>
+      <p>Basic HTTP authentication is one simple way to limit public access to your website prior to launch.</p>
+
+<p>The first thing you need is .htaccess file which contains all the configurations. The second one is .htpasswd containing username and password. You can use this website to generate .htpasswd file for you <a href="http://www.htaccesstools.com/htpasswd-generator/">http://www.htaccesstools.com/htpasswd-generator/</a></p>
+
+<p>In the sample below, I am trying to enable HTTP authentication only on certain domain. On the first line, I set enviroment variable if the domain name is equal to &ldquo;www.bundabergfestival.com.au&rdquo;. On line 7, I tell .htaccess file to deny any access by using the live_uri variable. I hope that explanation is pretty straight forward.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>SetEnvIf Host <span class="s2">&quot;^www.bundabergfestival.com.au&quot;</span> live_uri
+</span><span class='line'>AuthName <span class="s2">&quot;Bundaberg Festival Website Coming Soon&quot;</span>
+</span><span class='line'>AuthType Basic
+</span><span class='line'>AuthUserFile /var/app/.htpasswd
+</span><span class='line'>AuthGroupFile /dev/null
+</span><span class='line'>require valid-user
+</span><span class='line'>Order allow,deny
+</span><span class='line'>Allow from all
+</span><span class='line'>Deny from <span class="nv">env</span><span class="o">=</span>live_uri
+</span><span class='line'>Satisfy any
+</span></code></pre></td></tr></table></div></figure>
+
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2014-05-26T05:41:00+10:00" pubdate data-updated="true">May 26<span>th</span>, 2014</time></h5>
+          <div class="row-fluid">
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/categories/angularjs/"><span class="badge">AngularJS</span></a>
+          
+          <a href="/categories/javascript/"><span class="badge">Javascript</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/2014/05/26/angularjs-free-course-by-code-school/">AngularJS Free Course by Code School</a></h1>
+      <p>I spent some time last weekend to run through the new <a href="https://www.codeschool.com/courses/shaping-up-with-angular-js">AngularJS course by Code School</a>. This course is sponsored by Google which means you don&rsquo;t need to pay for the Code School membership to play this course. AngularJS is one of the popular Javascript frameworks to build single page app application. You might be familiar with other frameworks such as <a href="http://emberjs.com/">Ember.js</a>, <a href="http://backbonejs.org/">Backbone.js</a> and <a href="http://knockoutjs.com/">Knockout.js</a>.</p>
+
+<p>I really enjoyed the course and definitely learned something new from it. It covers the basic concept about directives, services and dependecy injection. I didn&rsquo;t understand those features when the first time I learned about AngularJS. In the beginning of learning AngularJS, I tended to copy and paste code without understanding the meaning behind it. This caused confusion when I tried to learn more about the framework.</p>
+
+<p>Code School also released another screencast on how to build AngularJS app from scratch. I&rsquo;ll suggest you to check that one out as well so you can apply the knowledge that you have learned from the course to build real application. However, you have to become the member to get access to the screencast.  There are also some other websites that provide AngularJS videos such as <a href="http://www.egghead.io">http://www.egghead.io</a> and <a href="http://www.thinkster.io">http://www.thinkster.io</a></p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+  
+  <div class="pagination">
+    
+    <a class="prev" href="/page/3/">&larr; Older</a>
+    
+
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2019 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

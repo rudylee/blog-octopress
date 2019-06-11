@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git | Blog Rudy Lee]]></title>
+  <link href="http://blog.rudylee.com/categories/git/atom.xml" rel="self"/>
+  <link href="http://blog.rudylee.com/"/>
+  <updated>2019-06-11T17:11:03+10:00</updated>
+  <id>http://blog.rudylee.com/</id>
+  <author>
+    <name><![CDATA[Rudy Lee]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Reopen Last Commit in Git]]></title>
+    <link href="http://blog.rudylee.com/2016/01/20/reopen-last-commit-in-git/"/>
+    <updated>2016-01-20T14:26:00+11:00</updated>
+    <id>http://blog.rudylee.com/2016/01/20/reopen-last-commit-in-git</id>
+    <content type="html"><![CDATA[<p>Run the command below if you want to reopen the last commit in your git</p>
+
+<p><code>bash
+git reset --soft HEAD~
+</code></p>
+
+<p>This is useful if you miss something in your last commit. Instead of creating new commit and squashing it, you can open last commit and fix it there.</p>
+]]></content>
+  </entry>
+  
+</feed>

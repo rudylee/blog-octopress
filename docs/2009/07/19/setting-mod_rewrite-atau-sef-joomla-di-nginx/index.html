@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Setting mod_rewrite atau SEF Joomla di Nginx - Blog Rudy Lee</title>
+  <meta name="author" content="Rudy Lee">
+
+  
+  <meta name="description" content="Setting Mod_rewrite Atau SEF Joomla Di Nginx Jul 19th, 2009 Yap sambil menunggu server World of Warcraft yang tak kunjung up-up gwa buat tutorial &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.rudylee.com/2009/07/19/setting-mod_rewrite-atau-sef-joomla-di-nginx">
+  <link href="/favicon.ico" rel="icon">
+  <link href='//fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog Rudy Lee" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10301272-8']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+  heap.load("1170192688");
+</script>
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("61a006900f814889fdc104eecb397ac0");</script><!-- end Mixpanel -->
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/">Home</a></li>
+    
+        <li ><a href="/archives">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/rudylee" title="Github Profile"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    
+    <li><a href="http://twitter.com/rudylee88" title="Twitter Profile"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Setting Mod_rewrite Atau SEF Joomla Di Nginx
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2009-07-19T03:13:26+10:00" pubdate data-updated="true">Jul 19<span>th</span>, 2009</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>Yap sambil menunggu server World of Warcraft yang tak kunjung up-up gwa buat tutorial sedikit tentang setting mod_rewrite Joomla di Nginx. Sudah pada tau Nginx ? kalau belum tau gwa kasih tau dah. Nginx itu adalah salah satu web server seperti Apache, Lighttpd, Apache Tomcat, Jetty, IIS, Zeus dan lainnya. Nginx ini ( dibacanya Engine X ) kabarnya sih lebih cepat dan stabil dibandingkan Apache yang sudah tersohor sebagai server PHP. Untuk detail lengkap tentang fitur-fiturnya silakan baca <a href="http://en.wikipedia.org/wiki/Nginx">link ini.</a></p>
+
+<p>Kalau pengen liat perbandingan kecepatannya dapat googling sendiri soalnya gwa juga blom coba ngetes kecepatannya soalnya gwa cuma pengen ngetes aja bedanya makai Nginx dan Lighttpd. Setelah gwa menggunakan kedua web server yang katanya lebih &ldquo;cepat&rdquo; dari Apache tersebut gwa menemukan salah satu fitur penting yang kurang yaitu kemampuan kedua web server tersebut untuk membaca file .htaccess, dan itu artinya apa ? itu artinya kita tidak bisa langsung memakai fitur-fitur mod_rewrite yang sudah disediakan engine-engine dan framework-framework seperti CakePHP, Joomla, dan Wordpress.</p>
+
+<p>Tapi untunglah teknologi sudah maju, cukup search-search dikit ternyata langsung dapat deh tutorial mod_rewrite Joomla di Nginx. Tapi walaupun teknologi sudah maju tapi ternyata tutorial yang didapat tidak cukup maju ( alias dicoba-coba ga jalan ). Jadi daripada ntar ada orang yang bernasib sama kek gwa makanya dengan senang hati gwa bikin ini tutorial hohoho. Ya udah kita back to topic tar kelamaan out of topic.</p>
+
+<p>Nah, jadi untuk membuat mod_rewrite atau fitur SEF Joomla jalan di Nginx kita hanya perlu membuat rulesnya dan dengan sedikit tricky way kita bisa buat semua berjalan seperti di Apache. Kira-kira begini settingan nginx.conf gwa ( gwa ga bakal jelasin cara nginstall Nginx dan setting PHP ) :</p>
+
+<pre><code>#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       80;
+        server_name  binus-access.com v2.binus-access.com;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+    location / {
+        root   /usr/local/www/data;
+        index  index.html index.htm index.php;
+        error_page 404 = @joomla; 
+    }
+
+    location @joomla { 
+        rewrite ^(.*)$ /index.php?q=$1 last;
+    }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/local/www/nginx-dist;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+
+        location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME /usr/local/www/data$fastcgi_script_name;
+        include fastcgi_params; 
+        }
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+
+#   location ~ \.php$ {
+#            root           html;
+#            fastcgi_pass   127.0.0.1:9000;
+#            fastcgi_index  index.php;
+#            fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+#            include        fastcgi_params;
+#        }
+
+         #deny access to .htaccess files, if Apache's document root
+         #concurs with nginx's one
+
+   #     location ~ /\.ht {
+   #         deny  all;
+   #   }
+    }
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443;
+    #    server_name  localhost;
+
+    #    ssl                  on;
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_timeout  5m;
+
+    #    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    #    ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    #    ssl_prefer_server_ciphers   on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}
+
+
+
+
+Jadi kalau dilihat-lihat dari settingan nginx.conf gwa, cuma ada 2 hal bagian yang harus diperhatikan yaitu bagian ini :
+
+
+
+    location / {
+        root   /usr/local/www/data;
+        index  index.html index.htm index.php;
+        error_page 404 = @joomla; 
+    }
+
+    location @joomla { 
+        rewrite ^(.*)$ /index.php?q=$1 last;
+    }
+</code></pre>
+
+<p>Kalau ditranslate kira-kira bacanya begini : jika ada error page 404 maka dia akan set rules menjadi @joomla. Semoga tutorial ini berguna, kalau ga jalan coba dilihat-lihat dolo settingannya lagi soalnya TESTED dan WORKS ( silakan ke <a href="http://www.binus-access.com">www.binus-access.com</a> ) itu adalah web yang pakai Nginx. Btw, selain itu ada beberapa web besar yang menggunakan Nginx juga yaitu Kaskus dan Wordpress. Jadi itu juga menambah keyakinan gwa untuk menggunakan Nginx ini. Sekian tutorial dari gwa, kalau ada pertanyaan comment ato add YM aja di channel_life.</p>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/categories/unix-and-linux/"><span class="badge">Unix and Linux</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/2009/07/10/hal-yang-paling-menyenangkan-dalam-membuat-sebuah-aplikasi/" title="Previous Post: Hal yang paling menyenangkan dalam membuat sebuah aplikasi">&laquo; Hal yang paling menyenangkan dalam membuat sebuah aplikasi</a>
+          
+          
+            <a class="basic-alignment right" href="/2009/07/24/koneksi-ke-microsoft-sql-server-dengan-php-di-freebsd/" title="Next Post: Koneksi ke Microsoft SQL Server dengan PHP di FreeBSD">Koneksi ke Microsoft SQL Server dengan PHP di FreeBSD &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2019 - Rudy Lee -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogrudylee';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.rudylee.com/2009/07/19/setting-mod_rewrite-atau-sef-joomla-di-nginx/';
+        var disqus_url = 'http://blog.rudylee.com/2009/07/19/setting-mod_rewrite-atau-sef-joomla-di-nginx/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
